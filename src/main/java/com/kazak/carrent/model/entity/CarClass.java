@@ -22,7 +22,7 @@ public class CarClass {
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @Column(name = "name", nullable = false)
+  @Column(name = "name", nullable = false, unique = true)
   private String name;
 
 }
