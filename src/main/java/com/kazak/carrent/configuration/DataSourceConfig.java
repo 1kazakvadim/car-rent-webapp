@@ -1,4 +1,4 @@
-package com.kazak.carrent.model.configuration;
+package com.kazak.carrent.configuration;
 
 import javax.sql.DataSource;
 import org.springframework.boot.jdbc.DataSourceBuilder;
