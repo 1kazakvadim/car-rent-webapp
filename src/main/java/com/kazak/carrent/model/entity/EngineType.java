@@ -14,15 +14,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user_role")
-public class UserRole {
+@Table(name = "engine_type")
+public class EngineType {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @Column(name = "name", nullable = false, unique = true)
-  private String userRole;
+  @Column(name = "name", nullable = false)
+  private String name;
 
 }

@@ -62,5 +62,4 @@ public class PassportData {
   @Column(name = "registration", nullable = false)
   private String registration;
 
-
 }
