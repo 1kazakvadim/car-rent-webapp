@@ -1,11 +1,12 @@
 package com.kazak.carrent.model.entity;
 
-import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,33 +16,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "car")
-public class Car {
+@Table(name = "car_repair")
+public class CarRepair {
+
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  private CarBrand carBrand;
+  @ManyToOne
+  @JoinColumn(name = "order_id", nullable = false)
+  private Order order;
 
-  private String model;
+  @Column(name = "damage_information", nullable = false)
+  private String damageInformation;
 
-  private String color;
-
-  private CarBody carBody;
-
-  private CarClass carClass;
-
-  private CarTransmission carTransmission;
-
-  private EngineType engineType;
-
-  private Double engineVolume;
-
-  private Integer numberOfSeats;
-
-  private LocalDate releaseDate;
-
-  private Double rentalCost;
+  @Column(name = "repair_cost", nullable = false)
+  private Double repairCost;
 }
