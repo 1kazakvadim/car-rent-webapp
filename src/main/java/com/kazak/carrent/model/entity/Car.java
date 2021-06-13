@@ -44,11 +44,11 @@ public class Car {
   private CarClass carClass;
 
   @ManyToOne
-  @Column(name = "car_transmission_id", nullable = false)
+  @JoinColumn(name = "car_transmission_id", nullable = false)
   private CarTransmission carTransmission;
 
   @ManyToOne
-  @Column(name = "engine_type_id", nullable = false)
+  @JoinColumn(name = "engine_type_id", nullable = false)
   private EngineType engineType;
 
   @Column(name = "engine_volume", nullable = false)
