@@ -1,0 +1,43 @@
+.user {
+    margin-bottom: 12rem;
+}
+
+.user_nav {
+    display: inline-block;
+    flex-direction: column;
+    align-items: start;
+    list-style-type: none;
+    border: 0.1rem solid var(--black);
+    border-radius: 0.4rem;
+    padding: 1rem;
+    background-color: #fcce81;
+}
+
+.user_nav li {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+
+}
+
+.user_nav li:last-child{
+    margin-bottom: 0;
+}
+
+.user_nav a {
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    display: block;
+    color: var(--black);
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.user_nav a:hover {
+    color: var(--black);
+    border-bottom: 0.2rem solid var(--black);
+    padding: 0 0 0.3rem;
+    transition: all 0.2s linear;
+}
+
+

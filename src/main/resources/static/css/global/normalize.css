@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 1rem;
+    color: black;
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0 auto;
+    /*padding-bottom: 12rem;*/
+}
+
+html{
+    position:relative;
+    min-height:100%;
+}
+

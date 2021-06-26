@@ -1,0 +1,40 @@
+.conditions{
+    font-family: 'Arimo', sans-serif;
+    margin-bottom: 12rem;
+}
+
+.conditions_img {
+    width: 100%;
+    max-width: 56rem;
+    height: 19rem;
+    display: block;
+    margin: 0 auto 0;
+}
+
+.conditions_content {
+    width: 100%;
+    margin-top: 5rem;
+    color: #444444;
+}
+
+.conditions_title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: var(--black);
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.conditions_text {
+    font-size: 1.2rem;
+}
+
+.conditions_text h1, h2, h3, h4, h5, h6 {
+    margin: 0.5rem 0.5rem;
+}
+
+.conditions_text li {
+    padding-bottom: 0.2rem;
+}
+

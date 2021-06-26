@@ -1,0 +1,13 @@
+@import "global/variables.css";
+@import "global/fonts.css";
+@import "global/normalize.css";
+@import "blocks/header.css";
+@import "blocks/slider.css";
+@import "blocks/conditions.css";
+@import "blocks/contacts.css";
+@import "blocks/authorization.css";
+@import "blocks/registration.css";
+@import "blocks/catalog.css";
+@import "blocks/product.css";
+@import "blocks/user.css";
+@import "blocks/footer.css";

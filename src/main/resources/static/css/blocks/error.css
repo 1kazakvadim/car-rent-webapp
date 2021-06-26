@@ -1,0 +1,130 @@
+.face {
+    font-family: 'Lato', sans-serif;
+    width: 19rem;
+    height: 19rem;
+    border: 0.3rem solid #383a41;
+    border-radius: 0.6rem;
+    background-color: #fff;
+    margin: 6rem auto 0;
+}
+
+.face .band {
+    width: 21rem;
+    height: 1.8rem;
+    border: 0.3rem solid #383a41;
+    border-radius: 0.3rem;
+    margin-left: -1.6rem;
+    margin-top: 3.1rem;
+}
+
+.face .band .red {
+    height: 0.6rem;
+    width: 100%;
+    background-color: #efd4ab;
+}
+
+.face .band .white {
+    height: 0.6rem;
+    width: 100%;
+    background-color: #fff;
+}
+
+.face .band .blue {
+    height: 0.6rem;
+    width: 100%;
+    background-color: #eb6d6d;
+}
+
+.face .eyes {
+    width: 8rem;
+    margin: 2.5rem auto 0;
+}
+
+.face .eyes:before {
+    content: "";
+    display: inline-block;
+    width: 1.8rem;
+    height: 1rem;
+    border: 0.4rem solid #383a41;
+    margin-right: 1.2rem;
+    border-top-left-radius: 1.4rem;
+    border-top-right-radius: 1.4rem;
+    border-bottom: 0;
+}
+
+.face .eyes:after {
+    content: "";
+    display: inline-block;
+    width: 1.8rem;
+    height: 1rem;
+    border: 0.4rem solid #383a41;
+    margin-left: 1.2rem;
+    border-top-left-radius: 1.4rem;
+    border-top-right-radius: 1.4rem;
+    border-bottom: 0;
+}
+
+.face .dimples {
+    width: 12rem;
+    margin: 1rem auto 0;
+}
+
+.face .dimples:before {
+    content: "";
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-right: 5rem;
+    border-radius: 50%;
+    background-color: rgba(235, 109, 109, 0.4);
+}
+
+.face .dimples:after {
+    content: "";
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-left: 5rem;
+    border-radius: 50%;
+    background-color: rgba(235, 109, 109, 0.4);
+}
+
+.face .mouth {
+    width: 2.5rem;
+    height: 0.3rem;
+    border-radius: 0.3rem;
+    background-color: #383a41;
+    margin: 1.6rem auto 0;
+}
+
+h1 {
+    color: #383a41;
+    text-align: center;
+    font-size: 2.5rem;
+    padding-top: 1.2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.error_button {
+    display: block;
+    font-family: "Open Sans", sans-serif;
+    padding: 1.2rem;
+    background-color: rgba(94, 127, 220, 1);
+    width: 20rem;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 0.1rem solid var(--black);
+    cursor: pointer;
+    margin: 5rem auto 3.2rem;
+    transition: all 0.2s linear;
+}
+
+.error_button:hover {
+    background-color: rgba(94, 127, 220, 0.8);
+    transition: all 0.2s linear;
+}
+ 

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <title>Car-Rent</title>
+</head>
+<body>
+<div class="lang">
+    <div class="container">
+        <a href="">
+            <img src="../../static/images/russiaflag_flags_rusi_8884.png" alt="">
+        </a>
+        <a href="">
+            <img src="../../static/images/unitedstates_flags_flag_8833.png" alt="">
+        </a>
+    </div>
+</div>
+<header class="header">
+    <div class="container">
+        <div class="header_inner">
+            <div class="company">
+                <a href="../index.html">
+                    <img class="company_logo" src="../../static/images/logo.png" alt="">
+                </a>
+            </div>
+            <div class="nav">
+                <div class="nav_item">
+                    <a class="nav_link" href="../index.html">Главная</a>
+                </div>
+                <div class="nav_item">
+                    <a class="nav_link" href="../pages/catalog.html">Каталог</a>
+                </div>
+                <div class="nav_item">
+                    <a class="nav_link" href="../pages/conditions.html">Условия проката</a>
+                </div>
+                <div class="nav_item">
+                    <a class="nav_link" href="../pages/contacts.html">Контакты</a>
+                </div>
+                <div class="nav_item">
+                    <div class="profile_dropdown">
+                        <a class="profile_link" href="">
+                            <img class="profile_img" src="../../static/images/profile.svg" alt="">
+                        </a>
+                        <div class="profile_dropdown_content">
+                            <a href="#">Мой профиль</a>
+                            <a href="#">Войти</a>
+                            <a href="#">Выйти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="authorization">
+    <div class="container">
+        <div class="authorization_inner">
+            <div class="authorization_header">
+                <h1 class="authorization_title">АВТОРИЗАЦИЯ</h1>
+            </div>
+            <fieldset class="authorization_fieldset">
+                <form class="authorization_form" action="" method="get">
+                    <input class="authorization_login" type="email" placeholder="Логин">
+                    <input class="authorization_password" type="password" placeholder="Пароль">
+                    <button class="authorization_submit" type="submit" value="">
+                        <span>ВОЙТИ</span>
+                    </button>
+
+                    <div class="authorization_footer">
+                        <p class="footer_title">Нет аккаунта?</p>
+                        <a class="footer_link" href="../pages/registration.html">Регистрация</a>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="footer_inner">
+        <div class="footer_info">
+            <div class="footer_copyright">&copy; 2021 - Kazak Vadim</div>
+            <div class="footer_social">
+                <a class="footer_social_link instagram" href="#">
+                    <img src="../../static/images/instagram.png" alt="">
+                </a>
+                <a class="footer_social_link youtube" href="#">
+                    <img src="../../static/images/youtube.png" alt="">
+                </a>
+                <a class="footer_social_link viber" href="#">
+                    <img src="../../static/images/viber.png" alt="">
+                </a>
+                <a class="footer_social_link linkedin" href="#">
+                    <img src="../../static/images/linkedin.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="footer_nav">
+            <a class="footer_nav_link" href="#">Главная</a>
+            <a class="footer_nav_link" href="#">Каталог</a>
+            <a class="footer_nav_link" href="#">Условия проката</a>
+            <a class="footer_nav_link" href="#">Контакты</a>
+        </div>
+    </div>
+</footer>
+<script src="../js/slider.js"></script>
+</body>
+</html>

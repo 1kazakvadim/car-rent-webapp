@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <title>Car-Rent</title>
+</head>
+<body>
+<div class="lang">
+    <div class="container">
+        <a href="">
+            <img src="../../static/images/russiaflag_flags_rusi_8884.png" alt="">
+        </a>
+        <a href="">
+            <img src="../../static/images/unitedstates_flags_flag_8833.png" alt="">
+        </a>
+    </div>
+</div>
+<header class="header">
+    <div class="container">
+        <div class="header_inner">
+            <div class="company">
+                <a href="../index.html">
+                    <img class="company_logo" src="../../static/images/logo.png" alt="">
+                </a>
+            </div>
+            <div class="nav">
+                <div class="nav_item">
+                    <a class="nav_link" href="../index.html">Главная</a>
+                </div>
+                <div class="nav_item">
+                    <a class="nav_link" href="../pages/catalog.html">Каталог</a>
+                </div>
+                <div class="nav_item">
+                    <a class="nav_link" href="../pages/conditions.html">Условия проката</a>
+                </div>
+                <div class="nav_item">
+                    <a class="nav_link" href="../pages/contacts.html">Контакты</a>
+                </div>
+                <div class="nav_item">
+                    <div class="profile_dropdown">
+                        <a class="profile_link" href="">
+                            <img class="profile_img" src="../../static/images/profile.svg" alt="">
+                        </a>
+                        <div class="profile_dropdown_content">
+                            <a href="#">Мой профиль</a>
+                            <a href="#">Войти</a>
+                            <a href="#">Выйти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="catalog">
+    <div class="container">
+        <div class="catalog_inner">
+            <div class="filter">
+                <form class="filer_inner" method="post" action="">
+                    <div class="filer_item_checkbox">
+                        <h4 class="filter_title">car_brand</h4>
+                        <div class="filer_checkbox_inner">
+                            <label for="car_brand_one">
+                                <input type="checkbox" id="car_brand_one"/>First
+                                checkbox</label>
+                            <label for="car_brand_two">
+                                <input type="checkbox" id="car_brand_two"/>Second checkbox</label>
+                            <label for="car_brand_three">
+                                <input type="checkbox" id="car_brand_three"/>Third checkbox</label>
+                        </div>
+                    </div>
+                    <div class="filer_item_checkbox">
+                        <h4 class="filter_title">car_model</h4>
+                        <div class="filer_checkbox_inner">
+                            <label for="car_model_one">
+                                <input type="checkbox" id="car_model_one"/>First
+                                checkbox</label>
+                            <label for="car_model_two">
+                                <input type="checkbox" id="car_model_two"/>Second checkbox</label>
+                            <label for="car_model_three">
+                                <input type="checkbox" id="car_model_three"/>Third checkbox</label>
+                        </div>
+                    </div>
+                    <div class="filer_item_checkbox">
+                        <h4 class="filter_title">car_body</h4>
+                        <div class="filer_checkbox_inner">
+                            <label for="car_body_one">
+                                <input type="checkbox" id="car_body_one"/>First
+                                checkbox</label>
+                            <label for="car_body_two">
+                                <input type="checkbox" id="car_body_two"/>Second
+                                checkbox</label>
+                            <label for="car_body_three">
+                                <input type="checkbox" id="car_body_three"/>Third checkbox</label>
+                        </div>
+                    </div>
+                    <div class="filer_item_checkbox">
+                        <h4 class="filter_title">car_class</h4>
+                        <div class="filer_checkbox_inner">
+                            <label for="car_class_one">
+                                <input type="checkbox" id="car_class_one"/>First
+                                checkbox</label>
+                            <label for="car_class_two">
+                                <input type="checkbox" id="car_class_two"/>Second checkbox</label>
+                            <label for="car_class_three">
+                                <input type="checkbox" id="car_class_three"/>Third checkbox</label>
+                        </div>
+                    </div>
+                    <div class="filer_item_radio">
+                        <h4 class="filter_title">car_transmission</h4>
+                        <div class="filer_radio_inner">
+                            <label for="car_transmission_manual" class="filer_radio_label">
+                                <input id="car_transmission_manual" type="radio"
+                                       name="car_transmission" value="manual"
+                                       checked>
+                                <span>МКПП</span>
+                            </label>
+                            <label for="car_transmission_auto" class="filer_radio_label">
+                                <input id="car_transmission_auto" type="radio"
+                                       name="car_transmission" value="auto">
+                                <span>АКПП</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="filer_submit" type="submit">Показать</button>
+                </form>
+            </div>
+            <div class="catalog_content">
+                <div class="product_item">
+                    <div class="product_wrap">
+                        <img src="../../static/images/catalog_item_test.jpg">
+                        <div class="product_item_actions">
+                            <a href="" class="reserve"></a>
+                            <a href="../pages/product.html" class="quick_view"></a>
+                        </div>
+                    </div>
+                    <div class="product_item_info">
+                        <h3 class="product_item_title"><a href="">Маленькое авто</a></h3>
+                        <span class="product_item_price">от 15$/ч</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="footer_inner">
+        <div class="footer_info">
+            <div class="footer_copyright">&copy; 2021 - Kazak Vadim</div>
+            <div class="footer_social">
+                <a class="footer_social_link" href="#">
+                    <img src="../../static/images/instagram.png" alt="">
+                </a>
+                <a class="footer_social_link" href="#">
+                    <img src="../../static/images/youtube.png" alt="">
+                </a>
+                <a class="footer_social_link" href="#">
+                    <img src="../../static/images/viber.png" alt="">
+                </a>
+                <a class="footer_social_link" href="#">
+                    <img src="../../static/images/linkedin.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="footer_nav">
+            <a class="footer_nav_link" href="#">Главная</a>
+            <a class="footer_nav_link" href="#">Каталог</a>
+            <a class="footer_nav_link" href="#">Условия проката</a>
+            <a class="footer_nav_link" href="#">Контакты</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

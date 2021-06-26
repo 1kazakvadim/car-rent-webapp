@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
+    <title>Car-Rent</title>
+</head>
+<body>
+<div class="lang">
+    <div class="container">
+        <a href="">
+            <img src="../../static/images/russiaflag_flags_rusi_8884.png" alt="">
+        </a>
+        <a href="">
+            <img src="../../static/images/unitedstates_flags_flag_8833.png" alt="">
+        </a>
+    </div>
+</div>
+<header class="header">
+    <div class="container">
+        <div class="header_inner">
+            <div class="company">
+                <a href="../index.html">
+                    <img class="company_logo" src="../../static/images/logo.png" alt="">
+                </a>
+            </div>
+            <div class="nav">
+                <div class="nav_item">
+                    <a class="nav_link" href="../index.html">Главная</a>
+                </div>
+                <div class="nav_item">
+                    <a class="nav_link" href="../pages/catalog.html">Каталог</a>
+                </div>
+                <div class="nav_item">
+                    <a class="nav_link" href="../pages/conditions.html">Условия проката</a>
+                </div>
+                <div class="nav_item">
+                    <a class="nav_link" href="../pages/contacts.html">Контакты</a>
+                </div>
+                <div class="nav_item">
+                    <div class="profile_dropdown">
+                        <a class="profile_link" href="">
+                            <img class="profile_img" src="../../static/images/profile.svg" alt="">
+                        </a>
+                        <div class="profile_dropdown_content">
+                            <a href="#">Мой профиль</a>
+                            <a href="#">Войти</a>
+                            <a href="#">Выйти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="contacts">
+    <div class="container">
+        <div class="contacts_inner">
+            <img class="contacts_img" src="../../static/images/contacts.jpg" alt="">
+            <div class="contacts_content">
+                <h2 class="conditions_title">Контакты</h2>
+                <div class="contacts_text">
+                    <p>Прием звонков: круглосуточно (без выходных)</p>
+                    <h3>Адрес:</h3>
+                    <p>224000, Беларусь г. Город, ул. Городская, 1</p>
+                    <h3>Телефоны:</h3>
+                    <ul>
+                        <li>+375291111111</li>
+                        <li>+375441111111</li>
+                        <li>+375331111111</li>
+                    </ul>
+                    <h3>Электронная почта:</h3>
+                    <p>test@test.test</p>
+                </div>
+                <div class="contacts_map">
+                    <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d4903.020666542905!2d23.6954786!3d52.0886432!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sby!4v1621254165456!5m2!1sru!2sby"
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="footer_inner">
+        <div class="footer_info">
+            <div class="footer_copyright">&copy; 2021 - Kazak Vadim</div>
+            <div class="footer_social">
+                <a class="footer_social_link" href="#">
+                    <img src="../../static/images/instagram.png" alt="">
+                </a>
+                <a class="footer_social_link" href="#">
+                    <img src="../../static/images/youtube.png" alt="">
+                </a>
+                <a class="footer_social_link" href="#">
+                    <img src="../../static/images/viber.png" alt="">
+                </a>
+                <a class="footer_social_link" href="#">
+                    <img src="../../static/images/linkedin.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="footer_nav">
+            <a class="footer_nav_link" href="#">Главная</a>
+            <a class="footer_nav_link" href="#">Каталог</a>
+            <a class="footer_nav_link" href="#">Условия проката</a>
+            <a class="footer_nav_link" href="#">Контакты</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
