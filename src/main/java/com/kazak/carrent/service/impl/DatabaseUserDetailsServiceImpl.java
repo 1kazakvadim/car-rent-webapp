@@ -1,6 +1,8 @@
 package com.kazak.carrent.service.impl;
 
-import com.kazak.carrent.service.DatabaseUserDetailsService;
+import com.kazak.carrent.model.UserPrincipal;
+import com.kazak.carrent.model.entity.User;
+import com.kazak.carrent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -8,23 +10,23 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DatabaseUserDetailsServiceImpl implements DatabaseUserDetailsService,
-    UserDetailsService {
+public class DatabaseUserDetailsServiceImpl implements UserDetailsService {
 
-  private final UserAccountService userAccountService;
+  private final UserService userService;
 
   @Autowired
   public DatabaseUserDetailsServiceImpl(
-      UserAccountService userAccountService) {
-    this.userAccountService = userAccountService;
+      UserService userService) {
+    this.userService = userService;
   }
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    UserAccount userAccount = userAccountService.findByUsername(username);
-    if (userAccount == null) {
+    User user = userService.findByUsername(username);
+    if (user == null) {
       throw new UsernameNotFoundException(username);
     }
-    return new MyUserPrincipal(userAccount);
+    return new UserPrincipal(user);
   }
+
 }
