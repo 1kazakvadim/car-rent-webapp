@@ -2,6 +2,7 @@ package com.kazak.carrent.configuration;
 
 import com.kazak.carrent.service.impl.DatabaseUserDetailsServiceImpl;
 import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,8 +19,9 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   private final DatabaseUserDetailsServiceImpl databaseUserDetailsServiceImpl;
   private final DataSource dataSource;
 
-  public WebSecurityConfig(
-      DatabaseUserDetailsServiceImpl databaseUserDetailsServiceImpl, DataSource dataSource) {
+  WebSecurityConfig(
+      DatabaseUserDetailsServiceImpl databaseUserDetailsServiceImpl,
+      DataSource dataSource) {
     this.databaseUserDetailsServiceImpl = databaseUserDetailsServiceImpl;
     this.dataSource = dataSource;
   }
@@ -29,7 +31,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     return new BCryptPasswordEncoder();
   }
 
-  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+  protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     auth.jdbcAuthentication().dataSource(dataSource);
   }
 
@@ -37,13 +39,13 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http.
         csrf().disable().authorizeRequests()
-        .antMatchers("/user/new", "/user/**/edit" ).hasRole("admin")
-        .antMatchers("/user", "/user/**/view").hasAnyRole("user", "admin")
-        .antMatchers("/","/login").permitAll()
+//        .antMatchers("/user/new", "/user/**/edit").hasRole("admin")
+//        .antMatchers("/user", "/user/**/view").hasAnyRole("user", "admin")
+        .antMatchers("/login").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin()
-        .defaultSuccessUrl("/user")
+        .defaultSuccessUrl("/index")
         .and()
         .logout()
         .deleteCookies("JSESSIONID");
