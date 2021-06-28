@@ -1,5 +1,6 @@
 package com.kazak.carrent.model.entity;
 
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,5 +44,11 @@ public class User {
   @ManyToOne
   @JoinColumn(name = "user_role_id", nullable = false)
   private UserRole userRole;
+
+  @Column(name = "status", nullable = false)
+  private String status;
+
+  @Column(name = "created_at", nullable = false)
+  private LocalDate createdAt = LocalDate.now();
 
 }

@@ -23,6 +23,6 @@ public class UserRole {
   private Integer id;
 
   @Column(name = "name", nullable = false, unique = true)
-  private String userRole;
+  private String name;
 
 }
