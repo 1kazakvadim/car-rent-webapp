@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="product">
+    <div class="container">
+        <div class="product_inner">
+            <div class="product_slider">
+                <div class="product_slider_item">
+                    <div class="product_slider_text">1 / 6</div>
+                    <img class="product_slider_big_img" th:src="@{/images/catalog_item_test.jpg}" alt="">
+                </div>
+                <div class="product_slider_item">
+                    <div class="product_slider_text">2 / 6</div>
+                    <img class="product_slider_big_img" th:src="@{/images/catalog_item_test.jpg}" alt="">
+                </div>
+                <div class="product_slider_item">
+                    <div class="product_slider_text">3 / 6</div>
+                    <img class="product_slider_big_img" th:src="@{/images/catalog_item_test.jpg}" alt="">
+                </div>
+                <div class="product_slider_item">
+                    <div class="product_slider_text">4 / 6</div>
+                    <img class="product_slider_big_img" th:src="@{/images/catalog_item_test.jpg}" alt="">
+                </div>
+                <div class="product_slider_item">
+                    <div class="product_slider_text">5 / 6</div>
+                    <img class="product_slider_big_img" th:src="@{/images/catalog_item_test.jpg}" alt="">
+                </div>
+                <div class="product_slider_item">
+                    <div class="product_slider_text">6 / 6</div>
+                    <img class="product_slider_big_img" th:src="@{/images/catalog_item_test.jpg}" alt="">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                <div class="product_slider_row">
+                    <div class="product_slider_column">
+                        <img class="product_slider_small_img" th:src="@{/images/catalog_item_test.jpg}"
+                             onclick="currentSlide(1)" alt="">
+                    </div>
+                    <div class="product_slider_column">
+                        <img class="product_slider_small_img" th:src="@{/images/catalog_item_test.jpg}"
+                             onclick="currentSlide(2)" alt="">
+                    </div>
+                    <div class="product_slider_column">
+                        <img class="product_slider_small_img" th:src="@{/images/catalog_item_test.jpg}"
+                             onclick="currentSlide(3)" alt="">
+                    </div>
+                    <div class="product_slider_column">
+                        <img class="product_slider_small_img" th:src="@{/images/catalog_item_test.jpg}"
+                             onclick="currentSlide(4)" alt="">
+                    </div>
+                    <div class="product_slider_column">
+                        <img class="product_slider_small_img" th:src="@{/images/catalog_item_test.jpg}"
+                             onclick="currentSlide(5)" alt="">
+                    </div>
+                    <div class="product_slider_column">
+                        <img class="product_slider_small_img" th:src="@{/images/catalog_item_test.jpg}"
+                             onclick="currentSlide(6)" alt="">
+                    </div>
+                </div>
+            </div>
+            <table class="product_table">
+                <caption class="table_caption">Характеристики</caption>
+                <tr>
+                    <td>Марка</td>
+                    <td>название_марка</td>
+                </tr>
+                <tr>
+                    <td>Модель</td>
+                    <td>название_модель</td>
+                </tr>
+                <tr>
+                    <td>Тип кузова</td>
+                    <td>название_тип_кузова</td>
+                </tr>
+                <tr>
+                    <td>Цвет</td>
+                    <td>название_цвет</td>
+                </tr>
+                <tr>
+                    <td>Класс автомобиля</td>
+                    <td>название_класс_автомобиля</td>
+                </tr>
+                <tr>
+                    <td>Коробка передач</td>
+                    <td>название_коробка_передач</td>
+                </tr>
+                <tr>
+                    <td>Тип двигателя</td>
+                    <td>название_тип_двигателя</td>
+                </tr>
+                <tr>
+                    <td>Объем двигателя</td>
+                    <td>название_объем_двигателя</td>
+                </tr>
+                <tr>
+                    <td>Количество сидений</td>
+                    <td>название_количество_сидений</td>
+                </tr>
+                <tr>
+                    <td>Расход топлива</td>
+                    <td>название_расход_топлива</td>
+                </tr>
+                <tr>
+                    <td>Стоимость аренды</td>
+                    <td>название_стоимость_аренды</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="product_submit" type="submit">Бронировать</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer"></div>
+<script th:src="@{/js/product_slider.js}"></script>
+</body>
+</html>
