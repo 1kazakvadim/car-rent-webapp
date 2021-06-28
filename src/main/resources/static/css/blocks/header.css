@@ -80,7 +80,23 @@
     transition: 0.8s;
 }
 
+
 .profile_dropdown:hover {
+    cursor: pointer;
+}
+
+.profile_dropdown_content button {
+    font-family: 'Lato', sans-serif;
+    color: var(--gray);
+    font-size: 1rem;
+    width: 100%;
+    border: none;
+    padding: 0.6rem 1rem;
+    text-align: left;
+}
+
+.profile_dropdown_content button:hover {
+    background-color: #dddddd;
     cursor: pointer;
 }
 

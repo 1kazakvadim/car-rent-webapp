@@ -22,6 +22,10 @@
     border-bottom: none;
 }
 
+.error_text {
+    margin-bottom: 1rem;
+}
+
 .authorization_title {
     width: 100%;
     text-transform: uppercase;

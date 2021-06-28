@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="authorization">
+  <div class="container">
+    <div class="authorization_inner">
+      <div class="authorization_header">
+        <h1 class="authorization_title">АВТОРИЗАЦИЯ</h1>
+      </div>
+      <form name="f" class="authorization_form" th:action="@{/login}" method="post">
+        <fieldset class="authorization_fieldset">
+          <div style="color: red" th:if="${param.error}" class="alert alert-error">
+            <p class="error_text">
+              invalid username and password
+            </p>
+          </div>
+          <div style="color: aqua" th:if="${param.logout}" class="alert alert-success">
+            you have been logged out
+          </div>
+          <input class="authorization_login" type="text" id="username" name="username"
+                 placeholder="Логин"/>
+          <input class="authorization_password" type="password" id="password" name="password"
+                 placeholder="Пароль"/>
+          <div class="form-actions">
+            <button type="submit" class="authorization_submit btn">
+              <span>ВОЙТИ</span>
+            </button>
+          </div>
+          <div class="authorization_footer">
+            <p class="footer_title">Нет аккаунта?</p>
+            <a class="footer_link" href="#">Регистрация</a>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>
