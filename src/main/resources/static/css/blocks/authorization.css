@@ -1,93 +1,93 @@
 .authorization {
-    display: flex;
+  display: flex;
 }
 
 .authorization_inner {
-    width: 25%;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 0;
-    margin: 0 auto;
+  width: 25%;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  margin: 0 auto;
 }
 
 .authorization_header {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: #fcce81;
-    font-size: 1rem;
-    border-radius: 0.4rem 0.4rem 0 0;
-    border: 0.1rem solid var(--black);
-    border-bottom: none;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #fcce81;
+  font-size: 1rem;
+  border-radius: 0.4rem 0.4rem 0 0;
+  border: 0.1rem solid var(--black);
+  border-bottom: none;
 }
 
 .error_text {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .authorization_title {
-    width: 100%;
-    text-transform: uppercase;
-    padding: 1rem 0;
-    text-align: center;
-    color: var(--brown);
+  width: 100%;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  text-align: center;
+  color: var(--brown);
 }
 
 .authorization_fieldset {
-    margin: 0;
-    padding: 1rem;
-    background-color: #fcce81;
-    border: 0.1rem solid var(--black);
-    border-top: none;
-    border-radius: 0 0 0.4rem 0.4rem;
-    color: var(--black);
+  margin: 0;
+  padding: 1rem;
+  background-color: #fcce81;
+  border: 0.1rem solid var(--black);
+  border-top: none;
+  border-radius: 0 0 0.4rem 0.4rem;
+  color: var(--black);
 }
 
 .authorization_form input {
-    color: var(--black);
-    display: block;
-    width: 100%;
-    border: 0.1rem solid var(--black);
-    border-radius: 0.4rem;
-    padding: 0.8rem 0.8rem;
-    margin-bottom: 0.4rem;
+  color: var(--black);
+  display: block;
+  width: 100%;
+  border: 0.1rem solid var(--black);
+  border-radius: 0.4rem;
+  padding: 0.8rem 0.8rem;
+  margin-bottom: 0.4rem;
 }
 
 .authorization_submit {
-    width: 100%;
-    color: var(--white);
-    background-color: rgba(94, 127, 220, 1);
-    border: none;
-    border-radius: 0.4rem;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 0.8rem 0.8rem;
+  width: 100%;
+  color: var(--white);
+  background-color: rgba(94, 127, 220, 1);
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.8rem 0.8rem;
 }
 
 .authorization_submit:hover {
-    background-color: rgba(94, 127, 220, 0.8);
-    transition: all 0.2s linear;
+  background-color: rgba(94, 127, 220, 0.8);
+  transition: all 0.2s linear;
 }
 
 .authorization_footer {
-    display: flex;
-    font-size: 1rem;
-    color: var(--black);
-    margin-left: 1rem;
-    padding: 1rem 1rem 0 0;
+  display: flex;
+  font-size: 1rem;
+  color: var(--black);
+  margin-left: 1rem;
+  padding: 1rem 1rem 0 0;
 }
 
 .footer_link {
-    color: rgba(154, 35, 15, 1);
-    margin-left: 0.3rem;
-    text-decoration: none;
-    cursor: pointer;
+  color: rgba(154, 35, 15, 1);
+  margin-left: 0.3rem;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .footer_link:hover {
-    color: rgba(154, 35, 15, 0.8);
-    transition: all 0.2s linear;
+  color: rgba(154, 35, 15, 0.8);
+  transition: all 0.2s linear;
 }
 
 

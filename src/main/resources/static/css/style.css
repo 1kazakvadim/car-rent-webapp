@@ -3,8 +3,8 @@
 @import "global/normalize.css";
 @import "blocks/header.css";
 @import "blocks/slider.css";
-@import "blocks/conditions.css";
-@import "blocks/contacts.css";
+@import "blocks/condition.css";
+@import "blocks/contact.css";
 @import "blocks/authorization.css";
 @import "blocks/registration.css";
 @import "blocks/catalog.css";

@@ -1,123 +1,123 @@
 .header {
-    position: relative;
+  position: relative;
 }
 
 .header_inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .company {
-    display: flex;
+  display: flex;
 }
 
 .nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100%;
 }
 
 .nav_link {
-    margin-left: 2rem;
-    text-decoration: none;
-    position: relative;
-    color: var(--gray);
-    font-size: 1rem;
-    text-transform: uppercase;
+  margin-left: 2rem;
+  text-decoration: none;
+  position: relative;
+  color: var(--gray);
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 .nav_link:hover {
-    color: var(--black);
-    border-bottom: 0.2rem solid var(--black);
-    padding: 0 0 0.3rem;
-    transition: all 0.2s linear;
+  color: var(--black);
+  border-bottom: 0.2rem solid var(--black);
+  padding: 0 0 0.3rem;
+  transition: all 0.2s linear;
 }
 
 .profile_img {
-    width: 3rem;
-    height: 3rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .profile_link {
-    margin-left: 1rem;
-    text-decoration: none;
-    position: relative;
+  margin-left: 1rem;
+  text-decoration: none;
+  position: relative;
 }
 
 .profile_dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .profile_dropdown_content {
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 10rem;
-    z-index: 1;
-    opacity: 0;
-    visibility: hidden;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 10rem;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .profile_dropdown_content a {
-    font-family: 'Lato', sans-serif;
-    color: var(--gray);
-    font-size: 1rem;
-    padding: 0.6rem 1rem;
-    text-decoration: none;
-    display: block;
+  font-family: 'Lato', sans-serif;
+  color: var(--gray);
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  display: block;
 }
 
 .profile_dropdown_content a:hover {
-    background-color: #dddddd;
+  background-color: #dddddd;
 
 }
 
 .profile_dropdown:hover .profile_dropdown_content {
-    opacity: 1;
-    visibility: visible;
-    transition: 0.8s;
+  opacity: 1;
+  visibility: visible;
+  transition: 0.8s;
 }
 
 
 .profile_dropdown:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .profile_dropdown_content button {
-    font-family: 'Lato', sans-serif;
-    color: var(--gray);
-    font-size: 1rem;
-    width: 100%;
-    border: none;
-    padding: 0.6rem 1rem;
-    text-align: left;
+  font-family: 'Lato', sans-serif;
+  color: var(--gray);
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+  padding: 0.6rem 1rem;
+  text-align: left;
 }
 
 .profile_dropdown_content button:hover {
-    background-color: #dddddd;
-    cursor: pointer;
+  background-color: #dddddd;
+  cursor: pointer;
 }
 
 .lang {
-    padding-top: 0.5rem;
-    text-align: right;
+  padding-top: 0.5rem;
+  text-align: right;
 }
 
 .lang a {
-    text-decoration: none;
-    margin-right: 0.2rem;
-    padding: 0;
+  text-decoration: none;
+  margin-right: 0.2rem;
+  padding: 0;
 }
 
 .lang a:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .lang img {
-    width: 18px;
-    height: 18px;
+  width: 18px;
+  height: 18px;
 }
 
 
