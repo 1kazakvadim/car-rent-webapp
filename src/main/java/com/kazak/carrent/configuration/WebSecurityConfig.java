@@ -2,7 +2,6 @@ package com.kazak.carrent.configuration;
 
 import com.kazak.carrent.service.impl.DatabaseUserDetailsServiceImpl;
 import javax.sql.DataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -49,10 +48,10 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .formLogin()
         .loginPage("/login")
         .permitAll()
-        .defaultSuccessUrl("/")
+        .defaultSuccessUrl("/user")
         .and()
         .logout()
-        .logoutSuccessUrl("/login")
+        .logoutSuccessUrl("/index")
         .permitAll()
         .deleteCookies("JSESSIONID");
   }
@@ -64,10 +63,5 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/css/**", "/fonts/**",
             "/images/**");
   }
-
-
-////        .antMatchers("/user/new", "/user/**/edit").hasRole("admin")
-////        .antMatchers("/user", "/user/**/view").hasAnyRole("user", "admin")
-
 
 }

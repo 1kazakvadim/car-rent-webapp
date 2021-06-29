@@ -60,7 +60,7 @@ CREATE TABLE `car`
     `engine_type_id`      int                                                    NOT NULL,
     `engine_volume`       double unsigned                                        NOT NULL,
     `number_of_seats`     int unsigned                                           NOT NULL,
-    `release_date`        date                                                   NOT NULL,
+    `fuel_consumption`    double                                                 NOT NULL,
     `rental_cost`         double unsigned                                        NOT NULL,
     PRIMARY KEY (`id`),
     KEY `car_body_id_idx` (`car_body_id`),
@@ -74,6 +74,7 @@ CREATE TABLE `car`
     CONSTRAINT `car_transmission_id` FOREIGN KEY (`car_transmission_id`) REFERENCES `car_transmission` (`id`),
     CONSTRAINT `engine_type_id` FOREIGN KEY (`engine_type_id`) REFERENCES `engine_type` (`id`)
 ) ENGINE = InnoDB
+  AUTO_INCREMENT = 4
   DEFAULT CHARSET = utf8
   COLLATE = utf8_unicode_ci;
 

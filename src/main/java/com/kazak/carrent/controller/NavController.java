@@ -11,11 +11,6 @@ public class NavController {
     return "index";
   }
 
-  @GetMapping("/catalog")
-  public String catalogPage(){
-    return "catalog";
-  }
-
   @GetMapping("/condition")
   public String conditionPage(){
     return "condition";
