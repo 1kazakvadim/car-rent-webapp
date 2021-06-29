@@ -57,8 +57,8 @@ public class Car {
   @Column(name = "number_of_seats", nullable = false)
   private Integer numberOfSeats;
 
-  @Column(name = "release_date", nullable = false)
-  private LocalDate releaseDate;
+  @Column(name = "fuel_consumption", nullable = false)
+  private Double fuelConsumption;
 
   @Column(name = "rental_cost", nullable = false)
   private Double rentalCost;
