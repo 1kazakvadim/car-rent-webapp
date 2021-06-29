@@ -32,15 +32,18 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     return new BCryptPasswordEncoder();
   }
 
-  public  void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     auth.jdbcAuthentication().dataSource(dataSource);
   }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http
+        .csrf().disable()
         .authorizeRequests()
+        .antMatchers("/user").hasAnyRole("ADMIN","MANAGER","USER")
         .antMatchers("/resources/**").permitAll()
+        .antMatchers("/**").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin()
@@ -50,7 +53,8 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .logout()
         .logoutSuccessUrl("/login")
-        .permitAll();
+        .permitAll()
+        .deleteCookies("JSESSIONID");
   }
 
   @Override
@@ -61,28 +65,9 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/images/**");
   }
 
-  //  @Override
-//  protected void configure(HttpSecurity http) throws Exception {
-//    http
-////        .csrf().disable()
-//        .authorizeRequests()
-//        .antMatchers("/resources/**").permitAll()
+
 ////        .antMatchers("/user/new", "/user/**/edit").hasRole("admin")
 ////        .antMatchers("/user", "/user/**/view").hasAnyRole("user", "admin")
-////        .antMatchers("/login").permitAll()
-//        .anyRequest().authenticated()
-//        .and()
-//        .formLogin()
-//        .loginPage("/login")
-//        .loginProcessingUrl("/perform-login")
-//        .usernameParameter("username")
-//        .passwordParameter("password")
-//        .permitAll()
-//        .defaultSuccessUrl("/index")
-//        .and()
-//        .logout()
-//        .permitAll();
-////        .deleteCookies("JSESSIONID");
-//  }
+
 
 }
