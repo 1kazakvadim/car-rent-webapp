@@ -82,17 +82,19 @@
         </form>
       </div>
       <div class="catalog_content">
-        <div class="product_item">
+        <div class="product_item" th:each="car : ${cars}">
           <div class="product_wrap">
             <img th:src="@{images/catalog_item_test.jpg}">
             <div class="product_item_actions">
-              <a href="#" class="reserve"></a>
-              <a href="#" class="quick_view"></a>
+              <a th:href="@{/catalog/{id}(id=${car.getId()})}" class="reserve"></a>
+              <a th:href="@{/catalog/{id}(id=${car.getId()})}" class="quick_view"></a>
             </div>
           </div>
           <div class="product_item_info">
-            <h3 class="product_item_title"><a href="#">Маленькое авто</a></h3>
-            <span class="product_item_price">от 15$/ч</span>
+            <h3 class="product_item_title"
+                th:text="${car.getCarBrand().getName()} + ' ' + ${car.getModel()}"><a
+                th:href="@{catalog/product}">car_name</a></h3>
+            <span class="product_item_price" th:text="${car.getRentalCost()}">rental_cost</span>
           </div>
         </div>
       </div>

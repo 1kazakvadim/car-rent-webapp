@@ -5,42 +5,42 @@
     <div class="container">
       <div class="lang">
         <a href="#">
-          <img th:src="@{images/russia_flag.png}" alt=""/>
+          <img th:src="@{~/images/russia_flag.png}" alt=""/>
         </a>
         <a href="">
-          <img th:src="@{images/unitedstates_flag.png}" alt=""/>
+          <img th:src="@{~/images/unitedstates_flag.png}" alt=""/>
         </a>
       </div>
       <div class="header_inner">
         <div class="company">
-          <a th:href="@{index}">
-            <img class="company_logo" th:src="@{images/logo.png}" alt=""/>
+          <a th:href="@{~/index}">
+            <img class="company_logo" th:src="@{~/images/logo.png}" alt=""/>
           </a>
         </div>
         <div class="nav">
           <div class="nav_item">
-            <a class="nav_link" th:href="@{index}">Главная</a>
+            <a class="nav_link" th:href="@{~/index}">Главная</a>
           </div>
           <div class="nav_item">
-            <a class="nav_link" th:href="@{catalog}">Каталог</a>
+            <a class="nav_link" th:href="@{~/catalog}">Каталог</a>
           </div>
           <div class="nav_item">
-            <a class="nav_link" th:href="@{condition}">Условия проката</a>
+            <a class="nav_link" th:href="@{~/condition}">Условия проката</a>
           </div>
           <div class="nav_item">
-            <a class="nav_link" th:href="@{contact}">Контакты</a>
+            <a class="nav_link" th:href="@{~/contact}">Контакты</a>
           </div>
           <div class="nav_item">
             <div class="profile_dropdown">
-              <a class="profile_link" th:href="@{user}">
-                <img class="profile_img" th:src="@{images/profile.svg}" alt=""/>
+              <a class="profile_link" th:href="@{~/user}">
+                <img class="profile_img" th:src="@{~/images/profile.svg}" alt=""/>
               </a>
               <div class="profile_dropdown_content">
-                <a th:href="@{user}">Мой профиль</a>
-                <form th:action="@{/login}" method="get">
+                <a th:href="@{~/user}">Мой профиль</a>
+                <form th:action="@{~/login}" method="get">
                   <button type="submit">Войти</button>
                 </form>
-                <form th:action="@{/logout}" sec:authorize="isAuthenticated()" method="post">
+                <form th:action="@{~/logout}" sec:authorize="isAuthenticated()" method="post">
                   <button type="submit">Выйти</button>
                 </form>
               </div>
