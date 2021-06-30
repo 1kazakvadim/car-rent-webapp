@@ -4,13 +4,14 @@
 
 .profile_nav {
   display: inline-block;
+  width: 12rem;
   flex-direction: column;
   align-items: start;
   list-style-type: none;
   border: 0.1rem solid var(--black);
   border-radius: 0.4rem;
   padding: 1rem;
-  background-color: #fcce81;
+  background-color: saddlebrown;
 }
 
 .profile_nav li {
@@ -27,14 +28,13 @@
   font-family: 'Lato', sans-serif;
   position: relative;
   display: block;
-  color: var(--black);
+  color: var(--white);
   text-decoration: none;
   transition: 0.5s;
 }
 
 .profile_nav a:hover {
-  color: var(--black);
-  border-bottom: 0.2rem solid var(--black);
+  border-bottom: 0.2rem solid var(--white);
   padding: 0 0 0.3rem;
   transition: all 0.2s linear;
 }

@@ -1,3 +1,7 @@
+.user {
+  margin-bottom: 12rem;
+}
+
 .user_inner {
   display: flex;
 }
@@ -21,7 +25,7 @@
   font-weight: bold;
 }
 
-.column_caption {
+.user_column_caption {
   text-transform: uppercase;
 }
 
@@ -39,18 +43,16 @@
 }
 
 .view_account_button {
-  /*width: 100%;*/
-  color: var(--white);
-  background-color: rgba(94, 127, 220, 1);
-  border: none;
+  color: var(--black);
+  background-color: rgba(255, 255, 255, 1);
+  border: 0.1rem solid var(--black);
   border-radius: 0.4rem;
   cursor: pointer;
-  /*font-weight: bold;*/
   padding: 0.2rem 1rem;
 }
 
 .view_account_button:hover {
-  background-color: rgba(94, 127, 220, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   transition: all 0.2s linear;
 }
 

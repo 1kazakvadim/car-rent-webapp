@@ -16,7 +16,7 @@
       </div>
       <table class="user_table">
         <caption class="user_table_caption">Список пользователей</caption>
-        <tr class="column_caption">
+        <tr class="user_column_caption">
           <td>Имя пользователя</td>
           <td>Эл. почта</td>
           <td>Телефон</td>
@@ -32,9 +32,9 @@
           <td th:text="${user.getStatus()}"></td>
           <td th:text="${user.getCreatedAt()}"></td>
           <td>
-            <a th:href="@{/user/{id}(id=${user.getId()})}">
+            <a th:href="@{user/{id}/passport(id=${user.getId()})}">
               <button class="view_account_button">
-                посмотреть
+                паспорт
               </button>
             </a>
           </td>
