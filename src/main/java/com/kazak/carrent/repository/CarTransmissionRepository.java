@@ -1,10 +1,10 @@
 package com.kazak.carrent.repository;
 
-import com.kazak.carrent.model.entity.Car;
+import com.kazak.carrent.model.entity.CarTransmission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CarRepository extends JpaRepository<Car, Integer> {
+public interface CarTransmissionRepository extends JpaRepository<CarTransmission, Integer> {
 
 }
