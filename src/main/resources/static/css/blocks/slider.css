@@ -53,8 +53,8 @@
 }
 
 .slider_text {
-  font-size: 1rem;
-  color: var(--black);
+  font-size: 1.2rem;
+  color: var(--white-dirty);
   font-weight: 300;
 }
 

@@ -11,11 +11,11 @@
 <div class="passport">
   <div class="container">
     <div class="passport_inner">
-      <div class="profile_inner">
+      <div class="profile_nav_inner">
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <table class="passport_table">
-        <caption class="passport_table_caption">Список пользователей</caption>
+        <caption class="passport_table_caption">Паспорт</caption>
         <tr class="passport_column_caption">
           <td>Имя</td>
           <td th:text="${passportData.getFirstName()}"></td>
