@@ -5,9 +5,10 @@
 @import "blocks/slider.css";
 @import "blocks/condition.css";
 @import "blocks/contact.css";
-@import "blocks/authorization.css";
+@import "blocks/login.css";
 @import "blocks/registration.css";
 @import "blocks/catalog.css";
 @import "blocks/product.css";
+@import "blocks/profile.css";
 @import "blocks/user.css";
 @import "blocks/footer.css";

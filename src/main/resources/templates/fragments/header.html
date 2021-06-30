@@ -36,8 +36,8 @@
                 <img class="profile_img" th:src="@{~/images/profile.svg}" alt=""/>
               </a>
               <div class="profile_dropdown_content">
-                <a th:href="@{~/user}">Мой профиль</a>
-                <form th:action="@{~/login}" method="get">
+                <a th:href="@{~/profile}">Мой профиль</a>
+                <form th:action="@{~/login}" sec:authorize="isAuthenticated() == false" method="get">
                   <button type="submit">Войти</button>
                 </form>
                 <form th:action="@{~/logout}" sec:authorize="isAuthenticated()" method="post">

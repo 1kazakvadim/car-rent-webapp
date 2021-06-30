@@ -85,7 +85,7 @@
   margin-left: 3rem;
 }
 
-.table_caption {
+.product_table_caption {
   padding: 0.5rem;
   color: var(--white);
   background: var(--brown);
@@ -116,7 +116,12 @@
   background-color: var(--white);
 }
 
+.product_table td:last-child {
+  display: block;
+}
+
 .product_submit {
+  width: 100%;
   margin: 1rem;
   font-size: 1rem;
   border: 0.1rem solid var(--black);

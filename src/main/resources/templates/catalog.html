@@ -14,67 +14,45 @@
       <div class="filter">
         <form class="filer_inner" method="post" action="">
           <div class="filer_item_checkbox">
-            <h4 class="filter_title">car_brand</h4>
-            <div class="filer_checkbox_inner">
-              <label for="car_brand_one">
-                <input type="checkbox" id="car_brand_one"/>First
-                checkbox</label>
-              <label for="car_brand_two">
-                <input type="checkbox" id="car_brand_two"/>Second checkbox</label>
-              <label for="car_brand_three">
-                <input type="checkbox" id="car_brand_three"/>Third checkbox</label>
+            <h4 class="filter_title">Марка автомобиля</h4>
+            <div class="filer_checkbox_inner" th:each="carBrand : ${carBrands}">
+              <label th:for="${carBrand.getName()}">
+                <input type="checkbox" th:id="${carBrand.getName()}"
+                       th:text="${carBrand.getName()}" th:value="${carBrand.getName()}"/></label>
             </div>
           </div>
           <div class="filer_item_checkbox">
-            <h4 class="filter_title">car_model</h4>
-            <div class="filer_checkbox_inner">
-              <label for="car_model_one">
-                <input type="checkbox" id="car_model_one"/>First
-                checkbox</label>
-              <label for="car_model_two">
-                <input type="checkbox" id="car_model_two"/>Second checkbox</label>
-              <label for="car_model_three">
-                <input type="checkbox" id="car_model_three"/>Third checkbox</label>
+            <h4 class="filter_title">Модель</h4>
+            <div class="filer_checkbox_inner" th:each="car : ${cars}">
+              <label th:for="${car.getModel()}">
+                <input type="checkbox" th:id="${car.getModel()}"
+                       th:text="${car.getModel()}" th:value="${car.getModel()}"/></label>
             </div>
           </div>
           <div class="filer_item_checkbox">
-            <h4 class="filter_title">car_body</h4>
-            <div class="filer_checkbox_inner">
-              <label for="car_body_one">
-                <input type="checkbox" id="car_body_one"/>First
-                checkbox</label>
-              <label for="car_body_two">
-                <input type="checkbox" id="car_body_two"/>Second
-                checkbox</label>
-              <label for="car_body_three">
-                <input type="checkbox" id="car_body_three"/>Third checkbox</label>
+            <h4 class="filter_title">Тип кузова</h4>
+            <div class="filer_checkbox_inner" th:each="carBody : ${carBodies}">
+              <label th:for="${carBody.getName()}">
+                <input type="checkbox" th:id="${carBody.getName()}"
+                       th:text="${carBody.getName()}" th:value="${carBody.getName()}"/></label>
             </div>
           </div>
           <div class="filer_item_checkbox">
-            <h4 class="filter_title">car_class</h4>
-            <div class="filer_checkbox_inner">
-              <label for="car_class_one">
-                <input type="checkbox" id="car_class_one"/>First
-                checkbox</label>
-              <label for="car_class_two">
-                <input type="checkbox" id="car_class_two"/>Second checkbox</label>
-              <label for="car_class_three">
-                <input type="checkbox" id="car_class_three"/>Third checkbox</label>
+            <h4 class="filter_title">Класс автомобиля</h4>
+            <div class="filer_checkbox_inner" th:each="carClass : ${carClasses}">
+              <label th:for="${carClass.getName()}">
+                <input type="checkbox" th:id="${carClass.getName()}"
+                       th:text="${carClass.getName()}" th:value="${carClass.getName()}"/></label>
             </div>
           </div>
           <div class="filer_item_radio">
-            <h4 class="filter_title">car_transmission</h4>
-            <div class="filer_radio_inner">
-              <label for="car_transmission_manual" class="filer_radio_label">
-                <input id="car_transmission_manual" type="radio"
-                       name="car_transmission" value="manual"
+            <h4 class="filter_title">Тип трансмиссии</h4>
+            <div class="filer_radio_inner" th:each="carTransmission : ${carTransmissions}">
+              <label th:for="${carTransmission.getName()}" class="filer_radio_label">
+                <input th:id="${carTransmission.getName()}" type="radio"
+                       name="car_transmission" th:value="${carTransmission.getName()}"
                        checked>
-                <span>МКПП</span>
-              </label>
-              <label for="car_transmission_auto" class="filer_radio_label">
-                <input id="car_transmission_auto" type="radio"
-                       name="car_transmission" value="auto">
-                <span>АКПП</span>
+                <span th:text="${carTransmission.getName()}">car_transmission</span>
               </label>
             </div>
           </div>
