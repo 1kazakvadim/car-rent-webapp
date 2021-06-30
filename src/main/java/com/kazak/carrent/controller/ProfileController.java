@@ -4,11 +4,12 @@ import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.service.UserService;
 import java.util.List;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ProfileController {
@@ -20,7 +21,9 @@ public class ProfileController {
   }
 
   @GetMapping("/profile")
-  public String getProfilePage(Model model) {
+  public String getProfilePage(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+    User user = userService.findByUsername(currentUser.getUsername());
+    model.addAttribute("user", user);
     return "profile";
   }
 
@@ -38,6 +41,8 @@ public class ProfileController {
     model.addAttribute("passportData", passportData);
     return "passport";
   }
+
+
 
 
 }
