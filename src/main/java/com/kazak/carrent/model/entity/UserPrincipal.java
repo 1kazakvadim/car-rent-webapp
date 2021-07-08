@@ -1,6 +1,5 @@
-package com.kazak.carrent.model;
+package com.kazak.carrent.model.entity;
 
-import com.kazak.carrent.model.entity.User;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;

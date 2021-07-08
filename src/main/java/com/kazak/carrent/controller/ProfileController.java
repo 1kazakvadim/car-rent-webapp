@@ -21,10 +21,15 @@ public class ProfileController {
   }
 
   @GetMapping("/profile")
-  public String getProfilePage(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+  public String getProfileMenu() {
+    return "profile";
+  }
+
+  @GetMapping("/profile/information")
+  public String getInformationPage(Model model, @AuthenticationPrincipal UserDetails currentUser) {
     User user = userService.findByUsername(currentUser.getUsername());
     model.addAttribute("user", user);
-    return "profile";
+    return "information";
   }
 
   @GetMapping("/profile/user")
@@ -41,8 +46,6 @@ public class ProfileController {
     model.addAttribute("passportData", passportData);
     return "passport";
   }
-
-
 
 
 }

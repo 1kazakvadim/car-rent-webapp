@@ -1,7 +1,7 @@
 package com.kazak.carrent.service.impl;
 
-import com.kazak.carrent.model.UserPrincipal;
 import com.kazak.carrent.model.entity.User;
+import com.kazak.carrent.model.entity.UserPrincipal;
 import com.kazak.carrent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

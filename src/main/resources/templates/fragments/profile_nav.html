@@ -2,7 +2,7 @@
           xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
           th:fragment="profile_nav">
   <ul class="profile_nav">
-    <li><a th:href="@{/profile}">Личная информация</a></li>
+    <li><a th:href="@{/profile/information}">Личная информация</a></li>
     <li><a href="#">Заказы</a></li>
     <li><a href="#">Настройки</a></li>
     <li><a th:href="@{/profile/user}" sec:authorize="hasRole('ADMIN')">Пользователи</a></li>
