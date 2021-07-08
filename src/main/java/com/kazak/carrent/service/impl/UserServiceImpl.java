@@ -40,6 +40,16 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public boolean isUsernameExists(String username) {
+    return userRepository.existsByUsername(username);
+  }
+
+  @Override
+  public boolean isPhoneNumberExists(String phoneNumber) {
+    return userRepository.existsByPhoneNumber(phoneNumber);
+  }
+
+  @Override
   @Transactional
   public User save(User user, PassportData passportData) {
     passportData.setUser(user);

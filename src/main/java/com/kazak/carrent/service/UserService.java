@@ -12,6 +12,10 @@ public interface UserService {
 
   User findById(Integer id);
 
+  boolean isUsernameExists(String username);
+
+  boolean isPhoneNumberExists(String phoneNumber);
+
   User save(User user, PassportData passportData);
 
 }

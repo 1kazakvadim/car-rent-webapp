@@ -1,5 +1,7 @@
 package com.kazak.carrent.model.entity;
 
+import com.kazak.carrent.annotation.UniqueIdentificationNumber;
+import com.kazak.carrent.annotation.UniquePassportNumber;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -53,10 +55,12 @@ public class PassportData {
   private LocalDate dateOfBirth;
 
   @NotEmpty(message = "passport number can`t be empty")
+  @UniquePassportNumber
   @Column(name = "passport_number", nullable = false, unique = true)
   private String passportNumber;
 
   @NotEmpty(message = "identification number can`t be empty")
+  @UniqueIdentificationNumber
   @Column(name = "identification_number", nullable = false, unique = true)
   private String identificationNumber;
 

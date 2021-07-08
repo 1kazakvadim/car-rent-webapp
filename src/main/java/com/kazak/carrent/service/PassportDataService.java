@@ -6,4 +6,8 @@ public interface PassportDataService {
 
   PassportData findById(Integer id);
 
+  boolean isPassportNumberExists(String passportNumber);
+
+  boolean isIdentificationNumberExists(String identificationNumber);
+
 }

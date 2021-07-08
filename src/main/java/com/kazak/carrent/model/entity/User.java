@@ -1,5 +1,7 @@
 package com.kazak.carrent.model.entity;
 
+import com.kazak.carrent.annotation.UniquePhoneNumber;
+import com.kazak.carrent.annotation.UniqueUsername;
 import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,6 +35,7 @@ public class User {
   @NotEmpty(message = "username can`t be empty")
   @Size(min = 3, max = 16, message = "username should be between 3 and 16 characters")
   @Pattern(regexp = "^[A-Za-z]{3,16}$", message = "username should contains latin characters only")
+  @UniqueUsername
   @Column(name = "username", nullable = false, unique = true)
   private String username;
 
@@ -49,6 +52,7 @@ public class User {
   private String email;
 
   @NotEmpty(message = "phone number can`t be empty")
+  @UniquePhoneNumber
   @Column(name = "phone_number", nullable = false, unique = true)
   private String phoneNumber;
 

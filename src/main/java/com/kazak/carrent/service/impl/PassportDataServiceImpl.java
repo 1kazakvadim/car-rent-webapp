@@ -19,4 +19,15 @@ public class PassportDataServiceImpl implements PassportDataService {
   public PassportData findById(Integer id) {
     return passportDataRepository.getById(id);
   }
+
+  @Override
+  public boolean isPassportNumberExists(String passportNumber) {
+    return passportDataRepository.existsByPassportNumber(passportNumber);
+  }
+
+  @Override
+  public boolean isIdentificationNumberExists(String identificationNumber) {
+    return passportDataRepository.existsByIdentificationNumber(identificationNumber);
+  }
+
 }
