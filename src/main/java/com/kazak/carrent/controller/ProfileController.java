@@ -1,7 +1,9 @@
 package com.kazak.carrent.controller;
 
+import com.kazak.carrent.model.entity.CarOrder;
 import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.model.entity.User;
+import com.kazak.carrent.service.CarOrderService;
 import com.kazak.carrent.service.UserService;
 import java.util.List;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,9 +17,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class ProfileController {
 
   private final UserService userService;
+  private final CarOrderService carOrderService;
 
-  public ProfileController(UserService userService) {
+  public ProfileController(UserService userService,
+      CarOrderService carOrderService) {
     this.userService = userService;
+    this.carOrderService = carOrderService;
   }
 
   @GetMapping("/profile")
@@ -32,7 +37,22 @@ public class ProfileController {
     return "information";
   }
 
+  @GetMapping("/profile/order")
+  public String getAllOrder(Model model) {
+    List<CarOrder> carOrders = carOrderService.getAll();
+    model.addAttribute("carOrders", carOrders);
+    return "order";
+  }
+
+  @GetMapping("/profile/order/{id}/detail")
+  public String getAllOrder(@PathVariable Integer id, Model model) {
+    CarOrder carOrder = carOrderService.findById(id);
+    model.addAttribute("carOrder", carOrder);
+    return "detail";
+  }
+
   @GetMapping("/profile/user")
+//  @PreAuthorize("hasAuthority('ADMIN')")
   public String getAllUser(Model model) {
     List<User> users = userService.getAll();
     model.addAttribute("users", users);
@@ -46,6 +66,5 @@ public class ProfileController {
     model.addAttribute("passportData", passportData);
     return "passport";
   }
-
 
 }
