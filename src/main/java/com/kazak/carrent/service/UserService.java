@@ -16,6 +16,6 @@ public interface UserService {
 
   boolean isPhoneNumberExists(String phoneNumber);
 
-  User save(User user, PassportData passportData);
+  User save(User user);
 
 }

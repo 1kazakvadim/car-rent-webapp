@@ -51,9 +51,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   @Transactional
-  public User save(User user, PassportData passportData) {
-    passportData.setUser(user);
-    user.setPassportData(passportData);
+  public User save(User user) {
     user.setUserRole(userRoleRepository.findByName("USER"));
     return userRepository.save(user);
   }
