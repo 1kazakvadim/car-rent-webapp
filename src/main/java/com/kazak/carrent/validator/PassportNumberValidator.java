@@ -4,15 +4,18 @@ import com.kazak.carrent.annotation.UniquePassportNumber;
 import com.kazak.carrent.service.PassportDataService;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import org.springframework.stereotype.Component;
 
-@Component
 public class PassportNumberValidator implements ConstraintValidator<UniquePassportNumber, String> {
 
   private final PassportDataService passportDataService;
 
   public PassportNumberValidator(PassportDataService passportDataService) {
     this.passportDataService = passportDataService;
+  }
+
+  @Override
+  public void initialize(UniquePassportNumber constraintAnnotation) {
+
   }
 
   @Override
