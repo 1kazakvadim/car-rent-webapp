@@ -12,4 +12,6 @@
 @import "blocks/profile.css";
 @import "blocks/user.css";
 @import "blocks/passport.css";
+@import "blocks/order.css";
+@import "blocks/detail.css";
 @import "blocks/footer.css";
