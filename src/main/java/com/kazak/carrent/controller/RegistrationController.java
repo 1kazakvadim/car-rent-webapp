@@ -26,14 +26,13 @@ public class RegistrationController {
   }
 
   @PostMapping("/registration")
-  public String registrationUser(@Valid @ModelAttribute("user") User user,
-      BindingResult bindingResultUser,
-      @Valid @ModelAttribute("passportData") PassportData passportData,
-      BindingResult bindingResultPassportData) {
+  public String registrationUser(@Valid User user, BindingResult bindingResultUser,
+      @Valid PassportData passportData, BindingResult bindingResultPassportData) {
     if (bindingResultUser.hasErrors() || bindingResultPassportData.hasErrors()) {
       return "registration";
     }
-    userService.save(user, passportData);
+    user.setPassportData(passportData);
+    userService.save(user);
     return "login";
   }
 
