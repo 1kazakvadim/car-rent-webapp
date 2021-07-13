@@ -36,7 +36,13 @@
           <td th:text="${carOrder.getDateOfIssue()}"></td>
           <td th:text="${carOrder.getDateOfReturn()}"></td>
           <td th:text="${carOrder.isCancellation()}"></td>
-          <td th:text="${carOrder.getReasonOfCancellation()}"></td>
+          <td>
+            <a th:href="@{order/{id}/cancellation(id=${carOrder.getId()})}">
+              <button class="view_order_button">
+                подробнее
+              </button>
+            </a>
+          </td>
           <td th:text="${carOrder.getRentalCost()}"></td>
           <td>
             <a th:href="@{order/{id}/detail(id=${carOrder.getId()})}">

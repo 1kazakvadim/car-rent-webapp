@@ -67,59 +67,70 @@
           </div>
         </div>
       </div>
-      <table class="product_table" th:object="${car}">
-        <caption class="product_table_caption">Характеристики</caption>
-        <tr>
-          <td>Марка</td>
-          <td th:text="${car.getCarBrand().getName()}">car_brand</td>
-        </tr>
-        <tr>
-          <td>Модель</td>
-          <td th:text="${car.getModel()}">car_model</td>
-        </tr>
-        <tr>
-          <td>Тип кузова</td>
-          <td th:text="${car.getCarBody().getName()}">car_body</td>
-        </tr>
-        <tr>
-          <td>Цвет</td>
-          <td th:text="${car.getColor()}">car_color</td>
-        </tr>
-        <tr>
-          <td>Класс автомобиля</td>
-          <td th:text="${car.getCarClass().getName()}">car_class</td>
-        </tr>
-        <tr>
-          <td>Коробка передач</td>
-          <td th:text="${car.getCarTransmission().getName()}">car_transmission</td>
-        </tr>
-        <tr>
-          <td>Тип двигателя</td>
-          <td th:text="${car.getEngineType().getName()}">engine_type</td>
-        </tr>
-        <tr>
-          <td>Объем двигателя</td>
-          <td th:text="${car.getEngineVolume()}">engine_volume</td>
-        </tr>
-        <tr>
-          <td>Количество сидений</td>
-          <td th:text="${car.getNumberOfSeats()}">number_of_seats</td>
-        </tr>
-        <tr>
-          <td>Расход топлива</td>
-          <td th:text="${car.getFuelConsumption()}">fuel_consumption</td>
-        </tr>
-        <tr>
-          <td>Стоимость аренды</td>
-          <td th:text="${car.getRentalCost()}">rental_cost</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <button class="product_submit" type="submit">Бронировать</button>
-          </td>
-        </tr>
-      </table>
+      <form th:action="@{/catalog/product}" method="post">
+        <table class="product_table">
+          <caption class="product_table_caption">Характеристики</caption>
+          <input type="hidden" th:name="carId" th:value="${car.getId()}">
+          <tr>
+            <td>Марка</td>
+            <td th:text="${car.getCarBrand().getName()}">car_brand</td>
+          </tr>
+          <tr>
+            <td>Модель</td>
+            <td th:text="${car.getModel()}">car_model</td>
+          </tr>
+          <tr>
+            <td>Тип кузова</td>
+            <td th:text="${car.getCarBody().getName()}">car_body</td>
+          </tr>
+          <tr>
+            <td>Цвет</td>
+            <td th:text="${car.getColor()}">car_color</td>
+          </tr>
+          <tr>
+            <td>Класс автомобиля</td>
+            <td th:text="${car.getCarClass().getName()}">car_class</td>
+          </tr>
+          <tr>
+            <td>Коробка передач</td>
+            <td th:text="${car.getCarTransmission().getName()}">car_transmission</td>
+          </tr>
+          <tr>
+            <td>Тип двигателя</td>
+            <td th:text="${car.getEngineType().getName()}">engine_type</td>
+          </tr>
+          <tr>
+            <td>Объем двигателя</td>
+            <td th:text="${car.getEngineVolume()}">engine_volume</td>
+          </tr>
+          <tr>
+            <td>Количество сидений</td>
+            <td th:text="${car.getNumberOfSeats()}">number_of_seats</td>
+          </tr>
+          <tr>
+            <td>Расход топлива</td>
+            <td th:text="${car.getFuelConsumption()}">fuel_consumption</td>
+          </tr>
+          <tr>
+            <td>Стоимость аренды</td>
+            <td th:text="${car.getRentalCost()}">rental_cost</td>
+          </tr>
+          <tr>
+            <td>Дата выдачи</td>
+            <td><input type="date" th:name="dateOfIssue" required></td>
+          </tr>
+          <tr>
+            <td>Дата возврата</td>
+            <td><input type="date" th:name="dateOfReturn" required></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button class="product_submit" type="submit">Бронировать</button>
+            </td>
+          </tr>
+        </table>
+      </form>
     </div>
   </div>
 </div>
