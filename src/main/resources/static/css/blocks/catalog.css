@@ -152,7 +152,7 @@
 .product_item_actions a {
   text-decoration: none;
   float: left;
-  width: 50%;
+  width: 100%;
   color: white;
   padding: 1rem 0;
   transition: .2s linear;
@@ -160,10 +160,6 @@
 
 .product_item_actions a:hover {
   background: var(--black);
-}
-
-.reserve:before {
-  content: "Бронировать";
 }
 
 .quick_view:before {
