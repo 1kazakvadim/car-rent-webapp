@@ -134,7 +134,7 @@ CREATE TABLE `user`
   DEFAULT CHARSET = utf8
   COLLATE = utf8_unicode_ci;
 
-CREATE TABLE `order`
+CREATE TABLE `car_order`
 (
     `id`                     int                                                     NOT NULL AUTO_INCREMENT,
     `user_id`                int                                                     NOT NULL,
@@ -142,7 +142,7 @@ CREATE TABLE `order`
     `date_of_issue`          date                                                    NOT NULL,
     `date_of_return`         date                                                    NOT NULL,
     `cancellation`           tinyint                                                 NOT NULL DEFAULT '0',
-    `reason_of_cancellation` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+    `reason_of_cancellation` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
     `rental_cost`            double unsigned                                         NOT NULL,
     PRIMARY KEY (`id`),
     KEY `user_id_idx` (`user_id`),
@@ -161,7 +161,7 @@ CREATE TABLE `car_repair`
     `repair_cost`        double unsigned                      NOT NULL,
     PRIMARY KEY (`id`),
     KEY `order_id_idx` (`order_id`),
-    CONSTRAINT `order_id` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`)
+    CONSTRAINT `order_id` FOREIGN KEY (`order_id`) REFERENCES `car_order` (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COLLATE = utf8_unicode_ci;
