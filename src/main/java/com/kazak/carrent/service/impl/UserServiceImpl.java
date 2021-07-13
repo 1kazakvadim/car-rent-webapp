@@ -1,6 +1,5 @@
 package com.kazak.carrent.service.impl;
 
-import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.repository.UserRepository;
 import com.kazak.carrent.repository.UserRoleRepository;
@@ -20,7 +19,6 @@ public class UserServiceImpl implements UserService {
   public UserServiceImpl(UserRepository userRepository,
       UserRoleRepository userRoleRepository) {
     this.userRepository = userRepository;
-
     this.userRoleRepository = userRoleRepository;
   }
 
