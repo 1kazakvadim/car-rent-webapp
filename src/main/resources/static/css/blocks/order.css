@@ -48,7 +48,7 @@
   border: 0.1rem solid var(--black);
   border-radius: 0.4rem;
   cursor: pointer;
-  padding: 0.2rem 1rem;
+  padding: 0.2rem 0.6rem;
 }
 
 .view_order_button:hover {
