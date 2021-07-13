@@ -50,7 +50,7 @@ public class CarOrder {
   @Column(name = "cancellation", nullable = false)
   private boolean isCancellation;
 
-  @Column(name = "reason_of_cancellation", nullable = false)
+  @Column(name = "reason_of_cancellation")
   private String reasonOfCancellation;
 
   @Column(name = "rental_cost", nullable = false)
