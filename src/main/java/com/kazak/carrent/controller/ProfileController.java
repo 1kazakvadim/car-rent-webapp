@@ -38,21 +38,27 @@ public class ProfileController {
   }
 
   @GetMapping("/profile/order")
-  public String getAllOrder(Model model) {
-    List<CarOrder> carOrders = carOrderService.getAll();
+  public String getAllOrder(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+    List<CarOrder> carOrders = carOrderService.getAll(currentUser);
     model.addAttribute("carOrders", carOrders);
     return "order";
   }
 
+  @GetMapping("/profile/order/{id}/cancellation")
+  public String getOrderCancellation(@PathVariable Integer id, Model model){
+    CarOrder carOrder = carOrderService.findById(id);
+    model.addAttribute("carOrder", carOrder);
+    return "cancellation";
+  }
+
   @GetMapping("/profile/order/{id}/detail")
-  public String getAllOrder(@PathVariable Integer id, Model model) {
+  public String getOrderDetail(@PathVariable Integer id, Model model) {
     CarOrder carOrder = carOrderService.findById(id);
     model.addAttribute("carOrder", carOrder);
     return "detail";
   }
 
   @GetMapping("/profile/user")
-//  @PreAuthorize("hasAuthority('ADMIN')")
   public String getAllUser(Model model) {
     List<User> users = userService.getAll();
     model.addAttribute("users", users);
