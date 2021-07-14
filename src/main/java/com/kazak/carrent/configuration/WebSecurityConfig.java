@@ -18,13 +18,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-  private final DatabaseUserDetailsServiceImpl databaseUserDetailsServiceImpl;
   private final DataSource dataSource;
 
-  WebSecurityConfig(
-      DatabaseUserDetailsServiceImpl databaseUserDetailsServiceImpl,
-      DataSource dataSource) {
-    this.databaseUserDetailsServiceImpl = databaseUserDetailsServiceImpl;
+  WebSecurityConfig(DataSource dataSource) {
     this.dataSource = dataSource;
   }
 
@@ -51,7 +47,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .formLogin()
         .loginPage("/login")
         .permitAll()
-        .defaultSuccessUrl("/profile/information")
+        .defaultSuccessUrl("/profile")
         .and()
         .logout()
         .logoutSuccessUrl("/index")
