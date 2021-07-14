@@ -5,6 +5,7 @@ import com.kazak.carrent.annotation.UniquePassportNumber;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class PassportData {
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @OneToOne(mappedBy = "passportData")
+  @OneToOne(mappedBy = "passportData", fetch = FetchType.LAZY)
   private User user;
 
   @NotEmpty(message = "first name can`t be empty")

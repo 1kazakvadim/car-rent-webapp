@@ -37,7 +37,7 @@
           <td th:text="${carOrder.getDateOfReturn()}"></td>
           <td th:text="${carOrder.isCancellation()}"></td>
           <td>
-            <a th:href="@{order/{id}/cancellation(id=${carOrder.getId()})}">
+            <a th:href="@{order/{id}/reason(id=${carOrder.getId()})}">
               <button class="view_order_button">
                 подробнее
               </button>
