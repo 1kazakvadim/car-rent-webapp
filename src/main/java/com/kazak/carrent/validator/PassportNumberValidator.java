@@ -14,11 +14,6 @@ public class PassportNumberValidator implements ConstraintValidator<UniquePasspo
   }
 
   @Override
-  public void initialize(UniquePassportNumber constraintAnnotation) {
-
-  }
-
-  @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
     return value != null && !passportDataService.isPassportNumberExists(value);
   }

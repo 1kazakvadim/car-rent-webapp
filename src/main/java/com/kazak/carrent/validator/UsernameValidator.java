@@ -14,11 +14,6 @@ public class UsernameValidator implements ConstraintValidator<UniqueUsername, St
   }
 
   @Override
-  public void initialize(UniqueUsername constraintAnnotation) {
-
-  }
-
-  @Override
   public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
     return value != null && !userService.isUsernameExists(value);
   }

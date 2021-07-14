@@ -14,11 +14,6 @@ public class PhoneNumberValidator implements ConstraintValidator<UniquePhoneNumb
   }
 
   @Override
-  public void initialize(UniquePhoneNumber constraintAnnotation) {
-
-  }
-
-  @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
     return value != null && !userService.isPhoneNumberExists(value);
   }

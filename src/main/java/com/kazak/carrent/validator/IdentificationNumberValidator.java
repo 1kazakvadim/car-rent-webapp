@@ -16,11 +16,6 @@ public class IdentificationNumberValidator implements
   }
 
   @Override
-  public void initialize(UniqueIdentificationNumber constraintAnnotation) {
-
-  }
-
-  @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
     return value != null && !passportDataService.isIdentificationNumberExists(value);
   }
