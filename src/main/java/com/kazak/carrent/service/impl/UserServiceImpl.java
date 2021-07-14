@@ -1,11 +1,14 @@
 package com.kazak.carrent.service.impl;
 
+import com.kazak.carrent.dto.UserPostDto;
+import com.kazak.carrent.mapper.MapStructMapper;
 import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.repository.UserRepository;
 import com.kazak.carrent.repository.UserRoleRepository;
 import com.kazak.carrent.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,12 +17,18 @@ public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
   private final UserRoleRepository userRoleRepository;
+  private final MapStructMapper mapStructMapper;
+  private final PasswordEncoder passwordEncoder;
 
   @Autowired
   public UserServiceImpl(UserRepository userRepository,
-      UserRoleRepository userRoleRepository) {
+      UserRoleRepository userRoleRepository,
+      MapStructMapper mapStructMapper,
+      PasswordEncoder passwordEncoder) {
     this.userRepository = userRepository;
     this.userRoleRepository = userRoleRepository;
+    this.mapStructMapper = mapStructMapper;
+    this.passwordEncoder = passwordEncoder;
   }
 
   @Override
@@ -43,15 +52,40 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public boolean isEmailExists(String email) {
+    return userRepository.existsByEmail(email);
+  }
+
+  @Override
   public boolean isPhoneNumberExists(String phoneNumber) {
     return userRepository.existsByPhoneNumber(phoneNumber);
   }
 
   @Override
+  public boolean checkForValidOldPassword(User user, String oldPassword) {
+    return passwordEncoder.matches(oldPassword, user.getPassword());
+  }
+
+  @Override
   @Transactional
-  public User save(User user) {
+  public void changeUserPassword(User user, String password) {
+    user.setPassword(passwordEncoder.encode(password));
+    userRepository.save(user);
+  }
+
+  @Override
+  @Transactional
+  public void save(User user) {
     user.setUserRole(userRoleRepository.findByName("USER"));
-    return userRepository.save(user);
+    userRepository.save(user);
+  }
+
+  @Override
+  @Transactional
+  public void update(UserPostDto userPostDto){
+    User user = userRepository.findById(userPostDto.getId()).orElse(null);
+    mapStructMapper.updateUserFromDto(userPostDto, user);
+    userRepository.saveAndFlush(user);
   }
 
 }
