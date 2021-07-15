@@ -14,9 +14,15 @@ public interface UserService {
 
   boolean isUsernameExists(String username);
 
+  boolean isUsernameExistsExceptUsernameWithId(String username, Integer id);
+
   boolean isEmailExists(String email);
 
+  boolean isEmailExistsExceptEmailWithId(String email, Integer id);
+
   boolean isPhoneNumberExists(String phoneNumber);
+
+  boolean isPhoneNumberExistsExceptPhoneNumberWithId(String phoneNumber, Integer id);
 
   boolean checkForValidOldPassword(User user, String oldPassword);
 

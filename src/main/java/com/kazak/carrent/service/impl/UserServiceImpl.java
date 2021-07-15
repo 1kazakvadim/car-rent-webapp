@@ -52,13 +52,28 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public boolean isUsernameExistsExceptUsernameWithId(String username, Integer id) {
+    return userRepository.existsByUsernameAndIdIsNot(username, id);
+  }
+
+  @Override
   public boolean isEmailExists(String email) {
     return userRepository.existsByEmail(email);
   }
 
   @Override
+  public boolean isEmailExistsExceptEmailWithId(String email, Integer id) {
+    return userRepository.existsByEmailAndIdIsNot(email, id);
+  }
+
+  @Override
   public boolean isPhoneNumberExists(String phoneNumber) {
     return userRepository.existsByPhoneNumber(phoneNumber);
+  }
+
+  @Override
+  public boolean isPhoneNumberExistsExceptPhoneNumberWithId(String phoneNumber, Integer id) {
+    return userRepository.existsByPhoneNumberAndIdIsNot(phoneNumber, id);
   }
 
   @Override
@@ -82,7 +97,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   @Transactional
-  public void update(UserPostDto userPostDto){
+  public void update(UserPostDto userPostDto) {
     User user = userRepository.findById(userPostDto.getId()).orElse(null);
     mapStructMapper.updateUserFromDto(userPostDto, user);
     userRepository.saveAndFlush(user);
