@@ -1,11 +1,13 @@
 package com.kazak.carrent.model.entity;
 
+import com.kazak.carrent.annotation.UniqueEmail;
 import com.kazak.carrent.annotation.UniquePhoneNumber;
 import com.kazak.carrent.annotation.UniqueUsername;
 import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,7 +42,7 @@ public class User {
   private String username;
 
   @NotEmpty(message = "password can`t be empty")
-  @Size(min = 3, max = 16, message = "password should be between 3 and 16 characters")
+  @Size(min = 3, max = 255, message = "password should be between 3 and 16 characters")
 //  @Pattern(regexp = "^(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{3,16}$",
 //      message = "password should contains at least one lowercase letter, one number and one special character (@$!%*?&)")
   @Column(name = "password", nullable = false)
@@ -48,6 +50,7 @@ public class User {
 
   @NotEmpty(message = "email can`t be empty")
   @Pattern(regexp = "([A-z0-9_.-]+)@([A-z0-9_.-]+).([A-z]{2,8})")
+  @UniqueEmail
   @Column(name = "email", nullable = false)
   private String email;
 
@@ -56,7 +59,7 @@ public class User {
   @Column(name = "phone_number", nullable = false, unique = true)
   private String phoneNumber;
 
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   @JoinColumn(name="passport_data_id")
   private PassportData passportData;
 

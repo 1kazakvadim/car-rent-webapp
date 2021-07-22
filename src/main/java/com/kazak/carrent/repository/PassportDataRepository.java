@@ -9,6 +9,10 @@ public interface PassportDataRepository extends JpaRepository<PassportData, Inte
 
   boolean existsByPassportNumber(String passportNumber);
 
+  boolean existsByPassportNumberAndIdIsNot(String passportNumber, Integer id);
+
   boolean existsByIdentificationNumber(String identificationNumber);
+
+  boolean existsByIdentificationNumberAndIdIsNot(String identificationNumber, Integer id);
 
 }

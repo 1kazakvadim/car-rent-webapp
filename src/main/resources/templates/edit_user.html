@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="edit">
+  <div class="container">
+    <div class="edit_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <div class="edit_content">
+        <form class="edit_form" th:action="@{/profile/user/{id}/editUser(id=${user.getId()})}"
+              method="post">
+          <table class="edit_table">
+            <caption class="edit_table_caption">Редактирование пользователя</caption>
+            <tr class="edit_column_caption">
+              <td>Имя пользователя</td>
+              <td th:text="${user.getUsername()}"></td>
+              <td><input type="text" name="username" th:field="${user.username}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Эл. почта</td>
+              <td th:text="${user.getEmail()}"></td>
+              <td><input type="text" name="email" th:field="${user.email}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Телефон</td>
+              <td th:text="${user.getPhoneNumber()}"></td>
+              <td><input type="text" name="phoneNumber" th:field="${user.phoneNumber}">
+              </td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Роль</td>
+              <td th:text="${user.getUserRole().getName()}"></td>
+              <td>
+                <select name="userRole">
+                  <option value="USER">user</option>
+                  <option value="MANAGER">manager</option>
+                  <option value="ADMIN">admin</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Статус</td>
+              <td th:text="${user.getStatus()}"></td>
+              <td>
+                <select name="status">
+                  <option value="ACTIVE" name="status" th:field="${user.status}">active</option>
+                  <option value="INACTIVE" name="status" th:field="${user.status}">inactive</option>
+                </select>
+              </td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td></td>
+              <td></td>
+              <td>
+                  <button class="edit_button" type="submit">
+                    изменить
+                  </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+        <form class="edit_form"
+              th:action="@{/profile/user/{id}/editUserPassword(id=${user.getId()})}"
+              method="post">
+          <table class="edit_password_table">
+            <caption class="edit_table_caption">Изменить пароль</caption>
+<!--            <tr class="edit_password_column_caption">-->
+<!--              <td>-->
+<!--                <label for="old_password">Старый пароль</label>-->
+<!--                <input id="old_password" type="password" name="oldPassword">-->
+<!--              </td>-->
+<!--            </tr>-->
+            <tr class="edit_password_column_caption">
+              <td>
+                <label for="password">Новый пароль</label>
+                <input id="password" type="password" name="password">
+              </td>
+            </tr>
+            <tr class="edit_password_column_caption">
+              <td>
+                <label for="password_confirm">Подтвердить пароль</label>
+                <input id="password_confirm" type="password" name="passwordConfirm">
+              </td>
+            </tr>
+            <tr class="edit_password_column_caption">
+              <td>
+                  <button class="edit_button" type="submit">
+                    изменить
+                  </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>
