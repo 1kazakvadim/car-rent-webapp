@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="repair">
+  <div class="container">
+    <div class="repair_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <table class="repair_table">
+        <caption class="repair_table_caption">Список ремонтов</caption>
+        <tr class="repair_column_caption">
+          <td>№</td>
+          <td>№ заказа</td>
+          <td>О заказе</td>
+          <td>Информация о повреждениях</td>
+          <td>Стоимость ремонта</td>
+        </tr>
+        <tr th:each="carRepair : ${carRepairs}">
+          <td th:text="${carRepair.getId()}"></td>
+          <td th:text="${carRepair.getCarOrder().getId()}"></td>
+          <td>
+            <a th:href="@{order/{id}/detail(id=${carRepair.getCarOrder().getId()})}">
+              <button class="view_repair_button">подробнее</button>
+            </a>
+          </td>
+          <td th:text="${carRepair.getDamageInformation()}"></td>
+          <td th:text="${carRepair.getRepairCost()}"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

@@ -3,9 +3,11 @@ package com.kazak.carrent.controller;
 import com.kazak.carrent.dto.PassportDataPostDto;
 import com.kazak.carrent.dto.UserPostDto;
 import com.kazak.carrent.model.entity.CarOrder;
+import com.kazak.carrent.model.entity.CarRepair;
 import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.service.CarOrderService;
+import com.kazak.carrent.service.CarRepairService;
 import com.kazak.carrent.service.PassportDataService;
 import com.kazak.carrent.service.UserRoleService;
 import com.kazak.carrent.service.UserService;
@@ -28,14 +30,17 @@ public class ProfileController {
   private final CarOrderService carOrderService;
   private final UserRoleService userRoleService;
   private final PassportDataService passportDataService;
+  private final CarRepairService carRepairService;
 
   public ProfileController(UserService userService,
       CarOrderService carOrderService, UserRoleService userRoleService,
-      PassportDataService passportDataService) {
+      PassportDataService passportDataService,
+      CarRepairService carRepairService) {
     this.userService = userService;
     this.carOrderService = carOrderService;
     this.userRoleService = userRoleService;
     this.passportDataService = passportDataService;
+    this.carRepairService = carRepairService;
   }
 
   @GetMapping("/profile")
@@ -165,6 +170,13 @@ public class ProfileController {
     }
     passportDataService.update(passportDataPostDto);
     return "redirect:/profile/user/{userId}/passport";
+  }
+
+  @GetMapping("/profile/repair")
+  public String getAllRepair(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+    List<CarRepair> carRepairs = carRepairService.getAll(currentUser);
+    model.addAttribute("carRepairs", carRepairs);
+    return "repair";
   }
 
 
