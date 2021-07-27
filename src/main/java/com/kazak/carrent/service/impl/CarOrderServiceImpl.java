@@ -40,10 +40,11 @@ public class CarOrderServiceImpl implements CarOrderService {
   @Override
   public List<CarOrder> getAll(UserDetails currentUser) {
     User user = userRepository.findByUsername(currentUser.getUsername());
-    if(user.getUserRole().getName().equals("USER")){
+    if (user.getUserRole().getName().equals("USER")) {
       return carOrderRepository.findAllByUser(user);
-    } else
-    return carOrderRepository.findAll();
+    } else {
+      return carOrderRepository.findAll();
+    }
   }
 
   @Override
@@ -55,6 +56,14 @@ public class CarOrderServiceImpl implements CarOrderService {
     carOrder.setRentalCost(Math.abs(car.getRentalCost() * carOrder.getDateOfIssue()
         .until(carOrder.getDateOfReturn(), ChronoUnit.DAYS)));
     return carOrderRepository.save(carOrder);
+  }
+
+  @Override
+  public void cancelCarOrder(String reasonOfCancellation, Integer carOrderId) {
+    CarOrder carOrder = carOrderRepository.getById(carOrderId);
+    carOrder.setReasonOfCancellation(reasonOfCancellation);
+    carOrder.setCancellation(true);
+    carOrderRepository.save(carOrder);
   }
 
 

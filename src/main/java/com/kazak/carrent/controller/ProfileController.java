@@ -58,7 +58,7 @@ public class ProfileController {
   }
 
   @GetMapping("/profile/order/{id}/reason")
-  public String getOrderCancellation(@PathVariable Integer id, Model model) {
+  public String getOrderCancellationReason(@PathVariable Integer id, Model model) {
     CarOrder carOrder = carOrderService.findById(id);
     model.addAttribute("carOrder", carOrder);
     return "reason";
@@ -69,6 +69,20 @@ public class ProfileController {
     CarOrder carOrder = carOrderService.findById(id);
     model.addAttribute("carOrder", carOrder);
     return "detail";
+  }
+
+  @GetMapping("/profile/order/{id}/cancellation")
+  public String getOrderCancellation(@PathVariable Integer id, Model model) {
+    CarOrder carOrder = carOrderService.findById(id);
+    model.addAttribute("carOrder", carOrder);
+    return "cancellation";
+  }
+
+  @PostMapping("/profile/order/{id}/cancellation")
+  public String saveReasonOfCancellation(@PathVariable Integer id,
+      @RequestParam("reasonOfCancellation") String reasonOfCancellation) {
+    carOrderService.cancelCarOrder(reasonOfCancellation, id);
+    return "redirect:/profile/order";
   }
 
   @GetMapping("/profile/user")
@@ -113,7 +127,7 @@ public class ProfileController {
   public String changeUserPassword(@PathVariable Integer id,
       @RequestParam("password") String password,
       @RequestParam("passwordConfirm") String passwordConfirm) {
-    if(!password.equals(passwordConfirm)){
+    if (!password.equals(passwordConfirm)) {
       return "redirect:/profile/user/{id}/edit";
     }
     userService.changeUserPassword(userService.findById(id), password);

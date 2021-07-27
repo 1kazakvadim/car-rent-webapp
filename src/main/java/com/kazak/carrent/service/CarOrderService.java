@@ -14,4 +14,6 @@ public interface CarOrderService {
 
   CarOrder save(CarOrder carOrder, Integer carId, UserDetails currentUser);
 
+  void cancelCarOrder (String reasonOfCancellation, Integer carOrderId);
+
 }
