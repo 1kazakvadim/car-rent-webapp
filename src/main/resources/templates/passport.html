@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+>
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -68,11 +68,16 @@
           <td>Регистрация</td>
           <td th:text="${passportData.getRegistration()}"></td>
         </tr>
-        <!--            <a th:href="@{/user/{id}(id=${user.getId()})}">-->
-        <!--              <button class="view_account_button">-->
-        <!--                посмотреть-->
-        <!--              </button>-->
-        <!--            </a>-->
+        <tr class="passport_column_caption">
+          <td></td>
+          <td>
+            <a th:href="@{/profile/user/{id}/passport/{passportId}/edit(id=${passportData.getUser().getId()},passportId=${passportData.getId()})}">
+              <button class="view_passport_button">
+                редактировать
+              </button>
+            </a>
+          </td>
+        </tr>
       </table>
     </div>
   </div>

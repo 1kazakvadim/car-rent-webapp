@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="passport">
+  <div class="container">
+    <div class="passport_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <div class="edit_content">
+        <form class="edit_form"
+              th:action="@{/profile/user/{userId}/passport/{id}/edit(userId=${passportData.getUser().getId()}, id=${passportData.getId()})}"
+              method="post">
+          <table class="edit_table">
+            <caption class="edit_table_caption">Паспорт</caption>
+            <tr class="edit_column_caption">
+              <td>Имя</td>
+              <td th:text="${passportData.getFirstName()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.firstName')}"
+                   th:errors="*{passportData.firstName}">
+                  first name error</p>
+                <input type="text" name="firstName" th:field="${passportData.firstName}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Фамилия</td>
+              <td th:text="${passportData.getLastName()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.lastName')}"
+                   th:errors="*{passportData.lastName}">
+                  last name error</p>
+                <input type="text" name="lastName" th:field="${passportData.lastName}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Отчество</td>
+              <td th:text="${passportData.getMiddleName()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.middleName')}"
+                   th:errors="*{passportData.middleName}">
+                  middle name error</p>
+                <input type="text" name="middleName" th:field="${passportData.middleName}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Пол</td>
+              <td th:text="${passportData.getSex()}"></td>
+              <td>
+                <p class="registration_error_text" th:if="${#fields.hasErrors('passportData.sex')}"
+                   th:errors="*{passportData.sex}">
+                  sex error</p>
+                <input type="text" name="sex" th:field="${passportData.sex}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Дата рождения</td>
+              <td th:text="${passportData.getDateOfBirth()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.dateOfBirth')}"
+                   th:errors="*{passportData.dateOfBirth}">
+                  date of birth error</p>
+                <input type="date" name="dateOfBirth" th:field="${passportData.dateOfBirth}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Номер паспорта</td>
+              <td th:text="${passportData.getPassportNumber()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.passportNumber')}"
+                   th:errors="*{passportData.passportNumber}">
+                  passport number error</p>
+                <input type="text" name="passportNumber" th:field="${passportData.passportNumber}">
+              </td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Идентификационный номер</td>
+              <td th:text="${passportData.getIdentificationNumber()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.identificationNumber')}"
+                   th:errors="*{passportData.identificationNumber}">
+                  identification number error</p>
+                <input type="text" name="identificationNumber"
+                       th:field="${passportData.identificationNumber}">
+              </td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Дата выдачи</td>
+              <td th:text="${passportData.getDateOfIssue()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.dateOfIssue')}"
+                   th:errors="*{passportData.dateOfIssue}">
+                  date of issue error</p>
+                <input type="date" name="dateOfIssue" th:field="${passportData.dateOfIssue}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Дата действия</td>
+              <td th:text="${passportData.getDateOfExpiry()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.dateOfExpiry')}"
+                   th:errors="*{passportData.dateOfExpiry}">date of expiry error</p>
+                <input type="date" name="dateOfExpiry" th:field="${passportData.dateOfExpiry}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Место рождения</td>
+              <td th:text="${passportData.getPlaceOfBirth()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.placeOfBirth')}"
+                   th:errors="*{passportData.placeOfBirth}">
+                  registration error</p>
+                <input type="text" name="placeOfBirth" th:field="${passportData.placeOfBirth}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Орган, который выдал паспорт</td>
+              <td th:text="${passportData.getAuthority()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.authority')}"
+                   th:errors="*{passportData.authority}">authority error</p>
+                <input type="text" name="authority" th:field="${passportData.authority}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Национальность</td>
+              <td th:text="${passportData.getNationality()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.nationality')}"
+                   th:errors="*{passportData.nationality}">nationality error</p>
+                <input type="text" name="nationality" th:field="${passportData.nationality}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td>Регистрация</td>
+              <td th:text="${passportData.getRegistration()}"></td>
+              <td>
+                <p class="registration_error_text"
+                   th:if="${#fields.hasErrors('passportData.registration')}"
+                   th:errors="*{passportData.registration}">
+                  registration error</p>
+                <input type="text" name="registration" th:field="${passportData.registration}"></td>
+            </tr>
+            <tr class="edit_column_caption">
+              <td></td>
+              <td></td>
+              <td>
+                <a> <!--th:href="@{user/{id}/edit(id=${user.getId()})}"-->
+                  <button class="edit_button" type="submit">
+                    изменить
+                  </button>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

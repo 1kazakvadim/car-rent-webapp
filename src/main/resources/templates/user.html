@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -35,6 +35,13 @@
             <a th:href="@{user/{id}/passport(id=${user.getId()})}">
               <button class="view_account_button">
                 паспорт
+              </button>
+            </a>
+          </td>
+          <td sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{user/{id}/edit(id=${user.getId()})}">
+              <button class="view_account_button">
+                редактировать
               </button>
             </a>
           </td>

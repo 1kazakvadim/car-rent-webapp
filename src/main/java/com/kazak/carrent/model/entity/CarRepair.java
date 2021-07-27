@@ -26,11 +26,12 @@ public class CarRepair {
 
   @ManyToOne
   @JoinColumn(name = "order_id", nullable = false)
-  private Order order;
+  private CarOrder carOrder;
 
   @Column(name = "damage_information", nullable = false)
   private String damageInformation;
 
   @Column(name = "repair_cost", nullable = false)
   private Double repairCost;
+
 }

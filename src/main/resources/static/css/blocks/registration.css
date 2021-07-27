@@ -18,6 +18,11 @@
   margin-bottom: 1rem;
 }
 
+.registration_error_text {
+  color: #ea0000;
+  text-transform: lowercase;
+}
+
 .registration_item_radio {
   margin-bottom: 1rem;
 }

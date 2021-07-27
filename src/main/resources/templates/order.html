@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="order">
+  <div class="container">
+    <div class="order_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <table class="order_table">
+        <caption class="order_table_caption">Список заказов</caption>
+        <tr class="order_column_caption">
+          <td>Номер заказа</td>
+          <td>ФИО</td>
+          <td>Марка автомобиля</td>
+          <td>Модель автомобиля</td>
+          <td>Дата начала</td>
+          <td>Дата конца</td>
+          <td>Отмена</td>
+          <td>Причина отмены</td>
+          <td>Стоимость</td>
+        </tr>
+        <tr th:each="carOrder : ${carOrders}">
+          <td th:text="${carOrder.getId()}"></td>
+          <td th:text="${carOrder.getUser().getPassportData().getLastName() + ' '
+          + carOrder.getUser().getPassportData().getFirstName() + ' '
+          + carOrder.getUser().getPassportData().getMiddleName()}"></td>
+          <td th:text="${carOrder.getCar().getCarBrand().getName()}"></td>
+          <td th:text="${carOrder.getCar().getModel()}"></td>
+          <td th:text="${carOrder.getDateOfIssue()}"></td>
+          <td th:text="${carOrder.getDateOfReturn()}"></td>
+          <td th:text="${carOrder.isCancellation()}"></td>
+          <td>
+            <a th:href="@{order/{id}/reason(id=${carOrder.getId()})}">
+              <button class="view_order_button">
+                подробнее
+              </button>
+            </a>
+          </td>
+          <td th:text="${carOrder.getRentalCost()}"></td>
+          <td>
+            <a th:href="@{order/{id}/detail(id=${carOrder.getId()})}">
+              <button class="view_order_button">
+                подробнее
+              </button>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>
