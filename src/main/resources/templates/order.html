@@ -22,9 +22,11 @@
           <td>Модель автомобиля</td>
           <td>Дата начала</td>
           <td>Дата конца</td>
-          <td>Отмена</td>
+          <td>Состояние отмены</td>
           <td>Причина отмены</td>
           <td>Стоимость</td>
+          <td>О заказе</td>
+          <td>Отмена</td>
         </tr>
         <tr th:each="carOrder : ${carOrders}">
           <td th:text="${carOrder.getId()}"></td>
@@ -48,6 +50,13 @@
             <a th:href="@{order/{id}/detail(id=${carOrder.getId()})}">
               <button class="view_order_button">
                 подробнее
+              </button>
+            </a>
+          </td>
+          <td>
+            <a th:href="@{order/{id}/cancellation(id=${carOrder.getId()})}">
+              <button class="view_order_button">
+                отменить
               </button>
             </a>
           </td>

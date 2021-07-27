@@ -33,16 +33,12 @@
           <td th:text="${user.getCreatedAt()}"></td>
           <td>
             <a th:href="@{user/{id}/passport(id=${user.getId()})}">
-              <button class="view_account_button">
-                паспорт
-              </button>
+              <button class="view_account_button">паспорт</button>
             </a>
           </td>
           <td sec:authorize="hasRole('ADMIN')">
             <a th:href="@{user/{id}/edit(id=${user.getId()})}">
-              <button class="view_account_button">
-                редактировать
-              </button>
+              <button class="view_account_button">изменить</button>
             </a>
           </td>
         </tr>

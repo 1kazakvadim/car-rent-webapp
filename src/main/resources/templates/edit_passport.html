@@ -19,7 +19,7 @@
               th:action="@{/profile/user/{userId}/passport/{id}/edit(userId=${passportData.getUser().getId()}, id=${passportData.getId()})}"
               method="post">
           <table class="edit_table">
-            <caption class="edit_table_caption">Паспорт</caption>
+            <caption class="edit_table_caption">Редактирование паспорта</caption>
             <tr class="edit_column_caption">
               <td>Имя</td>
               <td th:text="${passportData.getFirstName()}"></td>
@@ -154,9 +154,7 @@
               <td></td>
               <td>
                 <a> <!--th:href="@{user/{id}/edit(id=${user.getId()})}"-->
-                  <button class="edit_button" type="submit">
-                    изменить
-                  </button>
+                  <button class="edit_button" type="submit">сохранить</button>
                 </a>
               </td>
             </tr>

@@ -24,18 +24,6 @@
   border-spacing: 0;
 }
 
-.edit_password_table {
-  width: 100%;
-}
-
-.edit_password_table td{
-  padding-left: 40%;
-}
-
-.edit_password_table tr{
-  width: 100%;
-}
-
 .edit_table_caption {
   padding: 0.5rem;
   color: var(--white);

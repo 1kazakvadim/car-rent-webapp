@@ -60,9 +60,7 @@
               <td></td>
               <td></td>
               <td>
-                  <button class="edit_button" type="submit">
-                    изменить
-                  </button>
+                <button class="edit_button" type="submit">сохранить</button>
               </td>
             </tr>
           </table>
@@ -70,14 +68,14 @@
         <form class="edit_form"
               th:action="@{/profile/user/{id}/editUserPassword(id=${user.getId()})}"
               method="post">
-          <table class="edit_password_table">
-            <caption class="edit_table_caption">Изменить пароль</caption>
-<!--            <tr class="edit_password_column_caption">-->
-<!--              <td>-->
-<!--                <label for="old_password">Старый пароль</label>-->
-<!--                <input id="old_password" type="password" name="oldPassword">-->
-<!--              </td>-->
-<!--            </tr>-->
+          <table class="edit_table">
+            <caption class="edit_table_caption">Изменение пароля</caption>
+            <!--            <tr class="edit_password_column_caption">-->
+            <!--              <td>-->
+            <!--                <label for="old_password">Старый пароль</label>-->
+            <!--                <input id="old_password" type="password" name="oldPassword">-->
+            <!--              </td>-->
+            <!--            </tr>-->
             <tr class="edit_password_column_caption">
               <td>
                 <label for="password">Новый пароль</label>
@@ -92,9 +90,7 @@
             </tr>
             <tr class="edit_password_column_caption">
               <td>
-                  <button class="edit_button" type="submit">
-                    изменить
-                  </button>
+                <button class="edit_button" type="submit">сохранить</button>
               </td>
             </tr>
           </table>

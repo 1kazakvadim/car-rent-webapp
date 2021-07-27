@@ -15,26 +15,32 @@
         <form class="filer_inner" method="post" action="">
           <div class="filer_item_checkbox">
             <h4 class="filter_title">Марка автомобиля</h4>
-            <div class="filer_checkbox_inner" th:each="carBrand : ${carBrands}">
-              <label th:for="${carBrand.getName()}">
-                <input type="checkbox" th:id="${carBrand.getName()}"
-                       th:text="${carBrand.getName()}" th:value="${carBrand.getName()}"/></label>
+            <div class="filter_scroll">
+              <div class="filer_checkbox_inner" th:each="carBrand : ${carBrands}">
+                <label th:for="${carBrand.getName()}">
+                  <input type="checkbox" th:id="${carBrand.getName()}"
+                         th:text="${carBrand.getName()}" th:value="${carBrand.getName()}"/></label>
+              </div>
             </div>
           </div>
           <div class="filer_item_checkbox">
             <h4 class="filter_title">Модель</h4>
-            <div class="filer_checkbox_inner" th:each="car : ${cars}">
-              <label th:for="${car.getModel()}">
-                <input type="checkbox" th:id="${car.getModel()}"
-                       th:text="${car.getModel()}" th:value="${car.getModel()}"/></label>
+            <div class="filter_scroll">
+              <div class="filer_checkbox_inner" th:each="car : ${cars}">
+                <label th:for="${car.getModel()}">
+                  <input type="checkbox" th:id="${car.getModel()}"
+                         th:text="${car.getModel()}" th:value="${car.getModel()}"/></label>
+              </div>
             </div>
           </div>
           <div class="filer_item_checkbox">
             <h4 class="filter_title">Тип кузова</h4>
-            <div class="filer_checkbox_inner" th:each="carBody : ${carBodies}">
-              <label th:for="${carBody.getName()}">
-                <input type="checkbox" th:id="${carBody.getName()}"
-                       th:text="${carBody.getName()}" th:value="${carBody.getName()}"/></label>
+            <div class="filter_scroll">
+              <div class="filer_checkbox_inner" th:each="carBody : ${carBodies}">
+                <label th:for="${carBody.getName()}">
+                  <input type="checkbox" th:id="${carBody.getName()}"
+                         th:text="${carBody.getName()}" th:value="${carBody.getName()}"/></label>
+              </div>
             </div>
           </div>
           <div class="filer_item_checkbox">
