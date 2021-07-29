@@ -12,4 +12,6 @@ public interface CarRepairService {
 
   List<CarRepair> getAll(UserDetails currentUser);
 
+  void save(CarRepair carRepair);
+
 }

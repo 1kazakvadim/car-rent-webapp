@@ -7,7 +7,7 @@
     <li><a th:href="@{/profile/order}">Заказы</a></li>
     <li><a th:href="@{/profile/repair}">Ремонты</a></li>
     <li><a href="#">Настройки</a></li>
-    <li><a th:href="@{/profile/user}"
-           sec:authorize="hasAnyRole('ADMIN', 'MANAGER')">Пользователи</a></li>
+    <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:href="@{/profile/user}"
+           >Пользователи</a></li>
   </ul>
 </th:block>

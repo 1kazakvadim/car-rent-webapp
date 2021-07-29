@@ -41,4 +41,9 @@ public class CarRepairServiceImpl implements CarRepairService {
     }
   }
 
+  @Override
+  public void save(CarRepair carRepair) {
+    carRepairRepository.save(carRepair);
+  }
+
 }

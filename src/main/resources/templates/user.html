@@ -32,14 +32,17 @@
           <td th:text="${user.getStatus()}"></td>
           <td th:text="${user.getCreatedAt()}"></td>
           <td>
-            <a th:href="@{user/{id}/passport(id=${user.getId()})}">
-              <button class="view_account_button">паспорт</button>
-            </a>
-          </td>
-          <td sec:authorize="hasRole('ADMIN')">
-            <a th:href="@{user/{id}/edit(id=${user.getId()})}">
-              <button class="view_account_button">изменить</button>
-            </a>
+            <div class="profile_dropdown_menu">
+              <input class="profile_dropdown_menu_checkbox" th:id="${user.getId()}" type="checkbox"/>
+              <label th:for="${user.getId()}"> </label>
+              <div class="profile_dropdown_menu_content">
+                <ul>
+                  <li><a th:href="@{user/{id}/passport(id=${user.getId()})}">Паспорт</a></li>
+                  <li sec:authorize="hasRole('ADMIN')"><a th:href="@{user/{id}/edit(id=${user.getId()})}">Редактировать</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </td>
         </tr>
       </table>

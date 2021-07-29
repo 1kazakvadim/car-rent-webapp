@@ -3,6 +3,7 @@
 @import "global/normalize.css";
 @import "blocks/header.css";
 @import "blocks/slider.css";
+@import "blocks/dropdown_menu.css";
 @import "blocks/condition.css";
 @import "blocks/contact.css";
 @import "blocks/login.css";
@@ -18,4 +19,7 @@
 @import "blocks/reason.css";
 @import "blocks/edit.css";
 @import "blocks/repair.css";
+@import "blocks/new_repair.css";
 @import "blocks/footer.css";
+
+

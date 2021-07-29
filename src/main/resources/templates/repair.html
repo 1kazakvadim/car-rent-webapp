@@ -17,21 +17,28 @@
         <caption class="repair_table_caption">Список ремонтов</caption>
         <tr class="repair_column_caption">
           <td>№</td>
-          <td>№ заказа</td>
-          <td>О заказе</td>
           <td>Информация о повреждениях</td>
           <td>Стоимость ремонта</td>
+          <td>№ заказа</td>
         </tr>
         <tr th:each="carRepair : ${carRepairs}">
           <td th:text="${carRepair.getId()}"></td>
-          <td th:text="${carRepair.getCarOrder().getId()}"></td>
-          <td>
-            <a th:href="@{order/{id}/detail(id=${carRepair.getCarOrder().getId()})}">
-              <button class="view_repair_button">подробнее</button>
-            </a>
-          </td>
           <td th:text="${carRepair.getDamageInformation()}"></td>
           <td th:text="${carRepair.getRepairCost()}"></td>
+          <td th:text="${carRepair.getCarOrder().getId()}"></td>
+          <td>
+            <div class="profile_dropdown_menu">
+              <input class="profile_dropdown_menu_checkbox" th:id="${carRepair.getId()}"
+                     type="checkbox"/>
+              <label th:for="${carRepair.getId()}"> </label>
+              <div class="profile_dropdown_menu_content">
+                <ul>
+                  <li><a th:href="@{order/{id}/detail(id=${carRepair.getCarOrder().getId()})}">О
+                    заказе</a></li>
+                </ul>
+              </div>
+            </div>
+          </td>
         </tr>
       </table>
     </div>

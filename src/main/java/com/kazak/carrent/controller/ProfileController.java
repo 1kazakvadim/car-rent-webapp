@@ -49,7 +49,7 @@ public class ProfileController {
   }
 
   @GetMapping("/profile/information")
-  public String getInformationPage(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+  public String getInformation(Model model, @AuthenticationPrincipal UserDetails currentUser) {
     User user = userService.findByUsername(currentUser.getUsername());
     model.addAttribute("user", user);
     return "information";
@@ -177,6 +177,24 @@ public class ProfileController {
     List<CarRepair> carRepairs = carRepairService.getAll(currentUser);
     model.addAttribute("carRepairs", carRepairs);
     return "repair";
+  }
+
+  @GetMapping("/profile/order/{id}/repair")
+  public String getNewRepair(@PathVariable Integer id, Model model) {
+    CarOrder carOrder = carOrderService.findById(id);
+    model.addAttribute("carOrder", carOrder);
+    return "new_repair";
+  }
+
+  @PostMapping("/profile/order/{id}/repair")
+  public String saveNewRepair(@RequestParam("repairCost") Double repairCost,
+      @RequestParam("damageInformation") String damageInformation, @PathVariable Integer id) {
+    CarRepair carRepair = new CarRepair();
+    carRepair.setCarOrder(carOrderService.findById(id));
+    carRepair.setDamageInformation(damageInformation);
+    carRepair.setRepairCost(repairCost);
+    carRepairService.save(carRepair);
+    return "redirect:/profile/order";
   }
 
 

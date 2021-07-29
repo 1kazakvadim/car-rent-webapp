@@ -60,6 +60,15 @@
   visibility: hidden;
 }
 
+.profile_dropdown_content span {
+  font-family: 'Lato', sans-serif;
+  color: var(--gray);
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  /*text-decoration: none;*/
+  display: block;
+}
+
 .profile_dropdown_content a {
   font-family: 'Lato', sans-serif;
   color: var(--gray);
