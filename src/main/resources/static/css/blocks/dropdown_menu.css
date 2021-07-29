@@ -1,0 +1,123 @@
+.profile_dropdown_menu {
+  position: relative;
+}
+
+.profile_dropdown_menu_checkbox {
+  display: none;
+}
+
+.profile_dropdown_menu label {
+  width: 40px;
+  height: 35px;
+  display: flex;
+  transition: 0.2s linear;
+  position: relative;
+}
+
+.profile_dropdown_menu label:hover {
+  cursor: pointer;
+}
+
+.profile_dropdown_menu label:after {
+  margin-left: 9px;
+  position: absolute;
+  content: '';
+  background: rgba(94, 127, 220, 0.8);
+  width: 20px;
+  height: 2px;
+  box-shadow: 0 6px 0 rgba(94, 127, 220, 0.8);
+  top: 15px;
+}
+
+.profile_dropdown_menu label:before {
+  margin-left: 9px;
+  position: absolute;
+  content: '';
+  background: rgba(94, 127, 220, 0.8);
+  width: 20px;
+  height: 2px;
+  top: 9px;;
+  left: 0;
+}
+
+.profile_dropdown_menu label:active {
+  background: rgba(255, 255, 255, .6);
+}
+
+.profile_dropdown_menu_content {
+  position: absolute;
+  visibility: hidden;
+  z-index: 100;
+  background: white;
+  max-width: 12rem;
+  box-shadow: 0 8px 20px -10px rgba(0, 0, 0, .2);
+  overflow: hidden;
+  transition: opacity 0.2s linear;
+  opacity: 0;
+}
+
+.profile_dropdown_menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.profile_dropdown_menu ul > li {
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  border-left: 3px solid transparent;
+}
+
+.profile_dropdown_menu ul > li {
+  border-bottom: 1px solid rgba(0, 0, 0, .03500);
+}
+
+.profile_dropdown_menu ul > li:last-child {
+  border-bottom: 0;
+}
+
+.profile_dropdown_menu ul > li:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-left: 3px solid rgba(94, 127, 220, 0.8);
+}
+
+.profile_dropdown_menu ul > li:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.profile_dropdown_menu a {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  padding: 5px 14px;
+  display: block;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #6F6F6F;
+}
+
+.profile_dropdown_menu a:hover {
+  color: rgba(94, 127, 220, 0.8);
+}
+
+
+.profile_dropdown_menu input:checked ~ .profile_dropdown_menu_content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.profile_dropdown_menu input:checked ~ label {
+  background: rgba(94, 127, 220, 0.8);
+}
+
+.profile_dropdown_menu input:checked ~ label:after {
+  transform: rotate(45deg);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0);
+  top: 18px;
+  background: white;
+}
+
+.profile_dropdown_menu input:checked ~ label:before {
+  background: white;
+  top: 18px;
+  transform: rotate(-45deg);
+}
