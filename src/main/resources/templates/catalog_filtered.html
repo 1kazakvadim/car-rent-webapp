@@ -70,18 +70,18 @@
         </form>
       </div>
       <div class="catalog_content">
-        <div class="product_item" th:each="car : ${cars}">
+        <div class="product_item" th:each="carFiltered : ${carsFiltered}">
           <div class="product_wrap">
-            <img th:src="@{images/catalog_item_test.jpg}">
+            <img th:src="@{~/images/catalog_item_test.jpg}">
             <div class="product_item_actions">
-              <a th:href="@{/catalog/{id}/product/(id=${car.getId()})}" class="quick_view"></a>
+              <a th:href="@{/catalog/{id}/product/(id=${carFiltered.getId()})}" class="quick_view"></a>
             </div>
           </div>
           <div class="product_item_info">
             <h3 class="product_item_title"
-                th:text="${car.getCarBrand().getName()} + ' ' + ${car.getModel()}">
+                th:text="${carFiltered.getCarBrand().getName()} + ' ' + ${carFiltered.getModel()}">
             </h3>
-            <span class="product_item_price" th:text="${car.getRentalCost()}">rental_cost</span>
+            <span class="product_item_price" th:text="${carFiltered.getRentalCost()}">rental_cost</span>
           </div>
         </div>
       </div>

@@ -5,6 +5,8 @@ import java.util.List;
 
 public interface CarBrandService {
 
+  CarBrand findByName(String carBrandName);
+
   List<CarBrand> getAll();
 
 }

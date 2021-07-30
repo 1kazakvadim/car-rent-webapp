@@ -17,6 +17,11 @@ public class CarBodyServiceImpl implements CarBodyService {
   }
 
   @Override
+  public CarBody findByName(String carBodyName) {
+    return carBodyRepository.findByName(carBodyName);
+  }
+
+  @Override
   public List<CarBody> getAll() {
     return carBodyRepository.findAll();
   }

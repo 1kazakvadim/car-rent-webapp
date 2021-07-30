@@ -18,6 +18,7 @@ import com.kazak.carrent.service.UserService;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -71,6 +72,30 @@ public class CatalogController {
     return "catalog";
   }
 
+  @PostMapping("/catalog/filtered")
+  public String filter(@RequestParam(required = false) List<String> carBrandsFiltered,
+      @RequestParam(required = false) List<String> carModelsFiltered,
+      @RequestParam(required = false) List<String> carBodiesFiltered,
+      @RequestParam(required = false) List<String> carClassesFiltered,
+      @RequestParam(required = false) String carTransmissionsFiltered,
+      Model model) {
+
+    model = carService.getFilteredCarList(carBrandsFiltered, carModelsFiltered, carBodiesFiltered,
+        carClassesFiltered, carTransmissionsFiltered, model);
+
+    List<Car> cars = carService.getAll();
+    List<CarBody> carBodies = carBodyService.getAll();
+    List<CarClass> carClasses = carClassService.getAll();
+    List<CarBrand> carBrands = carBrandService.getAll();
+    List<CarTransmission> carTransmissions = carTransmissionService.getAll();
+    model.addAttribute("cars", cars);
+    model.addAttribute("carBodies", carBodies);
+    model.addAttribute("carClasses", carClasses);
+    model.addAttribute("carBrands", carBrands);
+    model.addAttribute("carTransmissions", carTransmissions);
+    return "catalog_filtered";
+  }
+
   @GetMapping("/catalog/{id}/product")
   public String getCar(@PathVariable Integer id, Model model) {
     Car car = carService.findById(id);
@@ -90,6 +115,5 @@ public class CatalogController {
     carOrderService.save(carOrder, carId, currentUser);
     return "redirect:/profile/order";
   }
-
 
 }

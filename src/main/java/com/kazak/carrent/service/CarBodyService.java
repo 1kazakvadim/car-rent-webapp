@@ -5,6 +5,8 @@ import java.util.List;
 
 public interface CarBodyService {
 
+  CarBody findByName(String carBodyName);
+
   List<CarBody> getAll();
 
 }

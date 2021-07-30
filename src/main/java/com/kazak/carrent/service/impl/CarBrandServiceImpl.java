@@ -16,7 +16,13 @@ public class CarBrandServiceImpl implements CarBrandService {
   }
 
   @Override
+  public CarBrand findByName(String carBrandName) {
+    return carBrandRepository.findByName(carBrandName);
+  }
+
+  @Override
   public List<CarBrand> getAll() {
     return carBrandRepository.findAll();
   }
+
 }
