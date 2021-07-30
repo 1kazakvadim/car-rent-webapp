@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="detail">
+  <div class="container">
+    <div class="detail_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <table class="detail_table">
+        <caption class="detail_table_caption">Автомобиль</caption>
+        <tr class="detail_column_caption">
+          <td>Марка</td>
+          <td th:text="${car.getCarBrand().getName()}">car_brand</td>
+        </tr>
+        <tr class="detail_column_caption">
+          <td>Модель</td>
+          <td th:text="${car.getModel()}">car_model</td>
+        </tr>
+        <tr class="detail_column_caption">
+          <td>Тип кузова</td>
+          <td th:text="${car.getCarBody().getName()}">car_body</td>
+        </tr>
+        <tr class="detail_column_caption">
+          <td>Цвет</td>
+          <td th:text="${car.getColor()}">car_color</td>
+        </tr>
+        <tr class="detail_column_caption">
+          <td>Класс автомобиля</td>
+          <td th:text="${car.getCarClass().getName()}">car_class</td>
+        </tr>
+        <tr class="detail_column_caption">
+          <td>Коробка передач</td>
+          <td th:text="${car.getCarTransmission().getName()}">car_transmission</td>
+        </tr>
+        <tr class="detail_column_caption">
+          <td>Тип двигателя</td>
+          <td th:text="${car.getEngineType().getName()}">engine_type</td>
+        </tr>
+        <tr class="detail_column_caption">
+          <td>Объем двигателя</td>
+          <td th:text="${car.getEngineVolume()}">engine_volume</td>
+        </tr>
+        <tr class="detail_column_caption">
+          <td>Количество сидений</td>
+          <td th:text="${car.getNumberOfSeats()}">number_of_seats</td>
+        </tr>
+        <tr class="detail_column_caption">
+          <td>Расход топлива</td>
+          <td th:text="${car.getFuelConsumption()}">fuel_consumption</td>
+        </tr>
+        <tr class="detail_column_caption">
+          <td>Стоимость аренды</td>
+          <td th:text="${car.getRentalCost()}">rental_cost</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

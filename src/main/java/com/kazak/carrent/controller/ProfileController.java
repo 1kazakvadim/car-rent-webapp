@@ -2,12 +2,14 @@ package com.kazak.carrent.controller;
 
 import com.kazak.carrent.dto.PassportDataPostDto;
 import com.kazak.carrent.dto.UserPostDto;
+import com.kazak.carrent.model.entity.Car;
 import com.kazak.carrent.model.entity.CarOrder;
 import com.kazak.carrent.model.entity.CarRepair;
 import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.service.CarOrderService;
 import com.kazak.carrent.service.CarRepairService;
+import com.kazak.carrent.service.CarService;
 import com.kazak.carrent.service.PassportDataService;
 import com.kazak.carrent.service.UserRoleService;
 import com.kazak.carrent.service.UserService;
@@ -27,16 +29,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProfileController {
 
   private final UserService userService;
+  private final CarService carService;
   private final CarOrderService carOrderService;
   private final UserRoleService userRoleService;
   private final PassportDataService passportDataService;
   private final CarRepairService carRepairService;
 
   public ProfileController(UserService userService,
-      CarOrderService carOrderService, UserRoleService userRoleService,
+      CarService carService, CarOrderService carOrderService,
+      UserRoleService userRoleService,
       PassportDataService passportDataService,
       CarRepairService carRepairService) {
     this.userService = userService;
+    this.carService = carService;
     this.carOrderService = carOrderService;
     this.userRoleService = userRoleService;
     this.passportDataService = passportDataService;
@@ -195,6 +200,27 @@ public class ProfileController {
     carRepair.setRepairCost(repairCost);
     carRepairService.save(carRepair);
     return "redirect:/profile/order";
+  }
+
+  @GetMapping("/profile/car")
+  public String getAllCar(Model model) {
+    List<Car> cars = carService.getAll();
+    model.addAttribute("cars", cars);
+    return "car_list";
+  }
+
+  @GetMapping("/profile/car/{id}/detail")
+  public String getCarDetail(@PathVariable Integer id, Model model) {
+    Car car = carService.findById(id);
+    model.addAttribute("car", car);
+    return "car_detail";
+  }
+
+  @GetMapping("/profile/car/{id}/edit")
+  public String getEditCar(@PathVariable Integer id, Model model){
+    Car car = carService.findById(id);
+    model.addAttribute("car", car);
+    return "car_edit";
   }
 
 
