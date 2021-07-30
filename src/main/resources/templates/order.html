@@ -22,7 +22,7 @@
           <td>Автомобиль</td>
           <td>Дата выдачи</td>
           <td>Дата возврата</td>
-          <td>Состояние отмены</td>
+          <td>Состояние заказа</td>
           <td>Стоимость</td>
         </tr>
         <tr th:each="carOrder : ${carOrders}">
@@ -34,7 +34,8 @@
           + ${carOrder.getCar().getModel()}"></td>
           <td th:text="${carOrder.getDateOfIssue()}"></td>
           <td th:text="${carOrder.getDateOfReturn()}"></td>
-          <td th:text="${carOrder.isCancellation()}"></td>
+          <td th:if="${carOrder.isCancellation() == false}">Активен</td>
+          <td th:unless="${carOrder.isCancellation() == false}">Отменен</td>
           <td th:text="${carOrder.getRentalCost()}"></td>
           <td>
             <div class="profile_dropdown_menu">

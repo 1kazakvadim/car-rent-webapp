@@ -20,6 +20,13 @@
 }
 
 @font-face {
+    font-family: "Arimo";
+    src: url("../../fonts/Arimo-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
     font-family: "Lato";
     src: url("../../fonts/Lato-Light.ttf") format("truetype");
     font-style: normal;

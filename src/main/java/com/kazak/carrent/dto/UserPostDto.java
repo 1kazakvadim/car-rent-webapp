@@ -13,7 +13,6 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 public class UserPostDto {
 
   private Integer id;

@@ -11,7 +11,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
-@ToString
 public class PassportDataPostDto {
 
   private Integer id;

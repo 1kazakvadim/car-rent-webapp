@@ -1,0 +1,66 @@
+.profile_user_nav {
+  margin-top: 2rem;
+}
+
+.profile_user_nav ul {
+  font-size: 1.4rem;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.profile_user_nav a {
+  text-decoration: none;
+}
+
+.profile_user_nav_content li {
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.profile_user_nav_content li:last-child {
+  margin-bottom: 0;
+}
+
+.profile_user_nav_content li::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: -1rem;
+  width: 0.25rem;
+  height: 100%;
+  background: var(--menu-link-active-color);
+  transition: 0.6s;
+}
+
+.profile_user_nav_content li a {
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  background: linear-gradient(var(--menu-link-active-color) 0 100%) left / 0 no-repeat;
+  color: var(--gray);;
+  -webkit-background-clip: text;
+  transition: background-size 0.35s 0.02s;
+}
+
+.profile_user_nav_content li a::before {
+  position: absolute;
+  content: attr(data-text);
+  z-index: -1;
+  color: var(--menu-link-color);
+}
+
+.profile_user_nav_content li {
+  --menu-link-active-color: rgb(255, 170, 0);
+}
+
+.profile_user_nav_content li:hover::before {
+  left: calc(100% + 1rem);
+}
+
+.profile_user_nav_content li:hover a {
+  color: var(--menu-link-active-color);
+  background-size: 100%;
+}

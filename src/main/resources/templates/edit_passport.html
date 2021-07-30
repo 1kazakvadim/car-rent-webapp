@@ -55,9 +55,16 @@
               <td th:text="${passportData.getSex()}"></td>
               <td>
                 <p class="registration_error_text" th:if="${#fields.hasErrors('passportData.sex')}"
-                   th:errors="*{passportData.sex}">
-                  sex error</p>
-                <input type="text" name="sex" th:field="${passportData.sex}"></td>
+                   th:errors="*{passportData.sex}">sex error</p>
+                <label>
+                  <input type="radio" name="sex" value="male" th:field="*{passportData.sex}">
+                  <span>мужской</span>
+                </label>
+                <label>
+                  <input type="radio" name="sex" value="female" th:field="*{passportData.sex}">
+                  <span>женский</span>
+                </label>
+              </td>
             </tr>
             <tr class="edit_column_caption">
               <td>Дата рождения</td>

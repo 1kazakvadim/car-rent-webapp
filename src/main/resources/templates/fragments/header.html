@@ -37,7 +37,10 @@
               </a>
               <div class="profile_dropdown_content">
                 <span sec:authentication="name" sec:authorize="isAuthenticated()">Bob</span>
-                <a th:href="@{~/profile}">Мой профиль</a>
+                <a th:href="@{~/profile/information}">Мой профиль</a>
+                <form th:action="@{~/registration}" sec:authorize="isAuthenticated() == false" method="get">
+                  <button type="submit">Регистрация</button>
+                </form>
                 <form th:action="@{~/login}" sec:authorize="isAuthenticated() == false" method="get">
                   <button type="submit">Войти</button>
                 </form>
