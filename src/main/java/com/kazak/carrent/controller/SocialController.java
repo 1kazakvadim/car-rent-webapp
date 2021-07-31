@@ -35,5 +35,4 @@ public class SocialController {
     return redirectView;
   }
 
-
 }

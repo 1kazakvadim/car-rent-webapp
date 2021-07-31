@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LogoutController {
 
   @GetMapping("/logout")
-  public String logoutPage() {
+  public String logout() {
     return "index";
   }
 

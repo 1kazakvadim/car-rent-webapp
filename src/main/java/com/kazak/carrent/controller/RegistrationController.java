@@ -20,13 +20,13 @@ public class RegistrationController {
   }
 
   @GetMapping("/registration")
-  public String registrationPage(@ModelAttribute("user") User user,
+  public String getRegistrationPage(@ModelAttribute("user") User user,
       @ModelAttribute("passportData") PassportData passportData) {
     return "registration";
   }
 
   @PostMapping("/registration")
-  public String registrationUser(@Valid User user, BindingResult bindingResultUser,
+  public String registerUser(@Valid User user, BindingResult bindingResultUser,
       @Valid PassportData passportData, BindingResult bindingResultPassportData) {
     if (bindingResultUser.hasErrors() || bindingResultPassportData.hasErrors()) {
       return "registration";
@@ -35,6 +35,5 @@ public class RegistrationController {
     userService.save(user);
     return "login";
   }
-
 
 }
