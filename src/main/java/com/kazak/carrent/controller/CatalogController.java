@@ -6,8 +6,6 @@ import com.kazak.carrent.model.entity.CarBrand;
 import com.kazak.carrent.model.entity.CarClass;
 import com.kazak.carrent.model.entity.CarOrder;
 import com.kazak.carrent.model.entity.CarTransmission;
-import com.kazak.carrent.model.entity.User;
-import com.kazak.carrent.model.entity.UserPrincipal;
 import com.kazak.carrent.service.CarBodyService;
 import com.kazak.carrent.service.CarBrandService;
 import com.kazak.carrent.service.CarClassService;
@@ -15,10 +13,6 @@ import com.kazak.carrent.service.CarOrderService;
 import com.kazak.carrent.service.CarService;
 import com.kazak.carrent.service.CarTransmissionService;
 import com.kazak.carrent.service.UserService;
-import java.security.Principal;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,10 +21,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -58,7 +50,7 @@ public class CatalogController {
   }
 
   @GetMapping("/catalog")
-  public String catalogPage(Model model) {
+  public String getCatalogPage(Model model) {
     List<Car> cars = carService.getAll();
     List<CarBody> carBodies = carBodyService.getAll();
     List<CarClass> carClasses = carClassService.getAll();
@@ -73,7 +65,8 @@ public class CatalogController {
   }
 
   @PostMapping("/catalog/filtered")
-  public String filter(@RequestParam(required = false) List<String> carBrandsFiltered,
+  public String getFilteredCatalogPage(
+      @RequestParam(required = false) List<String> carBrandsFiltered,
       @RequestParam(required = false) List<String> carModelsFiltered,
       @RequestParam(required = false) List<String> carBodiesFiltered,
       @RequestParam(required = false) List<String> carClassesFiltered,
@@ -96,23 +89,23 @@ public class CatalogController {
     return "catalog_filtered";
   }
 
-  @GetMapping("/catalog/{id}/product")
-  public String getCar(@PathVariable Integer id, Model model) {
-    Car car = carService.findById(id);
+  @GetMapping("/catalog/{carId}/detail")
+  public String getCar(@PathVariable Integer carId, Model model) {
+    Car car = carService.findById(carId);
     model.addAttribute("car", car);
-    return "product";
+    return "catalog_detail";
   }
 
-  @PostMapping("/catalog/product")
-  public String bookCar(
+  @PostMapping("/catalog/{carId}/detail/")
+  public String bookCar(@AuthenticationPrincipal UserDetails currentUser,
+      @PathVariable Integer carId,
       @RequestParam("dateOfIssue") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateOfIssue,
       @RequestParam("dateOfReturn") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateOfReturn,
-      @RequestParam("carId") Integer carId,
-      CarOrder carOrder, @AuthenticationPrincipal UserDetails currentUser) {
+      @RequestParam("carDetailId") Integer carDetailId, CarOrder carOrder) {
     if (currentUser == null) {
       return "redirect:/login";
     }
-    carOrderService.save(carOrder, carId, currentUser);
+    carOrderService.save(carOrder, carDetailId, currentUser);
     return "redirect:/profile/order";
   }
 

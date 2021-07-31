@@ -1,17 +1,17 @@
-.product {
+.catalog_detail {
   margin-bottom: 12rem;
 }
 
-.product_inner {
+.catalog_detail_inner {
   display: flex;
 }
 
-.product_slider {
+.catalog_detail_slider {
   position: relative;
   width: 60%;
 }
 
-.product_slider_text {
+.catalog_detail_slider_text {
   color: var(--black);
   font-size: 1rem;
   padding: 0.5rem 1rem;
@@ -19,21 +19,21 @@
   top: 0;
 }
 
-.product_slider_big_img {
+.catalog_detail_slider_big_img {
   width: 100%;
   height: 38rem;
 }
 
-.product_slider_small_img {
+.catalog_detail_slider_small_img {
   width: 100%;
   height: 6rem;
 }
 
-.product_slider_small_img {
+.catalog_detail_slider_small_img {
   opacity: 0.6;
 }
 
-.product_slider_small_img:hover {
+.catalog_detail_slider_small_img:hover {
   cursor: pointer;
 }
 
@@ -63,29 +63,29 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.product_slider_row:after {
+.catalog_detail_slider_row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.product_slider_column {
+.catalog_detail_slider_column {
   float: left;
   width: 16.66%;
 }
 
 .active,
-.product_slider_small_img:hover {
+.catalog_detail_slider_small_img:hover {
   opacity: 1;
 }
 
-.product_table {
+.catalog_detail_table {
   font-family: 'Lato', sans-serif;
   border-collapse: collapse;
   margin-left: 3rem;
 }
 
-.product_table_caption {
+.catalog_detail_table_caption {
   padding: 0.5rem;
   color: var(--white);
   background: var(--brown);
@@ -93,34 +93,37 @@
   text-align: center;
   font-weight: bold;
 }
+.catalog_detail_table_caption:first-letter{
+  text-transform: uppercase;
+}
 
-.product_table tr {
+.catalog_detail_table tr {
   color: #444444;
 }
 
-.product_table td {
+.catalog_detail_table td {
   padding: 0.5rem;
   text-align: left;
   text-transform: uppercase;
 }
 
-.product_table tr:nth-child(odd) {
+.catalog_detail_table tr:nth-child(odd) {
   background: var(--white);
 }
 
-.product_table tr:nth-child(even) {
+.catalog_detail_table tr:nth-child(even) {
   background: #E8E6D1;
 }
 
-.product_table tr:last-child {
+.catalog_detail_table tr:last-child {
   background-color: var(--white);
 }
 
-.product_table td:last-child {
+.catalog_detail_table td:last-child {
   display: block;
 }
 
-.product_submit {
+.catalog_detail_submit {
   width: 100%;
   margin: 1rem;
   font-size: 1rem;
@@ -131,9 +134,10 @@
   cursor: pointer;
   font-weight: bold;
   padding: 0.8rem 0.8rem;
+  text-transform: uppercase;
 }
 
-.product_submit:hover {
+.catalog_detail_submit:hover {
   background-color: rgba(90, 39, 6, 0.8);
   transition: all 0.2s linear;
 }

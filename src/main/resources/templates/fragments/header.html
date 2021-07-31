@@ -4,10 +4,10 @@
   <header class="header">
     <div class="container">
       <div class="lang">
-        <a href="#">
+        <a href="/?lang=ru">
           <img th:src="@{~/images/russia_flag.png}" alt=""/>
         </a>
-        <a href="">
+        <a href="/?lang=en">
           <img th:src="@{~/images/unitedstates_flag.png}" alt=""/>
         </a>
       </div>
@@ -19,34 +19,31 @@
         </div>
         <div class="nav">
           <div class="nav_item">
-            <a class="nav_link" th:href="@{~/index}">Главная</a>
+            <a class="nav_link" th:text="#{main}" th:href="@{~/index}">Главная</a>
           </div>
           <div class="nav_item">
-            <a class="nav_link" th:href="@{~/catalog}">Каталог</a>
+            <a class="nav_link" th:text="#{catalog}" th:href="@{~/catalog}">Каталог</a>
           </div>
           <div class="nav_item">
-            <a class="nav_link" th:href="@{~/condition}">Условия проката</a>
+            <a class="nav_link" th:text="#{rentalConditions}" th:href="@{~/condition}">Условия
+              проката</a>
           </div>
           <div class="nav_item">
-            <a class="nav_link" th:href="@{~/contact}">Контакты</a>
+            <a class="nav_link" th:text="#{contacts}" th:href="@{~/contact}">Контакты</a>
           </div>
           <div class="nav_item">
             <div class="profile_dropdown">
               <a class="profile_link" th:href="@{~/profile}">
-                <img class="profile_img" th:src="@{~/images/profile.svg}" alt=""/>
+                <img class="profile_img" th:src="@{~/images/profile.svg}"/>
               </a>
               <div class="profile_dropdown_content">
-                <span sec:authentication="name" sec:authorize="isAuthenticated()">Bob</span>
-                <a th:href="@{~/profile/information}">Мой профиль</a>
-                <form th:action="@{~/registration}" sec:authorize="isAuthenticated() == false" method="get">
-                  <button type="submit">Регистрация</button>
-                </form>
-                <form th:action="@{~/login}" sec:authorize="isAuthenticated() == false" method="get">
-                  <button type="submit">Войти</button>
-                </form>
-                <form th:action="@{~/logout}" sec:authorize="isAuthenticated()" method="post">
-                  <button type="submit">Выйти</button>
-                </form>
+                <span sec:authentication="name" sec:authorize="isAuthenticated()"></span>
+                <a th:text="#{myProfile}" th:href="@{~/profile/information}">Мой профиль</a>
+                <a th:text="#{registration}" th:href="@{~/registration}"
+                   sec:authorize="isAuthenticated() == false">Регистрация</a>
+                <a th:text="#{signIn}" th:href="@{~/login}"
+                   sec:authorize="isAuthenticated() == false">Войти</a>
+                <a th:text="#{signOut}" th:href="@{~/logout}" sec:authorize="isAuthenticated()">Выйти</a>
               </div>
             </div>
           </div>

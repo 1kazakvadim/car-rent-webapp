@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -19,7 +18,8 @@
         <input type="text" id="login" th:field="*{user.username}" required>
       </div>
       <div class="registration_item">
-        <p class="registration_error_text" th:if="${#fields.hasErrors('user.email')}" th:errors="*{user.email}">
+        <p class="registration_error_text" th:if="${#fields.hasErrors('user.email')}"
+           th:errors="*{user.email}">
           email error</p>
         <label for="email">Электронная почта</label>
         <input type="email" id="email" th:field="*{user.email}" required>
@@ -98,14 +98,16 @@
         <input type="text" id="address" th:field="*{passportData.placeOfBirth}" required>
       </div>
       <div class="registration_item">
-        <p class="registration_error_text" th:if="${#fields.hasErrors('passportData.passportNumber')}"
+        <p class="registration_error_text"
+           th:if="${#fields.hasErrors('passportData.passportNumber')}"
            th:errors="*{passportData.passportNumber}">
           passport number error</p>
         <label for="passport_number">Номер паспорта</label>
         <input type="text" id="passport_number" th:field="*{passportData.passportNumber}" required>
       </div>
       <div class="registration_item">
-        <p class="registration_error_text" th:if="${#fields.hasErrors('passportData.identificationNumber')}"
+        <p class="registration_error_text"
+           th:if="${#fields.hasErrors('passportData.identificationNumber')}"
            th:errors="*{passportData.identificationNumber}">
           identification number error</p>
         <label for="identification_number">Идентификационный номер</label>
@@ -137,7 +139,8 @@
         <label for="nationality">Гражданство</label>
         <input type="text" id="nationality" th:field="*{passportData.nationality}" required>
       </div>
-      <button class="registration_submit" type="submit">Отправить</button>
+      <button class="registration_submit" type="submit" th:text="#{registration}">Регистрация
+      </button>
     </form>
   </div>
 </div>

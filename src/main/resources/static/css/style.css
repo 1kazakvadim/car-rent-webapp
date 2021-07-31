@@ -10,7 +10,7 @@
 @import "blocks/login.css";
 @import "blocks/registration.css";
 @import "blocks/catalog.css";
-@import "blocks/product.css";
+@import "blocks/catalog_detail.css";
 @import "blocks/profile.css";
 @import "blocks/user.css";
 @import "blocks/passport.css";

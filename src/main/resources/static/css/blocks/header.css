@@ -65,7 +65,6 @@
   color: var(--gray);
   font-size: 1rem;
   padding: 0.6rem 1rem;
-  /*text-decoration: none;*/
   display: block;
 }
 
@@ -78,9 +77,12 @@
   display: block;
 }
 
+.profile_dropdown_content a:first-letter{
+  text-transform: uppercase;
+}
+
 .profile_dropdown_content a:hover {
   background-color: #dddddd;
-
 }
 
 .profile_dropdown:hover .profile_dropdown_content {
@@ -88,7 +90,6 @@
   visibility: visible;
   transition: 0.8s;
 }
-
 
 .profile_dropdown:hover {
   cursor: pointer;

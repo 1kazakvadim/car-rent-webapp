@@ -22,8 +22,13 @@
   border-bottom: none;
 }
 
-.error_text {
+#error_text {
   margin-bottom: 1rem;
+  color: #e2084d;
+}
+
+#error_text:first-letter{
+  text-transform: uppercase;
 }
 
 .authorization_title {
@@ -63,6 +68,7 @@
   cursor: pointer;
   font-weight: bold;
   padding: 0.8rem 0.8rem;
+  text-transform: uppercase;
 }
 
 .authorization_submit:hover {
@@ -78,11 +84,19 @@
   padding: 1rem 1rem 0 0;
 }
 
+.footer_title:first-letter{
+  text-transform: uppercase;
+}
+
 .footer_link {
   color: rgba(154, 35, 15, 1);
   margin-left: 0.3rem;
   text-decoration: none;
   cursor: pointer;
+}
+
+.footer_link:first-letter{
+  text-transform: uppercase;
 }
 
 .footer_link:hover {

@@ -1,40 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <title>Car-Rent</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
 </head>
 <body>
 <div th:replace="fragments/header"></div>
 <div class="contact">
-    <div class="container">
-        <div class="contact_inner">
-            <img class="contact_img" th:src="@{/images/contacts.jpg}" alt="">
-            <div class="contact_content">
-                <h2 class="contact_title">Контакты</h2>
-                <div class="contact_text">
-                    <p>Прием звонков: круглосуточно (без выходных)</p>
-                    <h3>Адрес:</h3>
-                    <p>224000, Беларусь г. Город, ул. Городская, 1</p>
-                    <h3>Телефоны:</h3>
-                    <ul>
-                        <li>+375291111111</li>
-                        <li>+375441111111</li>
-                        <li>+375331111111</li>
-                    </ul>
-                    <h3>Электронная почта:</h3>
-                    <p>test@test.test</p>
-                </div>
-                <div class="contact_map">
-                    <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d4903.020666542905!2d23.6954786!3d52.0886432!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sby!4v1621254165456!5m2!1sru!2sby"
-                    ></iframe>
-                </div>
-            </div>
+  <div class="container">
+    <div class="contact_inner">
+      <img class="contact_img" th:src="@{/images/contacts.jpg}" alt="">
+      <div class="contact_content">
+        <h2 class="contact_title" th:text="#{contacts}">Контакты</h2>
+        <div class="contact_text">
+          <p th:text="#{contact.receivingCalls}">Прием звонков: круглосуточно (без выходных)</p>
+          <h3 th:text="#{contact.address}">Адрес</h3>
+          <p th:text="#{contact.locationAddress}">224000, Беларусь г. Брест, ул. Московская, 1</p>
+          <h3 th:text="#{contact.phoneNumber}">Номер телефона</h3>
+          <ul>
+            <li>+375291111111</li>
+            <li>+375441111111</li>
+            <li>+375331111111</li>
+          </ul>
+          <h3 th:text="#{contact.email}">Электронная почта</h3>
+          <p>car.rent@gmail.com</p>
         </div>
+        <div class="contact_map">
+          <iframe
+              src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d4903.020666542905!2d23.6954786!3d52.0886432!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sby!4v1621254165456!5m2!1sru!2sby"
+          ></iframe>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <div th:replace="fragments/footer"></div>
 </body>

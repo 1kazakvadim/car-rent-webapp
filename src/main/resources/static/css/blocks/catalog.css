@@ -111,7 +111,7 @@
   color: #444444;
 }
 
-.filer_submit {
+.filter_submit {
   margin: 1rem;
   font-size: 1rem;
   border: 0.1rem solid black;
@@ -121,9 +121,10 @@
   cursor: pointer;
   font-weight: bold;
   padding: 0.8rem 0.8rem;
+  text-transform: uppercase;
 }
 
-.filer_submit:hover {
+.filter_submit:hover {
   background-color: rgba(94, 127, 220, 0.8);
   transition: all 0.2s linear;
 }
@@ -187,6 +188,10 @@
 .quick_view:before {
   content: "Просмотр";
 }
+
+/*.quick_view:lang(en):before {*/
+/*  content: "View";*/
+/*}*/
 
 .product_item_info {
   padding-bottom: 0.5rem;

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -11,29 +10,29 @@
 <div class="condition">
   <div class="container">
     <div class="condition_inner">
-      <img class="condition_img" th:src="@{images/condition.jpg}" alt="">
+      <img class="condition_img" th:src="@{images/condition.jpg}">
       <div class="condition_content">
-        <h2 class="condition_title">Требования и условия проката автомобилей</h2>
+        <h2 class="condition_title" th:text="#{rentalConditions}">Условия проката</h2>
         <div class="condition_text">
-          <p>На этой странице Вы найдёте основные пункты, которые входят в договор аренды
+          <p th:text="#{condition.mainPoints}">На этой странице Вы найдёте основные пункты, которые
+            входят в договор аренды
             автомобиля.</p>
-          <h3>Необходимые документы/требования</h3>
+          <h3 th:text="#{condition.requirements}">Необходимые документы/требования</h3>
           <ol>
-            <li>Возраст не менее 19 лет;</li>
-            <li>Стаж не менее 1 года;</li>
-            <li>Паспорт;</li>
-            <li>Водительское удостоверение.</li>
+            <li th:text="#{condition.requirementsAge}">Возраст не менее 19 лет;</li>
+            <li th:text="#{condition.requirementsExperience}">Стаж не менее 1 года;</li>
+            <li th:text="#{condition.requirementsPassport}">Паспорт;</li>
+            <li th:text="#{condition.requirementsDriverLicense}">Водительское удостоверение.</li>
           </ol>
-          <h3> Способы оплаты</h3>
+          <h3 th:text="#{condition.payment}"> Способы оплаты</h3>
           <ul>
-            <li>Наличный;</li>
-            <li>Безналичный;</li>
+            <li th:text="#{condition.paymentCash}">Наличный;</li>
+            <li th:text="#{condition.paymentNonCash}">Безналичный;</li>
           </ul>
-          <h3>Территория эксплуатации</h3>
-          Все автомобили имеют возможность выезда за границу (всю дополнительную информацию можно
-          уточнить у
-          менеджера).
-          <h3>Действия в случае ДТП</h3>
+          <h3 th:text="#{condition.territoryOfOperation}">Территория эксплуатации</h3>
+          <p th:text="#{condition.territoryOfOperationRequirement}">Все автомобили имеют возможность выезда за границу (всю дополнительную информацию можно
+            уточнить у менеджера).</p>
+          <h3 th:text="#{condition.actionsInAccident}">Действия в случае ДТП</h3>
           <p>По факту наступления дорожно-транспортного происшествия (аварии, повреждения
             автомобиля,
             независимо от причины, нанесения физического или материального урона каким-либо лицам

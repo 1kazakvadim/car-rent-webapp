@@ -49,8 +49,8 @@ public class CarOrderServiceImpl implements CarOrderService {
 
   @Override
   @Transactional
-  public CarOrder save(CarOrder carOrder, Integer carId, UserDetails currentUser) {
-    Car car = carRepository.getById(carId);
+  public CarOrder save(CarOrder carOrder, Integer carDetailId, UserDetails currentUser) {
+    Car car = carRepository.getById(carDetailId);
     carOrder.setUser(userRepository.findByUsername(currentUser.getUsername()));
     carOrder.setCar(car);
     carOrder.setRentalCost(Math.abs(car.getRentalCost() * carOrder.getDateOfIssue()

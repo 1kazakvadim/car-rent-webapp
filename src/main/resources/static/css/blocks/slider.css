@@ -56,6 +56,7 @@
   font-size: 1.2rem;
   color: var(--white-dirty);
   font-weight: 300;
+  text-transform: uppercase;
 }
 
 .slider_previous, .slider .slider_next {

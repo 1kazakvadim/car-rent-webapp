@@ -19,10 +19,11 @@
         </div>
       </div>
       <div class="footer_nav">
-        <a class="footer_nav_link" th:href="@{~/index}">Главная</a>
-        <a class="footer_nav_link" th:href="@{~/catalog}">Каталог</a>
-        <a class="footer_nav_link" th:href="@{~/condition}">Условия проката</a>
-        <a class="footer_nav_link" th:href="@{~/contact}">Контакты</a>
+        <a class="footer_nav_link" th:text="#{main}" th:href="@{~/index}">Главная</a>
+        <a class="footer_nav_link" th:text="#{catalog}" th:href="@{~/catalog}">Каталог</a>
+        <a class="footer_nav_link" th:text="#{rentalConditions}" th:href="@{~/condition}">Условия
+          проката</a>
+        <a class="footer_nav_link" th:text="#{contacts}" th:href="@{~/contact}">Контакты</a>
       </div>
     </div>
   </footer>

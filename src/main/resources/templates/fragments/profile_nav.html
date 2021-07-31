@@ -3,14 +3,15 @@
           th:fragment="profile_nav">
   <div class="profile_user_nav">
     <ul class="profile_user_nav_content">
-      <li><a th:href="@{/profile/information}">Личная информация</a>
+      <li><a th:text="#{personalInformation}" th:href="@{/profile/information}">Личная
+        информация</a>
       </li>
-      <li><a th:href="@{/profile/car}">Каталог</a></li>
-      <li><a th:href="@{/profile/order}">Заказы</a></li>
-      <li><a th:href="@{/profile/repair}">Ремонты</a></li>
-      <li><a href="#">Настройки</a></li>
-      <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a
-          th:href="@{/profile/user}">Пользователи</a>
+      <li><a th:text="#{catalog}" th:href="@{/profile/car}">Каталог</a></li>
+      <li><a th:text="#{orders}" th:href="@{/profile/order}">Заказы</a></li>
+      <li><a th:text="#{repairs}" th:href="@{/profile/repair}">Ремонты</a></li>
+      <li><a th:text="#{settings}" href="#">Настройки</a></li>
+      <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{users}"
+           th:href="@{/profile/user}">Пользователи</a>
       </li>
     </ul>
   </div>

@@ -1,5 +1,4 @@
 .footer {
-  /*padding: 1rem;*/
   background-color: var(--white);
   width: 100%;
   max-width: 75rem;
@@ -57,10 +56,10 @@
   text-decoration: none;
 }
 
+.footer_nav_link:first-letter{
+  text-transform: uppercase;
+}
+
 .footer_nav_link:hover {
   color: var(--red);
 }
-
-/*.footer_nav_link:after{*/
-/*    border-color: aqua;*/
-/*}*/

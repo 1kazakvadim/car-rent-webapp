@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -12,30 +11,25 @@
   <div class="container">
     <div class="authorization_inner">
       <div class="authorization_header">
-        <h1 class="authorization_title">АВТОРИЗАЦИЯ</h1>
+        <h1 class="authorization_title" th:text="#{authorization}">АВТОРИЗАЦИЯ</h1>
       </div>
-      <form name="f" class="authorization_form" th:action="@{/login}" method="post">
+      <form class="authorization_form" th:action="@{/login}" method="post">
         <fieldset class="authorization_fieldset">
-          <div style="color: red" th:if="${param.error}" class="alert alert-error">
-            <p class="error_text">
-              invalid username and password
-            </p>
-          </div>
-          <div style="color: aqua" th:if="${param.logout}" class="alert alert-success">
-            you have been logged out
+          <div th:if="${param.error}" class="alert alert-error">
+            <p id="error_text" th:text="#{invalidLoginOrUsername}"></p>
           </div>
           <input class="authorization_login" type="text" id="username" name="username"
-                 placeholder="Логин"/>
+                 th:placeholder="#{login}"/>
           <input class="authorization_password" type="password" id="password" name="password"
-                 placeholder="Пароль"/>
+                 th:placeholder="#{password}"/>
           <div class="form-actions">
             <button type="submit" class="authorization_submit btn">
-              <span>ВОЙТИ</span>
+              <span th:text="#{signIn}">ВОЙТИ</span>
             </button>
           </div>
           <div class="authorization_footer">
-            <p class="footer_title">Нет аккаунта?</p>
-            <a class="footer_link" th:href="@{registration}">Регистрация</a>
+            <p class="footer_title" th:text="#{noAccount}">Нет аккаунта?</p>
+            <a class="footer_link" th:text="#{registration}" th:href="@{registration}">Регистрация</a>
           </div>
         </fieldset>
       </form>
