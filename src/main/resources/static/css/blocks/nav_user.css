@@ -1,12 +1,12 @@
-.car_list {
+.user {
   margin-bottom: 12rem;
 }
 
-.car_list_inner {
+.user_inner {
   display: flex;
 }
 
-.car_list_table {
+.user_table {
   font-family: 'Lato', sans-serif;
   width: 100%;
   height: 100%;
@@ -16,28 +16,29 @@
   color: var(--black);
 }
 
-.car_list_table_caption {
+.user_table_caption {
   padding: 0.5rem;
   color: var(--white);
   background: saddlebrown;
   font-size: 1rem;
   text-align: center;
   font-weight: bold;
-}
-
-.car_list_column_caption {
   text-transform: uppercase;
 }
 
-.car_list_table td {
+.user_table tr {
+  text-transform: uppercase;
+}
+
+.user_table td {
   padding: 0.5rem;
   text-align: left;
 }
 
-.car_list_table tr:nth-child(odd) {
+.user_table tr:nth-child(odd) {
   background: var(--white);
 }
 
-.car_list_table tr:nth-child(even) {
+.user_table tr:nth-child(even) {
   background: #E8E6D1;
 }

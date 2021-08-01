@@ -54,18 +54,47 @@ public class ProfileController {
   }
 
   @GetMapping("/profile/information")
-  public String getInformation(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+  public String getProfilePersonalInformation(Model model, @AuthenticationPrincipal UserDetails currentUser) {
     User user = userService.findByUsername(currentUser.getUsername());
     model.addAttribute("user", user);
-    return "information";
+    return "nav_personal_information";
+  }
+
+  @GetMapping("/profile/car")
+  public String getProfileCar(Model model) {
+    List<Car> cars = carService.getAll();
+    model.addAttribute("cars", cars);
+    return "nav_car";
   }
 
   @GetMapping("/profile/order")
-  public String getAllOrder(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+  public String getProfileOrder(Model model, @AuthenticationPrincipal UserDetails currentUser) {
     List<CarOrder> carOrders = carOrderService.getAll(currentUser);
     model.addAttribute("carOrders", carOrders);
-    return "order";
+    return "nav_order";
   }
+
+  @GetMapping("/profile/repair")
+  public String getProfileRepair(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+    List<CarRepair> carRepairs = carRepairService.getAll(currentUser);
+    model.addAttribute("carRepairs", carRepairs);
+    return "nav_repair";
+  }
+
+  @GetMapping("/profile/user")
+  public String getProfileUser(Model model) {
+    List<User> users = userService.getAll();
+    model.addAttribute("users", users);
+    return "nav_user";
+  }
+
+
+
+
+
+
+
+
 
   @GetMapping("/profile/order/{id}/reason")
   public String getOrderCancellationReason(@PathVariable Integer id, Model model) {
@@ -93,13 +122,6 @@ public class ProfileController {
       @RequestParam("reasonOfCancellation") String reasonOfCancellation) {
     carOrderService.cancelCarOrder(reasonOfCancellation, id);
     return "redirect:/profile/order";
-  }
-
-  @GetMapping("/profile/user")
-  public String getAllUser(Model model) {
-    List<User> users = userService.getAll();
-    model.addAttribute("users", users);
-    return "user";
   }
 
   @GetMapping("/profile/user/{id}/edit")
@@ -177,12 +199,6 @@ public class ProfileController {
     return "redirect:/profile/user/{userId}/passport";
   }
 
-  @GetMapping("/profile/repair")
-  public String getAllRepair(Model model, @AuthenticationPrincipal UserDetails currentUser) {
-    List<CarRepair> carRepairs = carRepairService.getAll(currentUser);
-    model.addAttribute("carRepairs", carRepairs);
-    return "repair";
-  }
 
   @GetMapping("/profile/order/{id}/repair")
   public String getNewRepair(@PathVariable Integer id, Model model) {
@@ -200,13 +216,6 @@ public class ProfileController {
     carRepair.setRepairCost(repairCost);
     carRepairService.save(carRepair);
     return "redirect:/profile/order";
-  }
-
-  @GetMapping("/profile/car")
-  public String getAllCar(Model model) {
-    List<Car> cars = carService.getAll();
-    model.addAttribute("cars", cars);
-    return "car_list";
   }
 
   @GetMapping("/profile/car/{id}/detail")

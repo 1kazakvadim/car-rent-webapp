@@ -136,14 +136,14 @@ CREATE TABLE `user`
 
 CREATE TABLE `car_order`
 (
-    `id`                     int                                                     NOT NULL AUTO_INCREMENT,
-    `user_id`                int                                                     NOT NULL,
-    `car_id`                 int                                                     NOT NULL,
-    `date_of_issue`          date                                                    NOT NULL,
-    `date_of_return`         date                                                    NOT NULL,
-    `cancellation`           tinyint                                                 NOT NULL DEFAULT '0',
+    `id`                     int             NOT NULL AUTO_INCREMENT,
+    `user_id`                int             NOT NULL,
+    `car_id`                 int             NOT NULL,
+    `date_of_issue`          date            NOT NULL,
+    `date_of_return`         date            NOT NULL,
+    `cancellation`           tinyint         NOT NULL                                DEFAULT '0',
     `reason_of_cancellation` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-    `rental_cost`            double unsigned                                         NOT NULL,
+    `total_cost`            double unsigned NOT NULL,
     PRIMARY KEY (`id`),
     KEY `user_id_idx` (`user_id`),
     KEY `car_id_idx` (`car_id`),

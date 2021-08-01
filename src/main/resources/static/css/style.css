@@ -11,17 +11,17 @@
 @import "blocks/registration.css";
 @import "blocks/catalog.css";
 @import "blocks/catalog_detail.css";
-@import "blocks/profile.css";
-@import "blocks/user.css";
+@import "blocks/nav_personal_information.css";
+@import "blocks/nav_car.css";
+@import "blocks/nav_order.css";
+@import "blocks/nav_repair.css";
+@import "blocks/nav_user.css";
 @import "blocks/passport.css";
-@import "blocks/order.css";
 @import "blocks/detail.css";
 @import "blocks/cancellation.css";
 @import "blocks/reason.css";
 @import "blocks/edit.css";
-@import "blocks/repair.css";
 @import "blocks/new_repair.css";
-@import "blocks/car_list.css";
 @import "blocks/footer.css";
 
 

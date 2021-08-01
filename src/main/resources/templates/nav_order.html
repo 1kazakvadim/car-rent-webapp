@@ -15,15 +15,15 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <table class="order_table">
-        <caption class="order_table_caption">Список заказов</caption>
-        <tr class="order_column_caption">
+        <caption class="order_table_caption" th:text="#{listOfOrders}">Список заказов</caption>
+        <tr>
           <td>№</td>
-          <td>ФИО</td>
-          <td>Автомобиль</td>
-          <td>Дата выдачи</td>
-          <td>Дата возврата</td>
-          <td>Состояние заказа</td>
-          <td>Стоимость</td>
+          <td th:text="#{passport.fullName}">ФИО</td>
+          <td th:text="#{car.fullName}">Автомобиль</td>
+          <td th:text="#{order.dateOfIssue}">Дата выдачи</td>
+          <td th:text="#{order.dateOfReturn}">Дата возврата</td>
+          <td th:text="#{order.status}">Состояние заказа</td>
+          <td th:text="#{order.totalCost}">Итого</td>
         </tr>
         <tr th:each="carOrder : ${carOrders}">
           <td th:text="${carOrder.getId()}"></td>
@@ -34,23 +34,27 @@
           + ${carOrder.getCar().getModel()}"></td>
           <td th:text="${carOrder.getDateOfIssue()}"></td>
           <td th:text="${carOrder.getDateOfReturn()}"></td>
-          <td th:if="${carOrder.isCancellation() == false}">Активен</td>
-          <td th:unless="${carOrder.isCancellation() == false}">Отменен</td>
-          <td th:text="${carOrder.getRentalCost()}"></td>
+          <td th:if="${carOrder.isCancellation() == false}" th:text="#{order.statusActive}"></td>
+          <td th:unless="${carOrder.isCancellation() == false}"
+              th:text="#{order.statusCancel}"></td>
+          <td th:text="${carOrder.getTotalCost()}"></td>
           <td>
             <div class="profile_dropdown_menu">
               <input class="profile_dropdown_menu_checkbox" th:id="${carOrder.getId()}"
                      type="checkbox"/>
-              <label th:for="${carOrder.getId()}"> </label>
+              <label th:for="${carOrder.getId()}"></label>
               <div class="profile_dropdown_menu_content">
                 <ul>
-                  <li><a th:href="@{order/{id}/detail(id=${carOrder.getId()})}">О заказе</a></li>
-                  <li><a th:href="@{order/{id}/reason(id=${carOrder.getId()})}">Причина отмены</a>
+                  <li><a th:text="#{order.about}"
+                         th:href="@{order/{id}/detail(id=${carOrder.getId()})}">О заказе</a></li>
+                  <li><a th:text="#{order.reasonOfCancellation}"
+                         th:href="@{order/{id}/reason(id=${carOrder.getId()})}">Причина отмены</a>
                   </li>
-                  <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a
-                      th:href="@{order/{id}/repair(id=${carOrder.getId()})}">Добавить ремонт</a>
+                  <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{order.addRepair}"
+                      th:href="@{order/{id}/repair(id=${carOrder.getId()})}">Добавить
+                    ремонт</a>
                   </li>
-                  <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a
+                  <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{order.cancel}"
                       th:href="@{order/{id}/cancellation(id=${carOrder.getId()})}">Отменить
                     заказ</a></li>
                 </ul>

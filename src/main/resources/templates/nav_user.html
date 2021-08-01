@@ -15,14 +15,14 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <table class="user_table">
-        <caption class="user_table_caption">Список пользователей</caption>
-        <tr class="user_column_caption">
-          <td>Имя пользователя</td>
-          <td>Эл. почта</td>
-          <td>Телефон</td>
-          <td>Роль</td>
-          <td>Статус</td>
-          <td>Дата создания</td>
+        <caption class="user_table_caption" th:text="#{listOfUsers}">Список пользователей</caption>
+        <tr>
+          <td th:text="#{user.username}">Имя пользователя</td>
+          <td th:text="#{user.email}">Эл. почта</td>
+          <td th:text="#{user.phoneNumber}">Телефон</td>
+          <td th:text="#{user.role}">Роль</td>
+          <td th:text="#{user.status}">Статус</td>
+          <td th:text="#{user.createdAt}">Дата создания</td>
         </tr>
         <tr th:each="user : ${users}">
           <td th:text="${user.getUsername()}"></td>
@@ -33,12 +33,15 @@
           <td th:text="${user.getCreatedAt()}"></td>
           <td>
             <div class="profile_dropdown_menu">
-              <input class="profile_dropdown_menu_checkbox" th:id="${user.getId()}" type="checkbox"/>
+              <input class="profile_dropdown_menu_checkbox" th:id="${user.getId()}"
+                     type="checkbox"/>
               <label th:for="${user.getId()}"> </label>
               <div class="profile_dropdown_menu_content">
                 <ul>
-                  <li><a th:href="@{user/{id}/passport(id=${user.getId()})}">Паспорт</a></li>
-                  <li sec:authorize="hasRole('ADMIN')"><a th:href="@{user/{id}/edit(id=${user.getId()})}">Редактировать</a>
+                  <li><a th:text="#{user.passport}"
+                         th:href="@{user/{id}/passport(id=${user.getId()})}">Паспорт</a></li>
+                  <li sec:authorize="hasRole('ADMIN')"><a th:text="#{edit}"
+                      th:href="@{user/{id}/edit(id=${user.getId()})}">Редактировать</a>
                   </li>
                 </ul>
               </div>

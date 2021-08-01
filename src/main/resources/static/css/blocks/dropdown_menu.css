@@ -93,6 +93,7 @@
   white-space: nowrap;
   text-decoration: none;
   color: #6F6F6F;
+  text-transform: lowercase;
 }
 
 .profile_dropdown_menu a:hover {

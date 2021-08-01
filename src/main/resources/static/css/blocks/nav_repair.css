@@ -23,13 +23,15 @@
   font-size: 1rem;
   text-align: center;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
-.repair_column_caption {
+.repair_table tr {
   text-transform: uppercase;
 }
 
 .repair_table td {
+  max-width: 24rem;
   padding: 0.5rem;
   text-align: left;
 }
@@ -41,18 +43,3 @@
 .repair_table tr:nth-child(even) {
   background: #E8E6D1;
 }
-
-.view_repair_button {
-  color: var(--black);
-  background-color: rgba(255, 255, 255, 1);
-  border: 0.1rem solid var(--black);
-  border-radius: 0.4rem;
-  cursor: pointer;
-  padding: 0.2rem 0.6rem;
-}
-
-.view_repair_button:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  transition: all 0.2s linear;
-}
-

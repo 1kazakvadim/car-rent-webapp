@@ -1,12 +1,12 @@
-.user {
+.car {
   margin-bottom: 12rem;
 }
 
-.user_inner {
+.car_inner {
   display: flex;
 }
 
-.user_table {
+.car_table {
   font-family: 'Lato', sans-serif;
   width: 100%;
   height: 100%;
@@ -16,43 +16,29 @@
   color: var(--black);
 }
 
-.user_table_caption {
+.car_table_caption {
   padding: 0.5rem;
   color: var(--white);
   background: saddlebrown;
   font-size: 1rem;
   text-align: center;
   font-weight: bold;
-}
-
-.user_column_caption {
   text-transform: uppercase;
 }
 
-.user_table td {
+.car_table tr {
+  text-transform: uppercase;
+}
+
+.car_table td {
   padding: 0.5rem;
   text-align: left;
 }
 
-.user_table tr:nth-child(odd) {
+.car_table tr:nth-child(odd) {
   background: var(--white);
 }
 
-.user_table tr:nth-child(even) {
+.car_table tr:nth-child(even) {
   background: #E8E6D1;
 }
-
-.view_account_button {
-  color: var(--black);
-  background-color: rgba(255, 255, 255, 1);
-  border: 0.1rem solid var(--black);
-  border-radius: 0.4rem;
-  cursor: pointer;
-  padding: 0.2rem 1rem;
-}
-
-.view_account_button:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  transition: all 0.2s linear;
-}
-

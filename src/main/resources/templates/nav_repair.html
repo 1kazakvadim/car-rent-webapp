@@ -14,12 +14,12 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <table class="repair_table">
-        <caption class="repair_table_caption">Список ремонтов</caption>
-        <tr class="repair_column_caption">
+        <caption class="repair_table_caption" th:text="#{listOfRepairs}">Список ремонтов</caption>
+        <tr>
           <td>№</td>
-          <td>Информация о повреждениях</td>
-          <td>Стоимость ремонта</td>
-          <td>№ заказа</td>
+          <td th:text="#{repair.damageInformation}">Информация о повреждениях</td>
+          <td th:text="#{repair.repairCost}">Стоимость ремонта</td>
+          <td th:text="#{repair.orderNumber}">№ заказа</td>
         </tr>
         <tr th:each="carRepair : ${carRepairs}">
           <td th:text="${carRepair.getId()}"></td>
@@ -30,10 +30,11 @@
             <div class="profile_dropdown_menu">
               <input class="profile_dropdown_menu_checkbox" th:id="${carRepair.getId()}"
                      type="checkbox"/>
-              <label th:for="${carRepair.getId()}"> </label>
+              <label th:for="${carRepair.getId()}"></label>
               <div class="profile_dropdown_menu_content">
                 <ul>
-                  <li><a th:href="@{order/{id}/detail(id=${carRepair.getCarOrder().getId()})}">О
+                  <li><a th:text="#{order.about}"
+                         th:href="@{order/{id}/detail(id=${carRepair.getCarOrder().getId()})}">О
                     заказе</a></li>
                 </ul>
               </div>

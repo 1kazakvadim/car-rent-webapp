@@ -53,7 +53,7 @@ public class CarOrder {
   @Column(name = "reason_of_cancellation")
   private String reasonOfCancellation;
 
-  @Column(name = "rental_cost", nullable = false)
-  private Double rentalCost;
+  @Column(name = "total_cost", nullable = false)
+  private Double totalCost;
 
 }

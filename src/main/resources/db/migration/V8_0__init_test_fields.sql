@@ -77,10 +77,10 @@ INSERT INTO `car_rent`.`car` (`id`, `car_brand_id`, `model`, `color`, `car_body_
 VALUES ('3', '3', 'x7', 'black', '3', '3', '1', '3', '2', '7', '2.3', '7000');
 
 INSERT INTO `car_rent`.`car_order` (`id`, `user_id`, `car_id`, `date_of_issue`, `date_of_return`,
-                                    `cancellation`, `reason_of_cancellation`, `rental_cost`)
+                                    `cancellation`, `reason_of_cancellation`, `total_cost`)
 VALUES ('1', '1', '1', '2021-07-08', '2021-07-09', '0', ' ', '100');
 INSERT INTO `car_rent`.`car_order` (`user_id`, `car_id`, `date_of_issue`, `date_of_return`,
-                                    `cancellation`, `reason_of_cancellation`, `rental_cost`)
+                                    `cancellation`, `reason_of_cancellation`, `total_cost`)
 VALUES ('2', '2', '2021-07-06', '2021-07-11', '0', ' ', '200');
 
 
