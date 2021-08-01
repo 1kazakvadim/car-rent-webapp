@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ConditionController {
 
   @GetMapping("/condition")
-  public String conditionPage(){
+  public String getConditionPage() {
     return "condition";
   }
 

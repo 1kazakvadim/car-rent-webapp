@@ -31,8 +31,14 @@
   color: #444444;
 }
 
-.condition_text h1, h2, h3, h4, h5, h6 {
+.contact_text h1, h2, h3, h4, h5, h6 {
   margin: 0.5rem 0.5rem;
+}
+
+.contact_text ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
 }
 
 .contact_map iframe {

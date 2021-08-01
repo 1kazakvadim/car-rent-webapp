@@ -34,7 +34,6 @@
   margin: 0.5rem 0.5rem;
 }
 
-.condition_text li {
-  padding-bottom: 0.2rem;
+.condition_text ul {
+  margin: 0;
 }
-
