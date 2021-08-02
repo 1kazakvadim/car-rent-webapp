@@ -14,7 +14,8 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <table class="repair_table">
-        <caption class="repair_table_caption" th:text="#{listOfRepairs}">Список ремонтов</caption>
+        <caption class="repair_table_caption" th:text="#{caption.listOfRepairs}">Список ремонтов
+        </caption>
         <tr>
           <td>№</td>
           <td th:text="#{repair.damageInformation}">Информация о повреждениях</td>
@@ -33,8 +34,11 @@
               <label th:for="${carRepair.getId()}"></label>
               <div class="profile_dropdown_menu_content">
                 <ul>
+                  <li><a th:text="#{repair.about}"
+                         th:href="@{repair/{repairId}/damage-information(repairId=${carRepair.getId()})}">О
+                    повреждениях</a></li>
                   <li><a th:text="#{order.about}"
-                         th:href="@{order/{id}/detail(id=${carRepair.getCarOrder().getId()})}">О
+                         th:href="@{order/{orderId}/detail(orderId=${carRepair.getCarOrder().getId()})}">О
                     заказе</a></li>
                 </ul>
               </div>

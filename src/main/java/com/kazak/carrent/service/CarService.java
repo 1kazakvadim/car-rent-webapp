@@ -16,8 +16,8 @@ public interface CarService {
 
   List<Car> findByModel(String model);
 
-  Model getFilteredCarList(List<String> carBrandsFiltered, List<String> carModelsFiltered,
+  List<Car> getFilteredCarList(List<String> carBrandsFiltered, List<String> carModelsFiltered,
       List<String> carBodiesFiltered, List<String> carClassesFiltered,
-      String carTransmissionFiltered, Model model);
+      List<String> carTransmissionsFiltered);
 
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -14,7 +13,7 @@
       <div class="filter">
         <form class="filer_inner" method="post" th:action="@{/catalog/filtered}">
           <div class="filer_item_checkbox">
-            <h4 class="filter_title">Марка автомобиля</h4>
+            <h4 class="filter_title" th:text="#{car.brand}">Марка автомобиля</h4>
             <div class="filter_scroll">
               <div class="filer_checkbox_inner" th:each="carBrand : ${carBrands}">
                 <label th:for="${carBrand.getName()}">
@@ -25,7 +24,7 @@
             </div>
           </div>
           <div class="filer_item_checkbox">
-            <h4 class="filter_title">Модель</h4>
+            <h4 class="filter_title" th:text="#{car.model}">Модель</h4>
             <div class="filter_scroll">
               <div class="filer_checkbox_inner" th:each="car : ${cars}">
                 <label th:for="${car.getModel()}">
@@ -36,7 +35,7 @@
             </div>
           </div>
           <div class="filer_item_checkbox">
-            <h4 class="filter_title">Тип кузова</h4>
+            <h4 class="filter_title" th:text="#{car.body}">Тип кузова</h4>
             <div class="filter_scroll">
               <div class="filer_checkbox_inner" th:each="carBody : ${carBodies}">
                 <label th:for="${carBody.getName()}">
@@ -47,7 +46,7 @@
             </div>
           </div>
           <div class="filer_item_checkbox">
-            <h4 class="filter_title">Класс автомобиля</h4>
+            <h4 class="filter_title" th:text="#{car.class}">Класс автомобиля</h4>
             <div class="filer_checkbox_inner" th:each="carClass : ${carClasses}">
               <label th:for="${carClass.getName()}">
                 <input type="checkbox" th:id="${carClass.getName()}"
@@ -55,18 +54,17 @@
                        name="carClassesFiltered"/></label>
             </div>
           </div>
-          <div class="filer_item_radio">
-            <h4 class="filter_title">Тип трансмиссии</h4>
-            <div class="filer_radio_inner" th:each="carTransmission : ${carTransmissions}">
-              <label th:for="${carTransmission.getName()}" class="filer_radio_label">
-                <input th:id="${carTransmission.getName()}" type="radio"
-                       name="carTransmissionsFiltered" th:value="${carTransmission.getName()}"
-                       checked>
-                <span th:text="${carTransmission.getName()}">car_transmission</span>
-              </label>
+          <div class="filer_item_checkbox">
+            <h4 class="filter_title" th:text="#{car.transmission}">Тип трансмиссии</h4>
+            <div class="filer_checkbox_inner" th:each="carTransmission : ${carTransmissions}">
+              <label th:for="${carTransmission.getName()}">
+                <input type="checkbox" th:id="${carTransmission.getName()}"
+                       th:text="${carTransmission.getName()}"
+                       th:value="${carTransmission.getName()}"
+                       name="carTransmissionsFiltered"/></label>
             </div>
           </div>
-          <button class="filer_submit" type="submit">Показать</button>
+          <button class="filter_submit" type="submit" th:text="#{button.search}">Искать</button>
         </form>
       </div>
       <div class="catalog_content">
@@ -74,14 +72,16 @@
           <div class="product_wrap">
             <img th:src="@{~/images/catalog_item_test.jpg}">
             <div class="product_item_actions">
-              <a th:href="@{/catalog/{id}/product/(id=${carFiltered.getId()})}" class="quick_view"></a>
+              <a th:href="@{/catalog/{carId}/detail/(carId=${carFiltered.getId()})}"
+                 class="quick_view"></a>
             </div>
           </div>
           <div class="product_item_info">
             <h3 class="product_item_title"
                 th:text="${carFiltered.getCarBrand().getName()} + ' ' + ${carFiltered.getModel()}">
             </h3>
-            <span class="product_item_price" th:text="${carFiltered.getRentalCost()}">rental_cost</span>
+            <span class="product_item_price"
+                  th:text="${carFiltered.getRentalCost()}">rental_cost</span>
           </div>
         </div>
       </div>

@@ -16,12 +16,13 @@
 @import "blocks/nav_order.css";
 @import "blocks/nav_repair.css";
 @import "blocks/nav_user.css";
-@import "blocks/passport.css";
-@import "blocks/detail.css";
-@import "blocks/cancellation.css";
-@import "blocks/reason.css";
+@import "blocks/user_passport.css";
+@import "blocks/order_detail.css";
+@import "blocks/order_repair.css";
+@import "blocks/order_cancellation.css";
+@import "blocks/order_reason.css";
+@import "blocks/repair_damage_information.css";
 @import "blocks/edit.css";
-@import "blocks/new_repair.css";
 @import "blocks/footer.css";
 
 

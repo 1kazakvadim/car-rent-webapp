@@ -14,7 +14,6 @@
 .new_repair_table {
   font-family: 'Lato', sans-serif;
   width: 100%;
-  /*height: 100%;*/
   border-collapse: collapse;
   border-spacing: 0;
   color: var(--black);
@@ -32,9 +31,16 @@
   font-size: 1rem;
   text-align: center;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
-.new_repair_column_caption {
+.new_repair_table input, textarea {
+  padding: 0.2rem;
+  border: 0.1rem solid var(--black);
+  border-radius: 0.2rem;
+}
+
+.new_repair_table tr {
   text-transform: uppercase;
 }
 

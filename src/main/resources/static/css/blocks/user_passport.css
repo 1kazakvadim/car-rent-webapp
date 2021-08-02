@@ -23,9 +23,14 @@
   font-size: 1rem;
   text-align: center;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .passport_column_caption {
+  text-transform: uppercase;
+}
+
+.passport_table tr {
   text-transform: uppercase;
 }
 
@@ -34,17 +39,6 @@
   text-align: left;
 }
 
-.view_passport_button {
-  color: var(--black);
-  background-color: rgba(255, 255, 255, 1);
-  border: 0.1rem solid var(--black);
-  border-radius: 0.4rem;
-  cursor: pointer;
-  padding: 0.2rem 1rem;
+.passport_table .profile_dropdown_menu {
+  float: right;
 }
-
-.view_passport_button:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  transition: all 0.2s linear;
-}
-

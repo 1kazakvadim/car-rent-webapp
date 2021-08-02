@@ -92,8 +92,6 @@
   font-size: 1rem;
   text-align: center;
   font-weight: bold;
-}
-.catalog_detail_table_caption:first-letter{
   text-transform: uppercase;
 }
 

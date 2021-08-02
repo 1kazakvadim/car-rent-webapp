@@ -70,11 +70,13 @@ public class CatalogController {
       @RequestParam(required = false) List<String> carModelsFiltered,
       @RequestParam(required = false) List<String> carBodiesFiltered,
       @RequestParam(required = false) List<String> carClassesFiltered,
-      @RequestParam(required = false) String carTransmissionsFiltered,
+      @RequestParam(required = false) List<String> carTransmissionsFiltered,
       Model model) {
 
-    model = carService.getFilteredCarList(carBrandsFiltered, carModelsFiltered, carBodiesFiltered,
-        carClassesFiltered, carTransmissionsFiltered, model);
+    List<Car> carsFiltered = carService
+        .getFilteredCarList(carBrandsFiltered, carModelsFiltered, carBodiesFiltered,
+            carClassesFiltered, carTransmissionsFiltered);
+    model.addAttribute("carsFiltered", carsFiltered);
 
     List<Car> cars = carService.getAll();
     List<CarBody> carBodies = carBodyService.getAll();

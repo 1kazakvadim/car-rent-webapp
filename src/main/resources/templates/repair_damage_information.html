@@ -7,16 +7,18 @@
 </head>
 <body>
 <div th:replace="fragments/header"></div>
-<div class="reason">
+<div class="damage_information">
   <div class="container">
-    <div class="reason_inner">
+    <div class="damage_information_inner">
       <div class="profile_nav_inner">
         <div th:replace="fragments/profile_nav"></div>
       </div>
-      <table class="reason_table">
-        <caption class="reason_table_caption">Причина отмены</caption>
-        <tr class="reason_column_caption">
-          <td th:text="${carOrder.getReasonOfCancellation()}"></td>
+      <table class="damage_information_table">
+        <caption class="damage_information_table_caption" th:text="#{caption.damageInformation}">
+          Информация о повреждениях
+        </caption>
+        <tr>
+          <td th:text="${carRepair.getDamageInformation()}"></td>
         </tr>
       </table>
     </div>

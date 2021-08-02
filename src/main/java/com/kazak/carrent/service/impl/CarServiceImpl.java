@@ -54,16 +54,16 @@ public class CarServiceImpl implements CarService {
   }
 
   @Override
-  public Model getFilteredCarList(List<String> carBrandsFiltered, List<String> carModelsFiltered,
+  public List<Car> getFilteredCarList(List<String> carBrandsFiltered,
+      List<String> carModelsFiltered,
       List<String> carBodiesFiltered, List<String> carClassesFiltered,
-      String carTransmissionFiltered, Model model) {
+      List<String> carTransmissionsFiltered) {
 
     List<CarBody> carBodiesTemp = new ArrayList<>();
     List<String> carModelsTemp = new ArrayList<>();
     List<CarClass> carClassesTemp = new ArrayList<>();
     List<CarBrand> carBrandsTemp = new ArrayList<>();
-    CarTransmission carTransmissionsTemp = carTransmissionRepository
-        .findByName(carTransmissionFiltered);
+    List<CarTransmission> carTransmissionsTemp = new ArrayList<>();
 
     if (carBrandsFiltered != null) {
       for (String carBrandName : carBrandsFiltered) {
@@ -99,12 +99,18 @@ public class CarServiceImpl implements CarService {
     } else {
       carClassesTemp = carClassRepository.findAll();
     }
-    List<Car> carsFiltered = carRepository
-        .findByCarBrandInAndModelInAndCarBodyInAndCarClassInAndCarTransmission(carBrandsTemp,
+    if (carTransmissionsFiltered != null) {
+      for (String carTransmissionName : carTransmissionsFiltered) {
+        carTransmissionsTemp.add(carTransmissionRepository.findByName(carTransmissionName));
+      }
+    } else {
+      carTransmissionsTemp = carTransmissionRepository.findAll();
+    }
+
+    return carRepository
+        .findByCarBrandInAndModelInAndCarBodyInAndCarClassInAndCarTransmissionIn(carBrandsTemp,
             carModelsTemp, carBodiesTemp, carClassesTemp,
             carTransmissionsTemp);
-    model.addAttribute("carsFiltered", carsFiltered);
-    return model;
   }
 
 }

@@ -8,6 +8,7 @@ import com.kazak.carrent.service.CarRepairService;
 import java.util.List;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CarRepairServiceImpl implements CarRepairService {
@@ -42,6 +43,7 @@ public class CarRepairServiceImpl implements CarRepairService {
   }
 
   @Override
+  @Transactional
   public void save(CarRepair carRepair) {
     carRepairRepository.save(carRepair);
   }

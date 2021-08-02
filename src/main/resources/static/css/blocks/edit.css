@@ -31,10 +31,33 @@
   font-size: 1rem;
   text-align: center;
   font-weight: bold;
+  text-transform: uppercase;
+}
+
+.edit_row_caption {
+  text-transform: uppercase;
+}
+
+.edit_table input, select {
+  padding: 0.2rem;
+  border: 0.1rem solid var(--black);
+  border-radius: 0.2rem;
 }
 
 .edit_table td {
   padding: 0.5rem;
+}
+
+.edit_password_row_caption {
+  display: block;
+}
+
+.edit_password_row_caption label {
+  margin-bottom: 0.5rem;
+}
+
+.edit_password_row_caption label:first-letter {
+  text-transform: uppercase;
 }
 
 .edit_button {

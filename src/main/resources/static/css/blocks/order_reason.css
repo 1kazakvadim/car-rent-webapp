@@ -23,9 +23,10 @@
   font-size: 1rem;
   text-align: center;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
-.reason_column_caption {
+.reason_table tr {
   text-transform: uppercase;
 }
 

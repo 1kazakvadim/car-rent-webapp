@@ -15,16 +15,17 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <table class="car_table">
-        <caption class="car_table_caption">Список автомобилей</caption>
+        <caption class="car_table_caption" th:text="#{caption.listOfCars}">Список автомобилей
+        </caption>
         <tr>
           <td>№</td>
-          <td>Марка</td>
-          <td>Модель</td>
-          <td>Тип кузова</td>
-          <td>Цвет</td>
-          <td>Класс автомобиля</td>
-          <td>Коробка передач</td>
-          <td>Стоимость аренды</td>
+          <td th:text="#{car.brand}">Марка</td>
+          <td th:text="#{car.model}">Модель</td>
+          <td th:text="#{car.body}">Тип кузова</td>
+          <td th:text="#{car.color}">Цвет</td>
+          <td th:text="#{car.class}">Класс автомобиля</td>
+          <td th:text="#{car.transmission}">Коробка передач</td>
+          <td th:text="#{car.rentalCost}">Стоимость аренды</td>
           <td>
             <div class="profile_dropdown_menu">
               <input class="profile_dropdown_menu_checkbox" id="carNew"
@@ -32,7 +33,7 @@
               <label for="carNew"> </label>
               <div class="profile_dropdown_menu_content">
                 <ul>
-                  <li><a th:href="@{car/new}">Добавить автомобиль</a>
+                  <li><a th:text="#{car.add}" th:href="@{car/new}">Добавить автомобиль</a>
                   </li>
                 </ul>
               </div>
@@ -55,11 +56,12 @@
               <label th:for="${car.getId()}"> </label>
               <div class="profile_dropdown_menu_content">
                 <ul>
-                  <li><a th:href="@{car/{id}/detail(id=${car.getId()})}">Об автомобиле</a>
+                  <li><a th:text="#{car.about}" th:href="@{car/{carId}/detail(carId=${car.getId()})}">Об
+                    автомобиле</a>
                   </li>
                 </ul>
                 <ul>
-                  <li><a th:href="@{car/{id}/edit(id=${car.getId()})}">Редактировать</a>
+                  <li><a th:text="#{button.edit}" th:href="@{car/{carId}/edit(carId=${car.getId()})}">Редактировать</a>
                   </li>
                 </ul>
               </div>

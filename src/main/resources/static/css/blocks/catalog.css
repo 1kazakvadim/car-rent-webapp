@@ -79,37 +79,37 @@
   filter: brightness(80%);
 }
 
-.filer_item_radio {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  width: 15rem;
-  margin-bottom: 1.5rem;
-}
+/*.filer_item_radio {*/
+/*  font-size: 1.2rem;*/
+/*  text-transform: uppercase;*/
+/*  width: 15rem;*/
+/*  margin-bottom: 1.5rem;*/
+/*}*/
 
-.filer_radio_inner {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
+/*.filer_radio_inner {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  flex-direction: column;*/
+/*}*/
 
-.filer_item_radio label {
-  margin: 0 0 0.5rem 0;
-  display: flex;
-}
+/*.filer_item_radio label {*/
+/*  margin: 0 0 0.5rem 0;*/
+/*  display: flex;*/
+/*}*/
 
-.filer_item_radio input {
-  height: 1rem;
-  width: 1rem;
-  margin-right: 0.5rem;
-}
+/*.filer_item_radio input {*/
+/*  height: 1rem;*/
+/*  width: 1rem;*/
+/*  margin-right: 0.5rem;*/
+/*}*/
 
-.filer_item_radio input:hover {
-  cursor: pointer;
-}
+/*.filer_item_radio input:hover {*/
+/*  cursor: pointer;*/
+/*}*/
 
-.filer_radio_inner span {
-  color: #444444;
-}
+/*.filer_radio_inner span {*/
+/*  color: #444444;*/
+/*}*/
 
 .filter_submit {
   margin: 1rem;

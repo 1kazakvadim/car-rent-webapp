@@ -15,7 +15,7 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <table class="user_table">
-        <caption class="user_table_caption" th:text="#{listOfUsers}">Список пользователей</caption>
+        <caption class="user_table_caption" th:text="#{caption.listOfUsers}">Список пользователей</caption>
         <tr>
           <td th:text="#{user.username}">Имя пользователя</td>
           <td th:text="#{user.email}">Эл. почта</td>
@@ -39,9 +39,14 @@
               <div class="profile_dropdown_menu_content">
                 <ul>
                   <li><a th:text="#{user.passport}"
-                         th:href="@{user/{id}/passport(id=${user.getId()})}">Паспорт</a></li>
-                  <li sec:authorize="hasRole('ADMIN')"><a th:text="#{edit}"
-                      th:href="@{user/{id}/edit(id=${user.getId()})}">Редактировать</a>
+                         th:href="@{user/{userId}/passport(userId=${user.getId()})}">Паспорт</a>
+                  </li>
+                  <li><a th:text="#{caption.editPassport}"
+                         th:href="@{/profile/user/{userId}/passport/{passportId}/edit(userId=${user.getId()},passportId=${user.getPassportData().getId()})}">Редактировать
+                    паспорт</a>
+                  </li>
+                  <li sec:authorize="hasRole('ADMIN')"><a th:text="#{button.edit}"
+                      th:href="@{user/{userId}/edit(userId=${user.getId()})}">Редактировать</a>
                   </li>
                 </ul>
               </div>

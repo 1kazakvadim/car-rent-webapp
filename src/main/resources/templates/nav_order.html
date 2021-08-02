@@ -15,7 +15,7 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <table class="order_table">
-        <caption class="order_table_caption" th:text="#{listOfOrders}">Список заказов</caption>
+        <caption class="order_table_caption" th:text="#{caption.listOfOrders}">Список заказов</caption>
         <tr>
           <td>№</td>
           <td th:text="#{passport.fullName}">ФИО</td>
@@ -46,16 +46,16 @@
               <div class="profile_dropdown_menu_content">
                 <ul>
                   <li><a th:text="#{order.about}"
-                         th:href="@{order/{id}/detail(id=${carOrder.getId()})}">О заказе</a></li>
+                         th:href="@{order/{orderId}/detail(orderId=${carOrder.getId()})}">О заказе</a></li>
                   <li><a th:text="#{order.reasonOfCancellation}"
-                         th:href="@{order/{id}/reason(id=${carOrder.getId()})}">Причина отмены</a>
+                         th:href="@{order/{orderId}/reason(orderId=${carOrder.getId()})}">Причина отмены</a>
                   </li>
                   <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{order.addRepair}"
-                      th:href="@{order/{id}/repair(id=${carOrder.getId()})}">Добавить
+                      th:href="@{order/{orderId}/repair(orderId=${carOrder.getId()})}">Добавить
                     ремонт</a>
                   </li>
                   <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{order.cancel}"
-                      th:href="@{order/{id}/cancellation(id=${carOrder.getId()})}">Отменить
+                      th:href="@{order/{orderId}/cancellation(orderId=${carOrder.getId()})}">Отменить
                     заказ</a></li>
                 </ul>
               </div>

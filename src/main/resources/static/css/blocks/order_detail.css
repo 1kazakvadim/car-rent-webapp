@@ -23,9 +23,14 @@
   font-size: 1rem;
   text-align: center;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .detail_column_caption {
+  text-transform: uppercase;
+}
+
+.detail_table tr {
   text-transform: uppercase;
 }
 
@@ -33,20 +38,3 @@
   padding: 0.5rem;
   text-align: left;
 }
-
-/*.view_account_button {*/
-/*  !*width: 100%;*!*/
-/*  color: var(--white);*/
-/*  background-color: rgba(94, 127, 220, 1);*/
-/*  border: none;*/
-/*  border-radius: 0.4rem;*/
-/*  cursor: pointer;*/
-/*  !*font-weight: bold;*!*/
-/*  padding: 0.2rem 1rem;*/
-/*}*/
-
-/*.view_account_button:hover {*/
-/*  background-color: rgba(94, 127, 220, 0.8);*/
-/*  transition: all 0.2s linear;*/
-/*}*/
-
