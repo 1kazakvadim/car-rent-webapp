@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="setting">
+  <div class="container">
+    <div class="setting_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <div class="edit_content">
+        <form class="edit_form"
+              th:action="@{/profile/setting/password}"
+              method="post">
+          <table class="edit_table">
+            <caption class="edit_table_caption" th:text="#{caption.changePassword}">Изменить пароля
+            </caption>
+            <tr class="edit_password_row_caption">
+              <td>
+                <label for="password_old" th:text="#{label.oldPassword}">Старый пароль</label>
+                <input id="password_old" type="password" name="passwordOld">
+              </td>
+            </tr>
+            <tr class="edit_password_row_caption">
+              <td>
+                <label for="password" th:text="#{label.newPassword}">Новый пароль</label>
+                <input id="password" type="password" name="password">
+              </td>
+            </tr>
+            <tr class="edit_password_row_caption">
+              <td>
+                <label for="password_confirm" th:text="#{label.confirmPassword}">Подтвердить
+                  пароль</label>
+                <input id="password_confirm" type="password" name="passwordConfirm">
+              </td>
+            </tr>
+            <tr class="edit_password_row_caption">
+              <td>
+                <button class="edit_button" type="submit" th:text="#{button.save}">сохранить</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

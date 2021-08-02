@@ -34,42 +34,50 @@ public class ProfileController {
 
   @GetMapping("/profile")
   public String getProfileMenu() {
-    return "profile";
+    return "profile_nav/profile";
   }
 
   @GetMapping("/profile/information")
-  public String getProfilePersonalInformation(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+  public String getProfilePersonalInformation(@AuthenticationPrincipal UserDetails currentUser,
+      Model model) {
     User user = userService.findByUsername(currentUser.getUsername());
     model.addAttribute("user", user);
-    return "nav_personal_information";
+    return "profile_nav/nav_personal_information";
   }
 
   @GetMapping("/profile/car")
   public String getProfileCar(Model model) {
     List<Car> cars = carService.getAll();
     model.addAttribute("cars", cars);
-    return "nav_car";
+    return "profile_nav/nav_car";
   }
 
   @GetMapping("/profile/order")
-  public String getProfileOrder(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+  public String getProfileOrder(@AuthenticationPrincipal UserDetails currentUser, Model model) {
     List<CarOrder> carOrders = carOrderService.getAll(currentUser);
     model.addAttribute("carOrders", carOrders);
-    return "nav_order";
+    return "profile_nav/nav_order";
   }
 
   @GetMapping("/profile/repair")
-  public String getProfileRepair(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+  public String getProfileRepair(@AuthenticationPrincipal UserDetails currentUser, Model model) {
     List<CarRepair> carRepairs = carRepairService.getAll(currentUser);
     model.addAttribute("carRepairs", carRepairs);
-    return "nav_repair";
+    return "profile_nav/nav_repair";
+  }
+
+  @GetMapping("/profile/setting")
+  public String getSettingPage(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+    User user = userService.findByUsername(currentUser.getUsername());
+    model.addAttribute("user", user);
+    return "profile_nav/nav_setting";
   }
 
   @GetMapping("/profile/user")
   public String getProfileUser(Model model) {
     List<User> users = userService.getAll();
     model.addAttribute("users", users);
-    return "nav_user";
+    return "profile_nav/nav_user";
   }
 
 }
