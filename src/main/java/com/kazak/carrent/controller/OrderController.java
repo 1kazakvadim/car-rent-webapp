@@ -27,21 +27,21 @@ public class OrderController {
   public String getOrderCancellationReason(@PathVariable Integer orderId, Model model) {
     CarOrder carOrder = carOrderService.findById(orderId);
     model.addAttribute("carOrder", carOrder);
-    return "order_reason";
+    return "order/order_reason";
   }
 
   @GetMapping("/profile/order/{orderId}/detail")
   public String getOrderDetail(@PathVariable Integer orderId, Model model) {
     CarOrder carOrder = carOrderService.findById(orderId);
     model.addAttribute("carOrder", carOrder);
-    return "order_detail";
+    return "order/order_detail";
   }
 
   @GetMapping("/profile/order/{orderId}/cancellation")
   public String getOrderCancellation(@PathVariable Integer orderId, Model model) {
     CarOrder carOrder = carOrderService.findById(orderId);
     model.addAttribute("carOrder", carOrder);
-    return "order_cancellation";
+    return "order/order_cancellation";
   }
 
   @PostMapping("/profile/order/{orderId}/cancellation")
@@ -55,7 +55,7 @@ public class OrderController {
   public String addRepair(@PathVariable Integer orderId, Model model) {
     CarOrder carOrder = carOrderService.findById(orderId);
     model.addAttribute("carOrder", carOrder);
-    return "order_repair";
+    return "order/order_repair";
   }
 
   @PostMapping("/profile/order/{orderId}/repair")

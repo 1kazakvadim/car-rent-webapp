@@ -61,7 +61,7 @@ public class CatalogController {
     model.addAttribute("carClasses", carClasses);
     model.addAttribute("carBrands", carBrands);
     model.addAttribute("carTransmissions", carTransmissions);
-    return "catalog";
+    return "catalog/catalog";
   }
 
   @PostMapping("/catalog/filtered")
@@ -88,14 +88,14 @@ public class CatalogController {
     model.addAttribute("carClasses", carClasses);
     model.addAttribute("carBrands", carBrands);
     model.addAttribute("carTransmissions", carTransmissions);
-    return "catalog_filtered";
+    return "catalog/catalog_filtered";
   }
 
   @GetMapping("/catalog/{carId}/detail")
   public String getCar(@PathVariable Integer carId, Model model) {
     Car car = carService.findById(carId);
     model.addAttribute("car", car);
-    return "catalog_detail";
+    return "catalog/catalog_detail";
   }
 
   @PostMapping("/catalog/{carId}/detail/")

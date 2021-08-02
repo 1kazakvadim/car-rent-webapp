@@ -9,7 +9,7 @@
       <li><a th:text="#{cars}" th:href="@{/profile/car}">Машины</a></li>
       <li><a th:text="#{orders}" th:href="@{/profile/order}">Заказы</a></li>
       <li><a th:text="#{repairs}" th:href="@{/profile/repair}">Ремонты</a></li>
-      <li><a th:text="#{settings}" href="#">Настройки</a></li>
+      <li><a th:text="#{settings}" th:href="@{/profile/setting}">Настройки</a></li>
       <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{users}"
            th:href="@{/profile/user}">Пользователи</a>
       </li>

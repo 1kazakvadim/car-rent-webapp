@@ -20,13 +20,13 @@ public class CarController {
   public String getCarDetail(@PathVariable Integer carId, Model model) {
     Car car = carService.findById(carId);
     model.addAttribute("car", car);
-    return "car_detail";
+    return "car/car_detail";
   }
 
   @GetMapping("/profile/car/{carId}/edit")
   public String getEditCar(@PathVariable Integer carId, Model model){
     Car car = carService.findById(carId);
     model.addAttribute("car", car);
-    return "car_edit";
+    return "car/car_edit";
   }
 }

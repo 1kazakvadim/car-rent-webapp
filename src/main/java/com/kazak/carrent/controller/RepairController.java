@@ -20,7 +20,7 @@ public class RepairController {
   public String getRepairDamageInformation(@PathVariable Integer repairId, Model model) {
     CarRepair carRepair = carRepairService.findById(repairId);
     model.addAttribute("carRepair", carRepair);
-    return "repair_damage_information";
+    return "repair/repair_damage_information";
   }
 
 }

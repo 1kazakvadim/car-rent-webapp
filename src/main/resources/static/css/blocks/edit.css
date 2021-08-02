@@ -50,10 +50,14 @@
 
 .edit_password_row_caption {
   display: block;
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .edit_password_row_caption label {
   margin-bottom: 0.5rem;
+  text-align: left;
 }
 
 .edit_password_row_caption label:first-letter {

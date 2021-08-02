@@ -8,7 +8,7 @@ public class ConditionController {
 
   @GetMapping("/condition")
   public String getConditionPage() {
-    return "condition";
+    return "main/condition";
   }
 
 }

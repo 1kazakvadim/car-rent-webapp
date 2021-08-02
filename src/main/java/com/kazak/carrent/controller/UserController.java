@@ -7,6 +7,10 @@ import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.service.PassportDataService;
 import com.kazak.carrent.service.UserRoleService;
 import com.kazak.carrent.service.UserService;
+import org.apache.tomcat.util.descriptor.web.SecurityRoleRef;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,20 +25,23 @@ public class UserController {
   private final UserService userService;
   private final PassportDataService passportDataService;
   private final UserRoleService userRoleService;
+  private final PasswordEncoder passwordEncoder;
 
   public UserController(UserService userService,
       PassportDataService passportDataService,
-      UserRoleService userRoleService) {
+      UserRoleService userRoleService,
+      PasswordEncoder passwordEncoder) {
     this.userService = userService;
     this.passportDataService = passportDataService;
     this.userRoleService = userRoleService;
+    this.passwordEncoder = passwordEncoder;
   }
 
   @GetMapping("/profile/user/{userId}/edit")
   public String getUserEdit(@PathVariable Integer userId, Model model) {
     User user = userService.findById(userId);
     model.addAttribute("user", user);
-    return "user_edit";
+    return "user/user_edit";
   }
 
   @PostMapping("/profile/user/{userId}/edit")
@@ -62,7 +69,7 @@ public class UserController {
   }
 
   @PostMapping("/profile/user/{userId}/password")
-  public String changeUserPassword(@PathVariable Integer userId,
+  public String changeUserPasswordByAdmin(@PathVariable Integer userId,
       @RequestParam("password") String password,
       @RequestParam("passwordConfirm") String passwordConfirm) {
     if (!password.equals(passwordConfirm)) {
@@ -72,12 +79,26 @@ public class UserController {
     return "redirect:/profile/user";
   }
 
+  @PostMapping("/profile/setting/password")
+  public String changeUserPasswordByUser(@AuthenticationPrincipal UserDetails currentUser,
+      @RequestParam("passwordOld") String passwordOld,
+      @RequestParam("password") String password,
+      @RequestParam("passwordConfirm") String passwordConfirm) {
+    User user = userService.findByUsername(currentUser.getUsername());
+    if (!password.equals(passwordConfirm) || !passwordEncoder
+        .matches(passwordOld, user.getPassword())) {
+      return "redirect:/profile/setting";
+    }
+    userService.changeUserPassword(user, password);
+    return "redirect:/profile/information";
+  }
+
   @GetMapping("/profile/user/{userId}/passport")
   public String getUserPassport(@PathVariable Integer userId, Model model) {
     User user = userService.findById(userId);
     PassportData passportData = user.getPassportData();
     model.addAttribute("passportData", passportData);
-    return "user_passport";
+    return "user/user_passport";
   }
 
   @GetMapping("/profile/user/{userId}/passport/{passportId}/edit")
@@ -87,7 +108,7 @@ public class UserController {
     PassportData passportData = passportDataService.findById(passportId);
     model.addAttribute("user", user);
     model.addAttribute("passportData", passportData);
-    return "passport_edit";
+    return "user/passport_edit";
   }
 
   @PostMapping("/profile/user/{userId}/passport/{passportId}/edit")
