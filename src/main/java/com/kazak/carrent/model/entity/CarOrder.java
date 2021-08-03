@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,10 +40,12 @@ public class CarOrder {
   @PrimaryKeyJoinColumn
   private Car car;
 
+  @Future
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @Column(name = "date_of_issue", nullable = false)
   private LocalDate dateOfIssue;
 
+  @Future
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @Column(name = "date_of_return", nullable = false)
   private LocalDate dateOfReturn;
@@ -53,6 +57,7 @@ public class CarOrder {
   @Column(name = "reason_of_cancellation")
   private String reasonOfCancellation;
 
+  @Positive
   @Column(name = "total_cost", nullable = false)
   private Double totalCost;
 

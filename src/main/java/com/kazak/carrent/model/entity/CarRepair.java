@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class CarRepair {
   @Column(name = "damage_information", nullable = false)
   private String damageInformation;
 
+  @Positive
   @Column(name = "repair_cost", nullable = false)
   private Double repairCost;
 

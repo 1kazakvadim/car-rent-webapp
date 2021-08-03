@@ -13,7 +13,7 @@ import com.kazak.carrent.service.CarOrderService;
 import com.kazak.carrent.service.CarService;
 import com.kazak.carrent.service.CarTransmissionService;
 import com.kazak.carrent.service.UserService;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CatalogController {
@@ -101,11 +102,17 @@ public class CatalogController {
   @PostMapping("/catalog/{carId}/detail/")
   public String bookCar(@AuthenticationPrincipal UserDetails currentUser,
       @PathVariable Integer carId,
-      @RequestParam("dateOfIssue") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateOfIssue,
-      @RequestParam("dateOfReturn") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateOfReturn,
-      @RequestParam("carDetailId") Integer carDetailId, CarOrder carOrder) {
+      @RequestParam("dateOfIssue") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfIssue,
+      @RequestParam("dateOfReturn") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfReturn,
+      @RequestParam("carDetailId") Integer carDetailId, CarOrder carOrder,
+      RedirectAttributes RedirectAttributes) {
     if (currentUser == null) {
       return "redirect:/login";
+    }
+    if (dateOfIssue.isBefore(LocalDate.now()) || dateOfReturn.isBefore(LocalDate.now())) {
+      RedirectAttributes
+          .addFlashAttribute("invalidDate", "invalidDate");
+      return "redirect:/catalog/{carId}/detail";
     }
     carOrderService.save(carOrder, carDetailId, currentUser);
     return "redirect:/profile/order";
