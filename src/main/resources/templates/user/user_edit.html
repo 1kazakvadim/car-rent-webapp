@@ -17,7 +17,8 @@
         <form class="edit_form" th:action="@{/profile/user/{userId}/edit(userId=${user.getId()})}"
               method="post">
           <table class="edit_table">
-            <caption class="edit_table_caption" th:text="#{caption.editUser}">Редактированить пользователя
+            <caption class="edit_table_caption" th:text="#{caption.editUser}">Редактировать
+              пользователя
             </caption>
             <tr>
               <td class="edit_row_caption" th:text="#{user.username}">Имя пользователя</td>
@@ -60,7 +61,8 @@
               <td></td>
               <td></td>
               <td>
-                <button class="edit_button" type="submit" th:text="#{button.save}">сохранить</button>
+                <button class="edit_button" type="submit" th:text="#{button.save}">сохранить
+                </button>
               </td>
             </tr>
           </table>
@@ -86,7 +88,8 @@
             </tr>
             <tr class="edit_password_row_caption">
               <td>
-                <button class="edit_button" type="submit" th:text="#{button.save}">сохранить</button>
+                <button class="edit_button" type="submit" th:text="#{button.save}">сохранить
+                </button>
               </td>
             </tr>
           </table>

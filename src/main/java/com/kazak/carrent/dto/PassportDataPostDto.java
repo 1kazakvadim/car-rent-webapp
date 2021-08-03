@@ -6,12 +6,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
-@ToString
 public class PassportDataPostDto {
 
   private Integer id;

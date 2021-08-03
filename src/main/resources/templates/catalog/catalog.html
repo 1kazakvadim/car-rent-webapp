@@ -70,7 +70,7 @@
       <div class="catalog_content">
         <div class="product_item" th:each="car : ${cars}">
           <div class="product_wrap">
-            <img th:src="@{../../static/images/catalog_item_test.jpg}">
+            <img th:src="@{${'/upload_images/' + car.getImageName()}}">
             <div class="product_item_actions">
               <a th:href="@{/catalog/{carId}/detail/(carId=${car.getId()})}"
                  class="quick_view"></a>

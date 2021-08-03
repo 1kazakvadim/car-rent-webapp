@@ -63,18 +63,18 @@ VALUES ('4', 'user2', '$2a$10$cXgI6AoNvRM7YlSvyUFa8eCGMpynDamRcv5EJDVsRhWJpcFP0q
 INSERT INTO `car_rent`.`car` (`id`, `car_brand_id`, `model`, `color`, `car_body_id`, `car_class_id`,
                               `car_transmission_id`, `engine_type_id`, `engine_volume`,
                               `number_of_seats`, `fuel_consumption`,
-                              `rental_cost`)
-VALUES ('1', '1', 'A8', 'red', '1', '1', '1', '1', '2', '4', '4.4', '5000');
+                              `rental_cost`, `image_name`)
+VALUES ('1', '1', 'A8', 'red', '1', '1', '1', '1', '2', '4', '4.4', '5000', 'a8.jpg');
 INSERT INTO `car_rent`.`car` (`id`, `car_brand_id`, `model`, `color`, `car_body_id`, `car_class_id`,
                               `car_transmission_id`, `engine_type_id`, `engine_volume`,
                               `number_of_seats`, `fuel_consumption`,
-                              `rental_cost`)
-VALUES ('2', '2', 'w124', 'blue', '2', '2', '2', '2', '2', '5', '5.6', '6000');
+                              `rental_cost`, `image_name`)
+VALUES ('2', '2', 'w124', 'blue', '2', '2', '2', '2', '2', '5', '5.6', '6000', 'w124.jpg');
 INSERT INTO `car_rent`.`car` (`id`, `car_brand_id`, `model`, `color`, `car_body_id`, `car_class_id`,
                               `car_transmission_id`, `engine_type_id`, `engine_volume`,
                               `number_of_seats`, `fuel_consumption`,
-                              `rental_cost`)
-VALUES ('3', '3', 'x7', 'black', '3', '3', '1', '3', '2', '7', '2.3', '7000');
+                              `rental_cost`, `image_name`)
+VALUES ('3', '3', 'x7', 'black', '3', '3', '1', '3', '2', '7', '2.3', '7000', 'x7.jpg');
 
 INSERT INTO `car_rent`.`car_order` (`id`, `user_id`, `car_id`, `date_of_issue`, `date_of_return`,
                                     `cancellation`, `reason_of_cancellation`, `total_cost`)

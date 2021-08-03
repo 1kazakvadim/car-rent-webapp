@@ -1,7 +1,7 @@
 package com.kazak.carrent.service.impl;
 
 import com.kazak.carrent.dto.UserPostDto;
-import com.kazak.carrent.mapper.MapStructMapper;
+import com.kazak.carrent.mapper.UserMapper;
 import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.repository.UserRepository;
 import com.kazak.carrent.repository.UserRoleRepository;
@@ -17,17 +17,16 @@ public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
   private final UserRoleRepository userRoleRepository;
-  private final MapStructMapper mapStructMapper;
+  private final UserMapper UserMapper;
   private final PasswordEncoder passwordEncoder;
 
   @Autowired
   public UserServiceImpl(UserRepository userRepository,
-      UserRoleRepository userRoleRepository,
-      MapStructMapper mapStructMapper,
+      UserRoleRepository userRoleRepository, com.kazak.carrent.mapper.UserMapper userMapper,
       PasswordEncoder passwordEncoder) {
     this.userRepository = userRepository;
     this.userRoleRepository = userRoleRepository;
-    this.mapStructMapper = mapStructMapper;
+    UserMapper = userMapper;
     this.passwordEncoder = passwordEncoder;
   }
 
@@ -99,7 +98,7 @@ public class UserServiceImpl implements UserService {
   @Transactional
   public void update(UserPostDto userPostDto) {
     User user = userRepository.getById(userPostDto.getId());
-    mapStructMapper.updateUserFromDto(userPostDto, user);
+    UserMapper.updateUserFromDto(userPostDto, user);
     userRepository.save(user);
   }
 

@@ -64,4 +64,7 @@ public class Car {
   @Column(name = "rental_cost", nullable = false)
   private Double rentalCost;
 
+  @Column(name = "image_name", nullable = false)
+  private String imageName;
+
 }

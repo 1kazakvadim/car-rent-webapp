@@ -2,9 +2,11 @@
 @import "global/fonts.css";
 @import "global/normalize.css";
 @import "blocks/fragments/header.css";
+@import "blocks/fragments/footer.css";
 @import "blocks/fragments/slider.css";
-@import "blocks/fragments/dropdown_menu.css";
 @import "blocks/fragments/profile_user_nav.css";
+@import "blocks/fragments/dropdown_menu.css";
+@import "blocks/fragments/edit.css";
 @import "blocks/main/condition.css";
 @import "blocks/main/contact.css";
 @import "blocks/main/login.css";
@@ -17,14 +19,16 @@
 @import "blocks/profile_nav/nav_repair.css";
 @import "blocks/profile_nav/nav_setting.css";
 @import "blocks/profile_nav/nav_user.css";
-@import "blocks/user/user_passport.css";
+@import "blocks/car/car_new.css";
+@import "blocks/car/car_edit.css";
 @import "blocks/order/order_detail.css";
 @import "blocks/order/order_repair.css";
 @import "blocks/order/order_cancellation.css";
 @import "blocks/order/order_reason.css";
 @import "blocks/repair/repair_damage_information.css";
-@import "blocks/fragments/edit.css";
-@import "blocks/fragments/footer.css";
+@import "blocks/user/user_passport.css";
+
+
 
 
 

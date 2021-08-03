@@ -1,7 +1,7 @@
 package com.kazak.carrent.service.impl;
 
 import com.kazak.carrent.dto.PassportDataPostDto;
-import com.kazak.carrent.mapper.MapStructMapper;
+import com.kazak.carrent.mapper.PassportMapper;
 import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.repository.PassportDataRepository;
 import com.kazak.carrent.service.PassportDataService;
@@ -12,13 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class PassportDataServiceImpl implements PassportDataService {
 
   private final PassportDataRepository passportDataRepository;
-  private final MapStructMapper mapStructMapper;
+  private final PassportMapper passportMapper;
 
   public PassportDataServiceImpl(
-      PassportDataRepository passportDataRepository,
-      MapStructMapper mapStructMapper) {
+      PassportDataRepository passportDataRepository, PassportMapper passportMapper) {
     this.passportDataRepository = passportDataRepository;
-    this.mapStructMapper = mapStructMapper;
+    this.passportMapper = passportMapper;
   }
 
   @Override
@@ -52,7 +51,7 @@ public class PassportDataServiceImpl implements PassportDataService {
   @Transactional
   public void update(PassportDataPostDto passportDataPostDto) {
     PassportData passportData = passportDataRepository.getById(passportDataPostDto.getId());
-    mapStructMapper.updatePassportDataFromDto(passportDataPostDto, passportData);
+    passportMapper.updatePassportDataFromDto(passportDataPostDto, passportData);
     passportDataRepository.save(passportData);
   }
 
