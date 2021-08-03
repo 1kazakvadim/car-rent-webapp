@@ -40,10 +40,12 @@
               <td class="edit_row_caption" th:text="#{user.role}">Роль</td>
               <td th:text="${user.getUserRole().getName()}"></td>
               <td>
-                <select name="userRole">
-                  <option value="USER">user</option>
-                  <option value="MANAGER">manager</option>
-                  <option value="ADMIN">admin</option>
+                <select id="userRole" name="userRole">
+                    <option th:each="userRole : ${userRoles}"
+                            th:selected="${userRole == user.userRole}"
+                            th:text="${userRole.getName()}" th:value="${userRole.getName()}"
+                            th:name="${userRole.getName()}">
+                    </option>
                 </select>
               </td>
             </tr>
@@ -51,8 +53,8 @@
               <td class="edit_row_caption" th:text="#{user.status}">Статус</td>
               <td th:text="${user.getStatus()}"></td>
               <td>
-                <select name="status">
-                  <option value="ACTIVE" name="status" th:field="${user.status}">active</option>
+                <select name="status" id="status">
+                  <option value="ACTIVE" name="status" th:field="${user.status}" selected="">active</option>
                   <option value="INACTIVE" name="status" th:field="${user.status}">inactive</option>
                 </select>
               </td>

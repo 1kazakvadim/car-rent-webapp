@@ -1,5 +1,6 @@
 package com.kazak.carrent.controller;
 
+import com.kazak.carrent.dto.CarPostDto;
 import com.kazak.carrent.model.entity.Car;
 import com.kazak.carrent.model.entity.CarBody;
 import com.kazak.carrent.model.entity.CarBrand;
@@ -12,6 +13,7 @@ import com.kazak.carrent.service.CarClassService;
 import com.kazak.carrent.service.CarService;
 import com.kazak.carrent.service.CarTransmissionService;
 import com.kazak.carrent.service.EngineTypeService;
+import com.kazak.carrent.service.UploadImageService;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,20 +32,23 @@ public class CarController {
   private final CarClassService carClassService;
   private final CarTransmissionService carTransmissionService;
   private final EngineTypeService engineTypeService;
-
+  private final UploadImageService uploadImageService;
 
   public CarController(CarService carService,
       CarBrandService carBrandService, CarBodyService carBodyService,
       CarClassService carClassService,
       CarTransmissionService carTransmissionService,
-      EngineTypeService engineTypeService) {
+      EngineTypeService engineTypeService,
+      UploadImageService uploadImageService) {
     this.carService = carService;
     this.carBrandService = carBrandService;
     this.carBodyService = carBodyService;
     this.carClassService = carClassService;
     this.carTransmissionService = carTransmissionService;
     this.engineTypeService = engineTypeService;
+    this.uploadImageService = uploadImageService;
   }
+
 
   @GetMapping("/profile/car/{carId}/detail")
   public String getCarDetail(@PathVariable Integer carId, Model model) {
@@ -55,8 +60,53 @@ public class CarController {
   @GetMapping("/profile/car/{carId}/edit")
   public String getEditCar(@PathVariable Integer carId, Model model) {
     Car car = carService.findById(carId);
+    List<CarBrand> carBrands = carBrandService.getAll();
+    List<CarBody> carBodies = carBodyService.getAll();
+    List<CarClass> carClasses = carClassService.getAll();
+    List<CarTransmission> carTransmissions = carTransmissionService.getAll();
+    List<EngineType> engineTypes = engineTypeService.getAll();
+    model.addAttribute("carBrands", carBrands);
+    model.addAttribute("carBodies", carBodies);
+    model.addAttribute("carClasses", carClasses);
+    model.addAttribute("carTransmissions", carTransmissions);
+    model.addAttribute("engineTypes", engineTypes);
     model.addAttribute("car", car);
     return "car/car_edit";
+  }
+
+  @PostMapping("/profile/car/{carId}/edit")
+  public String saveEditCar(@PathVariable Integer carId,
+      @RequestParam("carBrand") String carBrand,
+      @RequestParam("model") String model,
+      @RequestParam("carBody") String carBody,
+      @RequestParam("color") String color,
+      @RequestParam("carClass") String carClass,
+      @RequestParam("carTransmission") String carTransmission,
+      @RequestParam("engineType") String engineType,
+      @RequestParam("engineVolume") Double engineVolume,
+      @RequestParam("numberOfSeats") Integer numberOfSeats,
+      @RequestParam("fuelConsumption") Double fuelConsumption,
+      @RequestParam("rentalCost") Double rentalCost,
+      @RequestParam("imageFile") MultipartFile imageFile) {
+    CarPostDto carPostDto = new CarPostDto();
+    carPostDto.setId(carId);
+    carPostDto.setCarBrand(carBrandService.findByName(carBrand));
+    carPostDto.setModel(model);
+    carPostDto.setCarBody(carBodyService.findByName(carBody));
+    carPostDto.setColor(color);
+    carPostDto.setCarClass(carClassService.findByName(carClass));
+    carPostDto.setCarTransmission(carTransmissionService.findByName(carTransmission));
+    carPostDto.setEngineType(engineTypeService.findByName(engineType));
+    carPostDto.setEngineVolume(engineVolume);
+    carPostDto.setNumberOfSeats(numberOfSeats);
+    carPostDto.setFuelConsumption(fuelConsumption);
+    carPostDto.setRentalCost(rentalCost);
+    carPostDto.setFuelConsumption(fuelConsumption);
+    if (!imageFile.isEmpty()) {
+      carPostDto.setImageName(uploadImageService.upload(imageFile));
+    }
+    carService.update(carPostDto);
+    return "redirect:/profile/car";
   }
 
   @GetMapping("/profile/car/new")

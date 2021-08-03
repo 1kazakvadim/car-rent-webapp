@@ -4,10 +4,11 @@ import com.kazak.carrent.dto.PassportDataPostDto;
 import com.kazak.carrent.dto.UserPostDto;
 import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.model.entity.User;
+import com.kazak.carrent.model.entity.UserRole;
 import com.kazak.carrent.service.PassportDataService;
 import com.kazak.carrent.service.UserRoleService;
 import com.kazak.carrent.service.UserService;
-import org.apache.tomcat.util.descriptor.web.SecurityRoleRef;
+import java.util.List;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,7 +41,9 @@ public class UserController {
   @GetMapping("/profile/user/{userId}/edit")
   public String getUserEdit(@PathVariable Integer userId, Model model) {
     User user = userService.findById(userId);
+    List<UserRole> userRoles = userRoleService.getAll();
     model.addAttribute("user", user);
+    model.addAttribute("userRoles", userRoles);
     return "user/user_edit";
   }
 

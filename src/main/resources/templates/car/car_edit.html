@@ -14,70 +14,111 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <div class="edit_content">
-        <form class="edit_form" th:action="@{/profile/car/new}"
+        <form class="edit_form" th:action="@{/profile/car/{carId}/edit(carId=${car.getId()})}"
               method="post" enctype="multipart/form-data">
           <table class="edit_table">
-            <caption class="edit_table_caption" th:text="#{caption.car}">Добавить автомобиль
+            <caption class="edit_table_caption" th:text="#{caption.editCar}">Редактировать
+              автомобиль
             </caption>
             <tr>
               <td class="edit_row_caption" th:text="#{car.brand}">Марка</td>
               <td th:text="${car.getCarBrand().getName()}"></td>
-              <td><input type="text" name="carBrand"></td>
+              <td>
+                <select id="carBrand" name="carBrand">
+                  <option th:each="carBrand : ${carBrands}"
+                          th:selected="${carBrand == car.carBrand}"
+                          th:text="${carBrand.getName()}" th:value="${carBrand.getName()}"
+                          th:name="${carBrand.getName()}">
+                  </option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.model}">Модель</td>
               <td th:text="${car.getModel()}"></td>
-              <td><input type="text" name="carModel"></td>
+              <td><input type="text" name="model" th:field="${car.model}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.body}">Тип кузова</td>
               <td th:text="${car.getCarBody().getName()}"></td>
-              <td><input type="text" name="carBody"></td>
+              <td>
+                <select id="carBody" name="carBody">
+                  <option th:each="carBody : ${carBodies}" th:selected="${carBody == car.carBody}"
+                          th:text="${carBody.getName()}" th:value="${carBody.getName()}"
+                          th:name="${carBody.getName()}">
+                  </option>
+                </select>
+              </td>
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.color}">Цвет</td>
               <td th:text="${car.getColor()}"></td>
-              <td><input type="text" name="color"></td>
+              <td><input type="text" name="color" th:field="${car.color}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.class}">Класс автомобиля</td>
               <td th:text="${car.getCarClass().getName()}"></td>
-              <td><input type="text" name="carClass"></td>
+              <td>
+                <select id="carClass" name="carClass">
+                  <option th:each="carClass : ${carClasses}"
+                          th:selected="${carClass == car.carClass}"
+                          th:text="${carClass.getName()}" th:value="${carClass.getName()}"
+                          th:name="${carClass.getName()}">
+                  </option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.transmission}">Тип трансмиссии</td>
               <td th:text="${car.getCarTransmission().getName()}"></td>
-              <td><input type="text" name="carTransmission"></td>
+              <td>
+                <select id="carTransmission" name="carTransmission">
+                  <option th:each="carTransmission : ${carTransmissions}"
+                          th:selected="${carTransmission == car.carTransmission}"
+                          th:text="${carTransmission.getName()}"
+                          th:value="${carTransmission.getName()}"
+                          th:name="${carTransmission.getName()}">
+                  </option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.engineType}">Тип двигателя</td>
               <td th:text="${car.getEngineType().getName()}"></td>
-              <td><input type="text" name="engineType"></td>
+              <td>
+                <select id="engineType" name="engineType">
+                  <option th:each="engineType : ${engineTypes}"
+                          th:selected="${engineType == car.engineType}"
+                          th:text="${engineType.getName()}" th:value="${engineType.getName()}"
+                          th:name="${engineType.getName()}">
+                  </option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.engineVolume}">Объем двигателя</td>
               <td th:text="${car.getEngineVolume()}"></td>
               <td><input type="number" name="engineVolume" min="0" placeholder="0,00"
-                         step="0.01"></td>
+                         step="0.01" th:field="${car.engineVolume}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.numberOfSeats}">Количество сидений</td>
               <td th:text="${car.getNumberOfSeats()}"></td>
               <td><input type="number" name="numberOfSeats" min="0" placeholder="0,00"
-                         step="0.01"></td>
+                         step="0.01" th:field="${car.numberOfSeats}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.fuelConsumption}">Расход топлива</td>
               <td th:text="${car.getFuelConsumption()}"></td>
               <td><input type="number" name="fuelConsumption" min="0" placeholder="0,00"
-                         step="0.01"></td>
+                         step="0.01" th:field="${car.fuelConsumption}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.rentalCost}">Стоимость аренды</td>
               <td th:text="${car.getRentalCost()}"></td>
               <td><input type="number" name="rentalCost" min="0" placeholder="0,00"
-                         step="0.01"></td>
+                         step="0.01" th:field="${car.rentalCost}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.image}">Изображение</td>
@@ -97,20 +138,6 @@
           </table>
         </form>
       </div>
-
-
-      <!--      <div class="catalog_new_content">-->
-      <!--        <div class="col-md-8 mx-auto">-->
-      <!--          <h2>Upload File Example</h2>-->
-      <!--          <p th:text="${message}" th:if="${message}" class="alert alert-primary"></p>-->
-      <!--          <form method="post" th:action="@{catalog_new/upload}" enctype="multipart/form-data">-->
-      <!--            <div class="form-group">-->
-      <!--              <input type="file" name="file" class="form-control-file">-->
-      <!--            </div>-->
-      <!--            <button type="submit" class="btn btn-primary">Upload File</button>-->
-      <!--          </form>-->
-      <!--        </div>-->
-      <!--      </div>-->
     </div>
     <div th:replace="fragments/footer"></div>
   </div>
