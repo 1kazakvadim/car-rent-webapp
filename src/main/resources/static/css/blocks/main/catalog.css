@@ -68,7 +68,7 @@
 }
 
 .filer_checkbox_inner input:checked {
-  background-image: url(../../images/checkbox.png);
+  background-image: url(../../../images/checkbox.png);
 }
 
 .filer_checkbox_inner input:hover {

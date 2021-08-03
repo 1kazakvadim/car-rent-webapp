@@ -36,6 +36,11 @@
   text-align: left;
 }
 
+.repair_table .profile_dropdown_menu{
+  margin: 0;
+  padding: 0;
+}
+
 .repair_table tr:nth-child(odd) {
   background: var(--white);
 }
