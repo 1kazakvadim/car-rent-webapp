@@ -35,7 +35,6 @@ public class CatalogController {
   private final CarBrandService carBrandService;
   private final CarTransmissionService carTransmissionService;
   private final CarOrderService carOrderService;
-  private final UserService userService;
 
   public CatalogController(CarService carService, CarBodyService carBodyService,
       CarClassService carClassService, CarBrandService carBrandService,
@@ -47,7 +46,6 @@ public class CatalogController {
     this.carBrandService = carBrandService;
     this.carTransmissionService = carTransmissionService;
     this.carOrderService = carOrderService;
-    this.userService = userService;
   }
 
   @GetMapping("/catalog")
