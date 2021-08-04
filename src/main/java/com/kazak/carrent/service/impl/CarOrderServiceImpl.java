@@ -53,7 +53,7 @@ public class CarOrderServiceImpl implements CarOrderService {
     Car car = carRepository.getById(carDetailId);
     carOrder.setUser(userRepository.findByUsername(currentUser.getUsername()));
     carOrder.setCar(car);
-    carOrder.setRentalCost(Math.abs(car.getRentalCost() * carOrder.getDateOfIssue()
+    carOrder.setTotalCost(Math.abs(car.getRentalCost() * carOrder.getDateOfIssue()
         .until(carOrder.getDateOfReturn(), ChronoUnit.DAYS)));
     return carOrderRepository.save(carOrder);
   }
