@@ -1,0 +1,44 @@
+.passport {
+  margin-bottom: 12rem;
+}
+
+.passport_inner {
+  display: flex;
+}
+
+.passport_table {
+  font-family: 'Lato', sans-serif;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-left: 3rem;
+  color: var(--black);
+}
+
+.passport_table_caption {
+  padding: 0.5rem;
+  color: var(--white);
+  background: saddlebrown;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.passport_column_caption {
+  text-transform: uppercase;
+}
+
+.passport_table tr {
+  text-transform: uppercase;
+}
+
+.passport_table td {
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.passport_table .profile_dropdown_menu {
+  float: right;
+}

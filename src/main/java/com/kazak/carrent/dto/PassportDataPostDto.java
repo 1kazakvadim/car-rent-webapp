@@ -6,7 +6,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
@@ -15,46 +14,46 @@ public class PassportDataPostDto {
 
   private Integer id;
 
-  @NotEmpty(message = "first name can`t be empty")
+  @NotEmpty
   private String firstName;
 
-  @NotEmpty(message = "last name can`t be empty")
+  @NotEmpty
   private String lastName;
 
-  @NotEmpty(message = "middle name can`t be empty")
+  @NotEmpty
   private String middleName;
 
-  @NotEmpty(message = "sex can`t be empty")
+  @NotEmpty
   private String sex;
 
-  @Past(message = "date of birth can`t be in future")
+  @Past
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate dateOfBirth;
 
-  @NotEmpty(message = "passport number can`t be empty")
+  @NotEmpty
   private String passportNumber;
 
-  @NotEmpty(message = "identification number can`t be empty")
+  @NotEmpty
   private String identificationNumber;
 
-  @Past(message = "date of issue can`t be in future")
+  @Past
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate dateOfIssue;
 
-  @Future(message = "date of expiry can`t be in past")
+  @Future
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate dateOfExpiry;
 
-  @NotEmpty(message = "place of birth can`t be empty")
+  @NotEmpty
   private String placeOfBirth;
 
-  @NotEmpty(message = "authority can`t be empty")
+  @NotEmpty
   private String authority;
 
-  @NotEmpty(message = "nationality can`t be empty")
+  @NotEmpty
   private String nationality;
 
-  @NotEmpty(message = "registration can`t be empty")
+  @NotEmpty
   private String registration;
 
 }

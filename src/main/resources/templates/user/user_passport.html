@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="passport">
+  <div class="container">
+    <div class="passport_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <table class="passport_table">
+        <caption class="passport_table_caption" th:text="#{caption.passport}">Паспорт</caption>
+        <tr>
+          <td th:text="#{passport.firstName}">Имя</td>
+          <td th:text="${passportData.getFirstName()}"></td>
+          <td>
+            <div class="profile_dropdown_menu">
+              <input class="profile_dropdown_menu_checkbox" th:id="${passportData.getId()}"
+                     type="checkbox"/>
+              <label th:for="${passportData.getId()}"></label>
+              <div class="profile_dropdown_menu_content">
+                <ul>
+                  <li><a th:text="#{button.edit}"
+                         th:href="@{/profile/user/{userId}/passport/{passportId}/edit(userId=${passportData.getUser().getId()},passportId=${passportData.getId()})}">Редактировать</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.lastName}">Фамилия</td>
+          <td th:text="${passportData.getLastName()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.middleName}">Отчество</td>
+          <td th:text="${passportData.getMiddleName()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.sex}">Пол</td>
+          <td th:text="${passportData.getSex()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.dateOfBirth}">Дата рождения</td>
+          <td th:text="${passportData.getDateOfBirth()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.passportNumber}">Номер паспорта</td>
+          <td th:text="${passportData.getPassportNumber()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.identificationNumber}">Идентификационный номер</td>
+          <td th:text="${passportData.getIdentificationNumber()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.dateOfIssue}">Дата выдачи</td>
+          <td th:text="${passportData.getDateOfIssue()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.dateOfExpiry}">Дата действия</td>
+          <td th:text="${passportData.getDateOfExpiry()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.placeOfBirth}">Место рождения</td>
+          <td th:text="${passportData.getPlaceOfBirth()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.authority}">Орган, который выдал паспорт</td>
+          <td th:text="${passportData.getAuthority()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.nationality}">Национальность</td>
+          <td th:text="${passportData.getNationality()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.registration}">Регистрация</td>
+          <td th:text="${passportData.getRegistration()}"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

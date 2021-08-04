@@ -22,18 +22,18 @@ public class RegistrationController {
   @GetMapping("/registration")
   public String getRegistrationPage(@ModelAttribute("user") User user,
       @ModelAttribute("passportData") PassportData passportData) {
-    return "registration";
+    return "main/registration";
   }
 
   @PostMapping("/registration")
   public String registerUser(@Valid User user, BindingResult bindingResultUser,
       @Valid PassportData passportData, BindingResult bindingResultPassportData) {
     if (bindingResultUser.hasErrors() || bindingResultPassportData.hasErrors()) {
-      return "registration";
+      return "main/registration";
     }
     user.setPassportData(passportData);
     userService.save(user);
-    return "login";
+    return "main/login";
   }
 
 }

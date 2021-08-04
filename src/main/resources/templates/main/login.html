@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="authorization">
+  <div class="container">
+    <div class="authorization_inner">
+      <div class="authorization_header">
+        <h1 class="authorization_title" th:text="#{authorization}">АВТОРИЗАЦИЯ</h1>
+      </div>
+      <form class="authorization_form" th:action="@{/login}" method="post">
+        <fieldset class="authorization_fieldset">
+          <div th:if="${param.error}" class="alert alert-error">
+            <p id="error_text" th:text="#{invalidLoginOrUsername}"></p>
+          </div>
+          <input class="authorization_login" type="text" id="username" name="username"
+                 th:placeholder="#{placeholder.login}"/>
+          <input class="authorization_password" type="password" id="password" name="password"
+                 th:placeholder="#{placeholder.password}"/>
+          <div class="form-actions">
+            <button type="submit" class="authorization_submit btn">
+              <span th:text="#{signIn}">ВОЙТИ</span>
+            </button>
+          </div>
+          <div class="authorization_footer">
+            <p class="footer_title" th:text="#{noAccount}">Нет аккаунта?</p>
+            <a class="footer_link" th:text="#{registration}" th:href="@{registration}">Регистрация</a>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

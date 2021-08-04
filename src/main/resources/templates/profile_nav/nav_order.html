@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="order">
+  <div class="container">
+    <div class="order_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <table class="order_table">
+        <caption class="order_table_caption" th:text="#{caption.listOfOrders}">Список заказов</caption>
+        <tr>
+          <td>№</td>
+          <td th:text="#{passport.fullName}">ФИО</td>
+          <td th:text="#{car.fullName}">Автомобиль</td>
+          <td th:text="#{order.dateOfIssue}">Дата выдачи</td>
+          <td th:text="#{order.dateOfReturn}">Дата возврата</td>
+          <td th:text="#{order.status}">Состояние заказа</td>
+          <td th:text="#{order.totalCost}">Итого</td>
+        </tr>
+        <tr th:each="carOrder : ${carOrders}">
+          <td th:text="${carOrder.getId()}"></td>
+          <td th:text="${carOrder.getUser().getPassportData().getLastName() + ' '
+          + carOrder.getUser().getPassportData().getFirstName() + ' '
+          + carOrder.getUser().getPassportData().getMiddleName()}"></td>
+          <td th:text="${carOrder.getCar().getCarBrand().getName()} + ' '
+          + ${carOrder.getCar().getModel()}"></td>
+          <td th:text="${carOrder.getDateOfIssue()}"></td>
+          <td th:text="${carOrder.getDateOfReturn()}"></td>
+          <td th:if="${carOrder.isCancellation() == false}" th:text="#{order.statusActive}"></td>
+          <td th:unless="${carOrder.isCancellation() == false}"
+              th:text="#{order.statusCancel}"></td>
+          <td th:text="${carOrder.getTotalCost()}"></td>
+          <td>
+            <div class="profile_dropdown_menu">
+              <input class="profile_dropdown_menu_checkbox" th:id="${carOrder.getId()}"
+                     type="checkbox"/>
+              <label th:for="${carOrder.getId()}"></label>
+              <div class="profile_dropdown_menu_content">
+                <ul>
+                  <li><a th:text="#{order.about}"
+                         th:href="@{order/{orderId}/detail(orderId=${carOrder.getId()})}">О заказе</a></li>
+                  <li><a th:text="#{order.reasonOfCancellation}"
+                         th:href="@{order/{orderId}/reason(orderId=${carOrder.getId()})}">Причина отмены</a>
+                  </li>
+                  <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{order.addRepair}"
+                      th:href="@{order/{orderId}/repair(orderId=${carOrder.getId()})}">Добавить
+                    ремонт</a>
+                  </li>
+                  <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{order.cancel}"
+                      th:href="@{order/{orderId}/cancellation(orderId=${carOrder.getId()})}">Отменить
+                    заказ</a></li>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

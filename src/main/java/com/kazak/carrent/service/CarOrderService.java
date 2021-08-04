@@ -12,7 +12,7 @@ public interface CarOrderService {
 
   List<CarOrder> getAll(UserDetails currentUser);
 
-  CarOrder save(CarOrder carOrder, Integer carDetailId, UserDetails currentUser);
+  void save(CarOrder carOrder, Integer carDetailId, UserDetails currentUser);
 
   void cancelCarOrder (String reasonOfCancellation, Integer carOrderId);
 

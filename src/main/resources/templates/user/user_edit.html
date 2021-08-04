@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="edit">
+  <div class="container">
+    <div class="edit_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <div class="edit_content">
+        <form class="edit_form" th:action="@{/profile/user/{userId}/edit(userId=${user.getId()})}"
+              method="post">
+          <table class="edit_table">
+            <caption class="edit_table_caption" th:text="#{caption.editUser}">Редактировать
+              пользователя
+            </caption>
+            <tr>
+              <td class="edit_row_caption" th:text="#{user.username}">Имя пользователя</td>
+              <td th:text="${user.getUsername()}"></td>
+              <td><input type="text" name="username" th:field="${user.username}"></td>
+            </tr>
+            <tr>
+              <td class="edit_row_caption" th:text="#{user.email}">Эл. почта</td>
+              <td th:text="${user.getEmail()}"></td>
+              <td><input type="text" name="email" th:field="${user.email}"></td>
+            </tr>
+            <tr>
+              <td class="edit_row_caption" th:text="#{user.phoneNumber}">Телефон</td>
+              <td th:text="${user.getPhoneNumber()}"></td>
+              <td><input type="text" name="phoneNumber" th:field="${user.phoneNumber}">
+              </td>
+            </tr>
+            <tr>
+              <td class="edit_row_caption" th:text="#{user.role}">Роль</td>
+              <td th:text="${user.getUserRole().getName()}"></td>
+              <td>
+                <select id="userRole" name="userRole">
+                    <option th:each="userRole : ${userRoles}"
+                            th:selected="${userRole == user.userRole}"
+                            th:text="${userRole.getName()}" th:value="${userRole.getName()}"
+                            th:name="${userRole.getName()}">
+                    </option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="edit_row_caption" th:text="#{user.status}">Статус</td>
+              <td th:text="${user.getStatus()}"></td>
+              <td>
+                <select name="status" id="status">
+                  <option value="ACTIVE" name="status" th:field="${user.status}" selected="">active</option>
+                  <option value="INACTIVE" name="status" th:field="${user.status}">inactive</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                <button class="edit_button" type="submit" th:text="#{button.save}">сохранить
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+        <form class="edit_form"
+              th:action="@{/profile/user/{userId}/password(userId=${user.getId()})}"
+              method="post">
+          <table class="edit_table">
+            <caption class="edit_table_caption" th:text="#{caption.changePassword}">Изменить пароля
+            </caption>
+            <tr class="edit_password_row_caption">
+              <td>
+                <label for="password" th:text="#{label.newPassword}">Новый пароль</label>
+                <input id="password" type="password" name="password">
+              </td>
+            </tr>
+            <tr class="edit_password_row_caption">
+              <td>
+                <label for="password_confirm" th:text="#{label.confirmPassword}">Подтвердить
+                  пароль</label>
+                <input id="password_confirm" type="password" name="passwordConfirm">
+              </td>
+            </tr>
+            <tr class="edit_password_row_caption">
+              <td>
+                <button class="edit_button" type="submit" th:text="#{button.save}">сохранить
+                </button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

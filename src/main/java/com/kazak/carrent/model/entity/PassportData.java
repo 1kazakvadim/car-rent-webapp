@@ -36,52 +36,52 @@ public class PassportData {
   @OneToOne(mappedBy = "passportData", fetch = FetchType.LAZY)
   private User user;
 
-  @NotEmpty(message = "first name can`t be empty")
+  @NotEmpty
   @Column(name = "first_name", nullable = false)
   private String firstName;
 
-  @NotEmpty(message = "last name can`t be empty")
+  @NotEmpty
   @Column(name = "last_name", nullable = false)
   private String lastName;
 
-  @NotEmpty(message = "middle name can`t be empty")
+  @NotEmpty
   @Column(name = "middle_name", nullable = false)
   private String middleName;
 
-  @NotEmpty(message = "sex can`t be empty")
+  @NotEmpty
   @Column(name = "sex", nullable = false)
   private String sex;
 
-  @Past(message = "date of birth can`t be in future")
+  @Past
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @Column(name = "date_of_birth", nullable = false)
   private LocalDate dateOfBirth;
 
-  @NotEmpty(message = "passport number can`t be empty")
+  @NotEmpty
   @UniquePassportNumber
   @Column(name = "passport_number", nullable = false, unique = true)
   private String passportNumber;
 
-  @NotEmpty(message = "identification number can`t be empty")
+  @NotEmpty
   @UniqueIdentificationNumber
   @Column(name = "identification_number", nullable = false, unique = true)
   private String identificationNumber;
 
-  @Past(message = "date of issue can`t be in future")
+  @Past
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @Column(name = "date_of_issue", nullable = false)
   private LocalDate dateOfIssue;
 
-  @Future(message = "date of expiry can`t be in past")
+  @Future
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @Column(name = "date_of_expiry", nullable = false)
   private LocalDate dateOfExpiry;
 
-  @NotEmpty(message = "place of birth can`t be empty")
+  @NotEmpty
   @Column(name = "place_of_birth", nullable = false)
   private String placeOfBirth;
 
-  @NotEmpty(message = "authority can`t be empty")
+  @NotEmpty
   @Column(name = "authority", nullable = false)
   private String authority;
 

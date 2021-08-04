@@ -3,15 +3,17 @@
           th:fragment="profile_nav">
   <div class="profile_user_nav">
     <ul class="profile_user_nav_content">
-      <li><a th:text="#{personalInformation}" th:href="@{/profile/information}">Личная
+      <li><a th:text="#{userNav.personalInformation}" th:href="@{/profile/information}">Личная
         информация</a>
       </li>
-      <li><a th:text="#{cars}" th:href="@{/profile/car}">Машины</a></li>
-      <li><a th:text="#{orders}" th:href="@{/profile/order}">Заказы</a></li>
-      <li><a th:text="#{repairs}" th:href="@{/profile/repair}">Ремонты</a></li>
-      <li><a th:text="#{settings}" href="#">Настройки</a></li>
-      <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{users}"
-           th:href="@{/profile/user}">Пользователи</a>
+      <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{userNav.cars}"
+          th:href="@{/profile/car}">Машины</a>
+      </li>
+      <li><a th:text="#{userNav.orders}" th:href="@{/profile/order}">Заказы</a></li>
+      <li><a th:text="#{userNav.repairs}" th:href="@{/profile/repair}">Ремонты</a></li>
+      <li><a th:text="#{userNav.settings}" th:href="@{/profile/setting}">Настройки</a></li>
+      <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{userNav.users}"
+                                                            th:href="@{/profile/user}">Пользователи</a>
       </li>
     </ul>
   </div>

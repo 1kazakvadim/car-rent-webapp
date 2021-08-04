@@ -1,0 +1,81 @@
+.edit {
+  margin-bottom: 12rem;
+}
+
+.edit_inner {
+  display: flex;
+}
+
+.edit_content {
+  font-family: 'Lato', sans-serif;
+  color: var(--black);
+  display: inline-block;
+  width: 100%;
+}
+
+.edit_form {
+  margin-left: 3rem;
+  margin-bottom: 3rem;
+}
+
+.edit_table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.edit_table_caption {
+  padding: 0.5rem;
+  color: var(--white);
+  background: saddlebrown;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.edit_row_caption {
+  text-transform: uppercase;
+}
+
+.edit_table input, select {
+  padding: 0.2rem;
+  border: 0.1rem solid var(--black);
+  border-radius: 0.2rem;
+}
+
+.edit_table td {
+  padding: 0.5rem;
+}
+
+.edit_password_row_caption {
+  display: block;
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.edit_password_row_caption label {
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.edit_password_row_caption label:first-letter {
+  text-transform: uppercase;
+}
+
+.edit_button {
+  color: var(--white);
+  background-color: rgba(94, 127, 220, 1);
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.4rem 0.4rem;
+}
+
+.edit_button:hover {
+  background-color: rgba(94, 127, 220, 0.8);
+  transition: all 0.2s linear;
+}
+

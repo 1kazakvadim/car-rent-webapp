@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="detail">
+  <div class="container">
+    <div class="detail_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <table class="detail_table">
+        <caption class="detail_table_caption" th:text="#{caption.order}">Заказ</caption>
+        <tr>
+          <td th:text="#{order.id}">Номер заказа</td>
+          <td th:text="${carOrder.getId()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{order.dateOfIssue}">Дата выдачи</td>
+          <td th:text="${carOrder.getDateOfIssue()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{order.dateOfReturn}">Дата возврата</td>
+          <td th:text="${carOrder.getDateOfReturn()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.fullName}">ФИО</td>
+          <td th:text="${carOrder.getUser().getPassportData().getLastName() + ' '
+          + carOrder.getUser().getPassportData().getFirstName() + ' '
+          + carOrder.getUser().getPassportData().getMiddleName()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{user.email}">Эл. почта</td>
+          <td th:text="${carOrder.getUser().getEmail()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{user.phoneNumber}">Номер телефона</td>
+          <td th:text="${carOrder.getUser().getPhoneNumber()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.sex}">Пол</td>
+          <td th:text="${carOrder.getUser().passportData.getSex()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.dateOfBirth}">Дата рождения</td>
+          <td th:text="${carOrder.getUser().passportData.getDateOfBirth()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.passportNumber}">Номер паспорта</td>
+          <td th:text="${carOrder.getUser().passportData.getPassportNumber()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.identificationNumber}">Идентификационный номер</td>
+          <td th:text="${carOrder.getUser().passportData.getIdentificationNumber()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.dateOfIssue}">Дата выдачи</td>
+          <td th:text="${carOrder.getUser().passportData.getDateOfIssue()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.dateOfExpiry}">Дата действия</td>
+          <td th:text="${carOrder.getUser().passportData.getDateOfExpiry()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.placeOfBirth}">Место рождения</td>
+          <td th:text="${carOrder.getUser().passportData.getPlaceOfBirth()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.authority}">Орган, который выдал паспорт</td>
+          <td th:text="${carOrder.getUser().passportData.getAuthority()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.nationality}">Национальность</td>
+          <td th:text="${carOrder.getUser().passportData.getNationality()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{passport.registration}">Регистрация</td>
+          <td th:text="${carOrder.getUser().passportData.getRegistration()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.brand}">Марка автомобиля</td>
+          <td th:text="${carOrder.getCar().getCarBrand().getName()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.model}">Модель автомобиля</td>
+          <td th:text="${carOrder.getCar().getModel()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.color}">Цвет</td>
+          <td th:text="${carOrder.getCar().getColor()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.body}">Тип кузова</td>
+          <td th:text="${carOrder.getCar().getCarBody().getName()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.class}">Класс автомобиля</td>
+          <td th:text="${carOrder.getCar().getCarClass().getName()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.transmission}">Трансмиссия</td>
+          <td th:text="${carOrder.getCar().getCarTransmission().getName()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.engineType}">Тип двигателя</td>
+          <td th:text="${carOrder.getCar().getEngineType().getName()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.engineVolume}">Объем двигателя</td>
+          <td th:text="${carOrder.getCar().getEngineVolume()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.numberOfSeats}">Кол-во сидений</td>
+          <td th:text="${carOrder.getCar().getNumberOfSeats()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.fuelConsumption}">Расход автомобиля</td>
+          <td th:text="${carOrder.getCar().getFuelConsumption()}"></td>
+        </tr>
+        <tr>
+          <td th:text="#{car.rentalCost}">Стоимость в сутки</td>
+          <td th:text="${carOrder.getCar().getRentalCost()}"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

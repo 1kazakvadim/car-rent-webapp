@@ -49,16 +49,17 @@ public class CarOrderServiceImpl implements CarOrderService {
 
   @Override
   @Transactional
-  public CarOrder save(CarOrder carOrder, Integer carDetailId, UserDetails currentUser) {
+  public void save(CarOrder carOrder, Integer carDetailId, UserDetails currentUser) {
     Car car = carRepository.getById(carDetailId);
     carOrder.setUser(userRepository.findByUsername(currentUser.getUsername()));
     carOrder.setCar(car);
     carOrder.setTotalCost(Math.abs(car.getRentalCost() * carOrder.getDateOfIssue()
         .until(carOrder.getDateOfReturn(), ChronoUnit.DAYS)));
-    return carOrderRepository.save(carOrder);
+    carOrderRepository.save(carOrder);
   }
 
   @Override
+  @Transactional
   public void cancelCarOrder(String reasonOfCancellation, Integer carOrderId) {
     CarOrder carOrder = carOrderRepository.getById(carOrderId);
     carOrder.setReasonOfCancellation(reasonOfCancellation);

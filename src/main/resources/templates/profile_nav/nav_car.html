@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title>Car-Rent</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="car">
+  <div class="container">
+    <div class="car_inner">
+      <div class="profile_nav_inner">
+        <div th:replace="fragments/profile_nav"></div>
+      </div>
+      <table class="car_table">
+        <caption class="car_table_caption" th:text="#{caption.listOfCars}">Список автомобилей
+        </caption>
+        <tr>
+          <td>№</td>
+          <td th:text="#{car.brand}">Марка</td>
+          <td th:text="#{car.model}">Модель</td>
+          <td th:text="#{car.body}">Тип кузова</td>
+          <td th:text="#{car.color}">Цвет</td>
+          <td th:text="#{car.class}">Класс автомобиля</td>
+          <td th:text="#{car.transmission}">Коробка передач</td>
+          <td th:text="#{car.rentalCost}">Стоимость аренды</td>
+          <td>
+            <div class="profile_dropdown_menu">
+              <input class="profile_dropdown_menu_checkbox" id="carNew"
+                     type="checkbox"/>
+              <label for="carNew"> </label>
+              <div class="profile_dropdown_menu_content">
+                <ul>
+                  <li><a th:text="#{car.add}" th:href="@{car/new}">Добавить автомобиль</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr th:each="car : ${cars}">
+          <td th:text="${car.getId()}"></td>
+          <td th:text="${car.getCarBrand().getName()}"></td>
+          <td th:text="${car.getModel()}"></td>
+          <td th:text="${car.getCarBody().getName()}"></td>
+          <td th:text="${car.getColor()}"></td>
+          <td th:text="${car.getCarClass().getName()}"></td>
+          <td th:text="${car.getCarTransmission().getName()}"></td>
+          <td th:text="${car.getRentalCost()}"></td>
+          <td>
+            <div class="profile_dropdown_menu">
+              <input class="profile_dropdown_menu_checkbox" th:id="${car.getId()}"
+                     type="checkbox"/>
+              <label th:for="${car.getId()}"> </label>
+              <div class="profile_dropdown_menu_content">
+                <ul>
+                  <li><a th:text="#{car.about}" th:href="@{car/{carId}/detail(carId=${car.getId()})}">Об
+                    автомобиле</a>
+                  </li>
+                </ul>
+                <ul>
+                  <li><a th:text="#{button.edit}" th:href="@{car/{carId}/edit(carId=${car.getId()})}">Редактировать</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div th:replace="fragments/footer"></div>
+  </div>
+</div>
+</body>
+</html>
