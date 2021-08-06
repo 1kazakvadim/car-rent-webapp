@@ -7,6 +7,7 @@ import com.kazak.carrent.repository.CarOrderRepository;
 import com.kazak.carrent.repository.CarRepository;
 import com.kazak.carrent.repository.UserRepository;
 import com.kazak.carrent.service.CarOrderService;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -45,6 +46,26 @@ public class CarOrderServiceImpl implements CarOrderService {
     } else {
       return carOrderRepository.findAll();
     }
+  }
+
+  @Override
+  public List<CarOrder> getAllByCarId(Integer carId) {
+    return carOrderRepository.findAllByCar_Id(carId);
+  }
+
+  @Override
+  public boolean checkIsCarAvailableByDate(Integer carId, LocalDate dateOfIssue,
+      LocalDate dateOfReturn) {
+    List<CarOrder> carOrders = carOrderRepository.findAllByCar_Id(carId);
+    for (CarOrder carOrder : carOrders) {
+      if (!carOrder.getDateOfIssue().isAfter(dateOfIssue) && !carOrder.getDateOfReturn()
+          .isBefore(dateOfIssue) ||
+          !carOrder.getDateOfIssue().isAfter(dateOfReturn) &&
+              !carOrder.getDateOfReturn().isBefore(dateOfReturn)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   @Override
