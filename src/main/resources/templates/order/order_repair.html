@@ -18,6 +18,13 @@
         <table class="new_repair_table">
           <caption class="new_repair_table_caption" th:text="#{caption.repair}">Добавление ремонта
           </caption>
+          <caption>
+            <div th:if="${repairAdd}" class="notification">
+            <span class="notification_close_button" onclick="this.parentElement.style.display='none';"
+            >&times;</span>
+              <p th:text="${repairAdd}"></p>
+            </div>
+          </caption>
           <tr>
             <td th:text="#{order.id}">Номер заказа</td>
             <td th:text="${carOrder.getId()}"></td>

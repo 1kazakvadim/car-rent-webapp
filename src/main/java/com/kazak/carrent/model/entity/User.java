@@ -43,8 +43,7 @@ public class User {
 
   @NotEmpty
   @Size(min = 3, max = 255)
-//  @Pattern(regexp = "^(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{3,16}$",
-//      message = "password should contains at least one lowercase letter, one number and one special character (@$!%*?&)")
+  @Pattern(regexp = "^(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{3,16}$")
   @Column(name = "password", nullable = false)
   private String password;
 

@@ -20,6 +20,13 @@
           <table class="edit_table">
             <caption class="edit_table_caption" th:text="#{caption.car}">Добавить автомобиль
             </caption>
+            <caption>
+              <div th:if="${carAdd}" class="notification">
+            <span class="notification_close_button" onclick="this.parentElement.style.display='none';"
+            >&times;</span>
+                <p th:text="${carAdd}"></p>
+              </div>
+            </caption>
             <tr>
               <td class="edit_row_caption" th:text="#{car.brand}">Марка</td>
               <td>

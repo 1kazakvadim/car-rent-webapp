@@ -9,9 +9,8 @@ import com.kazak.carrent.service.PassportDataService;
 import com.kazak.carrent.service.UserRoleService;
 import com.kazak.carrent.service.UserService;
 import java.util.List;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import java.util.Locale;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
@@ -26,16 +26,16 @@ public class UserController {
   private final UserService userService;
   private final PassportDataService passportDataService;
   private final UserRoleService userRoleService;
-  private final PasswordEncoder passwordEncoder;
+  private final MessageSource messageSource;
+
 
   public UserController(UserService userService,
       PassportDataService passportDataService,
-      UserRoleService userRoleService,
-      PasswordEncoder passwordEncoder) {
+      UserRoleService userRoleService, MessageSource messageSource) {
     this.userService = userService;
     this.passportDataService = passportDataService;
     this.userRoleService = userRoleService;
-    this.passwordEncoder = passwordEncoder;
+    this.messageSource = messageSource;
   }
 
   @GetMapping("/profile/user/{userId}/edit")
@@ -53,12 +53,16 @@ public class UserController {
       @RequestParam("email") String email,
       @RequestParam("phoneNumber") String phoneNumber,
       @RequestParam("userRole") String userRole,
-      @RequestParam("status") String status) {
+      @RequestParam("status") String status,
+      RedirectAttributes RedirectAttributes, Locale locale) {
     UserPostDto userPostDto = new UserPostDto();
     if (userService.isUsernameExistsExceptUsernameWithId(username, userId) ||
         userService.isEmailExistsExceptEmailWithId(email, userId) || userService
         .isPhoneNumberExistsExceptPhoneNumberWithId(phoneNumber, userId)
     ) {
+      RedirectAttributes
+          .addFlashAttribute("invalidUserEdit",
+              messageSource.getMessage("error.invalidUserEdit", null, locale));
       return "redirect:/profile/user/{userId}/edit";
     }
     userPostDto.setId(userId);
@@ -68,32 +72,28 @@ public class UserController {
     userPostDto.setUserRole(userRoleService.findByName(userRole));
     userPostDto.setStatus(status);
     userService.update(userPostDto);
-    return "redirect:/profile/user";
+    RedirectAttributes
+        .addFlashAttribute("userEdit",
+            messageSource.getMessage("notification.userEdit", null, locale));
+    return "redirect:/profile/user/{userId}/edit";
   }
 
   @PostMapping("/profile/user/{userId}/password")
   public String changeUserPasswordByAdmin(@PathVariable Integer userId,
       @RequestParam("password") String password,
-      @RequestParam("passwordConfirm") String passwordConfirm) {
+      @RequestParam("passwordConfirm") String passwordConfirm,
+      RedirectAttributes RedirectAttributes, Locale locale) {
     if (!password.equals(passwordConfirm)) {
+      RedirectAttributes
+          .addFlashAttribute("wrongPassword",
+              messageSource.getMessage("error.wrongPassword", null, locale));
       return "redirect:/profile/user/{userId}/edit";
     }
     userService.changeUserPassword(userService.findById(userId), password);
-    return "redirect:/profile/user";
-  }
-
-  @PostMapping("/profile/setting/password")
-  public String changeUserPasswordByUser(@AuthenticationPrincipal UserDetails currentUser,
-      @RequestParam("passwordOld") String passwordOld,
-      @RequestParam("password") String password,
-      @RequestParam("passwordConfirm") String passwordConfirm) {
-    User user = userService.findByUsername(currentUser.getUsername());
-    if (!password.equals(passwordConfirm) || !passwordEncoder
-        .matches(passwordOld, user.getPassword())) {
-      return "redirect:/profile/setting";
-    }
-    userService.changeUserPassword(user, password);
-    return "redirect:/profile/information";
+    RedirectAttributes
+        .addFlashAttribute("passwordChange",
+            messageSource.getMessage("notification.passwordChange", null, locale));
+    return "redirect:/profile/user/{userId}/edit";
   }
 
   @GetMapping("/profile/user/{userId}/passport")
@@ -117,17 +117,23 @@ public class UserController {
   @PostMapping("/profile/user/{userId}/passport/{passportId}/edit")
   public String saveEditPassport(
       @ModelAttribute("passportDataDto") PassportDataPostDto passportDataPostDto,
-      @PathVariable Integer passportId, @PathVariable Integer userId) {
+      @PathVariable Integer passportId, @PathVariable Integer userId,
+      RedirectAttributes RedirectAttributes, Locale locale) {
     if (passportDataService
         .isPassportNumberExistsExceptPassportNumberWithId(passportDataPostDto.getPassportNumber(),
             passportId) ||
         passportDataService.isIdentificationNumberExistsExceptIdentificationNumberWithId(
             passportDataPostDto.getIdentificationNumber(), passportId)) {
+      RedirectAttributes
+          .addFlashAttribute("invalidPassportEdit",
+              messageSource.getMessage("error.invalidPassportEdit", null, locale));
       return "redirect:/profile/user/{userId}/passport/{passportId}/edit";
     }
-    System.err.println(passportDataPostDto);
     passportDataService.update(passportDataPostDto);
-    return "redirect:/profile/user/{userId}/passport";
+    RedirectAttributes
+        .addFlashAttribute("passportEdit",
+            messageSource.getMessage("notification.passportEdit", null, locale));
+    return "redirect:/profile/user/{userId}/passport/{passportId}/edit";
   }
 
 }

@@ -15,8 +15,8 @@
       </div>
       <form class="authorization_form" th:action="@{/login}" method="post">
         <fieldset class="authorization_fieldset">
-          <div th:if="${param.error}" class="alert alert-error">
-            <p id="error_text" th:text="#{invalidLoginOrUsername}"></p>
+          <div th:if="${param.error}" class="alert_login">
+            <p id="error_text" th:text="#{error.invalidLoginOrUsername}"></p>
           </div>
           <input class="authorization_login" type="text" id="username" name="username"
                  th:placeholder="#{placeholder.login}"/>

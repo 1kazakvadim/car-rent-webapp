@@ -15,6 +15,8 @@ import com.kazak.carrent.service.CarTransmissionService;
 import com.kazak.carrent.service.EngineTypeService;
 import com.kazak.carrent.service.UploadImageService;
 import java.util.List;
+import java.util.Locale;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CarController {
@@ -33,13 +36,15 @@ public class CarController {
   private final CarTransmissionService carTransmissionService;
   private final EngineTypeService engineTypeService;
   private final UploadImageService uploadImageService;
+  private final MessageSource messageSource;
 
   public CarController(CarService carService,
       CarBrandService carBrandService, CarBodyService carBodyService,
       CarClassService carClassService,
       CarTransmissionService carTransmissionService,
       EngineTypeService engineTypeService,
-      UploadImageService uploadImageService) {
+      UploadImageService uploadImageService,
+      MessageSource messageSource) {
     this.carService = carService;
     this.carBrandService = carBrandService;
     this.carBodyService = carBodyService;
@@ -47,6 +52,7 @@ public class CarController {
     this.carTransmissionService = carTransmissionService;
     this.engineTypeService = engineTypeService;
     this.uploadImageService = uploadImageService;
+    this.messageSource = messageSource;
   }
 
 
@@ -87,7 +93,8 @@ public class CarController {
       @RequestParam("numberOfSeats") Integer numberOfSeats,
       @RequestParam("fuelConsumption") Double fuelConsumption,
       @RequestParam("rentalCost") Double rentalCost,
-      @RequestParam("imageFile") MultipartFile imageFile) {
+      @RequestParam("imageFile") MultipartFile imageFile,
+      RedirectAttributes RedirectAttributes, Locale locale) {
     CarPostDto carPostDto = new CarPostDto();
     carPostDto.setId(carId);
     carPostDto.setCarBrand(carBrandService.findByName(carBrand));
@@ -106,7 +113,10 @@ public class CarController {
       carPostDto.setImageName(uploadImageService.upload(imageFile));
     }
     carService.update(carPostDto);
-    return "redirect:/profile/car";
+    RedirectAttributes
+        .addFlashAttribute("carEdit",
+            messageSource.getMessage("notification.carEdit", null, locale));
+    return "redirect:/profile/car/{carId}/edit";
   }
 
   @GetMapping("/profile/car/new")
@@ -137,11 +147,15 @@ public class CarController {
       @RequestParam("numberOfSeats") Integer numberOfSeats,
       @RequestParam("fuelConsumption") Double fuelConsumption,
       @RequestParam("rentalCost") Double rentalCost,
-      @RequestParam("imageFile") MultipartFile imageFile
+      @RequestParam("imageFile") MultipartFile imageFile,
+      RedirectAttributes RedirectAttributes, Locale locale
   ) {
     carService.save(carBrand, carModel, carBody, color, carClass, carTransmission, engineType,
         engineVolume, numberOfSeats, fuelConsumption, rentalCost, imageFile);
-    return "redirect:/profile/car";
+    RedirectAttributes
+        .addFlashAttribute("carAdd",
+            messageSource.getMessage("notification.carAdd", null, locale));
+    return "redirect:/profile/car/new";
   }
 
 }

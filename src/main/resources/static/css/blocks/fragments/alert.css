@@ -24,3 +24,9 @@
 .alert_close_button:hover {
   color: black;
 }
+
+.alert_login {
+  text-align: center;
+  color: #f44336;
+  text-transform: uppercase;
+}

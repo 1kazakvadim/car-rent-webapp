@@ -12,9 +12,10 @@ import com.kazak.carrent.service.CarClassService;
 import com.kazak.carrent.service.CarOrderService;
 import com.kazak.carrent.service.CarService;
 import com.kazak.carrent.service.CarTransmissionService;
-import com.kazak.carrent.service.UserService;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
+import org.springframework.context.MessageSource;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,17 +36,19 @@ public class CatalogController {
   private final CarBrandService carBrandService;
   private final CarTransmissionService carTransmissionService;
   private final CarOrderService carOrderService;
+  private final MessageSource messageSource;
 
   public CatalogController(CarService carService, CarBodyService carBodyService,
       CarClassService carClassService, CarBrandService carBrandService,
       CarTransmissionService carTransmissionService,
-      CarOrderService carOrderService, UserService userService) {
+      CarOrderService carOrderService, MessageSource messageSource) {
     this.carService = carService;
     this.carBodyService = carBodyService;
     this.carClassService = carClassService;
     this.carBrandService = carBrandService;
     this.carTransmissionService = carTransmissionService;
     this.carOrderService = carOrderService;
+    this.messageSource = messageSource;
   }
 
   @GetMapping("/catalog")
@@ -103,7 +106,7 @@ public class CatalogController {
       @RequestParam("dateOfIssue") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfIssue,
       @RequestParam("dateOfReturn") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfReturn,
       @RequestParam("carDetailId") Integer carDetailId, CarOrder carOrder,
-      RedirectAttributes RedirectAttributes) {
+      RedirectAttributes RedirectAttributes, Locale locale) {
     List<CarOrder> carOrders = carOrderService.getAllByCarId(carId);
 
     if (currentUser == null) {
@@ -113,7 +116,8 @@ public class CatalogController {
         !carOrderService.checkIsCarAvailableByDate(carId, dateOfIssue, dateOfReturn)
     ) {
       RedirectAttributes
-          .addFlashAttribute("invalidDate", "invalidDate");
+          .addFlashAttribute("invalidDate",
+              messageSource.getMessage("error.invalidDate", null, locale));
       return "redirect:/catalog/{carId}/detail";
     }
     carOrderService.save(carOrder, carDetailId, currentUser);
