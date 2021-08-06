@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Target({ElementType.FIELD})
 public @interface UniqueEmail {
 
-  public String message() default "such email exists";
+  public String message() default "{validation.email.unique}";
 
   public Class<?>[] groups() default {};
 

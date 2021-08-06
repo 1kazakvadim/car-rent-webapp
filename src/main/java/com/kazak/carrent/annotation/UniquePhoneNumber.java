@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Target({ElementType.FIELD})
 public @interface UniquePhoneNumber {
 
-  public String message() default "such phone number exists";
+  public String message() default "{validation.phoneNumber.unique}";
 
   public Class<?>[] groups() default {};
 
