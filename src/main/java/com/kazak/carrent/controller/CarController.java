@@ -94,7 +94,7 @@ public class CarController {
       @RequestParam("fuelConsumption") Double fuelConsumption,
       @RequestParam("rentalCost") Double rentalCost,
       @RequestParam("imageFile") MultipartFile imageFile,
-      RedirectAttributes RedirectAttributes, Locale locale) {
+      RedirectAttributes redirectAttributes, Locale locale) {
     CarPostDto carPostDto = new CarPostDto();
     carPostDto.setId(carId);
     carPostDto.setCarBrand(carBrandService.findByName(carBrand));
@@ -113,7 +113,7 @@ public class CarController {
       carPostDto.setImageName(uploadImageService.upload(imageFile));
     }
     carService.update(carPostDto);
-    RedirectAttributes
+    redirectAttributes
         .addFlashAttribute("carEdit",
             messageSource.getMessage("notification.carEdit", null, locale));
     return "redirect:/profile/car/{carId}/edit";
@@ -148,11 +148,11 @@ public class CarController {
       @RequestParam("fuelConsumption") Double fuelConsumption,
       @RequestParam("rentalCost") Double rentalCost,
       @RequestParam("imageFile") MultipartFile imageFile,
-      RedirectAttributes RedirectAttributes, Locale locale
+      RedirectAttributes redirectAttributes, Locale locale
   ) {
     carService.save(carBrand, carModel, carBody, color, carClass, carTransmission, engineType,
         engineVolume, numberOfSeats, fuelConsumption, rentalCost, imageFile);
-    RedirectAttributes
+    redirectAttributes
         .addFlashAttribute("carAdd",
             messageSource.getMessage("notification.carAdd", null, locale));
     return "redirect:/profile/car/new";

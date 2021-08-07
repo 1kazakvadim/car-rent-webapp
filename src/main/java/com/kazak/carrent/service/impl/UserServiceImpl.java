@@ -17,16 +17,16 @@ public class UserServiceImpl implements UserService {
 
   private final UserRepository userRepository;
   private final UserRoleRepository userRoleRepository;
-  private final UserMapper UserMapper;
+  private final UserMapper userMapper;
   private final PasswordEncoder passwordEncoder;
 
   @Autowired
   public UserServiceImpl(UserRepository userRepository,
-      UserRoleRepository userRoleRepository, com.kazak.carrent.mapper.UserMapper userMapper,
-      PasswordEncoder passwordEncoder) {
+      UserRoleRepository userRoleRepository,
+      UserMapper userMapper, PasswordEncoder passwordEncoder) {
     this.userRepository = userRepository;
     this.userRoleRepository = userRoleRepository;
-    UserMapper = userMapper;
+    this.userMapper = userMapper;
     this.passwordEncoder = passwordEncoder;
   }
 
@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
   @Transactional
   public void update(UserPostDto userPostDto) {
     User user = userRepository.getById(userPostDto.getId());
-    UserMapper.updateUserFromDto(userPostDto, user);
+    userMapper.updateUserFromDto(userPostDto, user);
     userRepository.save(user);
   }
 

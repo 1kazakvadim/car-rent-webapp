@@ -24,4 +24,5 @@ public class UserRoleServiceImpl implements UserRoleService {
   public List<UserRole> getAll() {
     return userRoleRepository.findAll();
   }
+
 }

@@ -54,13 +54,13 @@ public class UserController {
       @RequestParam("phoneNumber") String phoneNumber,
       @RequestParam("userRole") String userRole,
       @RequestParam("status") String status,
-      RedirectAttributes RedirectAttributes, Locale locale) {
+      RedirectAttributes redirectAttributes, Locale locale) {
     UserPostDto userPostDto = new UserPostDto();
     if (userService.isUsernameExistsExceptUsernameWithId(username, userId) ||
         userService.isEmailExistsExceptEmailWithId(email, userId) || userService
         .isPhoneNumberExistsExceptPhoneNumberWithId(phoneNumber, userId)
     ) {
-      RedirectAttributes
+      redirectAttributes
           .addFlashAttribute("invalidUserEdit",
               messageSource.getMessage("error.invalidUserEdit", null, locale));
       return "redirect:/profile/user/{userId}/edit";
@@ -72,7 +72,7 @@ public class UserController {
     userPostDto.setUserRole(userRoleService.findByName(userRole));
     userPostDto.setStatus(status);
     userService.update(userPostDto);
-    RedirectAttributes
+    redirectAttributes
         .addFlashAttribute("userEdit",
             messageSource.getMessage("notification.userEdit", null, locale));
     return "redirect:/profile/user/{userId}/edit";
@@ -82,15 +82,15 @@ public class UserController {
   public String changeUserPasswordByAdmin(@PathVariable Integer userId,
       @RequestParam("password") String password,
       @RequestParam("passwordConfirm") String passwordConfirm,
-      RedirectAttributes RedirectAttributes, Locale locale) {
+      RedirectAttributes redirectAttributes, Locale locale) {
     if (!password.equals(passwordConfirm)) {
-      RedirectAttributes
+      redirectAttributes
           .addFlashAttribute("wrongPassword",
               messageSource.getMessage("error.wrongPassword", null, locale));
       return "redirect:/profile/user/{userId}/edit";
     }
     userService.changeUserPassword(userService.findById(userId), password);
-    RedirectAttributes
+    redirectAttributes
         .addFlashAttribute("passwordChange",
             messageSource.getMessage("notification.passwordChange", null, locale));
     return "redirect:/profile/user/{userId}/edit";
@@ -118,19 +118,19 @@ public class UserController {
   public String saveEditPassport(
       @ModelAttribute("passportDataDto") PassportDataPostDto passportDataPostDto,
       @PathVariable Integer passportId, @PathVariable Integer userId,
-      RedirectAttributes RedirectAttributes, Locale locale) {
+      RedirectAttributes redirectAttributes, Locale locale) {
     if (passportDataService
         .isPassportNumberExistsExceptPassportNumberWithId(passportDataPostDto.getPassportNumber(),
             passportId) ||
         passportDataService.isIdentificationNumberExistsExceptIdentificationNumberWithId(
             passportDataPostDto.getIdentificationNumber(), passportId)) {
-      RedirectAttributes
+      redirectAttributes
           .addFlashAttribute("invalidPassportEdit",
               messageSource.getMessage("error.invalidPassportEdit", null, locale));
       return "redirect:/profile/user/{userId}/passport/{passportId}/edit";
     }
     passportDataService.update(passportDataPostDto);
-    RedirectAttributes
+    redirectAttributes
         .addFlashAttribute("passportEdit",
             messageSource.getMessage("notification.passportEdit", null, locale));
     return "redirect:/profile/user/{userId}/passport/{passportId}/edit";

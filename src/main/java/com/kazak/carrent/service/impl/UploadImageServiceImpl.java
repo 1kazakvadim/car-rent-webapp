@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class UploadImageServiceImpl implements UploadImageService {
 
-  private final String UPLOAD_DIR = "D:/car-rent/upload_images/";
+  private static final String UPLOAD_DIR = "D:/car-rent/upload_images/";
 
 
   @Override

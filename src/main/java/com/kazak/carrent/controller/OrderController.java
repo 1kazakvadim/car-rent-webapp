@@ -52,9 +52,9 @@ public class OrderController {
   @PostMapping("/profile/order/{orderId}/cancellation")
   public String saveReasonOfCancellation(@PathVariable Integer orderId,
       @RequestParam("reasonOfCancellation") String reasonOfCancellation,
-      RedirectAttributes RedirectAttributes, Locale locale) {
+      RedirectAttributes redirectAttributes, Locale locale) {
     carOrderService.cancelCarOrder(reasonOfCancellation, orderId);
-    RedirectAttributes
+    redirectAttributes
         .addFlashAttribute("cancellation",
             messageSource.getMessage("notification.carCancellation", null, locale));
     return "redirect:/profile/order/{orderId}/cancellation";
@@ -70,13 +70,13 @@ public class OrderController {
   @PostMapping("/profile/order/{orderId}/repair")
   public String saveRepair(@RequestParam("repairCost") Double repairCost,
       @RequestParam("damageInformation") String damageInformation, @PathVariable Integer orderId,
-      RedirectAttributes RedirectAttributes, Locale locale) {
+      RedirectAttributes redirectAttributes, Locale locale) {
     CarRepair carRepair = new CarRepair();
     carRepair.setCarOrder(carOrderService.findById(orderId));
     carRepair.setDamageInformation(damageInformation);
     carRepair.setRepairCost(repairCost);
     carRepairService.save(carRepair);
-    RedirectAttributes
+    redirectAttributes
         .addFlashAttribute("repairAdd",
             messageSource.getMessage("notification.repairAdd", null, locale));
     return "redirect:/profile/order/{orderId}/repair";

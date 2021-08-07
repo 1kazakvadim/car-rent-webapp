@@ -31,17 +31,17 @@ public class SettingController {
       @RequestParam("passwordOld") String passwordOld,
       @RequestParam("password") String password,
       @RequestParam("passwordConfirm") String passwordConfirm,
-      RedirectAttributes RedirectAttributes, Locale locale) {
+      RedirectAttributes redirectAttributes, Locale locale) {
     User user = userService.findByUsername(currentUser.getUsername());
     if (!password.equals(passwordConfirm) || !passwordEncoder
         .matches(passwordOld, user.getPassword())) {
-      RedirectAttributes
+      redirectAttributes
           .addFlashAttribute("wrongPassword",
               messageSource.getMessage("error.wrongPassword", null, locale));
       return "redirect:/profile/setting";
     }
     userService.changeUserPassword(user, password);
-    RedirectAttributes
+    redirectAttributes
         .addFlashAttribute("passwordChange",
             messageSource.getMessage("notification.passwordChange", null, locale));
     return "redirect:/profile/setting";

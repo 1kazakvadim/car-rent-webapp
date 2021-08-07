@@ -106,16 +106,14 @@ public class CatalogController {
       @RequestParam("dateOfIssue") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfIssue,
       @RequestParam("dateOfReturn") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfReturn,
       @RequestParam("carDetailId") Integer carDetailId, CarOrder carOrder,
-      RedirectAttributes RedirectAttributes, Locale locale) {
-    List<CarOrder> carOrders = carOrderService.getAllByCarId(carId);
-
+      RedirectAttributes redirectAttributes, Locale locale) {
     if (currentUser == null) {
       return "redirect:/login";
     }
     if (dateOfIssue.isBefore(LocalDate.now()) || dateOfReturn.isBefore(LocalDate.now()) ||
         !carOrderService.checkIsCarAvailableByDate(carId, dateOfIssue, dateOfReturn)
     ) {
-      RedirectAttributes
+      redirectAttributes
           .addFlashAttribute("invalidDate",
               messageSource.getMessage("error.invalidDate", null, locale));
       return "redirect:/catalog/{carId}/detail";
