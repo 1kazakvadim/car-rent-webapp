@@ -13,6 +13,7 @@ import com.kazak.carrent.service.CarOrderService;
 import com.kazak.carrent.service.CarService;
 import com.kazak.carrent.service.CarTransmissionService;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import org.springframework.context.MessageSource;
@@ -54,49 +55,47 @@ public class CatalogController {
   @GetMapping("/catalog")
   public String getCatalogPage(Model model) {
     List<Car> cars = carService.getAll();
-    List<CarBody> carBodies = carBodyService.getAll();
-    List<CarClass> carClasses = carClassService.getAll();
-    List<CarBrand> carBrands = carBrandService.getAll();
-    List<CarTransmission> carTransmissions = carTransmissionService.getAll();
+    List<String> models = new ArrayList<>();
+    for(Car car : cars) {
+      models.add(car.getModel());
+    }
     model.addAttribute("cars", cars);
-    model.addAttribute("carBodies", carBodies);
-    model.addAttribute("carClasses", carClasses);
-    model.addAttribute("carBrands", carBrands);
-    model.addAttribute("carTransmissions", carTransmissions);
+    model.addAttribute("models", models);
+    model.addAttribute("carBodies", carBodyService.getAll());
+    model.addAttribute("carClasses", carClassService.getAll());
+    model.addAttribute("carBrands", carBrandService.getAll());
+    model.addAttribute("carTransmissions", carTransmissionService.getAll());
     return "catalog/catalog";
   }
 
   @PostMapping("/catalog/filtered")
   public String getFilteredCatalogPage(
-      @RequestParam(required = false) List<String> carBrandsFiltered,
+      @RequestParam(required = false) List<CarBrand> carBrandsFiltered,
       @RequestParam(required = false) List<String> carModelsFiltered,
-      @RequestParam(required = false) List<String> carBodiesFiltered,
-      @RequestParam(required = false) List<String> carClassesFiltered,
-      @RequestParam(required = false) List<String> carTransmissionsFiltered,
+      @RequestParam(required = false) List<CarBody> carBodiesFiltered,
+      @RequestParam(required = false) List<CarClass> carClassesFiltered,
+      @RequestParam(required = false) List<CarTransmission> carTransmissionsFiltered,
       Model model) {
-
     List<Car> carsFiltered = carService
         .getFilteredCarList(carBrandsFiltered, carModelsFiltered, carBodiesFiltered,
             carClassesFiltered, carTransmissionsFiltered);
     model.addAttribute("carsFiltered", carsFiltered);
-
     List<Car> cars = carService.getAll();
-    List<CarBody> carBodies = carBodyService.getAll();
-    List<CarClass> carClasses = carClassService.getAll();
-    List<CarBrand> carBrands = carBrandService.getAll();
-    List<CarTransmission> carTransmissions = carTransmissionService.getAll();
-    model.addAttribute("cars", cars);
-    model.addAttribute("carBodies", carBodies);
-    model.addAttribute("carClasses", carClasses);
-    model.addAttribute("carBrands", carBrands);
-    model.addAttribute("carTransmissions", carTransmissions);
+    List<String> models = new ArrayList<>();
+    for(Car car : cars) {
+      models.add(car.getModel());
+    }
+    model.addAttribute("models", models);
+    model.addAttribute("carBodies", carBodyService.getAll());
+    model.addAttribute("carClasses", carClassService.getAll());
+    model.addAttribute("carBrands", carBrandService.getAll());
+    model.addAttribute("carTransmissions", carTransmissionService.getAll());
     return "catalog/catalog_filtered";
   }
 
   @GetMapping("/catalog/{carId}/detail")
   public String getCar(@PathVariable Integer carId, Model model) {
-    Car car = carService.findById(carId);
-    model.addAttribute("car", car);
+    model.addAttribute("car", carService.findById(carId));
     return "catalog/catalog_detail";
   }
 
@@ -110,7 +109,7 @@ public class CatalogController {
     if (currentUser == null) {
       return "redirect:/login";
     }
-    if (dateOfIssue.isBefore(LocalDate.now()) || dateOfReturn.isBefore(LocalDate.now()) ||
+    if (!carOrderService.checkDate(dateOfIssue, dateOfReturn) ||
         !carOrderService.checkIsCarAvailableByDate(carId, dateOfIssue, dateOfReturn)
     ) {
       redirectAttributes
@@ -119,7 +118,7 @@ public class CatalogController {
       return "redirect:/catalog/{carId}/detail";
     }
     carOrderService.save(carOrder, carDetailId, currentUser);
-    return "redirect:/profile/order";
+    return "redirect:/profile/orders";
   }
 
 }

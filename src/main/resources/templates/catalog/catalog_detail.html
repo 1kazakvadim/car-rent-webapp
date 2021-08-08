@@ -12,10 +12,10 @@
   <div class="container">
     <div class="catalog_detail_inner">
       <div class="catalog_detail_image">
-        <img th:src="@{${'/upload_images/' + car.getImageName()}}">
+        <img th:src="@{${'/upload_images/' + car.imageName}}">
       </div>
       <div class="catalog_detail_content">
-        <form th:action="@{/catalog/{carId}/detail/(carId=${car.getId()})}" method="post">
+        <form th:action="@{/catalog/{carId}/detail/(carId=${car.id})}" method="post">
           <table class="catalog_detail_table">
             <caption class="catalog_detail_table_caption" th:text="#{caption.specification}">
               Характеристики
@@ -30,47 +30,47 @@
             <input type="hidden" th:name="carDetailId" th:value="${car.getId()}">
             <tr>
               <td th:text="#{car.brand}">Марка</td>
-              <td th:text="${car.getCarBrand().getName()}"></td>
+              <td th:text="${car.carBrand.name}"></td>
             </tr>
             <tr>
               <td th:text="#{car.model}">Модель</td>
-              <td th:text="${car.getModel()}"></td>
+              <td th:text="${car.model}"></td>
             </tr>
             <tr>
               <td th:text="#{car.body}">Тип кузова</td>
-              <td th:text="${car.getCarBody().getName()}"></td>
+              <td th:text="${car.carBody.name}"></td>
             </tr>
             <tr>
               <td th:text="#{car.color}">Цвет</td>
-              <td th:text="${car.getColor()}"></td>
+              <td th:text="${car.color}"></td>
             </tr>
             <tr>
               <td th:text="#{car.class}">Класс автомобиля</td>
-              <td th:text="${car.getCarClass().getName()}"></td>
+              <td th:text="${car.carClass.name}"></td>
             </tr>
             <tr>
               <td th:text="#{car.transmission}">Коробка передач</td>
-              <td th:text="${car.getCarTransmission().getName()}"></td>
+              <td th:text="${car.carTransmission.name}"></td>
             </tr>
             <tr>
               <td th:text="#{car.engineType}">Тип двигателя</td>
-              <td th:text="${car.getEngineType().getName()}"></td>
+              <td th:text="${car.engineType.name}"></td>
             </tr>
             <tr>
               <td th:text="#{car.engineVolume}">Объем двигателя</td>
-              <td th:text="${car.getEngineVolume()}"></td>
+              <td th:text="${car.engineVolume}"></td>
             </tr>
             <tr>
               <td th:text="#{car.numberOfSeats}">Количество сидений</td>
-              <td th:text="${car.getNumberOfSeats()}"></td>
+              <td th:text="${car.numberOfSeats}"></td>
             </tr>
             <tr>
               <td th:text="#{car.fuelConsumption}">Расход топлива</td>
-              <td th:text="${car.getFuelConsumption()}"></td>
+              <td th:text="${car.fuelConsumption}"></td>
             </tr>
             <tr>
               <td th:text="#{car.rentalCost}">Стоимость аренды</td>
-              <td th:text="${car.getRentalCost()}"></td>
+              <td th:text="${car.rentalCost}"></td>
             </tr>
             <tr>
               <td th:text="#{order.dateOfIssue}">Дата выдачи</td>

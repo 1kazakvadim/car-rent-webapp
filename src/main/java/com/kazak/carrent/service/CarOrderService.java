@@ -17,6 +17,8 @@ public interface CarOrderService {
 
   boolean checkIsCarAvailableByDate(Integer carId, LocalDate dateOfIssue, LocalDate dateOfReturn);
 
+  boolean checkDate(LocalDate dateOfIssue, LocalDate dateOfReturn);
+
   void save(CarOrder carOrder, Integer carDetailId, UserDetails currentUser);
 
   void cancelCarOrder (String reasonOfCancellation, Integer carOrderId);

@@ -58,15 +58,24 @@ public class CarOrderServiceImpl implements CarOrderService {
       LocalDate dateOfReturn) {
     List<CarOrder> carOrders = carOrderRepository.findAllByCar_Id(carId);
     for (CarOrder carOrder : carOrders) {
-      if (!carOrder.getDateOfIssue().isAfter(dateOfIssue) && !carOrder.getDateOfReturn()
-          .isBefore(dateOfIssue) ||
-          !carOrder.getDateOfIssue().isAfter(dateOfReturn) &&
-              !carOrder.getDateOfReturn().isBefore(dateOfReturn)) {
-        return false;
+      if (!carOrder.isCancellation()) {
+        if (!carOrder.getDateOfIssue().isAfter(dateOfIssue) && !carOrder.getDateOfReturn()
+            .isBefore(dateOfIssue) ||
+            !carOrder.getDateOfIssue().isAfter(dateOfReturn) &&
+                !carOrder.getDateOfReturn().isBefore(dateOfReturn)) {
+          return false;
+        }
       }
     }
     return true;
   }
+
+  @Override
+  public boolean checkDate(LocalDate dateOfIssue, LocalDate dateOfReturn) {
+    return !dateOfIssue.isBefore(LocalDate.now()) && !dateOfReturn.isBefore(LocalDate.now()) &&
+        !dateOfReturn.isBefore(dateOfIssue);
+  }
+
 
   @Override
   @Transactional

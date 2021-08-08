@@ -31,7 +31,7 @@ public class PassportDataServiceImpl implements PassportDataService {
   }
 
   @Override
-  public boolean isPassportNumberExistsExceptPassportNumberWithId(String passportNumber,
+  public boolean isPassportNumberExists(String passportNumber,
       Integer id) {
     return passportDataRepository.existsByPassportNumberAndIdIsNot(passportNumber, id);
   }
@@ -42,7 +42,7 @@ public class PassportDataServiceImpl implements PassportDataService {
   }
 
   @Override
-  public boolean isIdentificationNumberExistsExceptIdentificationNumberWithId(
+  public boolean isIdentificationNumberExists(
       String identificationNumber, Integer id) {
     return passportDataRepository.existsByIdentificationNumberAndIdIsNot(identificationNumber, id);
   }

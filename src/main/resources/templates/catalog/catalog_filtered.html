@@ -17,9 +17,9 @@
             <h4 class="filter_title" th:text="#{car.brand}">Марка автомобиля</h4>
             <div class="filter_scroll">
               <div class="filer_checkbox_inner" th:each="carBrand : ${carBrands}">
-                <label th:for="${carBrand.getName()}">
-                  <input type="checkbox" th:id="${carBrand.getName()}"
-                         th:text="${carBrand.getName()}" th:value="${carBrand.getName()}"
+                <label th:for="${carBrand.name}">
+                  <input type="checkbox" th:id="${carBrand.name}"
+                         th:text="${carBrand.name}" th:value="${carBrand.id}"
                          name="carBrandsFiltered"/></label>
               </div>
             </div>
@@ -27,10 +27,10 @@
           <div class="filer_item_checkbox">
             <h4 class="filter_title" th:text="#{car.model}">Модель</h4>
             <div class="filter_scroll">
-              <div class="filer_checkbox_inner" th:each="car : ${cars}">
-                <label th:for="${car.getModel()}">
-                  <input type="checkbox" th:id="${car.getModel()}"
-                         th:text="${car.getModel()}" th:value="${car.getModel()}"
+              <div class="filer_checkbox_inner" th:each="model : ${models}">
+                <label th:for="${model}">
+                  <input type="checkbox" th:id="${model}"
+                         th:text="${model}" th:value="${model}"
                          name="carModelsFiltered"/></label>
               </div>
             </div>
@@ -39,9 +39,9 @@
             <h4 class="filter_title" th:text="#{car.body}">Тип кузова</h4>
             <div class="filter_scroll">
               <div class="filer_checkbox_inner" th:each="carBody : ${carBodies}">
-                <label th:for="${carBody.getName()}">
-                  <input type="checkbox" th:id="${carBody.getName()}"
-                         th:text="${carBody.getName()}" th:value="${carBody.getName()}"
+                <label th:for="${carBody.name}">
+                  <input type="checkbox" th:id="${carBody.name}"
+                         th:text="${carBody.name}" th:value="${carBody.id}"
                          name="carBodiesFiltered"/></label>
               </div>
             </div>
@@ -49,19 +49,19 @@
           <div class="filer_item_checkbox">
             <h4 class="filter_title" th:text="#{car.class}">Класс автомобиля</h4>
             <div class="filer_checkbox_inner" th:each="carClass : ${carClasses}">
-              <label th:for="${carClass.getName()}">
-                <input type="checkbox" th:id="${carClass.getName()}"
-                       th:text="${carClass.getName()}" th:value="${carClass.getName()}"
+              <label th:for="${carClass.name}">
+                <input type="checkbox" th:id="${carClass.name}"
+                       th:text="${carClass.name}" th:value="${carClass.id}"
                        name="carClassesFiltered"/></label>
             </div>
           </div>
           <div class="filer_item_checkbox">
             <h4 class="filter_title" th:text="#{car.transmission}">Тип трансмиссии</h4>
             <div class="filer_checkbox_inner" th:each="carTransmission : ${carTransmissions}">
-              <label th:for="${carTransmission.getName()}">
-                <input type="checkbox" th:id="${carTransmission.getName()}"
-                       th:text="${carTransmission.getName()}"
-                       th:value="${carTransmission.getName()}"
+              <label th:for="${carTransmission.name}">
+                <input type="checkbox" th:id="${carTransmission.name}"
+                       th:text="${carTransmission.name}"
+                       th:value="${carTransmission.id}"
                        name="carTransmissionsFiltered"/></label>
             </div>
           </div>
@@ -71,18 +71,18 @@
       <div class="catalog_content">
         <div class="product_item" th:each="carFiltered : ${carsFiltered}">
           <div class="product_wrap">
-            <img th:src="@{${'/upload_images/' + carFiltered.getImageName()}}">
+            <img th:src="@{${'/upload_images/' + carFiltered.imageName}}">
             <div class="product_item_actions">
-              <a th:href="@{/catalog/{carId}/detail/(carId=${carFiltered.getId()})}"
+              <a th:href="@{/catalog/{carId}/detail/(carId=${carFiltered.id})}"
                  class="quick_view" th:text="#{view}">Просмотр</a>
             </div>
           </div>
           <div class="product_item_info">
             <h3 class="product_item_title"
-                th:text="${carFiltered.getCarBrand().getName()} + ' ' + ${carFiltered.getModel()}">
+                th:text="${carFiltered.carBrand.name} + ' ' + ${carFiltered.model}">
             </h3>
             <span class="product_item_price"
-                  th:text="${carFiltered.getRentalCost()}">rental_cost</span>
+                  th:text="${carFiltered.rentalCost}">rental_cost</span>
           </div>
         </div>
       </div>

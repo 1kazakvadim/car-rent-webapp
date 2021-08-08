@@ -13,7 +13,6 @@ import com.kazak.carrent.repository.CarClassRepository;
 import com.kazak.carrent.repository.CarRepository;
 import com.kazak.carrent.repository.CarTransmissionRepository;
 import com.kazak.carrent.service.CarService;
-import com.kazak.carrent.service.EngineTypeService;
 import com.kazak.carrent.service.UploadImageService;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +27,6 @@ public class CarServiceImpl implements CarService {
   private final CarClassRepository carClassRepository;
   private final CarBodyRepository carBodyRepository;
   private final CarBrandRepository carBrandRepository;
-  private final EngineTypeService engineTypeService;
   private final CarTransmissionRepository carTransmissionRepository;
   private final CarMapper carMapper;
   private final UploadImageService uploadImageService;
@@ -38,14 +36,12 @@ public class CarServiceImpl implements CarService {
       CarClassRepository carClassRepository,
       CarBodyRepository carBodyRepository,
       CarBrandRepository carBrandRepository,
-      EngineTypeService engineTypeService,
       CarTransmissionRepository carTransmissionRepository,
       CarMapper carMapper, UploadImageService uploadImageService) {
     this.carRepository = carRepository;
     this.carClassRepository = carClassRepository;
     this.carBodyRepository = carBodyRepository;
     this.carBrandRepository = carBrandRepository;
-    this.engineTypeService = engineTypeService;
     this.carTransmissionRepository = carTransmissionRepository;
     this.carMapper = carMapper;
     this.uploadImageService = uploadImageService;
@@ -87,63 +83,35 @@ public class CarServiceImpl implements CarService {
   }
 
   @Override
-  public List<Car> getFilteredCarList(List<String> carBrandsFiltered,
+  public List<Car> getFilteredCarList(List<CarBrand> carBrandsFiltered,
       List<String> carModelsFiltered,
-      List<String> carBodiesFiltered, List<String> carClassesFiltered,
-      List<String> carTransmissionsFiltered) {
-
-    List<CarBody> carBodiesTemp = new ArrayList<>();
-    List<String> carModelsTemp = new ArrayList<>();
-    List<CarClass> carClassesTemp = new ArrayList<>();
-    List<CarBrand> carBrandsTemp = new ArrayList<>();
-    List<CarTransmission> carTransmissionsTemp = new ArrayList<>();
-
-    if (carBrandsFiltered != null) {
-      for (String carBrandName : carBrandsFiltered) {
-        carBrandsTemp.add(carBrandRepository.findByName(carBrandName));
-      }
-    } else {
-      carBrandsTemp = carBrandRepository.findAll();
+      List<CarBody> carBodiesFiltered, List<CarClass> carClassesFiltered,
+      List<CarTransmission> carTransmissionsFiltered) {
+    List<String> carModelsTemp = new ArrayList();
+    if (carBrandsFiltered == null) {
+      carBrandsFiltered = carBrandRepository.findAll();
     }
-    if (carModelsFiltered != null) {
-      for (String carModelName : carModelsFiltered) {
-        List<Car> cars = carRepository.findByModel(carModelName);
-        for (Car car : cars) {
-          carModelsTemp.add(car.getModel());
-        }
-      }
-    } else {
+    if (carModelsFiltered == null) {
       List<Car> cars = carRepository.findAll();
       for (Car car : cars) {
         carModelsTemp.add(car.getModel());
       }
-    }
-    if (carBodiesFiltered != null) {
-      for (String carBodyName : carBodiesFiltered) {
-        carBodiesTemp.add(carBodyRepository.findByName(carBodyName));
-      }
     } else {
-      carBodiesTemp = carBodyRepository.findAll();
+      carModelsTemp = carModelsFiltered;
     }
-    if (carClassesFiltered != null) {
-      for (String carClassName : carClassesFiltered) {
-        carClassesTemp.add(carClassRepository.findByName(carClassName));
-      }
-    } else {
-      carClassesTemp = carClassRepository.findAll();
+    if (carBodiesFiltered == null) {
+      carBodiesFiltered = carBodyRepository.findAll();
     }
-    if (carTransmissionsFiltered != null) {
-      for (String carTransmissionName : carTransmissionsFiltered) {
-        carTransmissionsTemp.add(carTransmissionRepository.findByName(carTransmissionName));
-      }
-    } else {
-      carTransmissionsTemp = carTransmissionRepository.findAll();
+    if (carClassesFiltered == null) {
+      carClassesFiltered = carClassRepository.findAll();
     }
-
+    if (carTransmissionsFiltered == null) {
+      carTransmissionsFiltered = carTransmissionRepository.findAll();
+    }
     return carRepository
-        .findByCarBrandInAndModelInAndCarBodyInAndCarClassInAndCarTransmissionIn(carBrandsTemp,
-            carModelsTemp, carBodiesTemp, carClassesTemp,
-            carTransmissionsTemp);
+        .findByCarBrandInAndModelInAndCarBodyInAndCarClassInAndCarTransmissionIn(carBrandsFiltered,
+            carModelsTemp, carBodiesFiltered, carClassesFiltered,
+            carTransmissionsFiltered);
   }
 
 }
