@@ -4,6 +4,7 @@ import com.kazak.carrent.dto.UserPostDto;
 import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.model.entity.User;
 import java.util.List;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface UserService {
 
@@ -25,9 +26,10 @@ public interface UserService {
 
   boolean isPhoneNumberExistsExceptPhoneNumberWithId(String phoneNumber, Integer id);
 
-  boolean checkForValidOldPassword(User user, String oldPassword);
-
   void changeUserPassword(Integer userId, String password);
+
+  boolean changeUserPasswordByUser(UserDetails currentUser, String passwordOld, String password,
+      String passwordConfirm);
 
   void save(User user, PassportData passportData);
 

@@ -9,6 +9,7 @@ import com.kazak.carrent.repository.UserRoleRepository;
 import com.kazak.carrent.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -77,16 +78,25 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public boolean checkForValidOldPassword(User user, String oldPassword) {
-    return passwordEncoder.matches(oldPassword, user.getPassword());
-  }
-
-  @Override
   @Transactional
   public void changeUserPassword(Integer userId, String password) {
     User user = userRepository.getById(userId);
     user.setPassword(passwordEncoder.encode(password));
     userRepository.save(user);
+  }
+
+  @Override
+  @Transactional
+  public boolean changeUserPasswordByUser(UserDetails currentUser, String passwordOld, String password,
+      String passwordConfirm) {
+    User user = userRepository.findByUsername(currentUser.getUsername());
+    if (!password.equals(passwordConfirm) || !passwordEncoder
+        .matches(passwordOld, user.getPassword())) {
+      return false;
+    }
+    user.setPassword(passwordEncoder.encode(password));
+    userRepository.save(user);
+    return true;
   }
 
   @Override
