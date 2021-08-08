@@ -15,6 +15,6 @@ public interface PassportDataService {
 
   boolean isIdentificationNumberExistsExceptIdentificationNumberWithId(String identificationNumber, Integer id);
 
-  void update(PassportDataPostDto passportDataPostDto);
+  void update(PassportDataPostDto passportDataPostDto, Integer passportId);
 
 }

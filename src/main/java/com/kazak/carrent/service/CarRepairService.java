@@ -12,6 +12,6 @@ public interface CarRepairService {
 
   List<CarRepair> getAll(UserDetails currentUser);
 
-  void save(CarRepair carRepair);
+  void save(Integer orderId, String damageInformation, Double repairCost);
 
 }

@@ -15,7 +15,7 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <div class="edit_content">
-        <form class="edit_form" th:action="@{/profile/user/{userId}/edit(userId=${user.getId()})}"
+        <form class="edit_form" th:action="@{/profile/users/{userId}/edit(userId=${user.id})}"
               method="post">
           <table class="edit_table">
             <caption class="edit_table_caption" th:text="#{caption.editUser}">Редактировать
@@ -30,49 +30,52 @@
             </caption>
             <caption>
               <div th:if="${userEdit}" class="notification">
-            <span class="notification_close_button" onclick="this.parentElement.style.display='none';"
+            <span class="notification_close_button"
+                  onclick="this.parentElement.style.display='none';"
             >&times;</span>
                 <p th:text="${userEdit}"></p>
               </div>
             </caption>
             <tr>
               <td class="edit_row_caption" th:text="#{user.username}">Имя пользователя</td>
-              <td th:text="${user.getUsername()}"></td>
+              <td th:text="${user.username}"></td>
               <td><input type="text" name="username" th:field="${user.username}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{user.email}">Эл. почта</td>
-              <td th:text="${user.getEmail()}"></td>
+              <td th:text="${user.email}"></td>
               <td><input type="text" name="email" th:field="${user.email}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{user.phoneNumber}">Телефон</td>
-              <td th:text="${user.getPhoneNumber()}"></td>
+              <td th:text="${user.phoneNumber}"></td>
               <td><input type="text" name="phoneNumber" th:field="${user.phoneNumber}">
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{user.role}">Роль</td>
-              <td th:text="${user.getUserRole().getName()}"></td>
+              <td th:text="${user.userRole.name}"></td>
               <td>
                 <select id="userRole" name="userRole">
                   <option th:each="userRole : ${userRoles}"
                           th:selected="${userRole == user.userRole}"
-                          th:text="${userRole.getName()}" th:value="${userRole.getName()}"
-                          th:name="${userRole.getName()}">
+                          th:text="${userRole.name}" th:value="${userRole.id}"
+                          th:name="${userRole.name}"
+                          th:field="${user.userRole}">
                   </option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{user.status}">Статус</td>
-              <td th:text="${user.getStatus()}"></td>
+              <td th:text="${user.status}"></td>
               <td>
                 <select name="status" id="status">
-                  <option value="ACTIVE" th:text="ACTIVE" name="status"
+                  <option value="ACTIVE" name="status" th:text="ACTIVE" th:field="${user.status}"
                           th:selected="${'ACTIVE' == user.status}">active
                   </option>
-                  <option value="INACTIVE" th:text="INACTIVE" name="status"
+                  <option value="INACTIVE" name="status" th:text="INACTIVE"
+                          th:field="${user.status}"
                           th:selected="${'INACTIVE' == user.status}">inactive
                   </option>
                 </select>
@@ -89,7 +92,7 @@
           </table>
         </form>
         <form class="edit_form"
-              th:action="@{/profile/user/{userId}/password(userId=${user.getId()})}"
+              th:action="@{/profile/users/{userId}/password(userId=${user.id})}"
               method="post">
           <table class="edit_table">
             <caption class="edit_table_caption" th:text="#{caption.changePassword}">Изменить пароля
@@ -103,7 +106,8 @@
             </caption>
             <caption>
               <div th:if="${passwordChange}" class="notification">
-            <span class="notification_close_button" onclick="this.parentElement.style.display='none';"
+            <span class="notification_close_button"
+                  onclick="this.parentElement.style.display='none';"
             >&times;</span>
                 <p th:text="${passwordChange}"></p>
               </div>

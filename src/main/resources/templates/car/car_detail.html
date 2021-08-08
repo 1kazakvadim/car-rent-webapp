@@ -18,47 +18,47 @@
         <caption class="detail_table_caption">Автомобиль</caption>
         <tr class="detail_column_caption">
           <td>Марка</td>
-          <td th:text="${car.getCarBrand().getName()}">car_brand</td>
+          <td th:text="${car.carBrand.name}"></td>
         </tr>
         <tr class="detail_column_caption">
           <td>Модель</td>
-          <td th:text="${car.getModel()}">car_model</td>
+          <td th:text="${car.model}"></td>
         </tr>
         <tr class="detail_column_caption">
           <td>Тип кузова</td>
-          <td th:text="${car.getCarBody().getName()}">car_body</td>
+          <td th:text="${car.carBody.name}"></td>
         </tr>
         <tr class="detail_column_caption">
           <td>Цвет</td>
-          <td th:text="${car.getColor()}">car_color</td>
+          <td th:text="${car.color}"></td>
         </tr>
         <tr class="detail_column_caption">
           <td>Класс автомобиля</td>
-          <td th:text="${car.getCarClass().getName()}">car_class</td>
+          <td th:text="${car.carClass.name}"></td>
         </tr>
         <tr class="detail_column_caption">
           <td>Коробка передач</td>
-          <td th:text="${car.getCarTransmission().getName()}">car_transmission</td>
+          <td th:text="${car.carTransmission.name}"></td>
         </tr>
         <tr class="detail_column_caption">
           <td>Тип двигателя</td>
-          <td th:text="${car.getEngineType().getName()}">engine_type</td>
+          <td th:text="${car.engineType.name}"></td>
         </tr>
         <tr class="detail_column_caption">
           <td>Объем двигателя</td>
-          <td th:text="${car.getEngineVolume()}">engine_volume</td>
+          <td th:text="${car.engineVolume}"></td>
         </tr>
         <tr class="detail_column_caption">
           <td>Количество сидений</td>
-          <td th:text="${car.getNumberOfSeats()}">number_of_seats</td>
+          <td th:text="${car.numberOfSeats}"></td>
         </tr>
         <tr class="detail_column_caption">
           <td>Расход топлива</td>
-          <td th:text="${car.getFuelConsumption()}">fuel_consumption</td>
+          <td th:text="${car.fuelConsumption}"></td>
         </tr>
         <tr class="detail_column_caption">
           <td>Стоимость аренды</td>
-          <td th:text="${car.getRentalCost()}">rental_cost</td>
+          <td th:text="${car.rentalCost}"></td>
         </tr>
       </table>
     </div>

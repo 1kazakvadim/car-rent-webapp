@@ -31,6 +31,7 @@
 
 .registration_item_radio label {
   margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 
 .registration_item input, label {
@@ -38,6 +39,7 @@
 }
 
 .registration_item label {
+  text-transform: uppercase;
   margin-bottom: 0.5rem;
 }
 

@@ -24,22 +24,22 @@
           <td th:text="#{repair.orderNumber}">№ заказа</td>
         </tr>
         <tr th:each="carRepair : ${carRepairs}">
-          <td th:text="${carRepair.getId()}"></td>
-          <td th:text="${carRepair.getDamageInformation()}"></td>
-          <td th:text="${carRepair.getRepairCost()}"></td>
-          <td th:text="${carRepair.getCarOrder().getId()}"></td>
+          <td th:text="${carRepair.id}"></td>
+          <td th:text="${carRepair.damageInformation}"></td>
+          <td th:text="${carRepair.repairCost}"></td>
+          <td th:text="${carRepair.carOrder.id}"></td>
           <td>
             <div class="profile_dropdown_menu">
-              <input class="profile_dropdown_menu_checkbox" th:id="${carRepair.getId()}"
+              <input class="profile_dropdown_menu_checkbox" th:id="${carRepair.id}"
                      type="checkbox"/>
-              <label th:for="${carRepair.getId()}"></label>
+              <label th:for="${carRepair.id}"></label>
               <div class="profile_dropdown_menu_content">
                 <ul>
                   <li><a th:text="#{repair.about}"
-                         th:href="@{repair/{repairId}/damage-information(repairId=${carRepair.getId()})}">О
+                         th:href="@{repairs/{repairId}/damage-information(repairId=${carRepair.id})}">О
                     повреждениях</a></li>
                   <li><a th:text="#{order.about}"
-                         th:href="@{order/{orderId}/detail(orderId=${carRepair.getCarOrder().getId()})}">О
+                         th:href="@{orders/{orderId}/detail(orderId=${carRepair.carOrder.id})}">О
                     заказе</a></li>
                 </ul>
               </div>

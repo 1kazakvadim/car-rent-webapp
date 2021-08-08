@@ -16,7 +16,8 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <table class="user_table">
-        <caption class="user_table_caption" th:text="#{caption.listOfUsers}">Список пользователей</caption>
+        <caption class="user_table_caption" th:text="#{caption.listOfUsers}">Список пользователей
+        </caption>
         <tr>
           <td th:text="#{user.username}">Имя пользователя</td>
           <td th:text="#{user.email}">Эл. почта</td>
@@ -26,28 +27,28 @@
           <td th:text="#{user.createdAt}">Дата создания</td>
         </tr>
         <tr th:each="user : ${users}">
-          <td th:text="${user.getUsername()}"></td>
-          <td th:text="${user.getEmail()}"></td>
-          <td th:text="${user.getPhoneNumber()}"></td>
-          <td th:text="${user.getUserRole().getName()}"></td>
-          <td th:text="${user.getStatus()}"></td>
-          <td th:text="${user.getCreatedAt()}"></td>
+          <td th:text="${user.username}"></td>
+          <td th:text="${user.email}"></td>
+          <td th:text="${user.phoneNumber}"></td>
+          <td th:text="${user.userRole.name}"></td>
+          <td th:text="${user.status}"></td>
+          <td th:text="${user.createdAt}"></td>
           <td>
             <div class="profile_dropdown_menu">
-              <input class="profile_dropdown_menu_checkbox" th:id="${user.getId()}"
+              <input class="profile_dropdown_menu_checkbox" th:id="${user.id}"
                      type="checkbox"/>
-              <label th:for="${user.getId()}"> </label>
+              <label th:for="${user.id}"> </label>
               <div class="profile_dropdown_menu_content">
                 <ul>
                   <li><a th:text="#{user.passport}"
-                         th:href="@{user/{userId}/passport(userId=${user.getId()})}">Паспорт</a>
+                         th:href="@{users/{userId}/passport(userId=${user.id})}">Паспорт</a>
                   </li>
                   <li><a th:text="#{caption.editPassport}"
-                         th:href="@{/profile/user/{userId}/passport/{passportId}/edit(userId=${user.getId()},passportId=${user.getPassportData().getId()})}">Редактировать
+                         th:href="@{/profile/users/{userId}/passport/{passportId}/edit(userId=${user.id},passportId=${user.passportData.id})}">Редактировать
                     паспорт</a>
                   </li>
                   <li sec:authorize="hasRole('ADMIN')"><a th:text="#{button.edit}"
-                      th:href="@{user/{userId}/edit(userId=${user.getId()})}">Редактировать</a>
+                      th:href="@{users/{userId}/edit(userId=${user.id})}">Редактировать</a>
                   </li>
                 </ul>
               </div>

@@ -2,6 +2,7 @@ package com.kazak.carrent.service.impl;
 
 import com.kazak.carrent.model.entity.CarRepair;
 import com.kazak.carrent.model.entity.User;
+import com.kazak.carrent.repository.CarOrderRepository;
 import com.kazak.carrent.repository.CarRepairRepository;
 import com.kazak.carrent.repository.UserRepository;
 import com.kazak.carrent.service.CarRepairService;
@@ -14,11 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class CarRepairServiceImpl implements CarRepairService {
 
   private final CarRepairRepository carRepairRepository;
+  private final CarOrderRepository carOrderRepository;
   private final UserRepository userRepository;
 
   public CarRepairServiceImpl(CarRepairRepository carRepairRepository,
+      CarOrderRepository carOrderRepository,
       UserRepository userRepository) {
     this.carRepairRepository = carRepairRepository;
+    this.carOrderRepository = carOrderRepository;
     this.userRepository = userRepository;
   }
 
@@ -44,7 +48,11 @@ public class CarRepairServiceImpl implements CarRepairService {
 
   @Override
   @Transactional
-  public void save(CarRepair carRepair) {
+  public void save(Integer orderId, String damageInformation, Double repairCost) {
+    CarRepair carRepair = new CarRepair();
+    carRepair.setCarOrder(carOrderRepository.getById(orderId));
+    carRepair.setDamageInformation(damageInformation);
+    carRepair.setRepairCost(repairCost);
     carRepairRepository.save(carRepair);
   }
 

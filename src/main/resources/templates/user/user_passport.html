@@ -19,16 +19,16 @@
         <caption class="passport_table_caption" th:text="#{caption.passport}">Паспорт</caption>
         <tr>
           <td th:text="#{passport.firstName}">Имя</td>
-          <td th:text="${passportData.getFirstName()}"></td>
+          <td th:text="${passportData.firstName}"></td>
           <td>
             <div class="profile_dropdown_menu">
-              <input class="profile_dropdown_menu_checkbox" th:id="${passportData.getId()}"
+              <input class="profile_dropdown_menu_checkbox" th:id="${passportData.id}"
                      type="checkbox"/>
-              <label th:for="${passportData.getId()}"></label>
+              <label th:for="${passportData.id}"></label>
               <div class="profile_dropdown_menu_content">
                 <ul>
                   <li><a th:text="#{button.edit}"
-                         th:href="@{/profile/user/{userId}/passport/{passportId}/edit(userId=${passportData.getUser().getId()},passportId=${passportData.getId()})}">Редактировать</a>
+                         th:href="@{/profile/users/{userId}/passport/{passportId}/edit(userId=${passportData.user.id},passportId=${passportData.id})}">Редактировать</a>
                   </li>
                 </ul>
               </div>
@@ -37,51 +37,51 @@
         </tr>
         <tr>
           <td th:text="#{passport.lastName}">Фамилия</td>
-          <td th:text="${passportData.getLastName()}"></td>
+          <td th:text="${passportData.lastName}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.middleName}">Отчество</td>
-          <td th:text="${passportData.getMiddleName()}"></td>
+          <td th:text="${passportData.middleName}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.sex}">Пол</td>
-          <td th:text="${passportData.getSex()}"></td>
+          <td th:text="${passportData.sex}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.dateOfBirth}">Дата рождения</td>
-          <td th:text="${passportData.getDateOfBirth()}"></td>
+          <td th:text="${passportData.dateOfBirth}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.passportNumber}">Номер паспорта</td>
-          <td th:text="${passportData.getPassportNumber()}"></td>
+          <td th:text="${passportData.passportNumber}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.identificationNumber}">Идентификационный номер</td>
-          <td th:text="${passportData.getIdentificationNumber()}"></td>
+          <td th:text="${passportData.identificationNumber}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.dateOfIssue}">Дата выдачи</td>
-          <td th:text="${passportData.getDateOfIssue()}"></td>
+          <td th:text="${passportData.dateOfIssue}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.dateOfExpiry}">Дата действия</td>
-          <td th:text="${passportData.getDateOfExpiry()}"></td>
+          <td th:text="${passportData.dateOfExpiry}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.placeOfBirth}">Место рождения</td>
-          <td th:text="${passportData.getPlaceOfBirth()}"></td>
+          <td th:text="${passportData.placeOfBirth}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.authority}">Орган, который выдал паспорт</td>
-          <td th:text="${passportData.getAuthority()}"></td>
+          <td th:text="${passportData.authority}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.nationality}">Национальность</td>
-          <td th:text="${passportData.getNationality()}"></td>
+          <td th:text="${passportData.nationality}"></td>
         </tr>
         <tr>
           <td th:text="#{passport.registration}">Регистрация</td>
-          <td th:text="${passportData.getRegistration()}"></td>
+          <td th:text="${passportData.registration}"></td>
         </tr>
       </table>
     </div>

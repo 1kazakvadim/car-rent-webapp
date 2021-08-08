@@ -49,8 +49,8 @@ public class PassportDataServiceImpl implements PassportDataService {
 
   @Override
   @Transactional
-  public void update(PassportDataPostDto passportDataPostDto) {
-    PassportData passportData = passportDataRepository.getById(passportDataPostDto.getId());
+  public void update(PassportDataPostDto passportDataPostDto, Integer passportId) {
+    PassportData passportData = passportDataRepository.getById(passportId);
     passportMapper.updatePassportDataFromDto(passportDataPostDto, passportData);
     passportDataRepository.save(passportData);
   }

@@ -8,9 +8,11 @@ import com.kazak.carrent.model.entity.EngineType;
 import javax.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class CarPostDto {
 
   private Integer id;

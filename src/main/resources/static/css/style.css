@@ -16,10 +16,10 @@
 @import "blocks/main/catalog.css";
 @import "blocks/catalog/catalog_detail.css";
 @import "blocks/profile_nav/nav_personal_information.css";
-@import "blocks/profile_nav/nav_car.css";
-@import "blocks/profile_nav/nav_order.css";
-@import "blocks/profile_nav/nav_repair.css";
-@import "blocks/profile_nav/nav_setting.css";
+@import "blocks/profile_nav/nav_cars.css";
+@import "blocks/profile_nav/nav_orders.css";
+@import "blocks/profile_nav/nav_repairs.css";
+@import "blocks/profile_nav/nav_settings.css";
 @import "blocks/profile_nav/nav_user.css";
 @import "blocks/car/car_new.css";
 @import "blocks/car/car_edit.css";

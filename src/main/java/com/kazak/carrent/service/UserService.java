@@ -1,6 +1,7 @@
 package com.kazak.carrent.service;
 
 import com.kazak.carrent.dto.UserPostDto;
+import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.model.entity.User;
 import java.util.List;
 
@@ -26,10 +27,10 @@ public interface UserService {
 
   boolean checkForValidOldPassword(User user, String oldPassword);
 
-  void changeUserPassword(User user, String password);
+  void changeUserPassword(Integer userId, String password);
 
-  void save(User user);
+  void save(User user, PassportData passportData);
 
-  void update(UserPostDto userPostDto);
+  void update(UserPostDto userPostDto, Integer userId);
 
 }

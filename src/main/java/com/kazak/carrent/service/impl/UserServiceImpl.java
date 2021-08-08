@@ -2,6 +2,7 @@ package com.kazak.carrent.service.impl;
 
 import com.kazak.carrent.dto.UserPostDto;
 import com.kazak.carrent.mapper.UserMapper;
+import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.repository.UserRepository;
 import com.kazak.carrent.repository.UserRoleRepository;
@@ -82,22 +83,25 @@ public class UserServiceImpl implements UserService {
 
   @Override
   @Transactional
-  public void changeUserPassword(User user, String password) {
+  public void changeUserPassword(Integer userId, String password) {
+    User user = userRepository.getById(userId);
     user.setPassword(passwordEncoder.encode(password));
     userRepository.save(user);
   }
 
   @Override
   @Transactional
-  public void save(User user) {
+  public void save(User user, PassportData passportData) {
+    user.setPassportData(passportData);
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
     user.setUserRole(userRoleRepository.findByName("USER"));
     userRepository.save(user);
   }
 
   @Override
   @Transactional
-  public void update(UserPostDto userPostDto) {
-    User user = userRepository.getById(userPostDto.getId());
+  public void update(UserPostDto userPostDto, Integer userId) {
+    User user = userRepository.getById(userId);
     userMapper.updateUserFromDto(userPostDto, user);
     userRepository.save(user);
   }

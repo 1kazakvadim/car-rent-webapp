@@ -40,44 +40,38 @@ public class ProfileController {
   @GetMapping("/profile/information")
   public String getProfilePersonalInformation(@AuthenticationPrincipal UserDetails currentUser,
       Model model) {
-    User user = userService.findByUsername(currentUser.getUsername());
-    model.addAttribute("user", user);
+    model.addAttribute("user", userService.findByUsername(currentUser.getUsername()));
     return "profile_nav/nav_personal_information";
   }
 
   @GetMapping("/profile/cars")
-  public String getProfileCar(Model model) {
-    List<Car> cars = carService.getAll();
-    model.addAttribute("cars", cars);
-    return "profile_nav/nav_car";
+  public String getProfileCars(Model model) {
+    model.addAttribute("cars", carService.getAll());
+    return "profile_nav/nav_cars";
   }
 
   @GetMapping("/profile/orders")
-  public String getProfileOrder(@AuthenticationPrincipal UserDetails currentUser, Model model) {
-    List<CarOrder> carOrders = carOrderService.getAll(currentUser);
-    model.addAttribute("carOrders", carOrders);
-    return "profile_nav/nav_order";
+  public String getProfileOrders(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+    model.addAttribute("carOrders", carOrderService.getAll(currentUser));
+    return "profile_nav/nav_orders";
   }
 
-  @GetMapping("/profile/repair")
-  public String getProfileRepair(@AuthenticationPrincipal UserDetails currentUser, Model model) {
-    List<CarRepair> carRepairs = carRepairService.getAll(currentUser);
-    model.addAttribute("carRepairs", carRepairs);
-    return "profile_nav/nav_repair";
+  @GetMapping("/profile/repairs")
+  public String getProfileRepairs(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+    model.addAttribute("carRepairs", carRepairService.getAll(currentUser));
+    return "profile_nav/nav_repairs";
   }
 
-  @GetMapping("/profile/setting")
-  public String getSettingPage(@AuthenticationPrincipal UserDetails currentUser, Model model) {
-    User user = userService.findByUsername(currentUser.getUsername());
-    model.addAttribute("user", user);
-    return "profile_nav/nav_setting";
+  @GetMapping("/profile/settings")
+  public String getProfileSettings(@AuthenticationPrincipal UserDetails currentUser, Model model) {
+    model.addAttribute("user", userService.findByUsername(currentUser.getUsername()));
+    return "profile_nav/nav_settings";
   }
 
-  @GetMapping("/profile/user")
-  public String getProfileUser(Model model) {
-    List<User> users = userService.getAll();
-    model.addAttribute("users", users);
-    return "profile_nav/nav_user";
+  @GetMapping("/profile/users")
+  public String getProfileUsers(Model model) {
+    model.addAttribute("users", userService.getAll());
+    return "profile_nav/nav_users";
   }
 
 }

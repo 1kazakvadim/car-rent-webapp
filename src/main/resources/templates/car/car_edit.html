@@ -15,7 +15,7 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <div class="edit_content">
-        <form class="edit_form" th:action="@{/profile/car/{carId}/edit(carId=${car.getId()})}"
+        <form class="edit_form" th:action="@{/profile/cars/{carId}/edit(carId=${car.id})}"
               method="post" enctype="multipart/form-data">
           <table class="edit_table">
             <caption class="edit_table_caption" th:text="#{caption.editCar}">Редактировать
@@ -23,37 +23,40 @@
             </caption>
             <caption>
               <div th:if="${carEdit}" class="notification">
-            <span class="notification_close_button" onclick="this.parentElement.style.display='none';"
+            <span class="notification_close_button"
+                  onclick="this.parentElement.style.display='none';"
             >&times;</span>
                 <p th:text="${carEdit}"></p>
               </div>
             </caption>
             <tr>
               <td class="edit_row_caption" th:text="#{car.brand}">Марка</td>
-              <td th:text="${car.getCarBrand().getName()}"></td>
+              <td th:text="${car.carBrand.name}"></td>
               <td>
                 <select id="carBrand" name="carBrand">
                   <option th:each="carBrand : ${carBrands}"
                           th:selected="${carBrand == car.carBrand}"
-                          th:text="${carBrand.getName()}" th:value="${carBrand.getName()}"
-                          th:name="${carBrand.getName()}">
+                          th:text="${carBrand.name}" th:value="${carBrand.id}"
+                          th:name="${carBrand.name}"
+                          th:field="${car.carBrand}">
                   </option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.model}">Модель</td>
-              <td th:text="${car.getModel()}"></td>
+              <td th:text="${car.model}"></td>
               <td><input type="text" name="model" th:field="${car.model}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.body}">Тип кузова</td>
-              <td th:text="${car.getCarBody().getName()}"></td>
+              <td th:text="${car.carBody.name}"></td>
               <td>
                 <select id="carBody" name="carBody">
                   <option th:each="carBody : ${carBodies}" th:selected="${carBody == car.carBody}"
-                          th:text="${carBody.getName()}" th:value="${carBody.getName()}"
-                          th:name="${carBody.getName()}">
+                          th:text="${carBody.name}" th:value="${carBody.id}"
+                          th:name="${carBody.name}"
+                          th:field="${car.carBody}">
                   </option>
                 </select>
               </td>
@@ -61,70 +64,73 @@
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.color}">Цвет</td>
-              <td th:text="${car.getColor()}"></td>
+              <td th:text="${car.color}"></td>
               <td><input type="text" name="color" th:field="${car.color}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.class}">Класс автомобиля</td>
-              <td th:text="${car.getCarClass().getName()}"></td>
+              <td th:text="${car.carClass.name}"></td>
               <td>
                 <select id="carClass" name="carClass">
                   <option th:each="carClass : ${carClasses}"
                           th:selected="${carClass == car.carClass}"
-                          th:text="${carClass.getName()}" th:value="${carClass.getName()}"
-                          th:name="${carClass.getName()}">
+                          th:text="${carClass.name}" th:value="${carClass.id}"
+                          th:name="${carClass.name}"
+                          th:field="${car.carClass}">
                   </option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.transmission}">Тип трансмиссии</td>
-              <td th:text="${car.getCarTransmission().getName()}"></td>
+              <td th:text="${car.carTransmission.name}"></td>
               <td>
                 <select id="carTransmission" name="carTransmission">
                   <option th:each="carTransmission : ${carTransmissions}"
                           th:selected="${carTransmission == car.carTransmission}"
-                          th:text="${carTransmission.getName()}"
-                          th:value="${carTransmission.getName()}"
-                          th:name="${carTransmission.getName()}">
+                          th:text="${carTransmission.name}"
+                          th:value="${carTransmission.id}"
+                          th:name="${carTransmission.name}"
+                          th:field="${car.carTransmission}">
                   </option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.engineType}">Тип двигателя</td>
-              <td th:text="${car.getEngineType().getName()}"></td>
+              <td th:text="${car.engineType.name}"></td>
               <td>
                 <select id="engineType" name="engineType">
                   <option th:each="engineType : ${engineTypes}"
                           th:selected="${engineType == car.engineType}"
-                          th:text="${engineType.getName()}" th:value="${engineType.getName()}"
-                          th:name="${engineType.getName()}">
+                          th:text="${engineType.name}" th:value="${engineType.id}"
+                          th:name="${engineType.name}"
+                          th:field="${car.engineType}">
                   </option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.engineVolume}">Объем двигателя</td>
-              <td th:text="${car.getEngineVolume()}"></td>
+              <td th:text="${car.engineVolume}"></td>
               <td><input type="number" name="engineVolume" min="0" placeholder="0,00"
                          step="0.01" th:field="${car.engineVolume}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.numberOfSeats}">Количество сидений</td>
-              <td th:text="${car.getNumberOfSeats()}"></td>
+              <td th:text="${car.numberOfSeats}"></td>
               <td><input type="number" name="numberOfSeats" min="0" placeholder="0,00"
                          step="0.01" th:field="${car.numberOfSeats}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.fuelConsumption}">Расход топлива</td>
-              <td th:text="${car.getFuelConsumption()}"></td>
+              <td th:text="${car.fuelConsumption}"></td>
               <td><input type="number" name="fuelConsumption" min="0" placeholder="0,00"
                          step="0.01" th:field="${car.fuelConsumption}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.rentalCost}">Стоимость аренды</td>
-              <td th:text="${car.getRentalCost()}"></td>
+              <td th:text="${car.rentalCost}"></td>
               <td><input type="number" name="rentalCost" min="0" placeholder="0,00"
                          step="0.01" th:field="${car.rentalCost}"></td>
             </tr>

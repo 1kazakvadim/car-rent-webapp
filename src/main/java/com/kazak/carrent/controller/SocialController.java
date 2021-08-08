@@ -31,7 +31,7 @@ public class SocialController {
   @RequestMapping("/linkedin")
   public RedirectView linkedinRedirect() {
     RedirectView redirectView = new RedirectView();
-    redirectView.setUrl("https://www.linkedin.com/in/vadim-kazak-046b53208/");
+    redirectView.setUrl("www.linkedin.com/in/1kazak-vadim");
     return redirectView;
   }
 

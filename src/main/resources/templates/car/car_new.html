@@ -16,14 +16,15 @@
       </div>
 
       <div class="edit_content">
-        <form class="edit_form" th:action="@{/profile/car/new}"
+        <form class="edit_form" th:action="@{/profile/cars/new}"
               method="post" enctype="multipart/form-data">
           <table class="edit_table">
             <caption class="edit_table_caption" th:text="#{caption.car}">Добавить автомобиль
             </caption>
             <caption>
               <div th:if="${carAdd}" class="notification">
-            <span class="notification_close_button" onclick="this.parentElement.style.display='none';"
+            <span class="notification_close_button"
+                  onclick="this.parentElement.style.display='none';"
             >&times;</span>
                 <p th:text="${carAdd}"></p>
               </div>
@@ -33,23 +34,25 @@
               <td>
                 <select name="carBrand" required>
                   <option th:each="carBrand : ${carBrands}"
-                          th:text="${carBrand.getName()}" th:value="${carBrand.getName()}"
-                          th:name="${carBrand.getName()}">
+                          th:text="${carBrand.name}" th:value="${carBrand.id}"
+                          th:name="${carBrand.name}"
+                          th:field="${car.carBrand}">
                   </option>
                 </select>
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.model}">Модель</td>
-              <td><input type="text" name="carModel" required></td>
+              <td><input type="text" name="carModel" th:field="${car.model}" required></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.body}">Тип кузова</td>
               <td>
                 <select name="carBody" required>
                   <option th:each="carBody : ${carBodies}"
-                          th:text="${carBody.getName()}" th:value="${carBody.getName()}"
-                          th:name="${carBody.getName()}">
+                          th:text="${carBody.name}" th:value="${carBody.id}"
+                          th:name="${carBody.name}"
+                          th:field="${car.carBody}">
                   </option>
                 </select>
               </td>
@@ -57,15 +60,16 @@
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.color}">Цвет</td>
-              <td><input type="text" name="color" required></td>
+              <td><input type="text" name="color" th:field="${car.color}" required></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.class}">Класс автомобиля</td>
               <td>
                 <select name="carClass" required>
                   <option th:each="carClass : ${carClasses}"
-                          th:text="${carClass.getName()}" th:value="${carClass.getName()}"
-                          th:name="${carClass.getName()}">
+                          th:text="${carClass.name}" th:value="${carClass.id}"
+                          th:name="${carClass.name}"
+                          th:field="${car.carClass}">
                   </option>
                 </select>
               </td>
@@ -75,9 +79,10 @@
               <td>
                 <select name="carTransmission" required>
                   <option th:each="carTransmission : ${carTransmissions}"
-                          th:text="${carTransmission.getName()}"
-                          th:value="${carTransmission.getName()}"
-                          th:name="${carTransmission.getName()}">
+                          th:text="${carTransmission.name}"
+                          th:value="${carTransmission.id}"
+                          th:name="${carTransmission.name}"
+                          th:field="${car.carTransmission}">
                   </option>
                 </select>
               </td>
@@ -87,8 +92,9 @@
               <td>
                 <select name="engineType" required>
                   <option th:each="engineType : ${engineTypes}"
-                          th:text="${engineType.getName()}" th:value="${engineType.getName()}"
-                          th:name="${engineType.getName()}">
+                          th:text="${engineType.name}" th:value="${engineType.id}"
+                          th:name="${engineType.getName()}"
+                          th:field="${car.engineType}">
                   </option>
                 </select>
               </td>
@@ -96,22 +102,22 @@
             <tr>
               <td class="edit_row_caption" th:text="#{car.engineVolume}">Объем двигателя</td>
               <td><input type="number" name="engineVolume" min="0" placeholder="0,00"
-                         step="0.01" required></td>
+                         step="0.01" th:field="${car.engineVolume}" required></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.numberOfSeats}">Количество сидений</td>
               <td><input type="number" name="numberOfSeats" min="0" placeholder="0,00"
-                         step="0.01" required></td>
+                         step="0.01" th:field="${car.numberOfSeats}" required></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.fuelConsumption}">Расход топлива</td>
               <td><input type="number" name="fuelConsumption" min="0" placeholder="0,00"
-                         step="0.01" required></td>
+                         step="0.01" th:field="${car.fuelConsumption}" required></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.rentalCost}">Стоимость аренды</td>
               <td><input type="number" name="rentalCost" min="0" placeholder="0,00"
-                         step="0.01" required></td>
+                         step="0.01" th:field="${car.rentalCost}" required></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.image}">Изображение</td>

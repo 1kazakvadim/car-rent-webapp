@@ -68,29 +68,20 @@ public class CarServiceImpl implements CarService {
 
   @Override
   @Transactional
-  public void save(String carBrand, String carModel, String carBody, String color, String carClass,
-      String carTransmission, String engineType, Double engineVolume, Integer numberOfSeats,
-      Double fuelConsumption, Double rentalCost, MultipartFile imageFile) {
-    Car car = new Car();
-    car.setCarBrand(carBrandRepository.findByName(carBrand));
-    car.setModel(carModel);
-    car.setCarBody(carBodyRepository.findByName(carBody));
-    car.setColor(color);
-    car.setCarClass(carClassRepository.findByName(carClass));
-    car.setCarTransmission(carTransmissionRepository.findByName(carTransmission));
-    car.setEngineType(engineTypeService.findByName(engineType));
-    car.setEngineVolume(engineVolume);
-    car.setNumberOfSeats(numberOfSeats);
-    car.setFuelConsumption(fuelConsumption);
-    car.setRentalCost(rentalCost);
-    car.setImageName(uploadImageService.upload(imageFile));
+  public void save(Car car, MultipartFile imageFile) {
+    if (!imageFile.isEmpty()) {
+      car.setImageName(uploadImageService.upload(imageFile));
+    }
     carRepository.save(car);
   }
 
   @Override
   @Transactional
-  public void update(CarPostDto carPostDto) {
-    Car car = carRepository.getById(carPostDto.getId());
+  public void update(Integer carId, CarPostDto carPostDto, MultipartFile imageFile) {
+    if (!imageFile.isEmpty()) {
+      carPostDto.setImageName(uploadImageService.upload(imageFile));
+    }
+    Car car = carRepository.getById(carId);
     carMapper.updateCarFromDto(carPostDto, car);
     carRepository.save(car);
   }

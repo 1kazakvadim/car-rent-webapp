@@ -16,7 +16,7 @@
       </div>
       <div class="edit_content">
         <form class="edit_form"
-              th:action="@{/profile/user/{userId}/passport/{passportId}/edit(userId=${passportData.getUser().getId()}, passportId=${passportData.getId()})}"
+              th:action="@{/profile/users/{userId}/passport/{passportId}/edit(userId=${passportData.user.id}, passportId=${passportData.id})}"
               method="post">
           <table class="edit_table">
             <caption class="edit_table_caption" th:text="#{caption.editPassport}">Редактирование
@@ -37,51 +37,51 @@
                 <p th:text="${passportEdit}"></p>
               </div>
             </caption>
-            <input type="hidden" th:name="id" th:value="${passportData.getId()}">
+            <input type="hidden" th:name="id" th:value="${passportData.id}">
             <tr>
               <td class="edit_row_caption" th:text="#{passport.firstName}">Имя</td>
-              <td th:text="${passportData.getFirstName()}"></td>
+              <td th:text="${passportData.firstName}"></td>
               <td>
                 <input type="text" name="firstName" th:field="${passportData.firstName}">
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{passport.lastName}">Фамилия</td>
-              <td th:text="${passportData.getLastName()}"></td>
+              <td th:text="${passportData.lastName}"></td>
               <td>
                 <input type="text" name="lastName" th:field="${passportData.lastName}">
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{passport.middleName}">Отчество</td>
-              <td th:text="${passportData.getMiddleName()}"></td>
+              <td th:text="${passportData.middleName}"></td>
               <td>
                 <input type="text" name="middleName" th:field="${passportData.middleName}">
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{passport.sex}">Пол</td>
-              <td th:text="${passportData.getSex()}"></td>
+              <td th:text="${passportData.sex}"></td>
               <td>
                 <label>
-                  <input type="radio" name="sex" value="male" th:field="*{passportData.sex}">
+                  <input type="radio" name="sex" value="male" th:field="${passportData.sex}">
                   <span th:text="#{passport.sexMale}">мужской</span>
                 </label>
                 <label>
-                  <input type="radio" name="sex" value="female" th:field="*{passportData.sex}">
+                  <input type="radio" name="sex" value="female" th:field="${passportData.sex}">
                   <span th:text="#{passport.sexFemale}">женский</span>
                 </label>
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{passport.dateOfBirth}">Дата рождения</td>
-              <td th:text="${passportData.getDateOfBirth()}"></td>
+              <td th:text="${passportData.dateOfBirth}"></td>
               <td>
                 <input type="date" name="dateOfBirth" th:field="${passportData.dateOfBirth}"></td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{passport.passportNumber}">Номер паспорта</td>
-              <td th:text="${passportData.getPassportNumber()}"></td>
+              <td th:text="${passportData.passportNumber}"></td>
               <td>
                 <input type="text" name="passportNumber" th:field="${passportData.passportNumber}">
               </td>
@@ -90,7 +90,7 @@
               <td class="edit_row_caption" th:text="#{passport.identificationNumber}">
                 Идентификационный номер
               </td>
-              <td th:text="${passportData.getIdentificationNumber()}"></td>
+              <td th:text="${passportData.identificationNumber}"></td>
               <td>
                 <input type="text" name="identificationNumber"
                        th:field="${passportData.identificationNumber}">
@@ -105,14 +105,14 @@
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{passport.dateOfExpiry}">Дата действия</td>
-              <td th:text="${passportData.getDateOfExpiry()}"></td>
+              <td th:text="${passportData.dateOfExpiry}"></td>
               <td>
                 <input type="date" name="dateOfExpiry" th:field="${passportData.dateOfExpiry}">
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{passport.placeOfBirth}">Место рождения</td>
-              <td th:text="${passportData.getPlaceOfBirth()}"></td>
+              <td th:text="${passportData.placeOfBirth}"></td>
               <td>
                 <input type="text" name="placeOfBirth" th:field="${passportData.placeOfBirth}">
               </td>
@@ -121,21 +121,21 @@
               <td class="edit_row_caption" th:text="#{passport.authority}">Орган, который выдал
                 паспорт
               </td>
-              <td th:text="${passportData.getAuthority()}"></td>
+              <td th:text="${passportData.authority}"></td>
               <td>
                 <input type="text" name="authority" th:field="${passportData.authority}">
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{passport.nationality}">Национальность</td>
-              <td th:text="${passportData.getNationality()}"></td>
+              <td th:text="${passportData.nationality}"></td>
               <td>
                 <input type="text" name="nationality" th:field="${passportData.nationality}">
               </td>
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{passport.registration}">Регистрация</td>
-              <td th:text="${passportData.getRegistration()}"></td>
+              <td th:text="${passportData.registration}"></td>
               <td>
                 <input type="text" name="registration" th:field="${passportData.registration}">
               </td>

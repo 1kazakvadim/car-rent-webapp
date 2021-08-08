@@ -10,10 +10,10 @@
           th:href="@{/profile/cars}">Машины</a>
       </li>
       <li><a th:text="#{userNav.orders}" th:href="@{/profile/orders}">Заказы</a></li>
-      <li><a th:text="#{userNav.repairs}" th:href="@{/profile/repair}">Ремонты</a></li>
-      <li><a th:text="#{userNav.settings}" th:href="@{/profile/setting}">Настройки</a></li>
+      <li><a th:text="#{userNav.repairs}" th:href="@{/profile/repairs}">Ремонты</a></li>
+      <li><a th:text="#{userNav.settings}" th:href="@{/profile/settings}">Настройки</a></li>
       <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a th:text="#{userNav.users}"
-                                                            th:href="@{/profile/user}">Пользователи</a>
+                                                            th:href="@{/profile/users}">Пользователи</a>
       </li>
     </ul>
   </div>

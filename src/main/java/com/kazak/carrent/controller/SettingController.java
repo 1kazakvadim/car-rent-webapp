@@ -26,25 +26,25 @@ public class SettingController {
     this.passwordEncoder = passwordEncoder;
   }
 
-  @PostMapping("/profile/setting/password")
-  public String changeUserPasswordByUser(@AuthenticationPrincipal UserDetails currentUser,
-      @RequestParam("passwordOld") String passwordOld,
-      @RequestParam("password") String password,
-      @RequestParam("passwordConfirm") String passwordConfirm,
-      RedirectAttributes redirectAttributes, Locale locale) {
-    User user = userService.findByUsername(currentUser.getUsername());
-    if (!password.equals(passwordConfirm) || !passwordEncoder
-        .matches(passwordOld, user.getPassword())) {
-      redirectAttributes
-          .addFlashAttribute("wrongPassword",
-              messageSource.getMessage("error.wrongPassword", null, locale));
-      return "redirect:/profile/setting";
-    }
-    userService.changeUserPassword(user, password);
-    redirectAttributes
-        .addFlashAttribute("passwordChange",
-            messageSource.getMessage("notification.passwordChange", null, locale));
-    return "redirect:/profile/setting";
-  }
+//  @PostMapping("/profile/settings/password")
+//  public String changeUserPasswordByUser(@AuthenticationPrincipal UserDetails currentUser,
+//      @RequestParam("passwordOld") String passwordOld,
+//      @RequestParam("password") String password,
+//      @RequestParam("passwordConfirm") String passwordConfirm,
+//      RedirectAttributes redirectAttributes, Locale locale) {
+//    User user = userService.findByUsername(currentUser.getUsername());
+//    if (!password.equals(passwordConfirm) || !passwordEncoder
+//        .matches(passwordOld, user.getPassword())) {
+//      redirectAttributes
+//          .addFlashAttribute("wrongPassword",
+//              messageSource.getMessage("error.wrongPassword", null, locale));
+//      return "redirect:/profile/settings";
+//    }
+//    userService.changeUserPassword(user, password);
+//    redirectAttributes
+//        .addFlashAttribute("passwordChange",
+//            messageSource.getMessage("notification.passwordChange", null, locale));
+//    return "redirect:/profile/settings";
+//  }
 
 }

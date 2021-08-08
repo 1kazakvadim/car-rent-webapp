@@ -33,7 +33,7 @@
               <label for="carNew"> </label>
               <div class="profile_dropdown_menu_content">
                 <ul>
-                  <li><a th:text="#{car.add}" th:href="@{car/new}">Добавить автомобиль</a>
+                  <li><a th:text="#{car.add}" th:href="@{cars/new}">Добавить автомобиль</a>
                   </li>
                 </ul>
               </div>
@@ -51,17 +51,17 @@
           <td th:text="${car.rentalCost}"></td>
           <td>
             <div class="profile_dropdown_menu">
-              <input class="profile_dropdown_menu_checkbox" th:id="${car.getId()}"
+              <input class="profile_dropdown_menu_checkbox" th:id="${car.id}"
                      type="checkbox"/>
               <label th:for="${car.id}"></label>
               <div class="profile_dropdown_menu_content">
                 <ul>
-                  <li><a th:text="#{car.about}" th:href="@{car/{carId}/detail(carId=${car.getId()})}">Об
+                  <li><a th:text="#{car.about}" th:href="@{cars/{carId}/detail(carId=${car.id})}">Об
                     автомобиле</a>
                   </li>
                 </ul>
                 <ul>
-                  <li><a th:text="#{button.edit}" th:href="@{car/{carId}/edit(carId=${car.getId()})}">Редактировать</a>
+                  <li><a th:text="#{button.edit}" th:href="@{cars/{carId}/edit(carId=${car.id})}">Редактировать</a>
                   </li>
                 </ul>
               </div>
