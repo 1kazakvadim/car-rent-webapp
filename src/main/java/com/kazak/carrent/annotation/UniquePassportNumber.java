@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Target({ElementType.FIELD})
 public @interface UniquePassportNumber {
 
-  public String message() default "such passport number exists";
+  public String message() default "{validation.passportNumber.unique}";
 
   public Class<?>[] groups() default {};
 

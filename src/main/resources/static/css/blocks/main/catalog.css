@@ -125,13 +125,13 @@
 .product_wrap img {
   display: block;
   width: 18rem;
-  height: 18rem;
+  height: 11rem;
 }
 
 .product_item_actions {
   position: absolute;
   left: 0;
-  bottom: -20%;
+  bottom: -30%;
   width: 100%;
   background: rgba(59, 62, 67, 0.75);
   transition: .3s linear;
@@ -148,19 +148,12 @@
   color: white;
   padding: 1rem 0;
   transition: .2s linear;
+  text-transform: uppercase;
 }
 
 .product_item_actions a:hover {
   background: var(--black);
 }
-
-.quick_view:before {
-  content: "Просмотр";
-}
-
-/*.quick_view:lang(en):before {*/
-/*  content: "View";*/
-/*}*/
 
 .product_item_info {
   padding-bottom: 0.5rem;

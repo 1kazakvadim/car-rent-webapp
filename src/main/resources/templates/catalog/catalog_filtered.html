@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="icon" th:href="@{/images/favicon.ico}">
   <title>Car-Rent</title>
 </head>
 <body>
@@ -73,7 +74,7 @@
             <img th:src="@{${'/upload_images/' + carFiltered.getImageName()}}">
             <div class="product_item_actions">
               <a th:href="@{/catalog/{carId}/detail/(carId=${carFiltered.getId()})}"
-                 class="quick_view"></a>
+                 class="quick_view" th:text="#{view}">Просмотр</a>
             </div>
           </div>
           <div class="product_item_info">

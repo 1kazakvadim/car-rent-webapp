@@ -16,7 +16,7 @@
 .profile_user_nav_content li {
   text-transform: uppercase;
   position: relative;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   white-space: nowrap;
   width: fit-content;
 }

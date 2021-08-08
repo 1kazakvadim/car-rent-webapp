@@ -9,7 +9,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+
 
 @Getter
 @Setter
@@ -25,12 +25,9 @@ public class UserPostDto {
 
   @NotEmpty
   @Size(min = 3, max = 255)
-//  @Pattern(regexp = "^(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{3,16}$",
-//      message = "password should contains at least one lowercase letter, one number and one special character (@$!%*?&)")
   private String password;
 
   @NotEmpty
-  @Pattern(regexp = "([A-z0-9_.-]+)@([A-z0-9_.-]+).([A-z]{2,8})")
   @UniqueEmail
   private String email;
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="icon" th:href="@{/images/favicon.ico}">
   <title>Car-Rent</title>
 </head>
 <body>
@@ -19,7 +19,23 @@
               th:action="@{/profile/user/{userId}/passport/{passportId}/edit(userId=${passportData.getUser().getId()}, passportId=${passportData.getId()})}"
               method="post">
           <table class="edit_table">
-            <caption class="edit_table_caption" th:text="#{caption.editPassport}">Редактирование паспорта
+            <caption class="edit_table_caption" th:text="#{caption.editPassport}">Редактирование
+              паспорта
+            </caption>
+            <caption>
+              <div th:if="${invalidPassportEdit}" class="alert">
+            <span class="alert_close_button" onclick="this.parentElement.style.display='none';"
+            >&times;</span>
+                <p th:text="${invalidPassportEdit}"></p>
+              </div>
+            </caption>
+            <caption>
+              <div th:if="${passportEdit}" class="notification">
+            <span class="notification_close_button"
+                  onclick="this.parentElement.style.display='none';"
+            >&times;</span>
+                <p th:text="${passportEdit}"></p>
+              </div>
             </caption>
             <input type="hidden" th:name="id" th:value="${passportData.getId()}">
             <tr>
@@ -129,7 +145,8 @@
               <td></td>
               <td>
                 <a>
-                  <button class="edit_button" type="submit" th:text="#{button.save}">сохранить</button>
+                  <button class="edit_button" type="submit" th:text="#{button.save}">сохранить
+                  </button>
                 </a>
               </td>
             </tr>

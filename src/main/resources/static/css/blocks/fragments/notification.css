@@ -1,0 +1,26 @@
+.notification {
+  background-color: #99942c;
+  color: white;
+  position: relative;
+}
+
+.notification p {
+  text-align: center;
+  color: var(--white);
+  padding: 0.5rem;
+  text-transform: uppercase;
+}
+
+.notification_close_button {
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  color: var(--white);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.notification_close_button:hover {
+  color: black;
+}

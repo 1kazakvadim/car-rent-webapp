@@ -1,6 +1,8 @@
 @import "global/variables.css";
 @import "global/fonts.css";
 @import "global/normalize.css";
+@import "blocks/fragments/alert.css";
+@import "blocks/fragments/notification.css";
 @import "blocks/fragments/header.css";
 @import "blocks/fragments/footer.css";
 @import "blocks/fragments/slider.css";
@@ -27,6 +29,9 @@
 @import "blocks/order/order_reason.css";
 @import "blocks/repair/repair_damage_information.css";
 @import "blocks/user/user_passport.css";
+
+
+
 
 
 

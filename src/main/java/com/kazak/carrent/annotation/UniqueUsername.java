@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Target({ElementType.FIELD})
 public @interface UniqueUsername {
 
-  public String message() default "such username exists";
+  public String message() default "{validation.username.unique}";
 
   public Class<?>[] groups() default {};
 

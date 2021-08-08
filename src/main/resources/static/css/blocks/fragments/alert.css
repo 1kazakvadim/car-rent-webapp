@@ -1,0 +1,32 @@
+.alert {
+  background-color: #f44336;
+  color: white;
+  position: relative;
+}
+
+.alert p {
+  text-align: center;
+  color: var(--white);
+  padding: 0.5rem;
+  text-transform: uppercase;
+}
+
+.alert_close_button {
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  color: var(--white);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.alert_close_button:hover {
+  color: black;
+}
+
+.alert_login {
+  text-align: center;
+  color: #f44336;
+  text-transform: uppercase;
+}

@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Target({ElementType.FIELD})
 public @interface UniqueIdentificationNumber {
 
-  public String message() default "such identification number exists";
+  public String message() default "{validation.identificationNumber.unique}";
 
   public Class<?>[] groups() default {};
 

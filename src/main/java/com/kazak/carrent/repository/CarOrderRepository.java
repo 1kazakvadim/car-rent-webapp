@@ -11,4 +11,6 @@ public interface CarOrderRepository extends JpaRepository<CarOrder, Integer> {
 
   List<CarOrder> findAllByUser(User user);
 
+  List<CarOrder> findAllByCar_Id(Integer carId);
+
 }

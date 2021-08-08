@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="icon" th:href="@{/images/favicon.ico}">
   <title>Car-Rent</title>
 </head>
 <body>
@@ -19,6 +20,20 @@
               method="post">
           <table class="edit_table">
             <caption class="edit_table_caption" th:text="#{caption.changePassword}">Изменить пароля
+            </caption>
+            <caption>
+              <div th:if="${wrongPassword}" class="alert">
+            <span class="alert_close_button" onclick="this.parentElement.style.display='none';"
+            >&times;</span>
+                <p th:text="${wrongPassword}"></p>
+              </div>
+            </caption>
+            <caption>
+              <div th:if="${passwordChange}" class="notification">
+            <span class="notification_close_button" onclick="this.parentElement.style.display='none';"
+            >&times;</span>
+                <p th:text="${passwordChange}"></p>
+              </div>
             </caption>
             <tr class="edit_password_row_caption">
               <td>

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="icon" th:href="@{/images/favicon.ico}">
   <title>Car-Rent</title>
 </head>
 <body>
@@ -19,6 +20,13 @@
         <table class="cancellation_table">
           <caption class="cancellation_table_caption" th:text="#{caption.cancelOrder}">Отменить
             заказ
+          </caption>
+          <caption>
+            <div th:if="${cancellation}" class="notification">
+            <span class="notification_close_button" onclick="this.parentElement.style.display='none';"
+            >&times;</span>
+              <p th:text="${cancellation}"></p>
+            </div>
           </caption>
           <tr>
             <td>
