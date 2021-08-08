@@ -9,11 +9,11 @@ public interface PassportDataService {
 
   boolean isPassportNumberExists(String passportNumber);
 
-  boolean isPassportNumberExistsExceptPassportNumberWithId(String passportNumber, Integer id);
+  boolean isPassportNumberExists(String passportNumber, Integer id);
 
   boolean isIdentificationNumberExists(String identificationNumber);
 
-  boolean isIdentificationNumberExistsExceptIdentificationNumberWithId(String identificationNumber, Integer id);
+  boolean isIdentificationNumberExists(String identificationNumber, Integer id);
 
   void update(PassportDataPostDto passportDataPostDto, Integer passportId);
 

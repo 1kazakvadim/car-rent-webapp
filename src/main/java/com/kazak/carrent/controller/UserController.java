@@ -46,9 +46,9 @@ public class UserController {
   public String saveEditUser(@PathVariable Integer userId,
       @ModelAttribute("user") UserPostDto userPostDto,
       RedirectAttributes redirectAttributes, Locale locale) {
-    if (userService.isUsernameExistsExceptUsernameWithId(userPostDto.getUsername(), userId) ||
-        userService.isEmailExistsExceptEmailWithId(userPostDto.getEmail(), userId) || userService
-        .isPhoneNumberExistsExceptPhoneNumberWithId(userPostDto.getPhoneNumber(), userId)
+    if (userService.isUsernameExists(userPostDto.getUsername(), userId) ||
+        userService.isEmailExists(userPostDto.getEmail(), userId) || userService
+        .isPhoneNumberExists(userPostDto.getPhoneNumber(), userId)
     ) {
       redirectAttributes
           .addFlashAttribute("invalidUserEdit",
@@ -67,16 +67,15 @@ public class UserController {
       @RequestParam("password") String password,
       @RequestParam("passwordConfirm") String passwordConfirm,
       RedirectAttributes redirectAttributes, Locale locale) {
-    if (!password.equals(passwordConfirm)) {
+    if (!userService.changeUserPassword(userId, password, passwordConfirm)) {
       redirectAttributes
           .addFlashAttribute("wrongPassword",
               messageSource.getMessage("error.wrongPassword", null, locale));
-      return "redirect:/profile/users/{userId}/edit";
+    } else {
+      redirectAttributes
+          .addFlashAttribute("passwordChange",
+              messageSource.getMessage("notification.passwordChange", null, locale));
     }
-    userService.changeUserPassword(userId, password);
-    redirectAttributes
-        .addFlashAttribute("passwordChange",
-            messageSource.getMessage("notification.passwordChange", null, locale));
     return "redirect:/profile/users/{userId}/edit";
   }
 
@@ -100,9 +99,9 @@ public class UserController {
       @PathVariable Integer passportId, @PathVariable Integer userId,
       RedirectAttributes redirectAttributes, Locale locale) {
     if (passportDataService
-        .isPassportNumberExistsExceptPassportNumberWithId(passportDataPostDto.getPassportNumber(),
+        .isPassportNumberExists(passportDataPostDto.getPassportNumber(),
             passportId) ||
-        passportDataService.isIdentificationNumberExistsExceptIdentificationNumberWithId(
+        passportDataService.isIdentificationNumberExists(
             passportDataPostDto.getIdentificationNumber(), passportId)) {
       redirectAttributes
           .addFlashAttribute("invalidPassportEdit",

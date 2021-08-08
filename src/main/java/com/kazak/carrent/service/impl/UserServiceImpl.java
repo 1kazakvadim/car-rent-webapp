@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public boolean isUsernameExistsExceptUsernameWithId(String username, Integer id) {
+  public boolean isUsernameExists(String username, Integer id) {
     return userRepository.existsByUsernameAndIdIsNot(username, id);
   }
 
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public boolean isEmailExistsExceptEmailWithId(String email, Integer id) {
+  public boolean isEmailExists(String email, Integer id) {
     return userRepository.existsByEmailAndIdIsNot(email, id);
   }
 
@@ -73,16 +73,20 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public boolean isPhoneNumberExistsExceptPhoneNumberWithId(String phoneNumber, Integer id) {
+  public boolean isPhoneNumberExists(String phoneNumber, Integer id) {
     return userRepository.existsByPhoneNumberAndIdIsNot(phoneNumber, id);
   }
 
   @Override
   @Transactional
-  public void changeUserPassword(Integer userId, String password) {
+  public boolean changeUserPassword(Integer userId, String password, String passwordConfirm) {
+    if (!password.equals(passwordConfirm)) {
+      return false;
+    }
     User user = userRepository.getById(userId);
     user.setPassword(passwordEncoder.encode(password));
     userRepository.save(user);
+    return true;
   }
 
   @Override
