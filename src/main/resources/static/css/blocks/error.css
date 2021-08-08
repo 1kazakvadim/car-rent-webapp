@@ -121,6 +121,7 @@ a {
   cursor: pointer;
   margin: 5rem auto 3.2rem;
   transition: all 0.2s linear;
+  text-transform: uppercase;
 }
 
 .error_button:hover {

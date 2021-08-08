@@ -17,9 +17,9 @@
     <div class="dimples"></div>
     <div class="mouth"></div>
 </div>
-<h1>Oops! Something went wrong!</h1>
+<h1 th:text="#{oops}">Oops! Something went wrong!</h1>
 <a th:href="@{~/index}">
-    <button class="error_button">
+    <button class="error_button" th:text="#{buttom.backHome}">
         Вернуться Домой
     </button>
 </a>
