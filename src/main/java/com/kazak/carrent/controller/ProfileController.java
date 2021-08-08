@@ -45,14 +45,14 @@ public class ProfileController {
     return "profile_nav/nav_personal_information";
   }
 
-  @GetMapping("/profile/car")
+  @GetMapping("/profile/cars")
   public String getProfileCar(Model model) {
     List<Car> cars = carService.getAll();
     model.addAttribute("cars", cars);
     return "profile_nav/nav_car";
   }
 
-  @GetMapping("/profile/order")
+  @GetMapping("/profile/orders")
   public String getProfileOrder(@AuthenticationPrincipal UserDetails currentUser, Model model) {
     List<CarOrder> carOrders = carOrderService.getAll(currentUser);
     model.addAttribute("carOrders", carOrders);

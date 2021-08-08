@@ -11,7 +11,6 @@ import com.kazak.carrent.service.UserService;
 import java.util.List;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,16 +25,13 @@ public class UserController {
   private final UserService userService;
   private final PassportDataService passportDataService;
   private final UserRoleService userRoleService;
-  private final PasswordEncoder passwordEncoder;
 
   public UserController(UserService userService,
       PassportDataService passportDataService,
-      UserRoleService userRoleService,
-      PasswordEncoder passwordEncoder) {
+      UserRoleService userRoleService) {
     this.userService = userService;
     this.passportDataService = passportDataService;
     this.userRoleService = userRoleService;
-    this.passwordEncoder = passwordEncoder;
   }
 
   @GetMapping("/profile/user/{userId}/edit")
@@ -88,8 +84,8 @@ public class UserController {
       @RequestParam("password") String password,
       @RequestParam("passwordConfirm") String passwordConfirm) {
     User user = userService.findByUsername(currentUser.getUsername());
-    if (!password.equals(passwordConfirm) || !passwordEncoder
-        .matches(passwordOld, user.getPassword())) {
+    if (!password.equals(passwordConfirm) || !userService
+        .checkForValidOldPassword(user, passwordOld)) {
       return "redirect:/profile/setting";
     }
     userService.changeUserPassword(user, password);

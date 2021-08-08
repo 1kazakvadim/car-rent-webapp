@@ -41,19 +41,19 @@
           </td>
         </tr>
         <tr th:each="car : ${cars}">
-          <td th:text="${car.getId()}"></td>
-          <td th:text="${car.getCarBrand().getName()}"></td>
-          <td th:text="${car.getModel()}"></td>
-          <td th:text="${car.getCarBody().getName()}"></td>
-          <td th:text="${car.getColor()}"></td>
-          <td th:text="${car.getCarClass().getName()}"></td>
-          <td th:text="${car.getCarTransmission().getName()}"></td>
-          <td th:text="${car.getRentalCost()}"></td>
+          <td th:text="${car.id}"></td>
+          <td th:text="${car.carBrand.name}"></td>
+          <td th:text="${car.model}"></td>
+          <td th:text="${car.carBody.name}"></td>
+          <td th:text="${car.color}"></td>
+          <td th:text="${car.carClass.name}"></td>
+          <td th:text="${car.carTransmission.name}"></td>
+          <td th:text="${car.rentalCost}"></td>
           <td>
             <div class="profile_dropdown_menu">
               <input class="profile_dropdown_menu_checkbox" th:id="${car.getId()}"
                      type="checkbox"/>
-              <label th:for="${car.getId()}"> </label>
+              <label th:for="${car.id}"></label>
               <div class="profile_dropdown_menu_content">
                 <ul>
                   <li><a th:text="#{car.about}" th:href="@{car/{carId}/detail(carId=${car.getId()})}">Об

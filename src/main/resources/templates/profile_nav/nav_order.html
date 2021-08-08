@@ -26,23 +26,23 @@
           <td th:text="#{order.totalCost}">Итого</td>
         </tr>
         <tr th:each="carOrder : ${carOrders}">
-          <td th:text="${carOrder.getId()}"></td>
-          <td th:text="${carOrder.getUser().getPassportData().getLastName() + ' '
-          + carOrder.getUser().getPassportData().getFirstName() + ' '
-          + carOrder.getUser().getPassportData().getMiddleName()}"></td>
-          <td th:text="${carOrder.getCar().getCarBrand().getName()} + ' '
-          + ${carOrder.getCar().getModel()}"></td>
-          <td th:text="${carOrder.getDateOfIssue()}"></td>
-          <td th:text="${carOrder.getDateOfReturn()}"></td>
-          <td th:if="${carOrder.isCancellation() == false}" th:text="#{order.statusActive}"></td>
-          <td th:unless="${carOrder.isCancellation() == false}"
+          <td th:text="${carOrder.id}"></td>
+          <td th:text="${carOrder.user.passportData.lastName + ' '
+          + carOrder.user.passportData.firstName + ' '
+          + carOrder.user.passportData.middleName}"></td>
+          <td th:text="${carOrder.car.carBrand.name} + ' '
+          + ${carOrder.car.model}"></td>
+          <td th:text="${carOrder.dateOfIssue}"></td>
+          <td th:text="${carOrder.dateOfReturn}"></td>
+          <td th:if="${carOrder.cancellation == false}" th:text="#{order.statusActive}"></td>
+          <td th:unless="${carOrder.cancellation == false}"
               th:text="#{order.statusCancel}"></td>
-          <td th:text="${carOrder.getTotalCost()}"></td>
+          <td th:text="${carOrder.totalCost}"></td>
           <td>
             <div class="profile_dropdown_menu">
               <input class="profile_dropdown_menu_checkbox" th:id="${carOrder.getId()}"
                      type="checkbox"/>
-              <label th:for="${carOrder.getId()}"></label>
+              <label th:for="${carOrder.id}"></label>
               <div class="profile_dropdown_menu_content">
                 <ul>
                   <li><a th:text="#{order.about}"
