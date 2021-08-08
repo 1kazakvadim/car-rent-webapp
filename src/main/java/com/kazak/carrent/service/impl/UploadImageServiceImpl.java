@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -20,8 +19,9 @@ public class UploadImageServiceImpl implements UploadImageService {
   @Override
   public String upload(MultipartFile imageFile) {
     String imageName =
-        UUID.randomUUID().toString() + "." + StringUtils.cleanPath(imageFile.getOriginalFilename());
+        UUID.randomUUID().toString() + "." + imageFile.getOriginalFilename();
     try {
+      Files.createDirectories(Paths.get(UPLOAD_DIR));
       Path path = Paths.get(UPLOAD_DIR + imageName);
       Files.copy(imageFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
     } catch (IOException e) {

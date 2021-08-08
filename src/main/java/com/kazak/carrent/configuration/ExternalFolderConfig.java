@@ -7,11 +7,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class ExternalFolderConfig implements WebMvcConfigurer {
 
-  public static String externalFilePath = "file:D:/car-rent/upload_images/";
+  public static final String EXTERNAL_FILE_PATH = "file:D:/car-rent/upload_images/";
 
   @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry.addResourceHandler("/upload_images/**").addResourceLocations(externalFilePath);
+    registry.addResourceHandler("/upload_images/**").addResourceLocations(EXTERNAL_FILE_PATH);
   }
 
 }

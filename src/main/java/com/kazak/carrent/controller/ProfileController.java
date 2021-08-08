@@ -1,14 +1,9 @@
 package com.kazak.carrent.controller;
 
-import com.kazak.carrent.model.entity.Car;
-import com.kazak.carrent.model.entity.CarOrder;
-import com.kazak.carrent.model.entity.CarRepair;
-import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.service.CarOrderService;
 import com.kazak.carrent.service.CarRepairService;
 import com.kazak.carrent.service.CarService;
 import com.kazak.carrent.service.UserService;
-import java.util.List;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;

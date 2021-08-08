@@ -15,6 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+  private static final String ROLE_ADMIN = "ADMIN";
+  private static final String ROLE_MANAGER = "MANAGER";
+  private static final String ROLE_USER = "USER";
+
   private final DataSource dataSource;
 
   WebSecurityConfig(DataSource dataSource) {
@@ -35,12 +39,12 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     http
         .csrf().disable()
         .authorizeRequests()
-        .antMatchers("/profile/users/**/edit").hasRole("ADMIN")
-        .antMatchers("/profile/users/**").hasAnyRole("ADMIN", "MANAGER")
-        .antMatchers("/profile/cars/**").hasAnyRole("ADMIN", "MANAGER")
-        .antMatchers("/profile/orders/**/repair").hasAnyRole("ADMIN", "MANAGER")
-        .antMatchers("/profile/orders/**/cancellation").hasAnyRole("ADMIN", "MANAGER")
-        .antMatchers("/profile/**").hasAnyRole("ADMIN", "MANAGER", "USER")
+        .antMatchers("/profile/users/**/edit").hasRole(ROLE_ADMIN)
+        .antMatchers("/profile/users/**").hasAnyRole(ROLE_ADMIN, ROLE_MANAGER)
+        .antMatchers("/profile/cars/**").hasAnyRole(ROLE_ADMIN, ROLE_MANAGER)
+        .antMatchers("/profile/orders/**/repair").hasAnyRole(ROLE_ADMIN, ROLE_MANAGER)
+        .antMatchers("/profile/orders/**/cancellation").hasAnyRole(ROLE_ADMIN, ROLE_MANAGER)
+        .antMatchers("/profile/**").hasAnyRole(ROLE_ADMIN, ROLE_MANAGER, ROLE_USER)
         .antMatchers("/resources/**").permitAll()
         .antMatchers("/**").permitAll()
         .anyRequest().authenticated()

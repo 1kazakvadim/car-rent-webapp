@@ -87,7 +87,7 @@ public class CarServiceImpl implements CarService {
       List<String> carModelsFiltered,
       List<CarBody> carBodiesFiltered, List<CarClass> carClassesFiltered,
       List<CarTransmission> carTransmissionsFiltered) {
-    List<String> carModelsTemp = new ArrayList();
+    List<String> carModelsTemp = new ArrayList<>();
     if (carBrandsFiltered == null) {
       carBrandsFiltered = carBrandRepository.findAll();
     }
