@@ -8,35 +8,57 @@
 </head>
 <body>
 <div th:replace="fragments/header"></div>
+<!--<div class="authorization">-->
+<!--  <div class="container">-->
+<!--    <div class="authorization_inner">-->
+<!--      <div class="authorization_header">-->
+<!--        <h1 class="authorization_title" th:text="#{authorization}">АВТОРИЗАЦИЯ</h1>-->
+<!--      </div>-->
+<!--      <form class="authorization_form" th:action="@{/login}" method="post">-->
+<!--        <fieldset class="authorization_fieldset">-->
+<!--          <div th:if="${param.error}" class="alert_login">-->
+<!--            <p id="error_text" th:text="#{error.invalidLoginOrUsername}"></p>-->
+<!--          </div>-->
+<!--          <input class="authorization_login" type="text" id="username" name="username"-->
+<!--                 th:placeholder="#{placeholder.login}"/>-->
+<!--          <input class="authorization_password" type="password" id="password" name="password"-->
+<!--                 th:placeholder="#{placeholder.password}"/>-->
+<!--          <div class="form-actions">-->
+<!--            <button type="submit" class="authorization_submit btn">-->
+<!--              <span th:text="#{signIn}">ВОЙТИ</span>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--          <div class="authorization_footer">-->
+<!--            <p class="footer_title" th:text="#{noAccount}">Нет аккаунта?</p>-->
+<!--            <a class="footer_link" th:text="#{registration}" th:href="@{registration}">Регистрация</a>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
 <div class="authorization">
-  <div class="container">
-    <div class="authorization_inner">
-      <div class="authorization_header">
-        <h1 class="authorization_title" th:text="#{authorization}">АВТОРИЗАЦИЯ</h1>
-      </div>
-      <form class="authorization_form" th:action="@{/login}" method="post">
-        <fieldset class="authorization_fieldset">
-          <div th:if="${param.error}" class="alert_login">
-            <p id="error_text" th:text="#{error.invalidLoginOrUsername}"></p>
-          </div>
-          <input class="authorization_login" type="text" id="username" name="username"
-                 th:placeholder="#{placeholder.login}"/>
-          <input class="authorization_password" type="password" id="password" name="password"
-                 th:placeholder="#{placeholder.password}"/>
-          <div class="form-actions">
-            <button type="submit" class="authorization_submit btn">
-              <span th:text="#{signIn}">ВОЙТИ</span>
-            </button>
-          </div>
-          <div class="authorization_footer">
-            <p class="footer_title" th:text="#{noAccount}">Нет аккаунта?</p>
-            <a class="footer_link" th:text="#{registration}" th:href="@{registration}">Регистрация</a>
-          </div>
-        </fieldset>
-      </form>
+  <h2 th:text="#{authorization}">АВТОРИЗАЦИЯ</h2>
+  <form method="post">
+    <div th:if="${param.error}" class="alert_login">
+      <p id="error_text" th:text="#{error.invalidLoginOrUsername}"></p>
     </div>
-  </div>
+    <input type="text" class="login" placeholder="email" id="username" name="username">
+    <input type="password" class="password" placeholder="password" id="password" name="password">
+    <button class="sign_in" th:action="@{/login}">
+      <span>sign in</span>
+    </button>
+  </form>
+  <button class="register">
+    <span>register</span>
+  </button>
+  <br/>
+
+
 </div>
+
+
 <div th:replace="fragments/footer"></div>
 </body>
 </html>
