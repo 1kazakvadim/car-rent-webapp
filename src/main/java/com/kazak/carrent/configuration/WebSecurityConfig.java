@@ -39,7 +39,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/profile/users/**").hasAnyRole("ADMIN", "MANAGER")
         .antMatchers("/profile/cars/**").hasAnyRole("ADMIN", "MANAGER")
         .antMatchers("/profile/orders/**/repair").hasAnyRole("ADMIN", "MANAGER")
-        .antMatchers("/profile/users/**/cancellation").hasAnyRole("ADMIN", "MANAGER")
+        .antMatchers("/profile/orders/**/cancellation").hasAnyRole("ADMIN", "MANAGER")
         .antMatchers("/profile/**").hasAnyRole("ADMIN", "MANAGER", "USER")
         .antMatchers("/resources/**").permitAll()
         .antMatchers("/**").permitAll()
