@@ -8,6 +8,8 @@ import com.kazak.carrent.repository.UserRepository;
 import com.kazak.carrent.repository.UserRoleRepository;
 import com.kazak.carrent.service.UserService;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+  private static final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{3,16}$";
 
   private final UserRepository userRepository;
   private final UserRoleRepository userRoleRepository;
@@ -80,7 +84,9 @@ public class UserServiceImpl implements UserService {
   @Override
   @Transactional
   public boolean changeUserPassword(Integer userId, String password, String passwordConfirm) {
-    if (!password.equals(passwordConfirm)) {
+    Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+    Matcher matcher = pattern.matcher(password);
+    if (!password.equals(passwordConfirm) || !matcher.find()) {
       return false;
     }
     User user = userRepository.getById(userId);
@@ -91,11 +97,14 @@ public class UserServiceImpl implements UserService {
 
   @Override
   @Transactional
-  public boolean changeUserPasswordByUser(UserDetails currentUser, String passwordOld, String password,
+  public boolean changeUserPasswordByUser(UserDetails currentUser, String passwordOld,
+      String password,
       String passwordConfirm) {
     User user = userRepository.findByUsername(currentUser.getUsername());
+    Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+    Matcher matcher = pattern.matcher(password);
     if (!password.equals(passwordConfirm) || !passwordEncoder
-        .matches(passwordOld, user.getPassword())) {
+        .matches(passwordOld, user.getPassword()) || !matcher.find()) {
       return false;
     }
     user.setPassword(passwordEncoder.encode(password));
