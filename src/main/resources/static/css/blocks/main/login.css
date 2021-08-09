@@ -8,14 +8,13 @@
   height: 100%;
   border-radius: 5px;
   overflow: hidden;
-  z-index: 1;
-  background: rgb(227, 140, 39);
+  background: #fcce81;
 }
 
 .authorization h2 {
   padding: 2rem;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #553636;
 }
 
 .authorization input {
@@ -49,7 +48,6 @@
 
 .login, .password {
   position: relative;
-  z-index: 1;
   border-bottom: 0.1rem solid rgba(0, 0, 0, .1);
   padding-left: 1.2rem;
   font-family: 'Open Sans', sans-serif;
@@ -75,18 +73,18 @@
 }
 
 .register {
-  background: rgba(190, 127, 84, 1);
+  background: rgba(190, 127, 84, 0.8);
 }
 
 .sign_in {
-  background: rgba(183, 53, 21, 1);
+  background: rgba(94, 127, 220, 0.8);
 }
 
 .authorization .register:hover {
-  background: rgba(190, 127, 84, 0.7);
+  background: rgba(190, 127, 84, 1);
 }
 
 .authorization .sign_in:hover {
-  background: rgba(183, 53, 21, 0.7);
+  background: rgba(94, 127, 220, 1);
 }
 

@@ -1,105 +1,105 @@
 .registration {
-  margin-bottom: 12rem;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .registration_inner {
-  font-family: 'Lato', sans-serif;
-  color: var(--black);
-  margin: 0 auto;
-  padding: 1rem 1rem;
-  font-size: 1.2rem;
-  width: 40%;
-  border: 0.1rem solid var(--black);
-  border-radius: 0.4rem;
-  background-color: #fcce81;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  padding-left: 1rem;
+}
+
+.registration form {
+  background: #fcce81;
+}
+
+.registration h2 {
+  padding: 2rem;
+  text-transform: uppercase;
+  color: #553636;
+}
+
+.registration_inner_left {
+  width: 50%;
+}
+
+.registration_inner_right {
+  width: 50%;
 }
 
 .registration_item {
-  margin-bottom: 1rem;
-}
-
-.registration_error_text {
-  font-size: 1rem;
-  color: #f44336;
-  text-transform: uppercase;
+  width: 100%;
   text-align: left;
 }
 
-.registration_item_radio {
-  margin-bottom: 1rem;
-}
-
-.registration_item_radio label {
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-}
-
-.registration_item input, label {
-  display: block;
+.registration_item input {
+  height: 2.5rem;
+  width: 90%;
+  margin-bottom: 0.8rem;
+  border: none;
+  color: var(--black);
+  padding: 1rem;
 }
 
 .registration_item label {
-  text-transform: uppercase;
+  width: 70%;
+  display: block;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
-.registration_item input {
-  padding: 0.4rem;
-  color: var(--black);
-  font-size: 1.2rem;
-  width: 100%;
-  height: 2.5rem;
-  border-radius: 0.4rem;
+.registration_item label:first-letter {
+  text-transform: uppercase;
 }
 
 .registration_item_radio {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  width: 15rem;
-  margin-bottom: 1.5rem;
-}
-
-.registration_item_radio_inner {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-top: 0.5rem;
-}
-
-.registration_item_radio label {
-  margin: 0 0 0.5rem 0;
-  display: flex;
-}
-
-.registration_item_radio label:last-child {
-  margin: 0;
+  text-align: left;
 }
 
 .registration_item_radio input {
-  height: 1rem;
-  width: 1rem;
-  margin-right: 0.5rem;
+  height: 2rem;
 }
 
-.registration_item_radio input:hover {
-  cursor: pointer;
+.registration_item_radio_title {
+  width: 70%;
+  display: block;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
-.registration_submit {
-  width: 100%;
+.registration_item_radio label {
+  display: flex;
+}
+
+.registration_item_radio span {
   font-size: 1rem;
-  color: var(--white);
-  background-color: rgba(94, 127, 220, 1);
-  border: none;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  font-weight: bold;
-  padding: 0.8rem 0.8rem;
+  padding-top: 0.6rem;
+  margin-right: 0.2rem;
+}
+
+.registration_item_radio_title:first-letter {
   text-transform: uppercase;
 }
 
-.registration_submit:hover {
+.registration_button {
+  cursor: pointer;
+  width: 100%;
+  height: 3.7rem;
+  margin-top: 1rem;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
   background-color: rgba(94, 127, 220, 0.8);
-  transition: all 0.2s linear;
+  transition: 0.5s;
+  text-align: center;
+}
+
+.registration_button:hover {
+  background-color: rgba(94, 127, 220, 1);
+}
+
+.registration_error_text {
+  color: var(--red);
 }
 
