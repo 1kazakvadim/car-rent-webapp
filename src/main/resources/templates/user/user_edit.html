@@ -97,38 +97,22 @@
           <table class="edit_table">
             <caption class="edit_table_caption" th:text="#{caption.changePassword}">Изменить пароля
             </caption>
-            <caption>
-              <div th:if="${wrongPassword}" class="alert">
-            <span class="alert_close_button" onclick="this.parentElement.style.display='none';"
-            >&times;</span>
-                <p th:text="${wrongPassword}"></p>
-              </div>
-            </caption>
-            <caption>
-              <div th:if="${passwordChange}" class="notification">
-            <span class="notification_close_button"
-                  onclick="this.parentElement.style.display='none';"
-            >&times;</span>
-                <p th:text="${passwordChange}"></p>
-              </div>
-            </caption>
+
             <tr class="edit_password_row_caption">
               <td>
-                <label for="password" th:text="#{label.newPassword}">Новый пароль</label>
+                <label for="password" th:text="#{label.newPassword}"></label>
                 <input id="password" type="password" name="password">
               </td>
             </tr>
             <tr class="edit_password_row_caption">
               <td>
-                <label for="password_confirm" th:text="#{label.confirmPassword}">Подтвердить
-                  пароль</label>
+                <label for="password_confirm" th:text="#{label.confirmPassword}"></label>
                 <input id="password_confirm" type="password" name="passwordConfirm">
               </td>
             </tr>
             <tr class="edit_password_row_caption">
               <td>
-                <button class="edit_button" type="submit" th:text="#{button.save}">сохранить
-                </button>
+                <button class="edit_button" type="submit" th:text="#{button.save}"></button>
               </td>
             </tr>
           </table>

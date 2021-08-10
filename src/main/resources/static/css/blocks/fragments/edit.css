@@ -52,7 +52,7 @@
   display: block;
   width: 30%;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
 .edit_password_row_caption label {
@@ -60,7 +60,7 @@
   text-align: left;
 }
 
-.edit_password_row_caption label:first-letter {
+.edit_password_row_caption:first-letter label {
   text-transform: uppercase;
 }
 
