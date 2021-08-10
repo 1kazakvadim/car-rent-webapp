@@ -60,6 +60,11 @@
   text-align: left;
 }
 
+.edit_password_row_caption input {
+  margin-top: 0.5rem;
+}
+
+
 .edit_password_row_caption:first-letter label {
   text-transform: uppercase;
 }
