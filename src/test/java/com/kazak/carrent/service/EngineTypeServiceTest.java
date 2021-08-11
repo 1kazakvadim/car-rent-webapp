@@ -1,6 +1,7 @@
 package com.kazak.carrent.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.kazak.carrent.model.entity.EngineType;
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ class EngineTypeServiceTest {
   void getAllEngineTypes() {
     Mockito.when(engineTypeService.getAll()).thenReturn(engineTypes);
     assertThat(engineTypeService.getAll()).isEqualTo(engineTypes);
+    assertEquals(1, engineTypes.size());
   }
 
 }

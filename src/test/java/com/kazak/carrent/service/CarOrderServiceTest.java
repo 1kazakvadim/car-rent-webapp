@@ -55,6 +55,7 @@ class CarOrderServiceTest {
   @Test
   void getAllCarOrders() {
     when(carOrderService.getAll()).thenReturn(carOrders);
+    assertThat(carOrderService.getAll()).isEqualTo(carOrders);
     assertEquals(1, carOrders.size());
   }
 
@@ -114,6 +115,5 @@ class CarOrderServiceTest {
     carOrderService.save(carOrder, 1, currentUser);
     verify(carOrderService, times(1)).save(carOrder, 1, currentUser);
   }
-
 
 }

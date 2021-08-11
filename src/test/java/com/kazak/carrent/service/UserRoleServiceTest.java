@@ -1,6 +1,7 @@
 package com.kazak.carrent.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.kazak.carrent.model.entity.UserRole;
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ class UserRoleServiceTest {
   void getAllUserRoles() {
     Mockito.when(userRoleService.getAll()).thenReturn(userRoles);
     assertThat(userRoleService.getAll()).isEqualTo(userRoles);
+    assertEquals(1, userRoles.size());
   }
 
 }

@@ -1,13 +1,14 @@
 package com.kazak.carrent.service;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
+import com.kazak.carrent.model.entity.CarBody;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.kazak.carrent.model.entity.CarBody;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -31,14 +32,15 @@ class CarBodyServiceTest {
 
   @Test
   void findCarBodyByName() {
-    Mockito.when(carBodyService.findByName(carBody.getName())).thenReturn(carBody);
+    when(carBodyService.findByName(carBody.getName())).thenReturn(carBody);
     assertThat(carBodyService.findByName(carBody.getName())).isEqualTo(carBody);
   }
 
   @Test
   void getAllCarBodies() {
-    Mockito.when(carBodyService.getAll()).thenReturn(carBodies);
+    when(carBodyService.getAll()).thenReturn(carBodies);
     assertThat(carBodyService.getAll()).isEqualTo(carBodies);
+    assertEquals(1, carBodies.size());
   }
 
 }

@@ -1,6 +1,7 @@
 package com.kazak.carrent.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.kazak.carrent.model.entity.CarClass;
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ class CarClassServiceTest {
   void getAllCarClasses() {
     Mockito.when(carClassService.getAll()).thenReturn(carClasses);
     assertThat(carClassService.getAll()).isEqualTo(carClasses);
+    assertEquals(1, carClasses.size());
   }
 
 }
