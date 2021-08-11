@@ -29,7 +29,7 @@ class UserRoleServiceTest {
   }
 
   @Test
-  void findUserRoleByName_True() {
+  void findUserRoleByName() {
     Mockito.when(userRoleService.findByName(userRole.getName()))
         .thenReturn(userRole);
     assertThat(userRoleService.findByName(userRole.getName()))
@@ -37,21 +37,9 @@ class UserRoleServiceTest {
   }
 
   @Test
-  void findUserRoleByName_False() {
-    Mockito.when(userRoleService.findByName("name")).thenReturn(null);
-    assertThat(userRoleService.findByName("name")).isNull();
-  }
-
-  @Test
-  void getAllUserRoles_True() {
+  void getAllUserRoles() {
     Mockito.when(userRoleService.getAll()).thenReturn(userRoles);
     assertThat(userRoleService.getAll()).isEqualTo(userRoles);
-  }
-
-  @Test
-  void getAllUserRoles_False() {
-    Mockito.when(userRoleService.getAll()).thenReturn(null);
-    assertThat(userRoleService.getAll()).isNull();
   }
 
 }

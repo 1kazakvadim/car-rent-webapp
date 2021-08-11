@@ -35,21 +35,9 @@ class CarBrandServiceTest {
   }
 
   @Test
-  void findCarBrandByName_False() {
-    Mockito.when(carBrandService.findByName("name")).thenReturn(null);
-    assertThat(carBrandService.findByName("name")).isNull();
-  }
-
-  @Test
-  void getAllCarBrands_True() {
+  void getAllCarBrands() {
     Mockito.when(carBrandService.getAll()).thenReturn(carBrands);
     assertThat(carBrandService.getAll()).isEqualTo(carBrands);
-  }
-
-  @Test
-  void getAllCarBrands_False() {
-    Mockito.when(carBrandService.getAll()).thenReturn(null);
-    assertThat(carBrandService.getAll()).isNull();
   }
 
 }

@@ -29,7 +29,7 @@ class EngineTypeServiceTest {
   }
 
   @Test
-  void findEngineTypeByName_True() {
+  void findEngineTypeByName() {
     Mockito.when(engineTypeService.findByName(engineType.getName()))
         .thenReturn(engineType);
     assertThat(engineTypeService.findByName(engineType.getName()))
@@ -37,21 +37,9 @@ class EngineTypeServiceTest {
   }
 
   @Test
-  void findEngineTypeByName_False() {
-    Mockito.when(engineTypeService.findByName("name")).thenReturn(null);
-    assertThat(engineTypeService.findByName("name")).isNull();
-  }
-
-  @Test
-  void getAllEngineTypes_True() {
+  void getAllEngineTypes() {
     Mockito.when(engineTypeService.getAll()).thenReturn(engineTypes);
     assertThat(engineTypeService.getAll()).isEqualTo(engineTypes);
-  }
-
-  @Test
-  void getAllEngineTypes_False() {
-    Mockito.when(engineTypeService.getAll()).thenReturn(null);
-    assertThat(engineTypeService.getAll()).isNull();
   }
 
 }

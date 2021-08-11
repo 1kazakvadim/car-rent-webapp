@@ -30,27 +30,15 @@ class CarBodyServiceTest {
   }
 
   @Test
-  void findCarBodyByName_True() {
+  void findCarBodyByName() {
     Mockito.when(carBodyService.findByName(carBody.getName())).thenReturn(carBody);
     assertThat(carBodyService.findByName(carBody.getName())).isEqualTo(carBody);
   }
 
   @Test
-  void findCarBodyByName_False() {
-    Mockito.when(carBodyService.findByName("name")).thenReturn(null);
-    assertThat(carBodyService.findByName("name")).isNull();
-  }
-
-  @Test
-  void getAllCarBodies_True() {
+  void getAllCarBodies() {
     Mockito.when(carBodyService.getAll()).thenReturn(carBodies);
     assertThat(carBodyService.getAll()).isEqualTo(carBodies);
-  }
-
-  @Test
-  void getAllCarBodies_False() {
-    Mockito.when(carBodyService.getAll()).thenReturn(null);
-    assertThat(carBodyService.getAll()).isNull();
   }
 
 }

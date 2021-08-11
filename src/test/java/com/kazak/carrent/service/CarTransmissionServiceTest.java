@@ -29,7 +29,7 @@ class CarTransmissionServiceTest {
   }
 
   @Test
-  void findCarTransmissionByName_True() {
+  void findCarTransmissionByName() {
     Mockito.when(carTransmissionService.findByName(carTransmission.getName()))
         .thenReturn(carTransmission);
     assertThat(carTransmissionService.findByName(carTransmission.getName()))
@@ -37,21 +37,9 @@ class CarTransmissionServiceTest {
   }
 
   @Test
-  void findCarTransmissionByName_False() {
-    Mockito.when(carTransmissionService.findByName("name")).thenReturn(null);
-    assertThat(carTransmissionService.findByName("name")).isNull();
-  }
-
-  @Test
-  void getAllCarTransmissions_True() {
+  void getAllCarTransmissions() {
     Mockito.when(carTransmissionService.getAll()).thenReturn(carTransmissions);
     assertThat(carTransmissionService.getAll()).isEqualTo(carTransmissions);
-  }
-
-  @Test
-  void getAllCarTransmissions_False() {
-    Mockito.when(carTransmissionService.getAll()).thenReturn(null);
-    assertThat(carTransmissionService.getAll()).isNull();
   }
 
 }

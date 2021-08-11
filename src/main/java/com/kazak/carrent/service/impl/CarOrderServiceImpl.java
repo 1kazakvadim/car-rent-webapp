@@ -76,7 +76,6 @@ public class CarOrderServiceImpl implements CarOrderService {
         !dateOfReturn.isBefore(dateOfIssue);
   }
 
-
   @Override
   @Transactional
   public void save(CarOrder carOrder, Integer carDetailId, UserDetails currentUser) {
