@@ -1,6 +1,5 @@
 package com.kazak.carrent.configuration;
 
-import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,19 +18,13 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   private static final String ROLE_MANAGER = "MANAGER";
   private static final String ROLE_USER = "USER";
 
-  private final DataSource dataSource;
-
-  WebSecurityConfig(DataSource dataSource) {
-    this.dataSource = dataSource;
-  }
-
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    auth.jdbcAuthentication().dataSource(dataSource);
+    auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
   }
 
   @Override
