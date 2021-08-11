@@ -41,7 +41,7 @@
               <div class="filer_checkbox_inner" th:each="carBody : ${carBodies}">
                 <label th:for="${carBody.name}">
                   <input type="checkbox" th:id="${carBody.name}"
-                         th:text="${carBody.name}" th:value="${carBody.id}"
+                         th:text="#{${carBody.name}}" th:value="${carBody.id}"
                          name="carBodiesFiltered"/></label>
               </div>
             </div>
@@ -51,7 +51,7 @@
             <div class="filer_checkbox_inner" th:each="carClass : ${carClasses}">
               <label th:for="${carClass.name}">
                 <input type="checkbox" th:id="${carClass.name}"
-                       th:text="${carClass.name}" th:value="${carClass.id}"
+                       th:text="#{${carClass.name}}" th:value="${carClass.id}"
                        name="carClassesFiltered"/></label>
             </div>
           </div>
@@ -60,7 +60,7 @@
             <div class="filer_checkbox_inner" th:each="carTransmission : ${carTransmissions}">
               <label th:for="${carTransmission.name}">
                 <input type="checkbox" th:id="${carTransmission.name}"
-                       th:text="${carTransmission.name}"
+                       th:text="#{${carTransmission.name}}"
                        th:value="${carTransmission.id}"
                        name="carTransmissionsFiltered"/></label>
             </div>

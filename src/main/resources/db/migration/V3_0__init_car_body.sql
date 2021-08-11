@@ -1,11 +1,11 @@
-INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('СЕДАН');
-INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('УНИВЕРСАЛ');
-INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('ХЭТЧБЕК');
-INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('МИНИВЕН');
-INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('ВНЕДОРОЖНИК');
-INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('КУПЕ');
-INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('КАБРИОЛЕТ');
-INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('ПИКАП');
-INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('ЛИМУЗИН');
+INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('SEDAN');
+INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('UNIVERSAL');
+INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('HATCHBACK');
+INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('MINIVAN');
+INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('SUV');
+INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('COUPE');
+INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('CABRIOLET');
+INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('PICKUP');
+INSERT INTO `car_rent`.`car_body` (`name`) VALUES ('LIMOUSINE');
 
 

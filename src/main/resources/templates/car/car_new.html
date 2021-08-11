@@ -50,7 +50,7 @@
               <td>
                 <select name="carBody" required>
                   <option th:each="carBody : ${carBodies}"
-                          th:text="${carBody.name}" th:value="${carBody.id}"
+                          th:text="#{${carBody.name}}" th:value="${carBody.id}"
                           th:name="${carBody.name}"
                           th:field="${car.carBody}">
                   </option>
@@ -67,7 +67,7 @@
               <td>
                 <select name="carClass" required>
                   <option th:each="carClass : ${carClasses}"
-                          th:text="${carClass.name}" th:value="${carClass.id}"
+                          th:text="#{${carClass.name}}" th:value="${carClass.id}"
                           th:name="${carClass.name}"
                           th:field="${car.carClass}">
                   </option>
@@ -79,7 +79,7 @@
               <td>
                 <select name="carTransmission" required>
                   <option th:each="carTransmission : ${carTransmissions}"
-                          th:text="${carTransmission.name}"
+                          th:text="#{${carTransmission.name}}"
                           th:value="${carTransmission.id}"
                           th:name="${carTransmission.name}"
                           th:field="${car.carTransmission}">
@@ -92,7 +92,7 @@
               <td>
                 <select name="engineType" required>
                   <option th:each="engineType : ${engineTypes}"
-                          th:text="${engineType.name}" th:value="${engineType.id}"
+                          th:text="#{${engineType.name}}" th:value="${engineType.id}"
                           th:name="${engineType.getName()}"
                           th:field="${car.engineType}">
                   </option>

@@ -44,10 +44,10 @@
           <td th:text="${car.id}"></td>
           <td th:text="${car.carBrand.name}"></td>
           <td th:text="${car.model}"></td>
-          <td th:text="${car.carBody.name}"></td>
+          <td th:text="#{${car.carBody.name}}"></td>
           <td th:text="${car.color}"></td>
-          <td th:text="${car.carClass.name}"></td>
-          <td th:text="${car.carTransmission.name}"></td>
+          <td th:text="#{${car.carClass.name}}"></td>
+          <td th:text="#{${car.carTransmission.name}}"></td>
           <td th:text="${car.rentalCost}"></td>
           <td>
             <div class="profile_dropdown_menu">

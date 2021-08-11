@@ -1,3 +1,3 @@
-INSERT INTO `car_rent`.`engine_type` (`name`) VALUES ('БЕНЗИН');
-INSERT INTO `car_rent`.`engine_type` (`name`) VALUES ('ДИЗЕЛЬ');
-INSERT INTO `car_rent`.`engine_type` (`name`) VALUES ('ГАЗ');
+INSERT INTO `car_rent`.`engine_type` (`name`) VALUES ('PETROL');
+INSERT INTO `car_rent`.`engine_type` (`name`) VALUES ('DIESEL');
+INSERT INTO `car_rent`.`engine_type` (`name`) VALUES ('GAS');

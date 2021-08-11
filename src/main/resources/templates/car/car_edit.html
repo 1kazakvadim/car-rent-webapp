@@ -50,11 +50,11 @@
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.body}">Тип кузова</td>
-              <td th:text="${car.carBody.name}"></td>
+              <td th:text="#{${car.carBody.name}}"></td>
               <td>
                 <select id="carBody" name="carBody">
                   <option th:each="carBody : ${carBodies}" th:selected="${carBody == car.carBody}"
-                          th:text="${carBody.name}" th:value="${carBody.id}"
+                          th:text="#{${carBody.name}}" th:value="${carBody.id}"
                           th:name="${carBody.name}"
                           th:field="${car.carBody}">
                   </option>
@@ -69,12 +69,12 @@
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.class}">Класс автомобиля</td>
-              <td th:text="${car.carClass.name}"></td>
+              <td th:text="#{${car.carClass.name}}"></td>
               <td>
                 <select id="carClass" name="carClass">
                   <option th:each="carClass : ${carClasses}"
                           th:selected="${carClass == car.carClass}"
-                          th:text="${carClass.name}" th:value="${carClass.id}"
+                          th:text="#{${carClass.name}}" th:value="${carClass.id}"
                           th:name="${carClass.name}"
                           th:field="${car.carClass}">
                   </option>
@@ -83,12 +83,12 @@
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.transmission}">Тип трансмиссии</td>
-              <td th:text="${car.carTransmission.name}"></td>
+              <td th:text="#{${car.carTransmission.name}}"></td>
               <td>
                 <select id="carTransmission" name="carTransmission">
                   <option th:each="carTransmission : ${carTransmissions}"
                           th:selected="${carTransmission == car.carTransmission}"
-                          th:text="${carTransmission.name}"
+                          th:text="#{${carTransmission.name}}"
                           th:value="${carTransmission.id}"
                           th:name="${carTransmission.name}"
                           th:field="${car.carTransmission}">
@@ -98,12 +98,12 @@
             </tr>
             <tr>
               <td class="edit_row_caption" th:text="#{car.engineType}">Тип двигателя</td>
-              <td th:text="${car.engineType.name}"></td>
+              <td th:text="#{${car.engineType.name}}"></td>
               <td>
                 <select id="engineType" name="engineType">
                   <option th:each="engineType : ${engineTypes}"
                           th:selected="${engineType == car.engineType}"
-                          th:text="${engineType.name}" th:value="${engineType.id}"
+                          th:text="#{${engineType.name}}" th:value="${engineType.id}"
                           th:name="${engineType.name}"
                           th:field="${car.engineType}">
                   </option>

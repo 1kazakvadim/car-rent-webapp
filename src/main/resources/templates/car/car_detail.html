@@ -15,49 +15,49 @@
         <div th:replace="fragments/profile_nav"></div>
       </div>
       <table class="detail_table">
-        <caption class="detail_table_caption">Автомобиль</caption>
+        <caption class="detail_table_caption" th:text="#{caption.aboutCar}">Автомобиль</caption>
         <tr class="detail_column_caption">
-          <td>Марка</td>
+          <td th:text="#{car.brand}">Марка</td>
           <td th:text="${car.carBrand.name}"></td>
         </tr>
         <tr class="detail_column_caption">
-          <td>Модель</td>
+          <td th:text="#{car.model}">Модель</td>
           <td th:text="${car.model}"></td>
         </tr>
         <tr class="detail_column_caption">
-          <td>Тип кузова</td>
-          <td th:text="${car.carBody.name}"></td>
+          <td th:text="#{car.body}">Тип кузова</td>
+          <td th:text="#{${car.carBody.name}}"></td>
         </tr>
         <tr class="detail_column_caption">
-          <td>Цвет</td>
+          <td th:text="#{car.color}">Цвет</td>
           <td th:text="${car.color}"></td>
         </tr>
         <tr class="detail_column_caption">
-          <td>Класс автомобиля</td>
-          <td th:text="${car.carClass.name}"></td>
+          <td th:text="#{car.class}">Класс автомобиля</td>
+          <td th:text="#{${car.carClass.name}}"></td>
         </tr>
         <tr class="detail_column_caption">
-          <td>Коробка передач</td>
-          <td th:text="${car.carTransmission.name}"></td>
+          <td th:text="#{car.transmission}">Коробка передач</td>
+          <td th:text="#{${car.carTransmission.name}}"></td>
         </tr>
         <tr class="detail_column_caption">
-          <td>Тип двигателя</td>
-          <td th:text="${car.engineType.name}"></td>
+          <td th:text="#{car.engineType}">Тип двигателя</td>
+          <td th:text="#{${car.engineType.name}}"></td>
         </tr>
         <tr class="detail_column_caption">
-          <td>Объем двигателя</td>
+          <td th:text="#{car.engineVolume}">Объем двигателя</td>
           <td th:text="${car.engineVolume}"></td>
         </tr>
         <tr class="detail_column_caption">
-          <td>Количество сидений</td>
+          <td th:text="#{car.numberOfSeats}">Количество сидений</td>
           <td th:text="${car.numberOfSeats}"></td>
         </tr>
         <tr class="detail_column_caption">
-          <td>Расход топлива</td>
+          <td th:text="#{car.fuelConsumption}">Расход топлива</td>
           <td th:text="${car.fuelConsumption}"></td>
         </tr>
         <tr class="detail_column_caption">
-          <td>Стоимость аренды</td>
+          <td th:text="#{car.rentalCost}">Стоимость аренды</td>
           <td th:text="${car.rentalCost}"></td>
         </tr>
       </table>

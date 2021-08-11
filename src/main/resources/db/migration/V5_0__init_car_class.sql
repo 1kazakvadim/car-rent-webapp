@@ -1,4 +1,4 @@
-INSERT INTO `car_rent`.`car_class` (`name`) VALUES ('МАЛЫЙ');
-INSERT INTO `car_rent`.`car_class` (`name`) VALUES ('СРЕДНИЙ');
-INSERT INTO `car_rent`.`car_class` (`name`) VALUES ('СЕМЕЙНЫЙ');
-INSERT INTO `car_rent`.`car_class` (`name`) VALUES ('ЛЮКС');
+INSERT INTO `car_rent`.`car_class` (`name`) VALUES ('SMALL');
+INSERT INTO `car_rent`.`car_class` (`name`) VALUES ('AVERAGE');
+INSERT INTO `car_rent`.`car_class` (`name`) VALUES ('FAMILY');
+INSERT INTO `car_rent`.`car_class` (`name`) VALUES ('LUX');
