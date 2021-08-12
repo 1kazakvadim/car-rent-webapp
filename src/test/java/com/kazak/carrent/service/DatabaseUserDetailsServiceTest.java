@@ -5,7 +5,7 @@ import static org.mockito.Mockito.when;
 
 import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.model.entity.UserPrincipal;
-import org.junit.jupiter.api.BeforeEach;
+import com.kazak.carrent.mock.MockUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -16,14 +16,7 @@ class DatabaseUserDetailsServiceTest {
   @MockBean
   private UserService userService;
 
-  private User user;
-
-  @BeforeEach
-  void init() {
-    user = User.builder()
-        .username("username")
-        .build();
-  }
+  private final User user = MockUser.getMockUser("username");
 
   @Test
   void loadUserByUsername_True() {

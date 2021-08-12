@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 
 import com.kazak.carrent.dto.PassportDataPostDto;
 import com.kazak.carrent.model.entity.PassportData;
-import org.junit.jupiter.api.BeforeEach;
+import com.kazak.carrent.mock.MockPassportData;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -18,16 +18,7 @@ class PassportDataServiceTest {
   @MockBean
   private PassportDataService passportDataService;
 
-  private PassportData passportData;
-
-  @BeforeEach
-  void init() {
-    passportData = PassportData.builder()
-        .id(1)
-        .passportNumber("0000")
-        .identificationNumber("0000")
-        .build();
-  }
+  private final PassportData passportData = MockPassportData.getMockPassportData();
 
   @Test
   void findPassportDataById() {

@@ -5,9 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import com.kazak.carrent.model.entity.CarBody;
-import java.util.ArrayList;
+import com.kazak.carrent.mock.MockCarBody;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,16 +18,8 @@ class CarBodyServiceTest {
   @MockBean
   private CarBodyService carBodyService;
 
-  private List<CarBody> carBodies;
-  private CarBody carBody;
-
-  @BeforeEach
-  void init() {
-    carBodies = new ArrayList<>();
-    carBody = new CarBody();
-    carBody.setName("name");
-    carBodies.add(carBody);
-  }
+  private final List<CarBody> carBodies = MockCarBody.getMockCarBodies();
+  private final CarBody carBody = MockCarBody.getMockCarBody();
 
   @Test
   void findCarBodyByName() {
@@ -40,7 +31,7 @@ class CarBodyServiceTest {
   void getAllCarBodies() {
     when(carBodyService.getAll()).thenReturn(carBodies);
     assertThat(carBodyService.getAll()).isEqualTo(carBodies);
-    assertEquals(1, carBodies.size());
+    assertEquals(2, carBodies.size());
   }
 
 }

@@ -5,9 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import com.kazak.carrent.model.entity.UserRole;
-import java.util.ArrayList;
+import com.kazak.carrent.mock.MockUserRole;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -18,16 +17,8 @@ class UserRoleServiceTest {
   @MockBean
   private UserRoleService userRoleService;
 
-  private List<UserRole> userRoles;
-  private UserRole userRole;
-
-  @BeforeEach
-  void init() {
-    userRoles = new ArrayList<>();
-    userRole = new UserRole();
-    userRole.setName("name");
-    userRoles.add(userRole);
-  }
+  private final List<UserRole> userRoles = MockUserRole.getMockUserRoles();
+  private final UserRole userRole = MockUserRole.getMockUserRole();
 
   @Test
   void findUserRoleByName() {
@@ -41,7 +32,7 @@ class UserRoleServiceTest {
   void getAllUserRoles() {
     when(userRoleService.getAll()).thenReturn(userRoles);
     assertThat(userRoleService.getAll()).isEqualTo(userRoles);
-    assertEquals(1, userRoles.size());
+    assertEquals(2, userRoles.size());
   }
 
 }

@@ -1,7 +1,8 @@
 package com.kazak.carrent.service;
 
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +20,8 @@ class UploadImageServiceTest {
   void upload() {
     MockMultipartFile imageFile = new MockMultipartFile("image", "image.jpg",
         MediaType.IMAGE_JPEG_VALUE, "car".getBytes());
-    assertThat(uploadImageService.upload(imageFile)).isNullOrEmpty();
+    uploadImageService.upload(imageFile);
+    verify(uploadImageService, times(1)).upload(imageFile);
   }
 
 }

@@ -6,13 +6,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.kazak.carrent.model.entity.Car;
+import com.kazak.carrent.mock.MockCarOrder;
 import com.kazak.carrent.model.entity.CarOrder;
-import com.kazak.carrent.model.entity.User;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -27,24 +24,8 @@ class CarOrderServiceTest {
   @MockBean
   private UserDetails currentUser;
 
-  private List<CarOrder> carOrders;
-  private CarOrder carOrder;
-
-  @BeforeEach
-  void init() {
-    carOrders = new ArrayList<>();
-    carOrder = CarOrder.builder()
-        .id(1)
-        .user(User.builder().id(1).username(currentUser.getUsername()).build())
-        .car(Car.builder().id(1).build())
-        .dateOfIssue(LocalDate.now())
-        .dateOfReturn(LocalDate.now().plusDays(1))
-        .isCancellation(false)
-        .reasonOfCancellation("")
-        .totalCost(1000D)
-        .build();
-    carOrders.add(carOrder);
-  }
+  private final List<CarOrder> carOrders = MockCarOrder.getMockCarOrders();
+  private final CarOrder carOrder = MockCarOrder.getMockCarOrder();
 
   @Test
   void getCarOrderById() {
@@ -56,7 +37,7 @@ class CarOrderServiceTest {
   void getAllCarOrders() {
     when(carOrderService.getAll()).thenReturn(carOrders);
     assertThat(carOrderService.getAll()).isEqualTo(carOrders);
-    assertEquals(1, carOrders.size());
+    assertEquals(2, carOrders.size());
   }
 
   @Test
@@ -65,7 +46,7 @@ class CarOrderServiceTest {
     when(carOrderService.getAll(currentUser)).thenReturn(carOrders);
     assertThat(currentUser.getUsername()).isEqualTo("username");
     assertThat(carOrderService.getAll(currentUser)).isEqualTo(carOrders);
-    assertEquals(1, carOrders.size());
+    assertEquals(2, carOrders.size());
   }
 
   @Test

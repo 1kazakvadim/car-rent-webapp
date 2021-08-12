@@ -5,9 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import com.kazak.carrent.model.entity.EngineType;
-import java.util.ArrayList;
+import com.kazak.carrent.mock.MockEngineType;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -18,16 +17,8 @@ class EngineTypeServiceTest {
   @MockBean
   private EngineTypeService engineTypeService;
 
-  private List<EngineType> engineTypes;
-  private EngineType engineType;
-
-  @BeforeEach
-  void init() {
-    engineTypes = new ArrayList<>();
-    engineType = new EngineType();
-    engineType.setName("name");
-    engineTypes.add(engineType);
-  }
+  private final List<EngineType> engineTypes = MockEngineType.getMockEngineTypes();
+  private final EngineType engineType = MockEngineType.getMockEngineType();
 
   @Test
   void findEngineTypeByName() {
@@ -41,7 +32,7 @@ class EngineTypeServiceTest {
   void getAllEngineTypes() {
     when(engineTypeService.getAll()).thenReturn(engineTypes);
     assertThat(engineTypeService.getAll()).isEqualTo(engineTypes);
-    assertEquals(1, engineTypes.size());
+    assertEquals(2, engineTypes.size());
   }
 
 }

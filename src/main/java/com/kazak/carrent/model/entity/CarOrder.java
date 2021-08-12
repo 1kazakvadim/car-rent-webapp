@@ -33,11 +33,11 @@ public class CarOrder {
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
   private User user;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "car_id", nullable = false)
   @PrimaryKeyJoinColumn
   private Car car;

@@ -10,11 +10,10 @@ import com.kazak.carrent.dto.UserPostDto;
 import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.repository.UserRepository;
-import java.util.ArrayList;
+import com.kazak.carrent.mock.MockUser;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -34,19 +33,9 @@ class UserServiceTest {
   @MockBean
   private PasswordEncoder passwordEncoder;
 
-  private List<User> users;
-  private User user;
+  private final List<User> users = MockUser.getMockUsers();
+  private final User user = MockUser.getMockUser("username");
 
-  @BeforeEach
-  void init() {
-    users = new ArrayList<>();
-    user = User.builder()
-        .id(1)
-        .email("email")
-        .phoneNumber("1111")
-        .build();
-    users.add(user);
-  }
 
   @Test
   void findUserByUsername() {
@@ -58,7 +47,7 @@ class UserServiceTest {
   void getAllUsers() {
     when(userService.getAll()).thenReturn(users);
     assertThat(userService.getAll()).isEqualTo(users);
-    assertEquals(1, users.size());
+    assertEquals(2, users.size());
   }
 
   @Test

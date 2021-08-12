@@ -7,9 +7,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.kazak.carrent.model.entity.CarRepair;
-import java.util.ArrayList;
+import com.kazak.carrent.mock.MockCarRepair;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -24,17 +23,8 @@ class CarRepairServiceTest {
   @MockBean
   private UserDetails currentUser;
 
-  private List<CarRepair> carRepairs;
-  private CarRepair carRepair;
-
-  @BeforeEach
-  void init() {
-    carRepairs = new ArrayList<>();
-    carRepair = CarRepair.builder()
-        .id(1)
-        .build();
-    carRepairs.add(carRepair);
-  }
+  private final List<CarRepair> carRepairs = MockCarRepair.getMockCarRepairs();
+  private final CarRepair carRepair = MockCarRepair.getMockCarRepair();
 
   @Test
   void findCarRepairById() {
@@ -46,7 +36,7 @@ class CarRepairServiceTest {
   void getAllCarRepairs() {
     when(carRepairService.getAll()).thenReturn(carRepairs);
     assertThat(carRepairService.getAll()).isEqualTo(carRepairs);
-    assertEquals(1, carRepairs.size());
+    assertEquals(2, carRepairs.size());
   }
 
   @Test
@@ -55,7 +45,7 @@ class CarRepairServiceTest {
     when(carRepairService.getAll(currentUser)).thenReturn(carRepairs);
     assertThat(currentUser.getUsername()).isEqualTo("username");
     assertThat(carRepairService.getAll(currentUser)).isEqualTo(carRepairs);
-    assertEquals(1, carRepairs.size());
+    assertEquals(2, carRepairs.size());
   }
 
   @Test

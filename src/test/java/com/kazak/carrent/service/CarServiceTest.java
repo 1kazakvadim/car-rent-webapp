@@ -8,9 +8,8 @@ import static org.mockito.Mockito.when;
 
 import com.kazak.carrent.dto.CarPostDto;
 import com.kazak.carrent.model.entity.Car;
-import java.util.ArrayList;
+import com.kazak.carrent.mock.MockCar;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -23,18 +22,8 @@ class CarServiceTest {
   @MockBean
   private CarService carService;
 
-  private List<Car> cars;
-  private Car car;
-
-  @BeforeEach
-  void init() {
-    cars = new ArrayList<>();
-    car = Car.builder()
-        .id(1)
-        .model("model")
-        .build();
-    cars.add(car);
-  }
+  private final List<Car> cars = MockCar.getMockCars();
+  private final Car car = MockCar.getMockCar();
 
   @Test
   void findCarById() {
@@ -46,14 +35,14 @@ class CarServiceTest {
   void findCarByModel() {
     when(carService.findByModel(car.getModel())).thenReturn(cars);
     assertThat(carService.findByModel(car.getModel())).isEqualTo(cars);
-    assertEquals(1, cars.size());
+    assertEquals(2, cars.size());
   }
 
   @Test
   void getAllCars() {
     when(carService.getAll()).thenReturn(cars);
     assertThat(carService.getAll()).isEqualTo(cars);
-    assertEquals(1, cars.size());
+    assertEquals(2, cars.size());
   }
 
   @Test
