@@ -91,7 +91,7 @@ class ProfileControllerTest {
     this.mockMvc
         .perform(MockMvcRequestBuilders.get("/profile/cars"))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(model().attributeExists("cars"))
+        .andExpect(model().attribute("cars", carService.getAll()))
         .andExpect(MockMvcResultMatchers.view().name("profile_nav/nav_cars"));
   }
 
@@ -121,7 +121,7 @@ class ProfileControllerTest {
         .andExpect(MockMvcResultMatchers.view().name("profile_nav/nav_repairs"));
   }
 
-  @WithMockUser(roles = {"ADMIN", "MANAGER", "USER"})
+  @WithMockUser(username = "username", password = "pa55W0rd$", roles = {"ADMIN", "MANAGER", "USER"})
   @Test
   void shouldReturnProfileSettingsPage() throws Exception {
     when(currentUser.getUsername()).thenReturn("username");
@@ -133,6 +133,7 @@ class ProfileControllerTest {
     this.mockMvc
         .perform(MockMvcRequestBuilders.get("/profile/settings"))
         .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(model().attribute("user", userService.findByUsername(currentUser.getUsername())))
         .andExpect(MockMvcResultMatchers.view().name("profile_nav/nav_settings"));
   }
 
@@ -145,7 +146,7 @@ class ProfileControllerTest {
     this.mockMvc
         .perform(MockMvcRequestBuilders.get("/profile/users"))
         .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(model().attributeExists("users"))
+        .andExpect(model().attribute("users", userService.getAll()))
         .andExpect(MockMvcResultMatchers.view().name("profile_nav/nav_users"));
   }
 
