@@ -72,7 +72,7 @@ public class MockUser {
         .createdAt(LocalDate.now())
         .build();
     User userTwo = User.builder()
-        .id(1)
+        .id(2)
         .username("userTwo")
         .password("pa55W0rd$")
         .email("email")

@@ -1,6 +1,7 @@
 package com.kazak.carrent.mock;
 
 import com.kazak.carrent.model.entity.Car;
+import com.kazak.carrent.model.entity.CarBody;
 import com.kazak.carrent.model.entity.CarBrand;
 import com.kazak.carrent.model.entity.CarClass;
 import com.kazak.carrent.model.entity.CarTransmission;
@@ -18,6 +19,8 @@ public class MockCar {
         .id(1)
         .carBrand(CarBrand.builder().id(1).name("AUDI").build())
         .model("A8")
+        .color("red")
+        .carBody(CarBody.builder().id(1).name("LIMOUSINE").build())
         .carClass(CarClass.builder().id(1).name("LUX").build())
         .carTransmission(CarTransmission.builder().id(1).name("AT").build())
         .engineType(EngineType.builder().id(1).name("PETROL").build())
@@ -35,6 +38,8 @@ public class MockCar {
         .id(1)
         .carBrand(CarBrand.builder().id(1).name("BMW").build())
         .model("M5")
+        .color("blue")
+        .carBody(CarBody.builder().id(1).name("LIMOUSINE").build())
         .carClass(CarClass.builder().id(1).name("LUX").build())
         .carTransmission(CarTransmission.builder().id(1).name("AT").build())
         .engineType(EngineType.builder().id(1).name("PETROL").build())
@@ -48,6 +53,8 @@ public class MockCar {
         .id(2)
         .carBrand(CarBrand.builder().id(1).name("BMW").build())
         .model("M3")
+        .color("black")
+        .carBody(CarBody.builder().id(1).name("LIMOUSINE").build())
         .carClass(CarClass.builder().id(1).name("LUX").build())
         .carTransmission(CarTransmission.builder().id(1).name("AT").build())
         .engineType(EngineType.builder().id(1).name("PETROL").build())
