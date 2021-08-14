@@ -9,6 +9,7 @@ import com.kazak.carrent.service.CarService;
 import com.kazak.carrent.service.CarTransmissionService;
 import com.kazak.carrent.service.EngineTypeService;
 import java.util.Locale;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequiredArgsConstructor
 public class CarController {
 
   private final CarService carService;
@@ -30,21 +32,6 @@ public class CarController {
   private final CarTransmissionService carTransmissionService;
   private final EngineTypeService engineTypeService;
   private final MessageSource messageSource;
-
-  public CarController(CarService carService,
-      CarBrandService carBrandService, CarBodyService carBodyService,
-      CarClassService carClassService,
-      CarTransmissionService carTransmissionService,
-      EngineTypeService engineTypeService,
-      MessageSource messageSource) {
-    this.carService = carService;
-    this.carBrandService = carBrandService;
-    this.carBodyService = carBodyService;
-    this.carClassService = carClassService;
-    this.carTransmissionService = carTransmissionService;
-    this.engineTypeService = engineTypeService;
-    this.messageSource = messageSource;
-  }
 
 
   @GetMapping("/profile/cars/{carId}/detail")

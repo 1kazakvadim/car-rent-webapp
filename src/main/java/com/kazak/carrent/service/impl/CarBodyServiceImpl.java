@@ -4,17 +4,15 @@ import com.kazak.carrent.model.entity.CarBody;
 import com.kazak.carrent.repository.CarBodyRepository;
 import com.kazak.carrent.service.CarBodyService;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class CarBodyServiceImpl implements CarBodyService {
 
   private final CarBodyRepository carBodyRepository;
 
-  public CarBodyServiceImpl(
-      CarBodyRepository carBodyRepository) {
-    this.carBodyRepository = carBodyRepository;
-  }
 
   @Override
   public CarBody findByName(String carBodyName) {

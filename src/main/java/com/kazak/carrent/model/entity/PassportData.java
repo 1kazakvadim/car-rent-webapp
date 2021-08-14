@@ -26,7 +26,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @AllArgsConstructor
 @Builder
 @Entity
-@ToString(exclude={"user"})
 @Table(name = "passport_data")
 public class PassportData {
 
@@ -35,7 +34,7 @@ public class PassportData {
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @OneToOne(mappedBy = "passportData", fetch = FetchType.LAZY)
+  @OneToOne(mappedBy = "passportData")
   private User user;
 
   @NotEmpty
@@ -87,11 +86,11 @@ public class PassportData {
   @Column(name = "authority", nullable = false)
   private String authority;
 
-  @NotEmpty(message = "nationality can`t be empty")
+  @NotEmpty
   @Column(name = "nationality", nullable = false)
   private String nationality;
 
-  @NotEmpty(message = "registration can`t be empty")
+  @NotEmpty
   @Column(name = "registration", nullable = false)
   private String registration;
 

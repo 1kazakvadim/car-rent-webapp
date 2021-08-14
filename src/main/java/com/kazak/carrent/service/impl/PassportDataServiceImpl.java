@@ -5,20 +5,17 @@ import com.kazak.carrent.mapper.PassportMapper;
 import com.kazak.carrent.model.entity.PassportData;
 import com.kazak.carrent.repository.PassportDataRepository;
 import com.kazak.carrent.service.PassportDataService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class PassportDataServiceImpl implements PassportDataService {
 
   private final PassportDataRepository passportDataRepository;
   private final PassportMapper passportMapper;
 
-  public PassportDataServiceImpl(
-      PassportDataRepository passportDataRepository, PassportMapper passportMapper) {
-    this.passportDataRepository = passportDataRepository;
-    this.passportMapper = passportMapper;
-  }
 
   @Override
   public PassportData findById(Integer id) {

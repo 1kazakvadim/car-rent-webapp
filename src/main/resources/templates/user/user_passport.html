@@ -28,7 +28,7 @@
               <div class="profile_dropdown_menu_content">
                 <ul>
                   <li><a th:text="#{button.edit}"
-                         th:href="@{/profile/users/{userId}/passport/{passportId}/edit(userId=${passportData.user.id},passportId=${passportData.id})}">Редактировать</a>
+                         th:href="@{/profile/users/{userId}/passport/{passportId}/edit(userId=${userId},passportId=${passportData.id})}">Редактировать</a>
                   </li>
                 </ul>
               </div>

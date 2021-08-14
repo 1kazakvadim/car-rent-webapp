@@ -3,20 +3,18 @@ package com.kazak.carrent.service.impl;
 import com.kazak.carrent.model.entity.User;
 import com.kazak.carrent.model.entity.UserPrincipal;
 import com.kazak.carrent.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class DatabaseUserDetailsServiceImpl implements UserDetailsService {
 
   private final UserService userService;
 
-  public DatabaseUserDetailsServiceImpl(
-      UserService userService) {
-    this.userService = userService;
-  }
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

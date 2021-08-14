@@ -10,6 +10,7 @@ import com.kazak.carrent.service.UserService;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,8 +18,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
+  private static final String USER_ROLE = "USER";
   private static final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{3,16}$";
 
   private final UserRepository userRepository;
@@ -26,15 +29,6 @@ public class UserServiceImpl implements UserService {
   private final UserMapper userMapper;
   private final PasswordEncoder passwordEncoder;
 
-  @Autowired
-  public UserServiceImpl(UserRepository userRepository,
-      UserRoleRepository userRoleRepository,
-      UserMapper userMapper, PasswordEncoder passwordEncoder) {
-    this.userRepository = userRepository;
-    this.userRoleRepository = userRoleRepository;
-    this.userMapper = userMapper;
-    this.passwordEncoder = passwordEncoder;
-  }
 
   @Override
   public User findByUsername(String username) {
@@ -117,7 +111,7 @@ public class UserServiceImpl implements UserService {
   public void save(User user, PassportData passportData) {
     user.setPassportData(passportData);
     user.setPassword(passwordEncoder.encode(user.getPassword()));
-    user.setUserRole(userRoleRepository.findByName("USER"));
+    user.setUserRole(userRoleRepository.findByName(USER_ROLE));
     userRepository.save(user);
   }
 

@@ -6,6 +6,7 @@ import com.kazak.carrent.service.PassportDataService;
 import com.kazak.carrent.service.UserRoleService;
 import com.kazak.carrent.service.UserService;
 import java.util.Locale;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
   private final UserService userService;
@@ -25,18 +27,9 @@ public class UserController {
   private final MessageSource messageSource;
 
 
-  public UserController(UserService userService,
-      PassportDataService passportDataService,
-      UserRoleService userRoleService, MessageSource messageSource) {
-    this.userService = userService;
-    this.passportDataService = passportDataService;
-    this.userRoleService = userRoleService;
-    this.messageSource = messageSource;
-  }
-
   @GetMapping("/profile/users/{userId}/edit")
   public String getUserEdit(@PathVariable Integer userId, Model model) {
-    model.addAttribute("user", new UserPostDto());
+    model.addAttribute("userDto", new UserPostDto());
     model.addAttribute("user", userService.findById(userId));
     model.addAttribute("userRoles", userRoleService.getAll());
     return "user/user_edit";
@@ -44,7 +37,7 @@ public class UserController {
 
   @PostMapping("/profile/users/{userId}/edit")
   public String saveEditUser(@PathVariable Integer userId,
-      @ModelAttribute("user") UserPostDto userPostDto,
+      @ModelAttribute("userDto") UserPostDto userPostDto,
       RedirectAttributes redirectAttributes, Locale locale) {
     if (userService.isUsernameExists(userPostDto.getUsername(), userId) ||
         userService.isEmailExists(userPostDto.getEmail(), userId) || userService
@@ -81,6 +74,7 @@ public class UserController {
 
   @GetMapping("/profile/users/{userId}/passport")
   public String getUserPassport(@PathVariable Integer userId, Model model) {
+    model.addAttribute("userId", userId);
     model.addAttribute("passportData", userService.findById(userId).getPassportData());
     return "user/user_passport";
   }

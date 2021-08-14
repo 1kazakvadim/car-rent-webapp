@@ -16,11 +16,13 @@ import com.kazak.carrent.service.CarService;
 import com.kazak.carrent.service.UploadImageService;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
+@RequiredArgsConstructor
 public class CarServiceImpl implements CarService {
 
   private final CarRepository carRepository;
@@ -31,21 +33,6 @@ public class CarServiceImpl implements CarService {
   private final CarMapper carMapper;
   private final UploadImageService uploadImageService;
 
-
-  public CarServiceImpl(CarRepository carRepository,
-      CarClassRepository carClassRepository,
-      CarBodyRepository carBodyRepository,
-      CarBrandRepository carBrandRepository,
-      CarTransmissionRepository carTransmissionRepository,
-      CarMapper carMapper, UploadImageService uploadImageService) {
-    this.carRepository = carRepository;
-    this.carClassRepository = carClassRepository;
-    this.carBodyRepository = carBodyRepository;
-    this.carBrandRepository = carBrandRepository;
-    this.carTransmissionRepository = carTransmissionRepository;
-    this.carMapper = carMapper;
-    this.uploadImageService = uploadImageService;
-  }
 
   @Override
   public List<Car> getAll() {

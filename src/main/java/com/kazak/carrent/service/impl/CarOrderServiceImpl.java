@@ -10,23 +10,21 @@ import com.kazak.carrent.service.CarOrderService;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class CarOrderServiceImpl implements CarOrderService {
+
+  private static final String USER_ROLE = "USER";
 
   private final CarOrderRepository carOrderRepository;
   private final CarRepository carRepository;
   private final UserRepository userRepository;
 
-  public CarOrderServiceImpl(CarOrderRepository carOrderRepository,
-      CarRepository carRepository, UserRepository userRepository) {
-    this.carOrderRepository = carOrderRepository;
-    this.carRepository = carRepository;
-    this.userRepository = userRepository;
-  }
 
   @Override
   public CarOrder findById(Integer id) {
@@ -41,7 +39,7 @@ public class CarOrderServiceImpl implements CarOrderService {
   @Override
   public List<CarOrder> getAll(UserDetails currentUser) {
     User user = userRepository.findByUsername(currentUser.getUsername());
-    if (user.getUserRole().getName().equals("USER")) {
+    if (user.getUserRole().getName().equals(USER_ROLE)) {
       return carOrderRepository.findAllByUser(user);
     } else {
       return carOrderRepository.findAll();

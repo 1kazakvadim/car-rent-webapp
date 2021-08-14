@@ -7,24 +7,19 @@ import com.kazak.carrent.repository.CarRepairRepository;
 import com.kazak.carrent.repository.UserRepository;
 import com.kazak.carrent.service.CarRepairService;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class CarRepairServiceImpl implements CarRepairService {
 
   private final CarRepairRepository carRepairRepository;
   private final CarOrderRepository carOrderRepository;
   private final UserRepository userRepository;
 
-  public CarRepairServiceImpl(CarRepairRepository carRepairRepository,
-      CarOrderRepository carOrderRepository,
-      UserRepository userRepository) {
-    this.carRepairRepository = carRepairRepository;
-    this.carOrderRepository = carOrderRepository;
-    this.userRepository = userRepository;
-  }
 
   @Override
   public CarRepair findById(Integer id) {

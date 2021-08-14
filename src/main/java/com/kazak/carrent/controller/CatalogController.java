@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequiredArgsConstructor
 public class CatalogController {
 
   private final CarService carService;
@@ -39,18 +41,6 @@ public class CatalogController {
   private final CarOrderService carOrderService;
   private final MessageSource messageSource;
 
-  public CatalogController(CarService carService, CarBodyService carBodyService,
-      CarClassService carClassService, CarBrandService carBrandService,
-      CarTransmissionService carTransmissionService,
-      CarOrderService carOrderService, MessageSource messageSource) {
-    this.carService = carService;
-    this.carBodyService = carBodyService;
-    this.carClassService = carClassService;
-    this.carBrandService = carBrandService;
-    this.carTransmissionService = carTransmissionService;
-    this.carOrderService = carOrderService;
-    this.messageSource = messageSource;
-  }
 
   @GetMapping("/catalog")
   public String getCatalogPage(Model model) {
@@ -94,7 +84,7 @@ public class CatalogController {
   }
 
   @GetMapping("/catalog/{carId}/detail")
-  public String getCar(@PathVariable Integer carId, Model model) {
+  public String getCarDetail(@PathVariable Integer carId, Model model) {
     model.addAttribute("car", carService.findById(carId));
     return "catalog/catalog_detail";
   }

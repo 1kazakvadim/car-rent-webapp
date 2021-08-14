@@ -3,6 +3,7 @@ package com.kazak.carrent.controller;
 import com.kazak.carrent.service.CarOrderService;
 import com.kazak.carrent.service.CarRepairService;
 import java.util.Locale;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,18 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequiredArgsConstructor
 public class OrderController {
 
   private final CarOrderService carOrderService;
   private final CarRepairService carRepairService;
   private final MessageSource messageSource;
 
-  public OrderController(CarOrderService carOrderService,
-      CarRepairService carRepairService, MessageSource messageSource) {
-    this.carOrderService = carOrderService;
-    this.carRepairService = carRepairService;
-    this.messageSource = messageSource;
-  }
 
   @GetMapping("/profile/orders/{orderId}/reason")
   public String getOrderCancellationReason(@PathVariable Integer orderId, Model model) {

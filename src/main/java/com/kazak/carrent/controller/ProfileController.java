@@ -4,6 +4,7 @@ import com.kazak.carrent.service.CarOrderService;
 import com.kazak.carrent.service.CarRepairService;
 import com.kazak.carrent.service.CarService;
 import com.kazak.carrent.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@RequiredArgsConstructor
 public class ProfileController {
 
   private final UserService userService;
@@ -18,14 +20,6 @@ public class ProfileController {
   private final CarOrderService carOrderService;
   private final CarRepairService carRepairService;
 
-  public ProfileController(UserService userService,
-      CarService carService, CarOrderService carOrderService,
-      CarRepairService carRepairService) {
-    this.userService = userService;
-    this.carService = carService;
-    this.carOrderService = carOrderService;
-    this.carRepairService = carRepairService;
-  }
 
   @GetMapping("/profile")
   public String getProfileMenu() {

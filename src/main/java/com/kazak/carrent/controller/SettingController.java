@@ -2,6 +2,7 @@ package com.kazak.carrent.controller;
 
 import com.kazak.carrent.service.UserService;
 import java.util.Locale;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,16 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequiredArgsConstructor
 public class SettingController {
 
   private final UserService userService;
   private final MessageSource messageSource;
 
-  public SettingController(UserService userService,
-      MessageSource messageSource) {
-    this.userService = userService;
-    this.messageSource = messageSource;
-  }
 
   @PostMapping("/profile/settings/password")
   public String changeUserPasswordByUser(@AuthenticationPrincipal UserDetails currentUser,

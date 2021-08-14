@@ -4,16 +4,15 @@ import com.kazak.carrent.model.entity.UserRole;
 import com.kazak.carrent.repository.UserRoleRepository;
 import com.kazak.carrent.service.UserRoleService;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserRoleServiceImpl implements UserRoleService {
 
   private final UserRoleRepository userRoleRepository;
 
-  public UserRoleServiceImpl(UserRoleRepository userRoleRepository) {
-    this.userRoleRepository = userRoleRepository;
-  }
 
   @Override
   public UserRole findByName(String name) {

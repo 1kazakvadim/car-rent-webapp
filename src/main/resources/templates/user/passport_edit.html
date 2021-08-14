@@ -16,7 +16,7 @@
       </div>
       <div class="edit_content">
         <form class="edit_form"
-              th:action="@{/profile/users/{userId}/passport/{passportId}/edit(userId=${passportData.user.id}, passportId=${passportData.id})}"
+              th:action="@{/profile/users/{userId}/passport/{passportId}/edit(userId=${user.id}, passportId=${passportData.id})}"
               method="post">
           <table class="edit_table">
             <caption class="edit_table_caption" th:text="#{caption.editPassport}">Редактирование

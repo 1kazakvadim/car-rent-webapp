@@ -4,16 +4,15 @@ import com.kazak.carrent.model.entity.CarBrand;
 import com.kazak.carrent.repository.CarBrandRepository;
 import com.kazak.carrent.service.CarBrandService;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class CarBrandServiceImpl implements CarBrandService {
 
   private final CarBrandRepository carBrandRepository;
 
-  public CarBrandServiceImpl(CarBrandRepository carBrandRepository) {
-    this.carBrandRepository = carBrandRepository;
-  }
 
   @Override
   public CarBrand findByName(String carBrandName) {

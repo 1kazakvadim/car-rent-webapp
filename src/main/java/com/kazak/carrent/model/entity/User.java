@@ -60,7 +60,7 @@ public class User {
   @Column(name = "phone_number", nullable = false, unique = true)
   private String phoneNumber;
 
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne
   @JoinColumn(name="passport_data_id")
   private PassportData passportData;
 
